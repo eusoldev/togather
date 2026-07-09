@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
 <odoo>
-    <data>
 
         <record id="quotation_builder_report_template" model="report.paperformat">
             <field name="name">Quotation Builder Report</field>
@@ -132,5 +131,4 @@
 
         <t t-raw="0"/>
     </template>
-    </data>
 </odoo>

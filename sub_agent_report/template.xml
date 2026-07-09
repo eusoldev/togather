@@ -1,6 +1,5 @@
 <!-- <?xml version="1.0" encoding="utf-8"?> -->
 <odoo>
-    <data>
         <record id="paperformat_sub_agent_report" model="report.paperformat">
             <field name="name">Page For Sub Agent Report</field>
             <field name="default" eval="True" />
@@ -159,5 +158,4 @@
             <t t-raw="0" />
         </template>
         <menuitem id="sub_agent_report_menu_item" name="Sub Agent Report" action="sub_agent_report_menu_action" parent="account.menu_finance_reports" groups="sub_agent_report.security_group_for_sub_agent_report" />
-    </data>
 </odoo>
