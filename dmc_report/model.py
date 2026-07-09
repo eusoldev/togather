@@ -107,7 +107,7 @@ class dmc_report(models.AbstractModel):
 
 
 
-				record = self.env['account.move'].sudo().search([('date','>=',form),('date','<=',to),('invoice_origin','in',pkgs_list),('state','=','posted'),('move_type','=','in_invoice'),('hotel_ids','!=',False)])
+				record = self.env['account.move'].sudo().search([('date','>=',form),('date','<=',to),('invoice_origin','in',pkgs_list),('state','=','posted'),('move_type','=','in_invoice')])
 
 			main_list = []
 			pkg_total = 0
@@ -638,7 +638,7 @@ class dmc_report_xlsx(models.AbstractModel):
 						if service.hotel_return.name not in pkgs_list:
 							pkgs_list.append(service.hotel_return.name)
 
-				record = self.env['account.move'].sudo().search([('date','>=',form),('date','<=',to),('invoice_origin','in',pkgs_list),('state','=','posted'),('move_type','=','in_invoice'),('hotel_ids','!=',False)])
+				record = self.env['account.move'].sudo().search([('date','>=',form),('date','<=',to),('invoice_origin','in',pkgs_list),('state','=','posted'),('move_type','=','in_invoice')])
 
 
 

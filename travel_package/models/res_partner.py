@@ -338,7 +338,7 @@ class res_partner_customized(models.Model):
             if 'ind_street' in vals or  'ind_street2' in vals or 'ind_state_id' in vals or 'ind_zip' in vals or 'ind_country_id' in vals or 'street' in vals or 'street2' in vals or 'city' in vals or 'state_id' in vals or 'zip' in vals or 'country_id' in vals:
                 after = x.write_date
                 if before != after:
-                    so_recs = x.env['reservation.order'].search([('partner_id','=',x.id),('state','in',['draft','sent','sale'])])
+                    so_recs = x.env['reservation.order'].search([('partner_id','=',x.id),('stages','in',['draft','validate'])])
                     if so_recs:
                         for y in so_recs:
                             if x.company_type == 'person':

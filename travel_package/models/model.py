@@ -1325,6 +1325,7 @@ class all_services(models.Model):
     _name = 'all.services'
     _description = "All Service"
     _order = "sequence"
+    _rec_name = 'product_id'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     sequence = fields.Integer(string='Sequence', help="Gives the sequence order when displaying a list of analytic distribution")

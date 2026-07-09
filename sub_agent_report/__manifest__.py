@@ -7,7 +7,7 @@
     'license': 'LGPL-3',
     'version': '0.1',
     'application': True,
-    'depends': ['base','report_xlsx'],
+    'depends': ['base','report_xlsx','travel_package'],
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',

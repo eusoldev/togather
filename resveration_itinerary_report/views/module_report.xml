@@ -276,9 +276,9 @@
                                                 </p>
                                                 <p style="margin-top:0;">
                                                     <span class="solid">
-                                                            <a t-att-href="c.social_twitter" style="color:white">
+                                                            <a t-att-href="c.social_twitter" t-if="company.social_twitter" style="color:white">
                                                                 <!-- <i class="fab fa-twitter-square" style="color:#7F51A8; font-size:30px;"></i> -->
-                                                                <img src="/voucher_report/static/src/img/twitter.png" style="width: 5.1%;color: #7F51A8;margin-top: -15px; " />
+                                                                <img src="/voucher_report/static/src/img/twitter.png" style="width: 7%;color: #7F51A8;margin-top: -15px; " />
                                                             </a>
                                                         </span>
                                                     <span style="margin-left:13px">Togather_Maldives</span>

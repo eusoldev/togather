@@ -339,7 +339,7 @@ class account_journal_ext(models.Model):
     bank_charge_amt1 = fields.Float('Charge Amount')
     vat_check = fields.Boolean('Vat Charges')
     vat = fields.Many2one('account.tax','Vat')
-    account_id = fields.Many2one('account.account','Bank Charges Account', required=True)
+    account_id = fields.Many2one('account.account','Bank Charges Account')
 
 class Accounttaxes_ext(models.Model):
     _inherit = 'account.tax'

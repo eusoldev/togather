@@ -253,9 +253,9 @@
                                                             </a>
                                                         </span>
                                                         <span class="solid">
-                                                            <a t-att-href="c.social_twitter" style="color:white">
+                                                            <a t-att-href="c.social_twitter" t-if="company.social_twitter" style="color:white">
                                                                 <!-- <i class="fab fa-twitter-square" style="color:#7F51A8; font-size:30px;"></i> -->
-                                                                <img src="/voucher_report/static/src/img/twitter.png" style="width: 5.5%;color: #7F51A8;margin-top: -15px;" />
+                                                                <img src="/voucher_report/static/src/img/twitter.png" style="width: 7%;color: #7F51A8;margin-top: -15px;" />
                                                             </a>
                                                         </span>
                                                     </p>
@@ -1496,7 +1496,7 @@
                                 </div>
                                 <br class="clear_float" />
                                 <t t-if="o.stamp">
-                                    <img src="/voucher_report/static/src/img/stamp_new.png" style="width: 15%;float: right;" />
+                                    <!-- <img src="/voucher_report/static/src/img/stamp_new.png" style="width: 15%;float: right;" /> -->
                                 </t>
                                 <br class="clear_float" />
                                 <div class="main_div" style="page-break-before: always; page-break-after: always;">
@@ -1521,7 +1521,7 @@
                                             </u>
                                         </p>
                                         <div class="footer_logo">
-                                            <img src="/voucher_report/static/src/img/company.png"/>
+                                            <!-- <img src="/voucher_report/static/src/img/company.png"/> -->
                                             <!-- <t t-foreach="company" t-as="c">
                                                 <img t-att-src="'data:image/png;base64,%s' %to_text(c.logo)" />
                                                 <p>

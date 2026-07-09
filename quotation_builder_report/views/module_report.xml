@@ -1314,7 +1314,7 @@
                                                                         </span>
                                                                     </td>
                                                                     <td valign="middle" align="right">
-                                                                        <img style="padding:0px;margin: 0px; height: 48px;" src="https://odoo.rawnaqtourism.com/web/binary/company_logo" alt="Togather Tourism" />
+                                                                        <img style="padding:0px;margin: 0px; height: 48px;" t-if="request.env.company.logo" t-att-src="image_data_uri(request.env.company.logo)" alt="Togather Tourism" />
                                                                     </td>
                                                                 </tr>
                                                                 <tr>

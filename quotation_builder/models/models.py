@@ -41,7 +41,7 @@ class quotation_builder(models.Model):
 	cancellation_days = fields.Integer(string="Cancellation day")
 	destination = fields.Many2many('destination.name', string="Destination")
 	client_name = fields.Many2one('res.partner',string="Client Name", tracking=True)
-	creation_date = fields.Datetime(string="Creation Date", default=lambda self: fields.datetime.now()+ timedelta(hours=5))
+	creation_date = fields.Datetime(string="Creation Date", default=lambda self: fields.Datetime.now()+ timedelta(hours=5))
 	reference = fields.Char(string="Ref Number", tracking=True) 
 	maldives_website_link = fields.Boolean(string="Maldives Website Link") 
 	total_in_report = fields.Boolean(string="Show Total in Report") 

@@ -165,9 +165,9 @@
                                 </a>
                             </span>
                            <span class="solid">
-                                <a t-att-href="company.social_twitter" style="color:white">
+                                <a t-att-href="company.social_twitter" t-if="company.social_twitter" style="color:white">
                                     <!-- <i class="fab fa-twitter-square" style="color:#7F51A8; font-size:30px;"></i> -->
-                                    <img src="/voucher_report/static/src/img/twitter.png" style="width:6.8%;color: #7F51A8;margin-top: -18px;" />
+                                    <img src="/voucher_report/static/src/img/twitter.png" style="width:7%;color: #7F51A8;margin-top: -18px;" />
                                 </a>
                             </span>
                         </p>

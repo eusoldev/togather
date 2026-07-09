@@ -133,8 +133,7 @@
                                                     <td>
                                                         <span t-esc="o['guest']"></span>
                                                     </td>
-                                                     <td>
-                                                    </td>
+                                                     
                                                     <td>
                                                         <span t-esc="o['name']"></span>
                                                     </td>
@@ -248,8 +247,7 @@
                                                     <td>
                                                         <span t-esc="o['guest']"></span>
                                                     </td>
-                                                     <td>
-                                                    </td>
+                                                     
                                                     <td>
                                                         <span t-esc="o['name']"></span>
                                                     </td>
@@ -349,8 +347,7 @@
                                                     <td>
                                                         <span t-esc="o['guest']"></span>
                                                     </td>
-                                                    <td>
-                                                    </td>
+                                                    
                                                     <td>
                                                         <span t-esc="o['name']"></span>
                                                     </td>
