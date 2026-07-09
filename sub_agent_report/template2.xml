@@ -13,8 +13,6 @@
             <field name="header_spacing">10</field>
             <field name="dpi">90</field>
         </record>
-        <report id="report_for_sub_client_report" model="account.move" name="sub_agent_report.sub_client_report" file="sub_agent_report.sub_client_report" report_type="qweb-html" string="Sub Client Report" paperformat="paperformat_sub_client_report" menu="False" />
-        <report id="report_for_sub_client_report_excel" model="sub.client.report" string="Sub Client Report" report_type="xlsx" name="sub_agent_report.sub_client_report.xslx" file="sub_agent_report.sub_client_report.xslx" menu="False" attachment_use="False" />
 
 
         <record id="report_for_sub_client_report" model="ir.actions.report">

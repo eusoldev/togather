@@ -34,42 +34,6 @@
         </record>
 
 
-
-        <report
-            id="quotation_report_id" 
-            model="quotation.builder"
-            name="quotation_builder_report.quotation_builder_report"
-            file="quotation_builder_report.quotation_builder_report"
-            report_type="qweb-pdf"
-            paperformat="quotation_builder_report_template"
-            print_report_name="'%s - %s' %(object.subject, object.sr_no)"
-            string="Quotation Builder(English)"
-            />
-            <!-- print_report_name="(object.subject)" -->
-        <report
-            id="quotatipon_builder_report" 
-            model="quotation.builder"
-            name="quotation_builder_report.quotation_builder_arabic"
-            file="quotation_builder_report.quotation_builder_arabic"
-            report_type="qweb-pdf"
-            paperformat="quotation_builder_report_template"
-            print_report_name="'%s - %s' %(object.subject, object.sr_no)"
-            string="Quotation Builder (Arabic)"
-            />
-
-
-
-             <!-- <report
-            id="quotatipon_builder_report_new_one" 
-            model="quotation.builder"
-            name="quotation_builder_report.quotation_builder_email_t"
-            file="quotation_builder_report.quotation_builder_email_t"
-            report_type="qweb-pdf"
-            paperformat="quotation_builder_report_template_email"
-            print_report_name="'Quotation Builder (Pro)' ' - %s - %s' %(object.subject, object.sr_no)"
-            string="Quotation Builder (Pro)"
-            /> -->
-
             <record id="quotatipon_builder_report_new_one" model="ir.actions.report">
             <field name="name">Quotation Builder (Pro)</field>
             <field name="model">quotation.builder</field>
