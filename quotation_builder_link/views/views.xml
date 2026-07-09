@@ -1,0 +1,25 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="quotation_builder_link_ext">
+            <field name="name">quotation_builder_link_ext</field>
+            <field name="model">quotation.builder.link</field>
+            <field name="arch" type="xml">
+                <form string="Reservation Link">
+                    <group>
+                        <field name="reservation_link_ref" required="0" readonly="1" />
+                        <field name="resvartion_link_id" required="0" readonly="1" />
+                        <field name="reservation_link_email" required="1" readonly="0" />
+                        <field name="reservation_link" required="0" readonly="1" widget="CopyClipboardChar"/>
+                        
+                    </group>
+                    <footer>
+                        <button name="send_reservation_email_to_customer" type="object" string="Send Email" class="oe_highlight" />
+                        <button string="Cancel" class="btn-secondary" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    
+    </data>
+</odoo>

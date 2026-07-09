@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+A_1,ContractForm,rawnaq_contract.model_contract_form,rawnaq_contract.security_group,1,1,1,1
+A_2,ContractType,rawnaq_contract.model_contract_info,rawnaq_contract.security_group,1,1,1,1
+A_3,SeasonClass,rawnaq_contract.model_season_season,rawnaq_contract.security_group,1,1,1,1
+A_4,ContractType,rawnaq_contract.model_contract_type,rawnaq_contract.security_group,1,1,1,1

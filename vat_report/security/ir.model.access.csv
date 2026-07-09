@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+A_1,vat_report,vat_report.model_vat_report,vat_report.security_group_for_vat_report_id,1,1,1,1

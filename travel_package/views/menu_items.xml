@@ -1,0 +1,753 @@
+<?xml version="1.0"?>
+<odoo>
+  <data>
+
+    <!-- Table Tabs menu actions -->
+
+    <!-- Flight Services -->
+    <record id="flight_services_form_view" model="ir.ui.view">
+      <field name="name">flight_services_form_view</field>
+      <field name="model">all.services</field>
+      <field name="arch" type="xml">
+        <form string="Flight Services">
+          <sheet>
+            <group>
+              <group>
+                <field name='airline' domain="[('airline_supplier','=',True)]" required='1'/>
+                <field name='supplier'/>
+                <field name='customer_m2m' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" widget="many2many_tags"/>
+                <field name='customer' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" invisible="1"/>
+                <field name='from_to'/>
+                <field name='flight'/>
+                <field name='fight_class'/>
+                <field name='departures'/>
+                <field name='arrival'/>
+                <field name='bag'/>
+                <field name='terminal'/>
+              </group>
+              <group>
+                <field name='airline_pnr'/>
+                <field name='no_of_person'/>
+                <field name='amnt_fc'/>
+                <field name='currency_name'/>
+                <field name='exchange_rate'/>
+                <field name='price'/>
+                <field name='commission'/>
+                <field name='total'/>
+                <field name='itinarnay_return' invisible='1'/>
+                <field name='flights_return' invisible='1'/>
+              </group>
+            </group>
+          </sheet>
+          <chatter/>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="flight_services_main_tree_view">
+      <field name="name">Flights Services</field>
+      <field name="model">all.services</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="airline"/>
+          <field name="supplier"/>
+          <field name="customer_m2m"/>
+          <field name="from_to"/>
+          <field name="flight"/>
+          <field name="fight_class"/>
+          <field name="departures"/>
+          <field name="arrival"/>
+          <field name="bag"/>
+          <field name="terminal"/>
+          <field name="airline_pnr"/>
+          <field name="no_of_person"/>
+          <field name="amnt_fc"/>
+          <field name="currency_name"/>
+          <field name="exchange_rate"/>
+          <field name="price"/>
+          <field name="commission"/>
+          <field name="total"/>
+        </list>
+      </field>
+    </record>
+
+    <record id="all_services_search_view" model="ir.ui.view">
+      <field name="name">all_services_search_view</field>
+      <field name="model">all.services</field>
+      <field name="arch" type="xml">
+        <search string="Services">
+          <filter string="Check In" name="departures" domain="[]" context="{'group_by': 'departures'}"/>
+          <filter string="Check Out" name="arrival" domain="[]" context="{'group_by': 'arrival'}"/>
+        </search>
+      </field>
+    </record>
+    
+    <record id="action_service_flight" model="ir.actions.act_window">
+      <field name="name">Flights Services</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">all.services</field>
+      <field name="view_mode">list,graph,pivot,form</field>
+      <field name="domain">[('service_type', '=','flight')]</field>
+      <field name="context" eval="{'default_service_type': 'flight'}"/>
+      <field name="view_ids" eval="[(5, 0, 0), (0, 0, {'view_mode': 'list', 'view_id':ref('flight_services_main_tree_view')}), (0, 0, {'view_mode': 'form', 'view_id': ref('flight_services_form_view')})]"/>
+    </record>
+    
+
+    <menuitem id="services_main_menu" parent="travel_package.main_menu" name="Package Services"  sequence="10" groups="security_group"/>
+    <menuitem id="flight_service_menu" parent="services_main_menu" name="Flight Services"  sequence="1" groups="travel_package.security_group" action="action_service_flight"/>
+
+    <!-- hotel Services -->
+    <record id="hotel_services_form_view" model="ir.ui.view">
+      <field name="name">hotel_services_form_view</field>
+      <field name="model">all.services</field>
+      <field name="arch" type="xml">
+        <form string="Hotel Services">
+          <sheet>
+            <group>
+              <group>
+                <field name='product_id' string="Hotel" domain="[('prod_serv_typecategory','=','hotel')]" required='1'/>
+                <field name='supplier' domain="[('hotel_supplier','=',True)]"/>
+                <field name='customer_m2m' required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" widget="many2many_tags"/>
+                <field name='customer' required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" invisible="1"/>
+                <field name='confirmation_no'/>
+                <field name='date_from' string="Check In"/>
+                <field name='date_to' string="Check Out"/>
+                <field name='room_occupancy'/>
+                <field name='room_type'/>
+                <field name='nights'/>
+                <field name='room_qty'/>
+              </group>
+              <group>
+                <field name='meal_plan'/>
+                <field name='no_of_person'/>
+                <field name='transfer'/>
+                <field name='amnt_fc'/>
+                <field name='currency_name'/>
+                <field name='exchange_rate'/>
+                <field name='price'/>
+                <field name='commission'/>
+                <field name='total'/>
+                <field name='itinarnay_return' invisible='1'/>
+                <field name='hotel_return' invisible='1'/>
+              </group>
+            </group>
+          </sheet>
+          <chatter/>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="hotel_services_main_tree_view">
+      <field name="name">Hotels Services</field>
+      <field name="model">all.services</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="product_id"/>
+          <field name="supplier"/>
+          <field name="customer_m2m" widget="many2many_tags"/>
+          <field name="confirmation_no"/>
+          <field name="date_from"/>
+          <field name="date_to"/>
+          <field name="room_occupancy"/>
+          <field name="room_type"/>
+          <field name="nights"/>
+          <field name="room_qty"/>
+          <field name="meal_plan"/>
+          <field name="no_of_person"/>
+          <field name="transfer"/>
+          <field name="amnt_fc"/>
+          <field name="currency_name"/>
+          <field name="exchange_rate"/>
+          <field name="price"/>
+          <field name="commission"/>
+          <field name="total"/>
+        </list>
+      </field>
+    </record>
+
+    <record id="action_service_hotel" model="ir.actions.act_window">
+      <field name="name">Hotels Services</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">all.services</field>
+      <field name="view_mode">list,graph,pivot,form</field>
+      <field name="domain">[('service_type', '=','hotel')]</field>
+      <field name="context" eval="{'default_service_type': 'hotel'}"/>
+      <field name="view_ids" eval="[(5, 0, 0), (0, 0, {'view_mode': 'list', 'view_id':ref('hotel_services_main_tree_view')}), (0, 0, {'view_mode': 'form', 'view_id': ref('hotel_services_form_view')})]"/>
+    </record>
+
+    <menuitem id="hotel_service_menu" parent="services_main_menu" name="Hotel Services"  sequence="1" groups="security_group" action="action_service_hotel"/>
+
+
+    <!-- transfer Services -->
+    <record id="transfer_services_form_view" model="ir.ui.view">
+      <field name="name">transfer_services_form_view</field>
+      <field name="model">all.services</field>
+      <field name="arch" type="xml">
+        <form string="Transfer Services">
+          <sheet>
+            <group>
+              <group>
+                <field name='product_id' />
+                <field name='supplier' />
+                <field name='customer_m2m' required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" widget="many2many_tags"/>
+                <field name='customer' required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" invisible="1"/>
+                <field name='confirmation_no'/>
+                <field name='pick_up_place'/>
+                <field name='drop_of_place'/>
+                <field name='date'/>
+                <field name='transfer_type'/>
+                <field name='vehicle_type'/>
+                <field name='wait_time_policy'/>
+              </group>
+              <group>
+                <field name='rent_car'/>
+                <field name='no_of_person' string="Hours"/>
+                <field name='amnt_fc'/>
+                <field name='currency_name'/>
+                <field name='exchange_rate'/>
+                <field name='price'/>
+                <field name='commission'/>
+                <field name='total'/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="transfer_services_main_tree_view">
+      <field name="name">transfers Services</field>
+      <field name="model">all.services</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="product_id"/>
+          <field name="supplier"/>
+          <field name="customer_m2m"/>
+          <field name="customer"/>
+          <field name="confirmation_no"/>
+          <field name="pick_up_place"/>
+          <field name="drop_of_place"/>
+          <field name="date"/>
+          <field name="transfer_type"/>
+          <field name="vehicle_type"/>
+          <field name="wait_time_policy"/>
+          <field name="rent_car"/>
+          <field name="no_of_person"/>
+          <field name="amnt_fc"/>
+          <field name="currency_name"/>
+          <field name="exchange_rate"/>
+          <field name="price"/>
+          <field name="commission"/>
+          <field name="total"/>
+        </list>
+      </field>
+    </record>
+
+    <record id="action_service_transfer" model="ir.actions.act_window">
+      <field name="name">Transfers Services</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">all.services</field>
+      <field name="view_mode">list,graph,pivot,form</field>
+      <field name="domain">[('service_type', '=','transfer')]</field>
+      <field name="context" eval="{'default_service_type': 'transfer'}"/>
+      <field name="view_ids" eval="[(5, 0, 0), (0, 0, {'view_mode': 'list', 'view_id':ref('transfer_services_main_tree_view')}), (0, 0, {'view_mode': 'form', 'view_id': ref('transfer_services_form_view')})]"/>
+    </record>
+
+    <menuitem id="transfer_service_menu" parent="services_main_menu" name="Transfer Services"  sequence="1" groups="security_group" action="action_service_transfer"/>
+
+
+    <!-- tours Services -->
+    <record id="tours_services_form_view" model="ir.ui.view">
+      <field name="name">tours_services_form_view</field>
+      <field name="model">all.services</field>
+      <field name="arch" type="xml">
+        <form string="tours Services">
+          <sheet>
+            <group>
+              <group>
+                <field name='product_id' />
+                <field name="supplier"  domain="[('tours_supplier','=',True)]"/>
+                <field name="customer_m2m" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" widget="many2many_tags"/>
+                <field name="customer" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" invisible="1"/>
+                <field name='confirmation_no'/>
+                <field name='description'/>
+                <field name='guided_or_not'/>
+                <field name='days_valid'/>
+                <field name='issue_date'/>
+              </group>
+              <group>
+                <field name='ticket_day'/>
+                <field name='no_of_person' string="Qty"/>
+                <field name='amnt_fc'/>
+                <field name='currency_name'/>
+                <field name='exchange_rate'/>
+                <field name='price'/>
+                <field name='commission'/>
+                <field name='total'/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="tours_services_main_tree_view">
+      <field name="name">tourss Services</field>
+      <field name="model">all.services</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="product_id"/>
+          <field name="supplier"/>
+          <field name="customer_m2m"/>
+          <field name="confirmation_no"/>
+          <field name="description"/>
+          <field name="guided_or_not"/>
+          <field name="days_valid"/>
+          <field name="issue_date"/>
+          <field name="ticket_day"/>
+          <field name="no_of_person"/>
+          <field name="amnt_fc"/>
+          <field name="currency_name"/>
+          <field name="exchange_rate"/>
+          <field name="price"/>
+          <field name="commission"/>
+          <field name="total"/>
+        </list>
+      </field>
+    </record>
+
+    <record id="action_service_tours" model="ir.actions.act_window">
+      <field name="name">Tourss Services</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">all.services</field>
+      <field name="view_mode">list,graph,pivot,form</field>
+      <field name="domain">[('service_type', '=','tours')]</field>
+      <field name="context" eval="{'default_service_type': 'tours'}"/>
+      <field name="view_ids" eval="[(5, 0, 0), (0, 0, {'view_mode': 'list', 'view_id':ref('tours_services_main_tree_view')}), (0, 0, {'view_mode': 'form', 'view_id': ref('tours_services_form_view')})]"/>
+    </record>
+
+    <menuitem id="tours_service_menu" parent="services_main_menu" name="Tours Services"  sequence="1" groups="security_group" action="action_service_tours"/>
+
+
+
+    <!-- visa Services -->
+    <record id="visa_services_form_view" model="ir.ui.view">
+      <field name="name">visa_services_form_view</field>
+      <field name="model">all.services</field>
+      <field name="arch" type="xml">
+        <form string="Visa Services">
+          <sheet>
+            <group>
+              <group>
+                <field name="product_id" domain="[('prod_serv_typecategory','=','visa')]" />
+                <field name="supplier" domain="[('visa_supplier','=',True)]"/>
+                <field name="customer_m2m" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" widget="many2many_tags"/>
+                <field name="customer" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" invisible="1"/>
+                <field name='confirmation_no'/>
+                <field name='description'/>
+                <field name='visa_status'/>
+                <field name='no_of_person' string="Ordered Qty"/>
+                <field name='currency_name'/>
+              </group>
+              <group>
+                <field name='amnt_fc'/>
+                <field name='exchange_rate' string="Qty"/>
+                <field name='price'/>
+                <field name='commission'/>
+                <field name='total'/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="visa_services_main_tree_view">
+      <field name="name">Visas Services</field>
+      <field name="model">all.services</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="product_id"/>
+          <field name="supplier"/>
+          <field name="customer_m2m"/>
+          <field name="confirmation_no"/>
+          <field name="description"/>
+          <field name="visa_status"/>
+          <field name="no_of_person" string="Ordered Qty"/>
+          <field name="currency_name"/>
+          <field name="amnt_fc"/>
+          <field name="exchange_rate"/>
+          <field name="price"/>
+          <field name="commission"/>
+          <field name="total"/>
+        </list>
+      </field>
+    </record>
+
+    <record id="action_service_visa" model="ir.actions.act_window">
+      <field name="name">Visas Services</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">all.services</field>
+      <field name="view_mode">list,graph,pivot,form</field>
+      <field name="domain">[('service_type', '=','visa')]</field>
+      <field name="context" eval="{'default_service_type': 'visa'}"/>
+      <field name="view_ids" eval="[(5, 0, 0), (0, 0, {'view_mode': 'list', 'view_id':ref('visa_services_main_tree_view')}), (0, 0, {'view_mode': 'form', 'view_id': ref('visa_services_form_view')})]"/>
+    </record>
+
+    <menuitem id="visa_service_menu" parent="services_main_menu" name="Visa Services"  sequence="1" groups="security_group" action="action_service_visa"/>
+
+
+
+    <!-- ready_package Services -->
+    <record id="ready_package_services_form_view" model="ir.ui.view">
+      <field name="name">ready_package_services_form_view</field>
+      <field name="model">all.services</field>
+      <field name="arch" type="xml">
+        <form string="Ready Package Services">
+          <sheet>
+            <group>
+              <group>
+                <field name="product_id"  />
+                <field name="supplier"/>
+                <field name="customer_m2m" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" widget="many2many_tags"/>
+                <field name="customer" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" invisible="1"/>
+                <field name='category'/>
+                <field name='confirmation_no'/>
+                <field name='validity'/>
+                <field name='no_of_nights'/>
+                <field name='rooms_type'/>
+              </group>
+              <group>
+                <field name='meal_plan'/>
+                <field name='transfer_mode'/>
+                <field name='no_of_person' string="Guest No"/>
+                <field name='added_values'/>
+                <field name='amnt_fc'/>
+                <field name='currency_name'/>
+                <field name='exchange_rate'/>
+                <field name='price'/>
+                <field name='product_type'/>
+                <field name='commission'/>
+                <field name='total'/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- tree view is missing -->
+
+
+    <record id="action_service_ready_package" model="ir.actions.act_window">
+      <field name="name">Ready Packages Services</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">all.services</field>
+      <field name="view_mode">list,graph,pivot,form</field>
+      <field name="domain">[('service_type', '=','ready_package')]</field>
+      <field name="context" eval="{'default_service_type': 'ready_package'}"/>
+      <field name="view_ids" eval="[(5, 0, 0), (0, 0, {'view_mode': 'form', 'view_id': ref('ready_package_services_form_view')})]"/>
+    </record>
+
+    <menuitem id="ready_package_service_menu" parent="services_main_menu" name="Ready Package Services"  sequence="1" groups="security_group" action="action_service_ready_package"/>
+
+
+
+
+
+
+    <!-- private_jet Services -->
+    <record id="private_jet_services_form_view" model="ir.ui.view">
+      <field name="name">private_jet_services_form_view</field>
+      <field name="model">all.services</field>
+      <field name="arch" type="xml">
+        <form string="Private Jet Services">
+          <sheet>
+            <group>
+              <group>
+                <field name="airline" required='1' domain="[('airline_supplier','=',True)]"/>
+                <field name="supplier" required='0'/>
+                <field name="customer_m2m" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" widget="many2many_tags"/>
+                <field name="customer" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" invisible="1"/>
+                <field name="from_to"/>
+                <field name="flight"/>
+                <field name="fight_class"/>
+                <field name="departures"/>
+                <field name="arrival"/>
+              </group>
+              <group>
+                <field name="bag"/>
+                <field name="terminal"/>
+                <field name="airline_pnr"/>
+                <field name="no_of_person" sum='Total'/>
+                <field name="amnt_fc"/>
+                <field name="currency_name"/>
+                <field name="exchange_rate"/>
+                <field name="price" sum='Total'/>
+                <field name="commission" sum='Total'/>
+                <field name="total" sum='Total'/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="private_jet_services_main_tree_view">
+      <field name="name">Private Jets Services</field>
+      <field name="model">all.services</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="airline"/>
+          <field name="supplier"/>
+          <field name="customer_m2m"/>
+          <field name="customer" invisible="1"/>
+          <field name="from_to"/>
+          <field name="flight"/>
+          <field name="fight_class"/>
+          <field name="departures"/>
+          <field name="arrival"/>
+          <field name="bag"/>
+          <field name="terminal"/>
+          <field name="airline_pnr"/>
+          <field name="no_of_person" sum='Total'/>
+          <field name="amnt_fc"/>
+          <field name="currency_name"/>
+          <field name="exchange_rate"/>
+          <field name="price" sum='Total'/>
+          <field name="commission" sum='Total'/>
+          <field name="total" sum='Total'/>
+        </list>
+      </field>
+    </record>
+
+    <record id="action_service_private_jet" model="ir.actions.act_window">
+      <field name="name">Private Jets Services</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">all.services</field>
+      <field name="view_mode">list,graph,pivot,form</field>
+      <field name="domain">[('service_type', '=','private_jet')]</field>
+      <field name="context" eval="{'default_service_type': 'private_jet'}"/>
+      <field name="view_ids" eval="[(5, 0, 0), (0, 0, {'view_mode': 'list', 'view_id':ref('private_jet_services_main_tree_view')}), (0, 0, {'view_mode': 'form', 'view_id': ref('private_jet_services_form_view')})]"/>
+    </record>
+
+    <menuitem id="private_jet_service_menu" parent="services_main_menu" name="Private Jet Services"  sequence="1" groups="security_group" action="action_service_private_jet"/>
+
+
+
+
+    <!-- working on sepatate invoice tree for vendor bill -->
+    <!-- <record id="view_invoice_tree" model="ir.ui.view">
+      <field name="name">account.invoice.tree</field>
+      <field name="model">account.move</field>
+      <field name="arch" type="xml">
+        <tree string="Invoices" decoration-info="state == 'draft'" decoration-muted="state == 'cancel'" banner_route="/account/account_invoice_onboarding" js_class="account_tree">
+          <field name="name"/>
+          <field name="partner_id" invisible="1"/>
+          <field name="invoice_source_email" invisible="1"/>
+          <field name="invoice_partner_icon" string=" "/>
+          <field name="invoice_partner_display_name" invisible="context.get('default_type') not in ('in_invoice', 'in_refund','in_receipt')" groups="base.group_user" string="Vendor" />
+          <field name="invoice_partner_display_name" invisible="context.get('default_type') not in ('out_invoice', 'out_refund','out_receipt')" groups="base.group_user" string="Customer" />
+          <field name="invoice_date" optional="show" invisible="context.get('default_type') not in ('in_invoice', 'in_refund','in_receipt')" string="Bill Date"/>
+          <field name="invoice_date" optional="show" invisible="context.get('default_type') not in ('out_invoice', 'out_refund','out_receipt')" string="Invoice Date"/>
+          <field name="invoice_origin" optional="show" string="Source Document"/>
+          <field name="invoice_payment_ref" optional="hide" invisible="context.get('default_type') in ('out_invoice', 'out_refund','out_receipt')"/>
+          <field name="ref" optional="hide"/>
+          <field name="invoice_user_id" optional="show" invisible="context.get('default_type') not in ('out_invoice', 'out_refund','out_receipt')" string="Sales Person"/>
+          <field name="team_id" invisible="context.get('default_type') not in ('out_invoice', 'out_refund','out_receipt')" optional="hide"/>
+          <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}" optional="show"/>
+          <field name="invoice_date_due" optional="show"/>
+          <field name="amount_untaxed_signed" string="Tax Excluded" sum="Total" optional="show"/>
+          <field name="amount_tax_signed" string="Tax" sum="Total" optional="hide"/>
+          <field name="amount_total_signed" string="Total" sum="Total" optional="show"/>
+          <field name="amount_residual_signed" string="Amount Due" sum="Amount Due" optional="show"/>
+          <field name="currency_id" invisible="1"/>
+          <field name="company_currency_id" invisible="1"/>
+          <field name="state" optional="show"/>
+          <field name="invoice_payment_state" optional="hide"/>
+          <field name="type" invisible="context.get('default_type', True)"/>
+        </list>
+      </field>
+    </record>
+
+    <record id="account.action_move_in_invoice_type" model="ir.actions.act_window">
+      <field name="name">Bills</field>
+      <field name="res_model">account.move</field>
+      <field name="view_mode">tree,kanban,form</field>
+      <field name="view_id" ref="view_invoice_tree"/>
+      <field name="search_view_id" ref="account.view_account_invoice_filter"/>
+      <field name="domain">[('type', '=', 'in_invoice')]</field>
+      <field name="context">{'default_type': 'in_invoice'}</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Create a vendor bill
+        </p><p>
+          Create invoices, register payments and keep track of the discussions with your vendors.
+        </p>
+      </field>
+    </record> -->
+
+
+    <!-- yacht Services -->
+<!--     <record id="yacht_services_form_view" model="ir.ui.view">
+      <field name="name">yacht_services_form_view</field>
+      <field name="model">all.services</field>
+      <field name="arch" type="xml">
+        <form string="Yacht Services">
+          <sheet>
+            <group>
+              <group>
+                <field name="supplier" required='1'/>
+                <field name="customer_m2m" required='0' options="{'no_create': True}" widget="many2many_tags"/>
+                <field name="customer" required='0' options="{'no_create': True}" invisible="1"/>
+                <field name="confirmation_no"/>
+                <field name="description" />
+                <field name="duration" />
+                <field name="yacht_type" />
+                <field name="meal_plan" />
+                <field name="occupancy" />
+                <field name="departure_place" />
+              </group>
+              <group>
+                <field name="arrival_place" />
+                <field name="date_from" />
+                <field name="date_to" />
+                <field name="no_of_person" /> 
+                <field name="amnt_fc"/>
+                <field name="currency_name" /> 
+                <field name="exchange_rate" /> 
+                <field name="price" /> 
+                <field name="commission" /> 
+                <field name="total"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="yacht_services_main_tree_view">
+      <field name="name">Yacht Services</field>
+      <field name="model">all.services</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="supplier"/>
+          <field name="customer_m2m"/>
+          <field name="customer" invisible="1"/>
+          <field name="confirmation_no"/>
+          <field name="description" />
+          <field name="duration" />
+          <field name="yacht_type" />
+          <field name="meal_plan" />
+          <field name="occupancy" />
+          <field name="departure_place" />
+          <field name="arrival_place" />
+          <field name="date_from" />
+          <field name="date_to" />
+          <field name="no_of_person" /> 
+          <field name="amnt_fc"/>
+          <field name="currency_name" /> 
+          <field name="exchange_rate" /> 
+          <field name="price" /> 
+          <field name="commission" /> 
+          <field name="total" sum='Total'/>
+        </list>
+      </field>
+    </record>
+
+    <record id="action_service_yacht" model="ir.actions.act_window">
+      <field name="name">Yacht Services</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">all.services</field>
+      <field name="view_mode">tree,form</field>
+      <field name="domain">[('service_type', '=','yacht')]</field>
+      <field name="context" eval="{'default_service_type': 'yacht'}"/>
+      <field name="view_ids" eval="[(5, 0, 0), (0, 0, {'view_mode': 'tree', 'view_id':ref('yacht_services_form_view')}), (0, 0, {'view_mode': 'form', 'view_id': ref('yacht_services_main_tree_view')})]"/>
+    </record>
+
+    <menuitem id="yacht_service_menu" parent="services_main_menu" name="Yacht Services"  sequence="1" groups="security_group" action="action_service_yacht"/> -->
+
+    <!-- cruises Services -->
+<!--     <record id="cruises_services_form_view" model="ir.ui.view">
+      <field name="name">cruises_services_form_view</field>
+      <field name="model">all.services</field>
+      <field name="arch" type="xml">
+        <form string="Cruises Services">
+          <sheet>
+            <group>
+              <group>
+                <field name="supplier"  domain="[('cruise_supplier','=',True)]" required='1'/>
+                <field name="customer_m2m" required='0' options="{'no_create': True}" widget="many2many_tags"/>
+                <field name="customer" required='0' options="{'no_create': True}" invisible="1"/>
+                <field name="confirmation_no"/>
+                <field name="description" />
+                <field name="duration" />
+                <field name="cabin_type" />
+                <field name="meal_plan" />
+                <field name="occupancy" />
+                <field name="departure_place" />
+              </group>
+              <group>
+                <field name="arrival_place" />
+                <field name="date_from" />
+                <field name="date_to" />
+                <field name="no_of_person" /> 
+                <field name="amnt_fc"/>
+                <field name="currency_name" /> 
+                <field name="exchange_rate" /> 
+                <field name="price" /> 
+                <field name="commission" /> 
+                <field name="total"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="cruises_services_main_tree_view">
+      <field name="name">Cruises Services</field>
+      <field name="model">all.services</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="supplier"/>
+          <field name="customer_m2m"/>
+          <field name="customer"/>
+          <field name="confirmation_no"/>
+          <field name="description" />
+          <field name="duration" />
+          <field name="cabin_type" />
+          <field name="meal_plan" />
+          <field name="occupancy" />
+          <field name="departure_place" />
+          <field name="arrival_place" />
+          <field name="date_from" />
+          <field name="date_to" />
+          <field name="no_of_person" /> 
+          <field name="amnt_fc"/>
+          <field name="currency_name" /> 
+          <field name="exchange_rate" /> 
+          <field name="price" /> 
+          <field name="commission" /> 
+          <field name="total" sum='Total'/>
+        </list>
+      </field>
+    </record>
+
+    <record id="action_service_cruises" model="ir.actions.act_window">
+      <field name="name">Cruises Services</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">all.services</field>
+      <field name="view_mode">tree,form</field>
+      <field name="domain">[('service_type', '=','cruise')]</field>
+      <field name="context" eval="{'default_service_type': 'cruise'}"/>
+      <field name="view_ids" eval="[(5, 0, 0), (0, 0, {'view_mode': 'tree', 'view_id':ref('cruises_services_form_view')}), (0, 0, {'view_mode': 'form', 'view_id': ref('cruises_services_main_tree_view')})]"/>
+    </record>
+
+    <menuitem id="cruises_service_menu" parent="services_main_menu" name="Cruises Services"  sequence="1" groups="security_group" action="action_service_cruises"/> -->
+
+
+
+
+  </data>
+</odoo>

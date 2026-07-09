@@ -1,0 +1,2385 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="reservation_link_template" name="Reservation Link">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+       
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.18/jquery.touchSwipe.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta name="x-apple-disable-message-reformatting" />
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <!--[if !mso]><!-->
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
+        <script src="https://code.jquery.com/mobile/1.5.0/jquery.mobile-1.5.0.min.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <title>Reservation Link</title>
+        <style>
+            .d-flex {
+            display: flex;
+        }
+
+        .flex-no-wrap {
+            flex-wrap: nowrap;
+        }
+
+        .justify-content-between-center {
+            justify-content: space-between;
+        }
+
+        .nav-tabs {
+            border-bottom: 2px solid #DDD;
+        }
+
+        .nav-tabs>li.active>a,
+        .nav-tabs>li.active>a:focus,
+        .nav-tabs>li.active>a:hover {
+            border-width: 0;
+        }
+
+        .nav-tabs>li>a {
+            border: none;
+            color: white;
+            border-radius: unset !important;
+        }
+
+        .nav-tabs>li.active>a,
+        .nav-tabs>li>a:hover {
+            border: none;
+            background: white;
+            color:black !important;
+        }
+
+        .nav-tabs>li>a::after {
+            content: "";
+            height: 2px;
+            position: absolute;
+            width: 100%;
+            left: 0px;
+            bottom: -1px;
+            transition: all 250ms ease 0s;
+            transform: scale(0);
+        }
+
+        .nav-tabs>li.active>a::after,
+        .nav-tabs>li:hover>a::after {
+            transform: scale(1);
+        }
+
+        .tab-nav>li>a::after {
+            background: #21527d none repeat scroll 0% 0%;
+            color: #fff;
+        }
+
+        .tab-pane {
+            padding: 15px 0;
+        }
+
+        .tab-content {
+            padding: 20px
+        }
+
+        .card {
+            background: #FFF none repeat scroll 0% 0%;
+            margin-bottom: 30px;
+        }
+
+        .box-shadow{
+            box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.59);
+            -webkit-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.59);
+            -moz-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.59);
+        }
+
+        body {
+
+            overflow-x: hidden;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .font {
+            font-size: 13px;
+            padding: 8px;
+            text-align: left;
+            font-weight: bold;
+            border-bottom: 1px solid black;
+            background: lightgray;
+        }
+
+        .font_2 {
+            font-size: 13px;
+            padding: 8px;
+            border-bottom: 1px solid black;
+        }
+
+        .booking {
+            background-color: #51cbce;
+            text-align: left;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* CLIENT-SPECIFIC STYLES */
+        #outlook a {
+            padding: 0;
+        }
+
+        /* Force Outlook to provide a "view in browser" message */
+        .ReadMsgBody {
+            width: 100%;
+        }
+
+        .ExternalClass {
+            width: 100%;
+        }
+
+        /* Force Hotmail to display emails at full width */
+        .ExternalClass,
+        .ExternalClass p,
+        .ExternalClass span,
+        .ExternalClass font,
+        .ExternalClass td,
+        .ExternalClass div {
+            line-height: 100%;
+        }
+
+        /* Force Hotmail to display normal line spacing */
+        body,
+        table,
+        td,
+        a {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+
+        /* Prevent WebKit and Windows mobile changing default text sizes */
+        table,
+        td {
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+
+        /* Remove spacing between tables in Outlook 2007 and up */
+        img {
+            -ms-interpolation-mode: bicubic;
+        }
+
+        /* Allow smoother rendering of resized image in Internet Explorer */
+
+        /* RESET STYLES */
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            border: 0;
+            height: auto;
+            line-height: 100%;
+            outline: none;
+            text-decoration: none;
+        }
+
+        table {
+            border-collapse: collapse !important;
+        }
+
+        body {
+            height: 100% !important;
+            margin: 0;
+            padding: 0;
+            width: 100% !important;
+        }
+
+        /* iOS BLUE LINKS */
+        .appleBody a {
+            color: #999999;
+            text-decoration: none;
+        }
+
+        .appleFooter a {
+            color: #999999;
+            text-decoration: none;
+        }
+
+        /* MOBILE STYLES */
+        @media screen {
+            @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
+        }
+
+        @media screen and (max-width: 525px) {
+
+            /* ALLOWS FOR FLUID TABLES */
+            table[class="wrapper"] {
+                width: 100% !important;
+            }
+
+            /* ADJUSTS LAYOUT OF LOGO IMAGE */
+            td[class="logo"] {
+                text-align: left;
+                padding: 20px 0 0 0 !important;
+            }
+
+            td[class="logo"] img {
+                margin: 0 auto !important;
+            }
+
+            /* USE THESE CLASSES TO HIDE CONTENT ON MOBILE */
+            td[class="mobile-hide"] {
+                display: none;
+            }
+
+            img[class="mobile-hide"] {
+                display: none !important;
+            }
+
+            img[class="img-max"] {
+                max-width: 100% !important;
+                height: auto !important;
+            }
+
+            /* FULL-WIDTH TABLES */
+            table[class="responsive-table"] {
+                width: 100% !important;
+            }
+
+            /* UTILITY CLASSES FOR ADJUSTING PADDING ON MOBILE */
+            td[class="padding"] {
+                padding: 10px 5% 15px 5% !important;
+            }
+
+            td[class="padding-copy"] {
+                padding: 10px 5% 10px 5% !important;
+                text-align: center;
+            }
+
+            td[class="padding-meta"] {
+                padding: 30px 5% 0px 5% !important;
+                text-align: center;
+            }
+
+            td[class="no-pad"] {
+                padding: 0 0 20px 0 !important;
+            }
+
+            td[class="no-padding"] {
+                padding: 0 !important;
+            }
+
+            td[class="section-padding"] {
+                padding: 50px 15px 50px 15px !important;
+            }
+
+            td[class="section-padding-bottom-image"] {
+                padding: 50px 15px 0 15px !important;
+            }
+
+            /* ADJUST BUTTONS ON MOBILE */
+            td[class="mobile-wrapper"] {
+                padding: 10px 5% 15px 5% !important;
+            }
+
+            table[class="mobile-button-container"] {
+                margin: 0 auto;
+                width: 100% !important;
+            }
+
+            a[class="mobile-button"] {
+                width: 80% !important;
+                padding: 15px !important;
+                border: 0 !important;
+                font-size: 16px !important;
+            }
+
+            /* CUSTOM MQs */
+            td[class="pad-header"] {
+                padding: 25px 0 25px 0 !important;
+            }
+
+            td[class="pad-header-copy"] {
+                padding: 0px 5% 0px 5% !important;
+                text-align: center;
+            }
+
+            td[class="flex-p"] {
+                font-size: 14px !important;
+                line-height: 24px !important;
+                font-weight: 300 !important;
+            }
+
+            td[class="flex-p-bold"] {
+                font-size: 14px !important;
+                line-height: 24px !important;
+            }
+
+            td[class="flex-room-charge"] {
+                font-size: 14px !important;
+                line-height: 24px !important;
+                font-weight: 600 !important;
+            }
+
+            td[class="flex-p-desc_charges"] {
+                font-size: 14px !important;
+                line-height: 24px !important;
+                font-weight: 300 !important;
+            }
+
+            td[class="flex-p-promotax"] {
+                text-align: left !important;
+                font-size: 14px !important;
+                padding: 0 0 5px 0 !important;
+                line-height: 18px !important;
+            }
+
+            td[class="flex-p-charges"] {
+                text-align: left !important;
+                font-size: 14px !important;
+                padding: 0 0 5px 10px !important;
+                line-height: 18px !important;
+            }
+
+            td[class="align-total-charge"] {
+                text-align: left !important;
+            }
+
+        }
+
+        .header_custom {
+            align-items: flex-start;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .header_custom img {
+            margin-top: -10px;
+            height: 130px;
+        }
+
+        .left_portion {
+            align-items: flex-start;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .img_c {
+            overflow: initial !important;
+            margin-right: 10px;
+        }
+
+        .right_portion {
+            text-align: right;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            flex-direction: column;
+        }
+        .table {
+   
+    margin-bottom: 20px !important;
+}
+
+        @media only screen and (max-width:800px) {
+            .container {
+                max-width: 93%;
+            }
+
+            .col-sm-2 {
+                max-width: 18%;
+                flex: 18%;
+            }
+
+            b,
+            strong,
+            .header_custom span,
+            .customer_name span {
+                font-size: 14px;
+            }
+
+            .table td,
+            .table th {
+                font-size: 14px;
+            }
+
+            .custom_div_h2 h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media only screen and (max-width:655px) {
+            .header_custom {
+                flex-direction: column;
+                align-items: center;
+                display: flex;
+                justify-content: center;
+            }
+
+            .right_portion {
+                margin-top: 20px;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+
+        }
+
+        @media only screen and (max-width:393px) {
+            .container {
+                max-width: 96%;
+            }
+
+            .col-sm-2 {
+                max-width: 32%;
+                flex: 32%;
+            }
+
+            .table td,
+            .table th {
+                font-size: 12px;
+            }
+
+            .custom_div_h2 h2 {
+                font-size: 1.2rem;
+            }
+
+            p,
+            b,
+            strong,
+            .header_custom span,
+            .customer_name span {
+                font-size: 13px;
+            }
+
+        }
+
+        @media only screen and (max-width:361px) {
+            .container {
+                max-width: 98%;
+            }
+
+            .col-sm-2 {
+                max-width: 35%;
+                flex: 35%;
+            }
+
+            .col-sm-2:nth-child(even) {
+                text-align: right;
+            }
+
+            .table td,
+            .table th {
+                font-size: 10px;
+            }
+
+            .custom_div_h2 h2 {
+                font-size: 1.1rem;
+            }
+
+            p,
+            b,
+            strong,
+            .header_custom span,
+            .customer_name span {
+                font-size: 12px;
+            }
+
+        }
+
+        .h1_class {
+            font-size:28px;
+            color:white
+        }
+
+        @media only screen and (max-width:600px) {
+           
+
+            .h1_class,h1 {
+                font-size: 22px;
+                color:white;
+            }
+
+            
+        }
+        
+
+        .all_daata p {
+            margin: 0 !important;
+            line-height: 2rem !important;
+
+        }
+
+        .custom_class {
+            background-color: #fefeff;
+            background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2351cbce' fill-opacity='0.08' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .custom_div_ttle {
+            height: 60px !important;
+        }
+
+
+
+        .form_hyperpay,
+        .last_footer {
+            margin-top: 0px !important;
+            padding-top: 0px !important;
+        }
+
+        .container {
+            max-width: 94%;
+        }
+
+        .col-sm-2 {
+            max-width: 20%;
+            flex: 20%;
+        }
+
+        b,
+        strong,
+        .customer_name span {
+            font-size: 14px;
+        }
+
+        .table td,
+        .table th {
+            font-size: 14px;
+        }
+
+        .custom_div_h2 h2 {
+            font-size: 1.4rem;
+        }
+        
+        .bokking {
+         background-color: #51cbce;
+         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='church-on-sunday' fill='%23005a5c' fill-opacity='0.36'%3E%3Cpath d='M77.17 0H80v2.83l-.1.1A39.9 39.9 0 0 1 74.64 20a39.9 39.9 0 0 1 5.24 17.06l.11.11v2.89c-.01 6.9-1.8 13.79-5.35 19.94A39.96 39.96 0 0 1 80 79.94V80h-2.83L66.84 69.66a39.83 39.83 0 0 1-24.1 10.25l.09.09h-5.66l.1-.1c-8.7-.58-17.22-4-24.1-10.23L2.82 80H0V79.94c.01-6.9 1.8-13.8 5.35-19.94A39.96 39.96 0 0 1 0 40.06V37.17l.1-.1A39.9 39.9 0 0 1 5.36 20 39.9 39.9 0 0 1 .1 2.94L0 2.83V0h2.83l-.1.1a39.83 39.83 0 0 1 24.1 10.24L37.18 0H40c0 6.92-1.78 13.83-5.35 20A39.96 39.96 0 0 1 40 40c0-6.92 1.78-13.83 5.35-20A39.96 39.96 0 0 1 40 0h2.83l10.33 10.34A39.83 39.83 0 0 1 77.26.09L77.17 0zm.77 77.94c-.3-5.52-1.8-11-4.49-16a40.18 40.18 0 0 1-5.17 6.34l9.66 9.66zm-12.52-9.7l-6.83-6.83-5.46 5.46-1.41 1.41-9.66 9.66c8.4-.45 16.69-3.68 23.36-9.7zm-23.07 6.58l7.99-7.98a40.05 40.05 0 0 1-3.79-4.9 37.88 37.88 0 0 0-4.2 12.88zM47.68 60a37.98 37.98 0 0 0 4.07 5.42L57.17 60l-5.42-5.42A38 38 0 0 0 47.68 60zm2.66-6.84a40.06 40.06 0 0 0-3.79 4.9 37.88 37.88 0 0 1-4.2-12.88l7.99 7.98zm1.38-1.44l1.41 1.41 5.46 5.46 6.83-6.84a37.85 37.85 0 0 0-23.36-9.7l9.66 9.67zM60 60l6.87 6.87A38.1 38.1 0 0 0 72.32 60a38.11 38.11 0 0 0-5.45-6.87L60 60zm-14.65 0a39.9 39.9 0 0 0-5.24 17.06l-.11.11-.1-.1A39.9 39.9 0 0 0 34.64 60a39.9 39.9 0 0 0 5.24-17.06l.11-.11.1.1A39.9 39.9 0 0 0 45.36 60zm9.23-48.25a37.85 37.85 0 0 1 23.36-9.7l-9.66 9.67-1.41 1.41-5.46 5.46-6.83-6.84zm13.67 13.67L62.83 20l5.42-5.42A38 38 0 0 1 72.32 20a37.98 37.98 0 0 1-4.07 5.42zm5.2-3.47a40.05 40.05 0 0 1-3.79 4.89l7.99 7.98c-.61-4.45-2.01-8.82-4.2-12.87zm-6.58 4.92l1.41 1.41 9.66 9.66a37.85 37.85 0 0 1-23.36-9.7l6.83-6.83 5.46 5.46zM53.13 13.13L60 20l-6.87 6.87A38.11 38.11 0 0 1 47.68 20a38.1 38.1 0 0 1 5.45-6.87zm-1.41-1.41l-9.66-9.66c.3 5.52 1.8 11 4.49 16a40.18 40.18 0 0 1 5.17-6.34zm-9.66 26.22c.3-5.52 1.8-11 4.49-16a40.18 40.18 0 0 0 5.17 6.34l-9.66 9.66zm26.22 13.78l9.66-9.66c-.3 5.52-1.8 11-4.49 16a40.18 40.18 0 0 0-5.17-6.34zm8.98-11.81L66.84 50.34a39.83 39.83 0 0 0-24.1-10.25l10.42-10.43a39.83 39.83 0 0 0 24.1 10.25zm-7.6-26.75a40.06 40.06 0 0 1 3.79 4.9 37.88 37.88 0 0 0 4.2-12.88l-7.99 7.98zm-31.72 28.9c-8.4.45-16.69 3.68-23.36 9.7l6.83 6.83 5.46-5.46 1.41-1.41 9.66-9.66zM22.83 60l5.42 5.42c1.54-1.7 2.9-3.52 4.07-5.42a38 38 0 0 0-4.07-5.42L22.83 60zm5.45 8.28l-1.41-1.41-5.46-5.46-6.83 6.84a37.85 37.85 0 0 0 23.36 9.7l-9.66-9.67zm9.37 6.54l-7.99-7.98a40.05 40.05 0 0 0 3.79-4.9 37.88 37.88 0 0 1 4.2 12.88zM20 60l-6.87-6.87A38.11 38.11 0 0 0 7.68 60a38.11 38.11 0 0 0 5.45 6.87L20 60zm17.26-19.9L26.84 29.65a39.83 39.83 0 0 1-24.1 10.25l10.42 10.43a39.83 39.83 0 0 1 24.1-10.25zm-35.2 1.96l9.66 9.66a40.18 40.18 0 0 0-5.17 6.33c-2.7-5-4.2-10.47-4.5-16zm4.49 19.89c-2.7 5-4.2 10.47-4.5 16l9.67-9.67a40.18 40.18 0 0 1-5.17-6.33zm31.1-16.77c-.61 4.45-2.01 8.82-4.2 12.87a40.06 40.06 0 0 0-3.79-4.89l7.99-7.98zm-4.2-23.23c2.7 5 4.2 10.47 4.5 16l-9.67-9.67c1.97-1.97 3.7-4.1 5.17-6.33zm-14.86-.54l6.83 6.84a37.85 37.85 0 0 1-23.36 9.7l9.66-9.67 1.41-1.41 5.46-5.46zm-8.25 5.43l-7.99 7.98c.61-4.45 2.01-8.82 4.2-12.87a40.04 40.04 0 0 0 3.79 4.89zm1.41-1.42A37.99 37.99 0 0 1 7.68 20a38 38 0 0 1 4.07-5.42L17.17 20l-5.42 5.42zm-5.2-7.37a40.04 40.04 0 0 1 3.79-4.89L2.35 5.18c.61 4.45 2.01 8.82 4.2 12.87zm6.58-4.92l-1.41-1.41-9.66-9.66a37.85 37.85 0 0 1 23.36 9.7l-6.83 6.83-5.46-5.46zm13.74 13.74L20 20l6.87-6.87A38.1 38.1 0 0 1 32.32 20a38.1 38.1 0 0 1-5.45 6.87zm6.58-8.82a40.18 40.18 0 0 0-5.17-6.33l9.66-9.66c-.3 5.52-1.8 11-4.49 16z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+         body {
+                overflow-y:hidden;
+                margin: 0;
+                background: #fff;
+            }
+
+            .loader_container {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 130px;
+                height: 130px;
+            }
+
+            @keyframes rotate {
+                0% {
+                    transform: rotate(0deg);
+                    filter: hue-rotate(360deg);
+                }
+
+                50% {
+                    transform: rotate(360deg);
+                    filter: hue-rotate(0deg);
+                }
+
+                100% {
+                    transform: rotate(360deg);
+                    filter: hue-rotate(0deg);
+                }
+            }
+
+            .petal {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                border-style: solid;
+                border-color: #51cbce;
+                animation-name: rotate;
+                animation-duration: 5s;
+                animation-iteration-count: infinite;
+                animation-direction: normal;
+                animation-timing-function: ease-in-out;
+                mix-blend-mode: screen;
+                border-radius: 50% 0 50% 0;
+            }
+
+
+            .logoo {
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                position: absolute;
+                border-radius: 90% 90% 90% 90%;
+                border-style: solid;
+                border-color: #51cbce;
+                color: #51cbce;
+            }
+
+            .logoo img {
+                height: 100px;
+            }
+
+            .petal:nth-child(0) {
+                animation-delay: 0ms;
+            }
+
+            .petal:nth-child(1) {
+                animation-delay: 100ms;
+            }
+
+            .petal:nth-child(2) {
+                animation-delay: 200ms;
+            }
+
+            .petal:nth-child(3) {
+                animation-delay: 300ms;
+            }
+
+            .petal:nth-child(4) {
+                animation-delay: 400ms;
+            }
+
+            .petal:nth-child(5) {
+                animation-delay: 500ms;
+            }
+
+            .petal:nth-child(6) {
+                animation-delay: 600ms;
+            }
+
+            .petal:nth-child(7) {
+                animation-delay: 700ms;
+            }
+
+            .petal:nth-child(8) {
+                animation-delay: 800ms;
+            }
+
+            .petal:nth-child(9) {
+                animation-delay: 900ms;
+            }
+
+            .petal:nth-child(10) {
+                animation-delay: 1000ms;
+            }
+
+            .petal:nth-child(11) {
+                animation-delay: 1100ms;
+            }
+
+            .petal:nth-child(12) {
+                animation-delay: 1200ms;
+            }
+
+            .petal:nth-child(13) {
+                animation-delay: 1300ms;
+            }
+
+            .petal:nth-child(14) {
+                animation-delay: 1400ms;
+            }
+
+            .petal:nth-child(15) {
+                animation-delay: 1500ms;
+            }
+
+            .petal:nth-child(16) {
+                animation-delay: 1600ms;
+            }
+
+            .petal:nth-child(17) {
+                animation-delay: 1700ms;
+            }
+
+            .petal:nth-child(18) {
+                animation-delay: 1800ms;
+            }
+
+            .petal:nth-child(19) {
+                animation-delay: 1900ms;
+            }
+
+            .hide_before_loader {
+                display: none;
+            }
+
+            .loader {
+                width: 100% !important;
+                overflow: hidden !important;
+                margin-top: 0rem !important;
+                background: #222;
+                height: 100vh;
+                position: absolute;
+                z-index: 3423432323;
+                margin: 0 auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .navbar-nav{
+                        width: 100%;
+            }
+
+            @media(min-width:568px){
+                .end{
+                    margin-left: auto;
+                }
+            }
+
+            @media(max-width:768px){
+                #post{
+                    width: 100%;
+                }
+            }
+            #clicked{
+                padding-top: 1px;
+                padding-bottom: 1px;
+                text-align: center;
+                width: 100%;
+                background-color: #ecb21f;
+                border-color: #a88734 #9c7e31 #846a29;
+                color: black;
+                border-width: 1px;
+                border-style: solid;
+                border-radius: 13px; 
+            }
+
+            #profile{
+                background-color: unset;
+                
+            } 
+
+            #post{
+                margin: 10px;
+                padding: 6px;
+                padding-top: 2px;
+                padding-bottom: 2px;
+                text-align: center;
+                
+                border-color: #a88734 #9c7e31 #846a29;
+                color: black;
+                border-width: 1px;
+                border-style: solid;
+                border-radius: 13px;
+                width:25%;
+            }
+
+            body{
+                background-color: black;
+            }
+
+            #nav-items li a,#profile{
+                text-decoration: none;
+                color: rgb(224, 219, 219);
+                background-color: black;
+            }
+
+
+            .comments{
+                margin-top: 5%;
+                margin-left: 20px;
+            }
+
+            .darker{
+                border: 1px solid #ecb21f;
+                background-color: black;
+                float: right;
+                border-radius: 5px;
+                padding-left: 40px;
+                padding-right: 30px;
+                padding-top: 10px;
+            }
+
+            .comment{
+                border: 1px solid rgba(16, 46, 46, 1);
+                background-color: rgba(16, 46, 46, 0.973);
+                float: left;
+                border-radius: 5px;
+                padding-left: 40px;
+                padding-right: 30px;
+                padding-top: 10px;
+                
+            }
+            .comment h4,.comment span,.darker h4,.darker span{
+                display: inline;
+            }
+
+            .comment p,.comment span,.darker p,.darker span{
+                color: rgb(184, 183, 183);
+            }
+
+            h1,h4{
+                color: white;
+                font-weight: bold;
+            }
+            label{
+                color: rgb(212, 208, 208);
+            }
+
+            #align-form{
+                margin-top: 20px;
+            }
+            .form-group p a{
+                color: white;
+            }
+
+            #checkbx{
+                background-color: black;
+            }
+
+            #darker img{
+                margin-right: 15px;
+                position: static;
+            }
+
+            .form-group input,.form-group textarea{
+                background-color: black;
+                border: 1px solid rgba(16, 46, 46, 1);
+                border-radius: 12px;
+            }
+
+            form{
+                border: 1px solid rgba(16, 46, 46, 1);
+                background-color: #51cbce;
+                border-radius: 5px;
+                padding: 20px;
+             }
+           
+        </style>
+        <div class="loader">
+            <div class="loader_container">
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="logoo"><img src="/Hyperpay_integration/static/description/logo.png" alt="Tourism" /></div>
+            </div>
+        </div>
+        <div class="custom_class">
+            <div class="container">
+                <t t-foreach="sale_rec" t-as="o">
+                    <div class="header_custom mb-4">
+                        <div class="left_portion" style="margin-top:40px">
+                            <div class="img_c">
+                                <!-- <img t-if="o.company_id.logo" t-att-src="'data:image/png;base64,%s' % to_text(o.company_id.logo)" /> -->
+
+                                 <img  t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)"/>
+                            </div>
+                            <div class="right_title">
+                                <span t-esc="o.company_id.partner_id.name" style="font-weight:bold;" />
+                                <br />
+                                <span t-esc="o.company_id.partner_id.street" />
+                                <br />
+                                <span t-esc="o.company_id.city" />
+                                <span t-esc="o.company_id.zip" />
+                                <span t-esc="o.company_id.country_id.name" />
+                                <br />
+                                <span t-esc="o.company_id.partner_id.street2" />
+                                <br />
+                                <span t-esc="o.company_id.city" />
+                                <span t-esc="o.company_id.zip" />
+                                <span t-esc="o.company_id.country_id.name" />
+                            </div>
+                        </div>
+                        <div class="right_portion" style="margin-top:40px">
+                            <div>
+                                <span style="font-weight:bold;">Contact Us:</span><span t-esc="o.company_id.partner_id.phone" />
+                            </div>
+                            <div>
+                                <span t-esc="o.company_id.partner_id.website" />
+                            </div>
+                            <div>
+                                <span style="font-weight:bold;">Vat No:</span><span t-esc="o.company_id.partner_id.vat" />
+                            </div>
+                            <div>
+                                <span t-esc="o.company_id.partner_id.email" />
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="row">
+                        <div lass="col-md-12">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
+                                    <td>
+                                        <div align="center" style="padding: 0px 15px 0px 15px;">
+                                            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="responsive-table box-shadow">
+                                                <!-- LOGO/PREHEADER TEXT -->
+                                                <tr>
+                                                    <td>
+                                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td style="padding: 50px 0 50px 0;" class="pad-header bokking">
+                                                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                                        <tr>
+                                                                            <td align="center" style="font-size: 20px; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 300;" class="pad-header-copy;">
+                                                                                <div class="h1_class">
+                                                                                    <h1>Booking  </h1>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
+                                    <td align="center" style="padding: 0 15px 0 15px;">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="responsive-table box-shadow">
+                                            <tr>
+                                                <td bgcolor="#ffffff">
+                                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                        <!-- RESERVATION DEETS -->
+                                                        <tr>
+                                                            <td style="padding: 30px 30px 0 30px;">
+                                                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                                    <tr>
+                                                                        <td align="left" style="padding: 0 0 15px 0; font-size: 20px; font-family: 'Open Sans', Helvetica, Arial, sans-serif; color:black; font-weight: 300;">
+                                                                            <h2 style="font-size:20px"> Reservation Details</h2>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <!-- CHECK-IN -->
+                                                                    <tr>
+                                                                        <td>
+                                                                            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                                                                                <tr>
+                                                                                    <td valign="top" style="padding: 0 0 5px 0;">
+                                                                                        <!-- LEFT COLUMN -->
+                                                                                        <table cellpadding="0" cellspacing="0" border="0" width="26%" align="left" class="responsive-table">
+                                                                                            <tr>
+                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p-bold">
+                                                                                                    Confirmation No.:
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </table>
+                                                                                        <!-- RIGHT COLUMN -->
+                                                                                        <table cellpadding="0" cellspacing="0" border="0" width="70%" align="right" class="responsive-table">
+                                                                                            <tr>
+                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: Arial, sans-serif; color: #333333; font-family: 'Open Sans', Helvetica, Arial, sans-serif;  font-weight: 400; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p">
+                                                                                                    <span t-esc="o.name"></span>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <!-- CHECK-OUT -->
+                                                                    <tr>
+                                                                        <td>
+                                                                            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                                                                                <tr>
+                                                                                    <td valign="top" style="padding: 0 0 5px 0;">
+                                                                                        <!-- LEFT COLUMN -->
+                                                                                        <table cellpadding="0" cellspacing="0" border="0" width="26%" align="left" class="responsive-table">
+                                                                                            <tr>
+                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p-bold">
+                                                                                                    Customer Name:
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </table>
+                                                                                        <!-- RIGHT COLUMN -->
+                                                                                        <table cellpadding="0" cellspacing="0" border="0" width="70%" align="right" class="responsive-table">
+                                                                                            <tr>
+                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: Arial, sans-serif; color: #333333; font-family: 'Open Sans', Helvetica, Arial, sans-serif;  font-weight: 400; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p">
+                                                                                                    <span t-esc="o.partner_id.name"></span>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                                                                                <tr>
+                                                                                    <td valign="top" style="padding: 0 0 5px 0;">
+                                                                                        <!-- LEFT COLUMN -->
+                                                                                        <table cellpadding="0" cellspacing="0" border="0" width="26%" align="left" class="responsive-table">
+                                                                                            <tr>
+                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p-bold">
+                                                                                                    Guestss Name:
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </table>
+                                                                                        <!-- RIGHT COLUMN -->
+                                                                                        <table cellpadding="0" cellspacing="0" border="0" width="70%" align="right" class="responsive-table">
+                                                                                            <tr>
+                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: Arial, sans-serif; color: #333333; font-family: 'Open Sans', Helvetica, Arial, sans-serif;  font-weight: 400; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p">
+                                                                                                    <t t-set="com" t-value="0" />
+                                                                                                    <t t-foreach="customer_m2m" t-as="g">
+                                                                                                        <t t-set="com" t-value="com+1" />
+                                                                                                        <t t-if="com > 1">
+                                                                                                            ,/ <span t-esc="g.title.name"></span>
+                                                                                                        </t>
+                                                                                                        <t t-else="">
+                                                                                                            <span t-esc="g.title.name"></span>
+                                                                                                        </t>
+                                                                                                        <span t-esc="g.name"></span>
+                                                                                                        <t t-if="g.category">
+                                                                                                            (<span style="text-transform: capitalize;" t-esc="g.category"></span>)
+                                                                                                        </t>
+                                                                                                    </t>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <!-- # OF NIGHTS -->
+                                                                    <tr>
+                                                                        <td>
+                                                                            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                                                                                <tr>
+                                                                                    <td valign="top" style="padding: 0 0 5px 0;">
+                                                                                        <!-- LEFT COLUMN -->
+                                                                                        <table cellpadding="0" cellspacing="0" border="0" width="26%" align="left" class="responsive-table">
+                                                                                            <tr>
+                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p-bold">
+                                                                                                    Guests:
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </table>
+                                                                                        <!-- RIGHT COLUMN -->
+                                                                                        <table cellpadding="0" cellspacing="0" border="0" width="70%" align="right" class="responsive-table">
+                                                                                            <tr>
+                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: Arial, sans-serif; color: #333333; font-family: 'Open Sans', Helvetica, Arial, sans-serif;  font-weight: 400; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p">
+                                                                                                    <span t-esc="o.no_of_particpents"></span>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <!-- NUMBER OF ROOMS -->
+                                                                    <tr>
+                                                                        <td>
+                                                                            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                                                                                <tr>
+                                                                                    <td valign="top" style="padding: 0 0 5px 0;">
+                                                                                        <!-- LEFT COLUMN -->
+                                                                                        <table cellpadding="0" cellspacing="0" border="0" width="26%" align="left" class="responsive-table">
+                                                                                            <tr>
+                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p-bold">
+                                                                                                    Destination:
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </table>
+                                                                                        <!-- RIGHT COLUMN -->
+                                                                                        <table cellpadding="0" cellspacing="0" border="0" width="70%" align="right" class="responsive-table">
+                                                                                            <tr>
+                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: Arial, sans-serif; color: #333333; font-family: 'Open Sans', Helvetica, Arial, sans-serif;  font-weight: 400; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p">
+                                                                                                    <t t-set="com" t-value="0" />
+                                                                                                    <t t-foreach="o.destination" t-as="d">
+                                                                                                        <t t-set="com" t-value="com+1" />
+                                                                                                        <t t-if="com > 1">
+                                                                                                            , <span t-esc="d.name"></span>
+                                                                                                        </t>
+                                                                                                        <t t-else="">
+                                                                                                            <span t-esc="d.name"></span>
+                                                                                                        </t>
+                                                                                                    </t>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <!-- ROOM TYPE -->
+                                                                    <!-- <tr>
+                                                                    <td>
+                                                                        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                                                                            <tr>
+                                                                                <td valign="top" style="padding: 0 0 0 0;">
+                                                                                    <table cellpadding="0" cellspacing="0" border="0" width="26%" align="left" class="responsive-table">
+                                                                                        <tr>
+                                                                                            <td align="center" style="padding: 0 0 0 0; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p-bold">
+                                                                                                Sub-Agent :
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </table>
+                                                                                    <table cellpadding="0" cellspacing="0" border="0" width="70%" align="right" class="responsive-table">
+                                                                                        <tr>
+                                                                                            <td align="center" style="padding: 0 0 0 0; font-family: Arial, sans-serif; color: #333333; font-family: 'Open Sans', Helvetica, Arial, sans-serif;  font-weight: 400; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p">
+                                                                                                <span t-esc="o.agent.name"></span>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr> -->
+                                                                    <tr>
+                                                                        <td>
+                                                                            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                                                                                <tr>
+                                                                                    <td valign="top" style="padding: 0 0 0 0;">
+                                                                                        <!-- LEFT COLUMN -->
+                                                                                        <table cellpadding="0" cellspacing="0" border="0" width="26%" align="left" class="responsive-table">
+                                                                                            <tr>
+                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p-bold">
+                                                                                                    Arrival Date:
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </table>
+                                                                                        <!-- RIGHT COLUMN -->
+                                                                                        <table cellpadding="0" cellspacing="0" border="0" width="70%" align="right" class="responsive-table">
+                                                                                            <tr>
+                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: Arial, sans-serif; color: #333333; font-family: 'Open Sans', Helvetica, Arial, sans-serif;  font-weight: 400; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p">
+                                                                                                    <span t-esc="o.arrival_date"></span>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                                                                                <tr>
+                                                                                    <td valign="top" style="padding: 0 0 0 0;">
+                                                                                        <!-- LEFT COLUMN -->
+                                                                                        <table cellpadding="0" cellspacing="0" border="0" width="26%" align="left" class="responsive-table">
+                                                                                            <tr>
+                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p-bold">
+                                                                                                    Departure Date:
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </table>
+                                                                                        <!-- RIGHT COLUMN -->
+                                                                                        <table cellpadding="0" cellspacing="0" border="0" width="70%" align="right" class="responsive-table">
+                                                                                            <tr>
+                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: Arial, sans-serif; color: #333333; font-family: 'Open Sans', Helvetica, Arial, sans-serif;  font-weight: 400; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p">
+                                                                                                    <span t-esc="o.departure_date"></span>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                                                                                <tr>
+                                                                                    <td valign="top" style="padding: 0 0 0 0;">
+                                                                                        <!-- LEFT COLUMN -->
+                                                                                        <table cellpadding="0" cellspacing="0" border="0" width="26%" align="left" class="responsive-table">
+                                                                                            <tr>
+                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p-bold">
+                                                                                                    Arrival Flight:
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </table>
+                                                                                        <!-- RIGHT COLUMN -->
+                                                                                        <table cellpadding="0" cellspacing="0" border="0" width="70%" align="right" class="responsive-table">
+                                                                                            <tr>
+                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: Arial, sans-serif; color: #333333; font-family: 'Open Sans', Helvetica, Arial, sans-serif;  font-weight: 400; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p">
+                                                                                                    <span t-esc="o.hotel_arrival.name"></span>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                                                                                <tr>
+                                                                                    <td valign="top" style="padding: 0 0 0 0;">
+                                                                                        <!-- LEFT COLUMN -->
+                                                                                        <table cellpadding="0" cellspacing="0" border="0" width="26%" align="left" class="responsive-table">
+                                                                                            <tr>
+                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p-bold">
+                                                                                                    Departure Flight:
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </table>
+                                                                                        <!-- RIGHT COLUMN -->
+                                                                                        <table cellpadding="0" cellspacing="0" border="0" width="70%" align="right" class="responsive-table">
+                                                                                            <tr>
+                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: Arial, sans-serif; color: #333333; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 400; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p">
+                                                                                                    <span t-esc="o.hotel_return.name"></span>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="padding-bottom: 40px;">
+                                                                            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                                                                                <tr>
+                                                                                    <td valign="top" style="padding: 0 0 0 0;">
+                                                                                        <!-- LEFT COLUMN -->
+                                                                                        <table cellpadding="0" cellspacing="0" border="0" width="26%" align="left" class="responsive-table">
+                                                                                            <tr>
+                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p-bold">
+                                                                                                    Branch:
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </table>
+                                                                                        <!-- RIGHT COLUMN -->
+                                                                                       <!--  <table cellpadding="0" cellspacing="0" border="0" width="70%" align="right" class="responsive-table">
+                                                                                            <tr>
+                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: Arial, sans-serif; color: #333333; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 400; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p">
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </table> -->
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- </div> -->
+                    <br />
+                    <br />
+                    <br />
+                    <t  t-if="o.summary or o.flights_pkg or o.hotel_pkg or o.transportation_pkg or o.tours_pkg or o.visa_pkg or o.packages_pkg or o.privatejet_pkg or o.yacht_pkg or o.otherservices_pkg">
+                        <div class="row custom_class ">
+                            <div class="col-md-12" >
+                                <!-- Nav tabs -->
+                                <div class="card box-shadow">
+                                    <ul class="nav nav-tabs" role="tablist" style="font-size:16px;background-color:#51cbce">
+                                        <li role="presentation" t-if="o.summary">
+                                            <a href="#summary" aria-controls="summary" role="tab" data-toggle="tab">Summary</a>
+                                        </li>
+                                        <li role="presentation" t-if="o.flights_pkg">
+                                            <a href="#flight" aria-controls="flight" role="tab" data-toggle="tab">Flight</a>
+                                        </li>
+                                        <li role="presentation" t-if="o.hotel_pkg">
+                                            <a href="#hotel" aria-controls="hotel" role="tab" data-toggle="tab">Hotel</a>
+                                        </li>
+                                        <li role="presentation" t-if="o.transportation_pkg">
+                                            <a href="#transfer" aria-controls="transfer" role="tab" data-toggle="tab">Transfer</a>
+                                        </li>
+                                        <li role="presentation" t-if="o.tours_pkg">
+                                            <a href="#tour" aria-controls="tour" role="tab" data-toggle="tab">Tours</a>
+                                        </li>
+                                        <li role="presentation" t-if="o.visa_pkg">
+                                            <a href="#visa" aria-controls="visa" role="tab" data-toggle="tab">Visa</a>
+                                        </li>
+                                        <li role="presentation" t-if="o.packages_pkg">
+                                            <a href="#ready_package" aria-controls="ready_package" role="tab" data-toggle="tab">Ready Packages</a>
+                                        </li>
+                                        <li role="presentation" t-if="o.privatejet_pkg">
+                                            <a href="#private_jet" aria-controls="private_jet" role="tab" data-toggle="tab">Private Jet</a>
+                                        </li>
+                                        <li role="presentation" t-if="o.yacht_pkg">
+                                            <a href="#yacht" aria-controls="yacht" role="tab" data-toggle="tab">Yacht</a>
+                                        </li>
+                                        <li role="presentation" t-if="o.cruises_pkg">
+                                            <a href="#cruises" aria-controls="cruises" role="tab" data-toggle="tab">Cruises</a>
+                                        </li>
+                                        <li role="presentation" t-if="o.otherservices_pkg">
+                                            <a href="#other_services" aria-controls="other_services" role="tab" data-toggle="tab">Other Services</a>
+                                        </li>
+                                    </ul>
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                        <t t-if="o.summary">
+                                            <t t-if="o.itinarnay_package">
+                                                <div role="tabpanel" class="tab-pane" id="summary">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-hover">
+                                                            <thead style="background: lightgray;">
+                                                                <tr>
+                                                                    <th scope="col">Product</th>
+                                                                    <th scope="col">Description</th>
+                                                                    <th scope="col">Date From</th>
+                                                                    <th scope="col">Date To</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <t t-foreach="o.itinarnay_package" t-as="it">
+                                                                <t t-if="it.description != 'Flight'">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <span t-esc="it.product_id.name"></span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span t-esc="it.description"></span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <t t-if="it.date_from">
+                                                                                    <span t-esc="time.strftime('%d %B %Y',time.strptime(str(it.date_from),'%Y-%m-%d'))"></span>
+                                                                                </t>
+                                                                            </td>
+                                                                            <td>
+                                                                                <t t-if="it.date_to">
+                                                                                    <span t-esc="time.strftime('%d %B %Y',time.strptime(str(it.date_to),'%Y-%m-%d'))"></span>
+                                                                                </t>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </t>
+                                                            </t>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </t>
+                                        </t>
+                                        <t t-if="o.flights_pkg">
+                                            <div role="tabpanel" class="tab-pane" id="flight">
+                                                <div class="table-responsive">
+                                                    <table class="table table-hover">
+                                                        <thead style="background: lightgray;">
+                                                            <tr>
+                                                                <th scope="col">Airline</th>
+                                                                <!-- <th scope="col">Supplier</th> -->
+                                                                <th scope="col">Names</th>
+                                                                <!-- <th scope="col">From/To</th> -->
+                                                                <th scope="col">Flight</th>
+                                                                <th scope="col">Class</th>
+                                                                <th scope="col">Departure Date</th>
+                                                                <th scope="col">Arrival Date</th>
+                                                                <th scope="col">Bag</th>
+                                                                <th scope="col">Terminal</th>
+                                                                <!-- <th scope="col">Airline PNR</th> -->
+                                                                <th scope="col">Guests</th>
+                                                                <th scope="col" t-if="o.quote_builder == True">Total</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <t t-foreach="o.flights_pkg" t-as="fl">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <span t-esc="fl.airline.name"></span>
+                                                                    </td>
+                                                                    <!-- <td>
+                                                                        <span t-esc="fl.supplier.name"></span>
+                                                                    </td> -->
+                                                                    <td>
+                                                                        <span t-esc="fl.customer.name"></span>
+                                                                    </td>
+                                                                    <!--  <td>
+                                                                        <span t-esc="fl.from_to"></span>
+                                                                    </td> -->
+                                                                    <td>
+                                                                        <span t-esc="fl.flight"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="fl.fight_class.name"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <t t-if="fl.departures">
+                                                                            <span t-esc="(datetime.datetime.strptime(str(fl.departures), '%Y-%m-%d %H:%M:%S')+ datetime.timedelta(hours=5)).strftime('%d %B %Y')" />
+                                                                        </t>
+                                                                    </td>
+                                                                    <td>
+                                                                        <t t-if="fl.arrival">
+                                                                            <span t-esc="(datetime.datetime.strptime(str(fl.arrival), '%Y-%m-%d %H:%M:%S')+ datetime.timedelta(hours=5)).strftime('%d %B %Y')" />
+                                                                        </t>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="fl.bag"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="fl.terminal"></span>
+                                                                    </td>
+                                                                    <!-- <td>
+                                                                        <span t-esc="fl.airline_pnr"></span>
+                                                                    </td> -->
+                                                                    <td>
+                                                                        <span t-esc="fl.no_of_person"></span>
+                                                                    </td>
+                                                                    <td t-if="o.quote_builder == True">
+                                                                        <span t-esc="'{0:,.2f}'.format(float(fl.total))"></span>
+                                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </t>
+                                                    </table>
+                                                    <div style="  padding:0px 10px;">
+                                                        <p style="font-weight:bold;">Terms &amp; Conditions and Remarks:</p>
+                                                        <p>
+                                                            <span t-raw="o.flights_cancel_policy"></span>
+                                                        </p>
+                                                        <br /><br />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </t>
+                                        <t t-if="o.hotel_pkg">
+                                            <div role="tabpanel" class="tab-pane" id="hotel">
+                                                <div class="table-responsive">
+                                                    <table class="table table-hover">
+                                                        <thead style="background: lightgray;">
+                                                            <tr>
+                                                                <th scope="col">Hotel</th>
+                                                                <th scope="col">Names</th>
+                                                                <th scope="col">Check In</th>
+                                                                <th scope="col">Check Out</th>
+                                                                <th scope="col">Nights</th>
+                                                                <th scope="col">Meal Plan</th>
+                                                                <th>Transfer</th>
+                                                                <th scope="col">Guests</th>
+                                                                <t>
+                                                                    <th scope="col">HCN</th>
+                                                                </t>
+                                                                <th scope="col" t-if="o.quote_builder == True">Total</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <t t-foreach="o.hotel_pkg" t-as="h">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <!-- <a t-att-href="url"> -->
+                                                                        <span t-esc="h.hotel_id.name" title="Map"></span>
+                                                                        <!-- </a> -->
+                                                                    </td>
+                                                                    <td>
+                                                                        <t t-foreach="h.customer_m2m" t-as="cust">
+                                                                            <span t-esc="cust.name"></span><br />
+                                                                        </t>
+                                                                    </td>
+                                                                    <td>
+                                                                        <t t-if="h.date_from">
+                                                                            <span t-esc="time.strftime('%d %B %Y',time.strptime(str(h.date_from),'%Y-%m-%d'))"></span>
+                                                                        </t>
+                                                                    </td>
+                                                                    <td>
+                                                                        <t t-if="h.date_to">
+                                                                            <span t-esc="time.strftime('%d %B %Y',time.strptime(str(h.date_to),'%Y-%m-%d'))"></span>
+                                                                        </t>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="h.nights"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <t t-foreach="h.hotel_meal_plan" t-as="mp">
+                                                                            <span t-esc="mp.name"></span>
+                                                                            <br />
+                                                                        </t>
+                                                                    </td>
+                                                                    <td>
+                                                                        <t t-foreach="h.transfer" t-as="tr">
+                                                                            <span t-esc="tr.name"></span>
+                                                                            <br />
+                                                                        </t>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="h.no_of_person"></span>
+                                                                    </td>
+                                                                    <t t-if="o.quote_builder == False">
+                                                                        <td>
+                                                                            <span t-esc="h.confirmation_no"></span>
+                                                                        </td>
+                                                                    </t>
+                                                                    <td t-if="o.quote_builder == True">
+                                                                        <span t-esc="h.total"></span>
+                                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Room Type</th>
+                                                                    <td colspan="9">
+                                                                        <t t-set="com" t-value="0" />
+                                                                        <t t-foreach="h.room_type" t-as="d">
+                                                                            <t t-set="com" t-value="com+1" />
+                                                                            <t t-if="com > 1">
+                                                                                , <span t-esc="d.name"></span>
+                                                                            </t>
+                                                                            <t t-else="">
+                                                                                <span t-esc="d.name"></span>
+                                                                            </t>
+                                                                        </t>
+                                                                    </td>
+                                                                </tr>
+                                                                <t t-if="h.supplier.hotel_link">
+                                                                    <tr>
+                                                                        <th>Hotel Link</th>
+                                                                        <td colspan="9">
+                                                                            <a t-att-href="h.supplier.hotel_link">
+                                                                                <span>(Click Here)</span>
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
+                                                                </t>
+                                                                <t t-if="h.special_remarks">
+                                                                    <tr>
+                                                                        <th>Special Remarks</th>
+                                                                        <td colspan="9">
+                                                                            <span t-esc="h.special_remarks"></span>
+                                                                        </td>
+                                                                    </tr>
+                                                                </t>
+                                                            </tbody>
+                                                        </t>
+                                                    </table>
+                                                    <br />
+                                                    <div style="  padding:0px 10px;">
+                                                        <p style="font-weight:bold;">Terms &amp; Conditions</p>
+                                                        <div class="all_daata">
+                                                            <p>
+                                                                <span t-raw="o.hotels_cancel_policy"></span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </t>
+                                        <t t-if="o.transportation_pkg">
+                                            <div role="tabpanel" class="tab-pane" id="transfer">
+                                                <div class="table-responsive">
+                                   <!--                  <table class="table table-hover">
+                                                        <thead style="background: lightgray;">
+                                                            <tr>
+                                                                <th scope="col">Product</th>
+                                                                <th scope="col">Names</th>
+                                                                <th scope="col">Confirmation Number</th>
+                                                                <th scope="col">Pick Up</th>
+                                                                <th scope="col">Drop-off</th>
+                                                                <th scope="col">Pick-Up Date</th>
+                                                                <th scope="col">Drop-Off Date</th>
+                                                                <th scope="col">Time</th>
+                                                                <th scope="col">Transfer Type</th>
+                                                                <th scope="col">Vehicle Type</th>
+                                                                <th scope="col">Wait Time Policy</th>
+                                                                <th scope="col">Rent Car</th>
+                                                                <th scope="col">Hours</th>
+                                                                <th scope="col" t-if="o.quote_builder == True">Total</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <t t-foreach="o.transportation_pkg" t-as="t">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <span t-esc="t.product_id.name"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <t t-foreach="t.customer_m2m" t-as="cust">
+                                                                            <span t-esc="cust.name"></span><br />
+                                                                        </t>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="t.confirmation_no"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="t.pick_up_place"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="t.drop_of_place"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <t t-if="t.date">
+                                                                            <span t-esc="(datetime.datetime.strptime(str(t.date), '%Y-%m-%d %H:%M:%S')+ datetime.timedelta(hours=5)).strftime('%d %B %Y')" />
+                                                                        </t>
+                                                                    </td>
+                                                                    <td>
+                                                                        <t t-if="t.drop_off_date">
+                                                                            <span t-esc="datetime.datetime.strptime(str(t.drop_off_date), '%Y-%m-%d').strftime('%d %B %Y')" />
+                                                                        </t>
+                                                                    </td>
+                                                                    <td>
+                                                                        <t t-if="t.free_space_time">
+                                                                            <span t-esc="t.free_space_time" />
+                                                                        </t>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="t.transfer_type.name"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="t.vehicle_type.name"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="t.wait_time_policy.name"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="t.rent_car"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="t.hours"></span>
+                                                                    </td>
+                                                                    <td t-if="o.quote_builder == True">
+                                                                        <span t-esc="t.total"></span>
+                                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </t>
+                                                    </table> -->
+                                                    <br />
+                                                    <div style=" padding:0px 10px;">
+                                                        <p style="font-weight:bold;">Terms &amp; Conditions and Remarks</p>
+                                                        <div class="all_daata">
+                                                            <p>
+                                                                <span t-raw="o.transfers_cancel_policy"></span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </t>
+                                        <t t-if="o.tours_pkg">
+                                            <div role="tabpanel" class="tab-pane" id="tour">
+                                                <div class="table-responsive">
+                                                    <table class="table table-hover">
+                                                        <thead style="background: lightgray;">
+                                                            <tr>
+                                                                <th scope="col">Product</th>
+                                                                <th scope="col">Names</th>
+                                                                <th scope="col">Confirmation Number</th>
+                                                                <th scope="col">Description</th>
+                                                                <th scope="col">Guided/Not Guided</th>
+                                                                <th scope="col">Days Valid</th>
+                                                                <th scope="col">Issue Date</th>
+                                                                <th scope="col">Ticket Day</th>
+                                                                <th scope="col">Qty</th>
+                                                                <th scope="col" t-if="o.quote_builder == True">Total</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <t t-foreach="o.tours_pkg" t-as="tu">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <span t-esc="tu.product_id.name"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <t t-foreach="tu.customer_m2m" t-as="cust">
+                                                                            <span t-esc="cust.name"></span><br />
+                                                                        </t>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="tu.confirmation_no"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="tu.description"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="tu.guided_or_not"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="tu.days_valid.days"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <t t-if="tu.issue_date">
+                                                                            <span t-esc="tu.issue_date"></span>
+                                                                        </t>
+                                                                    </td>
+                                                                    <td>
+                                                                        <t t-if="tu.ticket_day">
+                                                                            <span t-esc="tu.ticket_day.days"></span>
+                                                                        </t>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="tu.no_of_person"></span>
+                                                                    </td>
+                                                                    <td t-if="o.quote_builder == True">
+                                                                        <span t-esc="tu.total"></span>
+                                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </t>
+                                                    </table>
+                                                    <br />
+                                                    <div style=" padding:0px 10px;">
+                                                        <p style="font-weight:bold;">Terms &amp; Conditions and Remarks</p>
+                                                        <div class="all_daata">
+                                                            <p>
+                                                                <span t-raw="o.tours_cancel_policy"></span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </t>
+                                        <t t-if="o.visa_pkg">
+                                            <div role="tabpanel" class="tab-pane" id="visa">
+                                                <div class="table-responsive">
+                                                    <table class="table table-hover">
+                                                        <thead style="background: lightgray;">
+                                                            <tr>
+                                                                <th scope="col">Product</th>
+                                                                <!-- <th>Supplier</th> -->
+                                                                <th scope="col">Names</th>
+                                                                <th scope="col">Confirmation Number</th>
+                                                                <th scope="col">Description</th>
+                                                                <th scope="col">Visa Status</th>
+                                                                <th scope="col">Ordered Quantity</th>
+                                                                <th scope="col" t-if="o.quote_builder == True">Total</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <t t-foreach="o.visa_pkg" t-as="v">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <span t-esc="v.product_id.name"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <t t-foreach="v.customer_m2m" t-as="cust">
+                                                                            <span t-esc="cust.name"></span><br />
+                                                                        </t>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="v.confirmation_no"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="v.description"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="v.visa_status"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="v.no_of_person"></span>
+                                                                    </td>
+                                                                    <td t-if="o.quote_builder == True">
+                                                                        <span t-esc="v.total"></span>
+                                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </t>
+                                                    </table>
+                                                    <br />
+                                                    <div style=" padding:0px 10px;">
+                                                        <p style="font-weight:bold;">Terms &amp; Conditions and Remarks</p>
+                                                        <div class="all_daata">
+                                                            <p>
+                                                                <span t-raw="o.visa_cancel_policy"></span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </t>
+                                        <t t-if="o.packages_pkg">
+                                            <div role="tabpanel" class="tab-pane" id="ready_package">
+                                                <div class="table-responsive">
+                                                    <table class="table table-hover">
+                                                        <thead style="background: lightgray;">
+                                                            <tr>
+                                                                <th>Product</th>
+                                                                <th scope="col">Names</th>
+                                                                <th scope="col">Guest Category</th>
+                                                                <th scope="col">Confirmation Number</th>
+                                                                <th scope="col">Validity (Start/Expire)</th>
+                                                                <th scope="col">No of Nights</th>
+                                                                <th scope="col">Room Type</th>
+                                                                <th scope="col">Meal Plan</th>
+                                                                <th scope="col">Transfer Mode</th>
+                                                                <th scope="col">Guest No</th>
+                                                                <th scope="col">Added Values</th>
+                                                                <th scope="col">Product Type</th>
+                                                                <th scope="col" t-if="o.quote_builder == True">Total</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <t t-foreach="o.packages_pkg" t-as="pkg">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <span t-esc="pkg.product_id.name"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <t t-foreach="pkg.customer_m2m" t-as="cust">
+                                                                            <span t-esc="cust.name"></span><br />
+                                                                        </t>
+                                                                    </td>
+                                                                    <td style="text-transform: capitalize !important;">
+                                                                        <span t-esc="pkg.category"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="pkg.confirmation_no"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="pkg.validity"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="pkg.no_of_nights"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="pkg.room_type.name"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="pkg.meal_plan.name"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="pkg.transfer_mode"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="pkg.guest_no"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="pkg.added_values"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="pkg.product_type"></span>
+                                                                    </td>
+                                                                    <td t-if="o.quote_builder == True">
+                                                                        <span t-esc="pkg.total"></span>
+                                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </t>
+                                                    </table>
+                                                    <br />
+                                                    <div style=" padding:0px 10px;">
+                                                        <p style="font-weight:bold;">Terms &amp; Conditions and Remarks</p>
+                                                        <div class="all_daata">
+                                                            <p>
+                                                                <span t-raw="o.packages_cancel_policy"></span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </t>
+                                        <t t-if="o.privatejet_pkg">
+                                            <div role="tabpanel" class="tab-pane" id="private_jet">
+                                                <div class="table-responsive">
+                                                    <table class="table table-hover">
+                                                        <thead style="background: lightgray;">
+                                                            <tr>
+                                                                <th>Airline</th>
+                                                                <!-- <th>Supplier</th> -->
+                                                                <th scope="col">Names</th>
+                                                                <th scope="col">From/To</th>
+                                                                <th scope="col">Flight</th>
+                                                                <th scope="col">Class</th>
+                                                                <th scope="col">Departures Date</th>
+                                                                <th scope="col">Arrival Date</th>
+                                                                <th scope="col">Bag</th>
+                                                                <th scope="col">Terminal</th>
+                                                                <th scope="col">Airline PNR</th>
+                                                                <th scope="col">Guests</th>
+                                                                <th scope="col" t-if="o.quote_builder == True">Total</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <t t-foreach="o.privatejet_pkg" t-as="prv">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <span t-esc="prv.airline.name"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <t t-foreach="prv.customer_m2m" t-as="cust">
+                                                                            <span t-esc="cust.name"></span><br />
+                                                                        </t>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="prv.from_to"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="prv.flight"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="prv.fight_class"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="prv.departures"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="prv.arrival"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="prv.bag"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="prv.terminal"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="prv.airline_pnr"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="prv.no_of_person"></span>
+                                                                    </td>
+                                                                    <td t-if="o.quote_builder == True">
+                                                                        <span t-esc="prv.total"></span>
+                                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </t>
+                                                    </table>
+                                                    <br />
+                                                    <div style=" padding:0px 10px;">
+                                                        <p style="font-weight:bold;">Terms &amp; Conditions and Remarks</p>
+                                                        <div class="all_daata">
+                                                            <p>
+                                                                <span t-raw="o.private_jet_cancel_policy"></span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </t>
+                                        <t t-if="o.yacht_pkg">
+                                            <div role="tabpanel" class="tab-pane" id="yacht">
+                                                <div class="table-responsive">
+                                                    <table class="table table-hover">
+                                                        <thead style="background: lightgray;">
+                                                            <tr>
+                                                                <th scope="col">Names</th>
+                                                                <th scope="col">Confirmation Number</th>
+                                                                <th scope="col">Description</th>
+                                                                <th scope="col">Duration</th>
+                                                                <th scope="col">Yacht Type</th>
+                                                                <th scope="col">Meal Plan</th>
+                                                                <th scope="col">Occupancy</th>
+                                                                <th scope="col">Departure Place</th>
+                                                                <th scope="col">Arrival Place</th>
+                                                                <th scope="col">Date From</th>
+                                                                <th scope="col">Date To</th>
+                                                                <th scope="col">Guests</th>
+                                                                <th scope="col" t-if="o.quote_builder == True">Total</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <t t-foreach="o.yacht_pkg" t-as="y">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <t t-foreach="y.customer_m2m" t-as="cust">
+                                                                            <span t-esc="cust.name"></span><br />
+                                                                        </t>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="y.confirmation_no"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="y.description"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="y.duration"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="y.yacht_type.name"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="y.meal_plan.name"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="y.occupancy"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="y.departure_place"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="y.arrival_place"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <t t-if="y.date_from">
+                                                                            <span t-esc="y.date_from"></span>
+                                                                        </t>
+                                                                    </td>
+                                                                    <td>
+                                                                        <t t-if="y.date_from">
+                                                                            <span t-esc="y.date_to"></span>
+                                                                        </t>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="y.no_of_person"></span>
+                                                                    </td>
+                                                                    <td t-if="o.quote_builder == True">
+                                                                        <span t-esc="y.total"></span>
+                                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </t>
+                                                    </table>
+                                                    <br />
+                                                    <div style=" padding:0px 10px;">
+                                                        <p style="font-weight:bold;">Terms &amp; Conditions and Remarks</p>
+                                                        <div class="all_daata">
+                                                            <p>
+                                                                <span t-raw="o.yacht_cancel_policy"></span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </t>
+                                        <t t-if="o.cruises_pkg">
+                                            <div role="tabpanel" class="tab-pane" id="cruises">
+                                                <div class="table-responsive">
+                                                    <table class="table table-hover">
+                                                        <thead style="background: lightgray;">
+                                                            <tr>
+                                                                <th scope="col">Names</th>
+                                                                <th scope="col">Confirmation Number</th>
+                                                                <th scope="col">Description</th>
+                                                                <th scope="col">Duration</th>
+                                                                <th scope="col">Cabin Type</th>
+                                                                <th scope="col">Meal Plan</th>
+                                                                <th scope="col">Occupancy</th>
+                                                                <th scope="col">Departure Place</th>
+                                                                <th scope="col">Arrival Place</th>
+                                                                <th scope="col">Date From</th>
+                                                                <th scope="col">Date To</th>
+                                                                <th scope="col">Guests</th>
+                                                                <th scope="col" t-if="o.quote_builder == True">Total</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <t t-foreach="o.cruises_pkg" t-as="cr">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <t t-foreach="cr.customer_m2m" t-as="cust">
+                                                                            <span t-esc="cust.name"></span><br />
+                                                                        </t>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="cr.confirmation_no"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="cr.description"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="cr.duration"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="cr.cabin_type.name"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="cr.meal_plan.name"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="cr.occupancy"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="cr.departure_place"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="cr.arrival_place"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <t t-if="cr.date_from">
+                                                                            <span t-esc="cr.date_from"></span>
+                                                                        </t>
+                                                                    </td>
+                                                                    <td>
+                                                                        <t t-if="cr.date_to">
+                                                                            <span t-esc="cr.date_to"></span>
+                                                                        </t>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="cr.no_of_person"></span>
+                                                                    </td>
+                                                                    <td t-if="o.quote_builder == True">
+                                                                        <span t-esc="cr.total"></span>
+                                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </t>
+                                                    </table>
+                                                    <br />
+                                                    <div style=" padding:0px 10px;">
+                                                        <p style="font-weight:bold;">Terms &amp; Conditions and Remarks</p>
+                                                        <div class="all_daata">
+                                                            <p>
+                                                                <span t-raw="o.cruise_cancel_policy"></span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </t>
+                                        <t t-if="o.otherservices_pkg">
+                                            <div role="tabpanel" class="tab-pane" id="other_services">
+                                                <div class="table-responsive">
+                                                    <table class="table table-hover">
+                                                        <thead style="background: lightgray;">
+                                                            <tr>
+                                                                <th scope="col">Names</th>
+                                                                <th scope="col">Confirmation Number</th>
+                                                                <th scope="col">Description</th>
+                                                                <th scope="col">Date From</th>
+                                                                <th scope="col">Date To</th>
+                                                                <th scope="col">Guests</th>
+                                                                <th scope="col" t-if="o.quote_builder == True">Total</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <t t-foreach="o.otherservices_pkg" t-as="ots">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <t t-foreach="ots.customer_m2m" t-as="cust">
+                                                                            <span t-esc="cust.name"></span><br />
+                                                                        </t>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="ots.confirmation_no"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="ots.description"></span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <t t-if="ots.date_from">
+                                                                            <span t-esc="ots.date_from"></span>
+                                                                        </t>
+                                                                    </td>
+                                                                    <td>
+                                                                        <t t-if="ots.date_to">
+                                                                            <span t-esc="ots.date_to"></span>
+                                                                        </t>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span t-esc="ots.no_of_person"></span>
+                                                                    </td>
+                                                                    <td t-if="o.quote_builder == True">
+                                                                        <span t-esc="ots.total"></span>
+                                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </t>
+                                                    </table>
+                                                    <br />
+                                                    <div style=" padding:0px 10px;">
+                                                        <p style="font-weight:bold;">Terms &amp; Conditions and Remarks</p>
+                                                        <div class="all_daata">
+                                                            <p>
+                                                                <span t-raw="o.other_cancel_policy" />
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </t>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+                <br />
+                <br />
+                <section>
+                    <!-- <div class="container"> -->
+                    <div class="row">
+                        <div>
+                            <form id="algin-form" action="/submit/note/sale_order/" method="post">
+                                <div class="form-group">
+                                    <h4>Leave a comment</h4>
+                                    <label for="message" style="color:white">Message</label>
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+                                    <input type="hidden" name="sale_rec" class="d-none hidden" t-att-value="sale_rec.id" />
+                                    <textarea required="1" name="msg" id="" cols="30" rows="5" class="form-control" style="background-color: white;"></textarea>
+                                </div>
+                                <!-- <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" name="name" id="fullname" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="text" name="email" id="email" class="form-control" />
+                                </div> -->
+                                <div class="form-group">
+                                    <button type="submit" id="post" class="btn">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- </div> -->
+                </section>
+                <br/>
+                <br/>
+                <div style="text-align:center">
+                    <div>
+                        <a target="_blank" class="watermark text-center font-weight-bold" href="https://eusol.net">Powered By Eusol.net</a>
+                    </div>
+                    <br />
+                    <br />
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script>
+        $(document).ready(function() {
+            $('.nav-tabs li').first().addClass('active');
+            $('.tab-content div.tab-pane').first().addClass('active');
+        });
+
+        $(".card").swipe({
+            swipeLeft: function(event, direction, distance, duration, fingerCount) {
+                $(".nav-tabs li.active").next('li').find('a').tab('show');
+            },
+            swipeRight: function(event, direction, distance, duration, fingerCount) {
+                $(".nav-tabs li.active").prev('li').find('a').tab('show');
+            },
+        });
+        </script>
+        <script>
+        function loaderSpinner() {
+            $(window).on('load', function() {
+                setTimeout(function() {
+                    $('.loader').delay(1000).fadeOut("slow");
+                }, 2500);
+
+
+                setTimeout(function() {
+                    $("body").css("overflow-y", "auto");
+                }, 3500);
+
+            });
+        }
+        loaderSpinner();
+        </script>
+    </template>
+    <template id="reservation_link_template_not_found" name="Not Found Reservation">
+        <html lang="en">
+
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=" />
+            <title>404 Page</title>
+            <style>
+            /* Design reference:  */
+
+            /* basic */
+            *,
+            *:before,
+            *:after {
+                box-sizing: border-box;
+            }
+
+            html,
+            body {
+                overflow: hidden;
+                height: 100%;
+            }
+
+            body {
+                font: 16px/1.2 "Roboto", sans-serif;
+                color: #333;
+            }
+
+            .blog {
+                font-size: 14px;
+                font-weight: bold;
+                text-align: center;
+                position: absolute;
+                bottom: 15px;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 1;
+            }
+
+            /* container */
+            .container {
+                border-radius: 10px;
+                width: auto;
+                height: auto;
+                background-color: #fff;
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 1;
+                overflow: hidden;
+            }
+
+            /* fourzerofour */
+            .fourzerofour {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 450px;
+                height: 300px;
+                background: linear-gradient(to left, #000 0%, #51cbce 55%);
+                -webkit-background-clip: text;
+                background-clip: text;
+            }
+
+            .fourzerofour h1,
+            .fourzerofour p {
+                color: transparent;
+                font-weight: bold;
+            }
+
+            .fourzerofour h1 {
+                margin: 0;
+                font-size: 96px;
+            }
+
+            .fourzerofour p {
+                margin: 0;
+
+                font-size: 28px;
+                text-transform: uppercase;
+            }
+            </style>
+        </head>
+
+        <body>
+            <div class="container">
+                <div class="fourzerofour">
+                    <h1>404</h1>
+                    <p>page not found</p>
+                </div>
+            </div>
+        </body>
+
+        </html>
+    </template>
+</odoo>

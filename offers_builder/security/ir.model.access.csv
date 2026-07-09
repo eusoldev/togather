@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+A_1,offers_builder,offers_builder.model_offers_builder,offers_builder.offers_builder_group,1,1,1,1
+A_2,offers_builder_tree,offers_builder.model_offers_builder_tree,offers_builder.offers_builder_group,1,1,1,1
+A_3,supplement_type,offers_builder.model_supplement_type,offers_builder.offers_builder_group,1,1,1,1
+A_4,supplement_type_tree,offers_builder.model_supplement_type_tree,offers_builder.offers_builder_group,1,1,1,1

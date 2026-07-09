@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="purchase_order_ext">
+            <t t-call="web.html_container">
+                <!-- <t t-call="resveration_itinerary_report.external_layout_custome"> -->
+                <t t-call="web.basic_layout">
+                    <t t-foreach="docs" t-as="o">
+                        <div class="page">
+                            <style type="text/css">
+                            @media (min-width: 1200px) {
+                                .container {
+                                    width: 100%;
+                                }
+                            }
+
+                            @media (min-width: 992px) {
+                                .container {
+                                    width: 100%;
+                                }
+                            }
+
+                            @media (min-width: 768px) {
+                                .container {
+                                    width: 100%;
+                                }
+                            }
+
+                            .container {
+                                width: 100%;
+                            }
+
+                            body.o_in_iframe {
+                                margin: 0px !important;
+                                padding: 0px !important;
+                            }
+
+
+                            .main_wraper {
+                                width: 100%;
+                                margin: 0px auto;
+                                position: relative;
+                                background-color: #ffffff;
+                                background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+
+
+                            }
+
+                            .main_div {
+                                width: 100%;
+                            }
+
+                            .left_div {
+                                width: 40%;
+                                float: left;
+                                margin-top: 85px;
+                                margin-left: 30px;
+                            }
+
+                            .right_div {
+                                width: 25%;
+                                float: right;
+                                text-align: end;
+                            }
+
+                            .left_div_2 {
+                                width: 40%;
+                                float: left;
+                                margin-left: 30px;
+                            }
+
+                            .right_div_2 {
+                                width: 50%;
+                                float: right;
+                                text-align: end;
+                            }
+
+                            .left_div_3 {
+                                width: 25%;
+                                float: left;
+                                margin-left: 50px;
+                                font-size: 20px;
+                            }
+
+                            .right_div_3 {
+                                width: 63%;
+                                float: right;
+                                font-size: 20px;
+                            }
+
+                            .clear_float {
+                                clear: both;
+                                float: none;
+                                height: 0px;
+                                width: 0px;
+                                display: block;
+                            }
+
+                            .solid_div {
+                                font-weight: bold;
+                                font-size: 19px;
+                            }
+
+                            .liquid_div {
+                                font-size: 22px;
+                                line-height: 2;
+                                text-align: justify;
+                            }
+
+                            .foot_fix {
+                                position: fixed;
+                                width: 100%;
+                                bottom: 0;
+                            }
+
+                            .margin-top {
+                                margin-top: 130px;
+                            }
+
+                            .left_div_2 p {
+                                margin: 0px;
+                            }
+
+                            .solid {
+                                font-weight: bold;
+                                font-size: 17px;
+                            }
+
+                            .agent_div {
+                                float: right;
+                                width: 66%;
+                                border-bottom: 1px solid #927f73;
+                                min-height:15px;
+                            }
+
+                            .left_div_4 {
+                                width: 45%;
+                                float: left;
+                                margin-left: 24px;
+                                font-size:18px;
+                            }
+
+                            .right_div_4 {
+                                width: 42%;
+                                float: left;
+                                font-size:18px;
+                                margin-left: 22px;
+                            }
+
+                            .term {
+                                text-align: center;
+                                font-size:20px;
+                                font-weight: bold;
+                                color: #927f73;
+
+
+                            }
+
+                            .arabic {
+                                margin-right: 90px;
+                            }
+
+                            .MsoNormal {
+                                margin-right: 50px !important;
+                            }
+
+                            table {
+                                border-collapse: collapse;
+                                border: 1px solid black;
+                                margin-top: 25px;
+                            }
+
+                            th {
+                                border-collapse: collapse;
+                                font-size:18px;
+                                padding: 8px;
+                                text-align: left;
+                                font-weight: bold;
+                                border: 1px solid black;
+                                background: #927f73;
+                                color:white;
+                                vertical-align: inherit;
+                            }
+
+                            td {
+                                border-collapse: collapse;
+                                font-size:18px;
+                                padding: 5px;
+                                text-align: left;
+                                border: 1px solid black;
+                            }
+
+                            .all_daata p {
+                                margin: 0 !important;
+                                line-height: 1rem !important;
+                            }
+                            .solid {
+                                font-weight: bold;
+                                font-size: 17px;
+                            }
+
+                            </style>
+                            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.css" integrity="sha512-EaaldggZt4DPKMYBa143vxXQqLq5LE29DG/0OoVenoyxDrAScYrcYcHIuxYO9YNTIQMgD8c8gIUU8FQw7WpXSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+                            <div class="main_wraper">
+                                <div class="main_div">
+                                    <div class="left_div_2">
+                                        <p style="text-align:center;font-size:21px;font-style: italic">
+                                    
+                                        </p>
+                                        <p style="font-size:80px;font-style: italic">
+                                        UNLIMITED
+                                        </p>
+                                        <p style="font-style: italic">
+                                            <span>LUXURY FOR MIND, BODY, SOUL</span>
+                                        </p>
+                                        <br />
+                                        <br />
+                                        <br />
+                                        <br />
+                                        <h1 style="font-size:50px;font-style: italic">
+                                            <span>ITINERARY</span>
+                                        </h1>
+                                    </div>
+                                    <div class="right_div_2">
+                                        <img  width="100" t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)"/>
+                                    </div>
+                                </div>
+                                <br class="clear_float" />
+                                <div class="liquid_div">
+                                    <p class="solid_div">
+                                        <span t-esc="o.partner_id.name"></span>
+                                    </p>
+                                    <p>
+                                        <span>It is my great pleasure to welcome you to Togather Family, a new expression of Luxury Services. </span>
+                                    </p>
+                                    <p>
+                                        <span>Through thoughtful tailormade journeys, interactive programs, and extraordinary service</span>
+                                    </p>
+                                    <p>
+                                        <span>We have prepared an itinerary for you to experience the best of what Togather offers. If you require any assistance, please don’t hesitate to reach out to your Travel Consultant.</span>
+                                    </p>
+                                    <p>
+                                        <span>Your perpetual journey begins here.</span>
+                                    </p>
+                                    <br />
+                                    <p>
+                                        <span>Warm Regards,</span>
+                                    </p>
+                                    <p>
+                                        <!-- <span>Fahad Alsulami</span> -->
+                                    </p>
+                                    <p>
+                                        <span>Togather Tourism</span>
+                                    </p>
+                                    <p>
+                                        <span>Chief Executive Officer</span>
+                                    </p>
+                                </div>
+                                <div>
+                                    <t t-foreach="company" t-as="c">
+                                        <div class="main_div">
+                                            <div class="left_div">
+                                                <p style="margin-bottom:0px;">
+                                                    <a t-att-href="c.social_instagram" style="color:white">
+                                                        <i class="fab fa-instagram" style="color:#927f73; font-size:30px; margin-right:12px; "></i>
+                                                    </a>
+                                                    <span> Togather_Tourism</span>
+                                                </p>
+                                                <p>
+                                                    <span>
+                                                         <a t-att-href="c.social_instagram" style="color:white">
+                                                        <i class="fab fa-instagram" style="color:#927f73; font-size:30px; margin-right:12px; "></i>
+                                                    </a>
+                                                    </span>
+                                                    <span> Togather_Concierge</span>
+                                                </p>
+                                                <p style="margin-top:0;">
+                                                    <span class="solid">
+                                                            <a t-att-href="c.social_twitter" style="color:white">
+                                                                <!-- <i class="fab fa-twitter-square" style="color:#927f73; font-size:30px;"></i> -->
+                                                                <img src="/voucher_report/static/src/img/twitter.png" style="width: 5.1%;color: #927f73;margin-top: -15px; " />
+                                                            </a>
+                                                        </span>
+                                                    <span style="margin-left:13px">Togather_Maldives</span>
+                                                </p>
+                                                <p style="margin-top:-10px;">
+                                                    <span>
+                                                        <a t-att-href="c.social_youtube" style="color:white">
+                                                            <i class="fab fa-snapchat-square" style="color:#927f73; font-size:30px; margin-right:12px;"></i>
+                                                        </a>
+                                                    </span>
+                                                    <span> Togather.Maldives</span>
+                                                </p>
+                                                <p style="margin-top:-15px;">
+                                                     <span class="solid">
+                                                            <a t-att-href="c.social_linkedin" style="color:white">
+                                                                <i class="fab fa-linkedin" style="color:#927f73; font-size:30px; margin-right:12px;"></i>
+                                                            </a>
+                                                        </span>
+                                                    <span>Togather Tourism</span>
+                                                </p>
+                                                <p style="margin-top:-15px;">
+                                                    <span class="solid">
+                                                            <a t-att-href="c.social_facebook" style="color:white">
+                                                                <i class="fab fa-facebook" style="color:#927f73; font-size:30px;margin-right:12px"></i>
+                                                            </a>
+                                                        </span>
+                                                    <span>Togather Tourism</span>
+                                                </p>
+                                            </div>
+                                            <div class="right_div">
+                                                <t t-tif="c.logo">
+                                                    <!-- <img t-att-src="'data:image/png;base64,%s' % to_text(company.logo)" style="width:50%" /> -->
+
+                                                    <img  style="width:50%" t-if="company.logo" t-att-src="image_data_uri(company.logo)"/>
+                                                </t>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </div>
+                                <br class="clear_float" />
+                                <div class="page-break" t-attf-style="page-break-inside: avoid !important;page-break-after: always !important;" />
+                                <div class="main_div">
+                                    <div class="left_div_2">
+                                        <p style="text-align:center;font-size:21px;font-style: italic">
+                                        </p>
+                                        <p style="font-size:80px;font-style: italic">UNLIMITED</p>
+                                        <p style="font-style: italic">
+                                            <span>LUXURY FOR MIND, BODY, SOUL</span>
+                                        </p>
+                                    </div>
+                                    <div class="right_div_2">
+                                        <img  width="100" t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)"/>
+                                    </div>
+                                </div>
+                                <br class="clear_float" />
+                                <br class="clear_float" />
+                                <br class="clear_float" />
+                                <br class="clear_float" />
+                                <div class="main_div">
+                                    <h2 style="margin-left:20px;font-size:30px;color: white;background-color:#927f73">Booking Information</h2>
+                                    <br class="clear_float" />
+                                    <br class="clear_float" />
+                                    <div class="left_div_4">
+                                        <p>
+                                            <span style="font-weight:bold">Confirmation No:</span>
+                                            <span class="agent_div">
+                                                <span t-esc="o.name"></span>
+                                            </span>
+                                        </p>
+                                        <p>
+                                            <span style="font-weight:bold">Arrival Date:</span>
+                                            <span class="agent_div">
+                                                <span t-esc="time.strftime('%d %B %Y',time.strptime(str(o.arrival_date),'%Y-%m-%d'))"></span>
+                                            </span>
+                                        </p>
+                                        <p>
+                                            <span style="font-weight:bold">Departure Date:</span>
+                                            <span class="agent_div">
+                                                <span t-esc="time.strftime('%d %B %Y',time.strptime(str(o.departure_date),'%Y-%m-%d'))"></span>
+                                            </span>
+                                        </p>
+                                        <p>
+                                            <span style="font-weight:bold">Arrival Flight:</span>
+                                            <span class="agent_div">
+                                                <span t-esc="o.hotel_arrival.name"></span>
+                                            </span>
+                                        </p>
+                                        <p>
+                                            <span style="font-weight:bold">Departure Flight:</span>
+                                            <span class="agent_div">
+                                                <span t-esc="o.hotel_return.name"></span>
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <div class="right_div_4">
+                                        <p>
+                                            <span style="font-weight:bold">Destination:</span>
+                                            <t t-set="com" t-value="0" />
+                                            <span class="agent_div">
+                                                <t t-foreach="o.destination" t-as="d">
+                                                    <t t-set="com" t-value="com+1" />
+                                                    <span>
+                                                        <t t-if="com > 1">
+                                                            , <t t-esc="d.name"></t>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <t t-esc="d.name"></t>
+                                                        </t>
+                                                    </span>
+                                                </t>
+                                            </span>
+                                        </p>
+                                        <p>
+                                            <span style="font-weight:bold">Guests:</span>
+                                            <span class="agent_div">
+                                                <span t-esc="o.no_of_particpents"></span>
+                                            </span>
+                                        </p>
+                                        <!-- <p>
+                                        </p> -->
+                                        <p>
+                                            <span style="font-weight:bold">Guests Name:</span>
+                                            <t t-set="com" t-value="0" />
+                                            <span class="agent_div">
+                                                <span>
+                                                    <t t-foreach="customer_m2m" t-as="cust">
+                                                        <t t-set="com" t-value="com+1" />
+                                                        <t t-if="com > 1">
+                                                            , <t t-esc="cust.name"></t>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <t t-esc="cust.name"></t>
+                                                        </t>
+                                                    </t>
+                                                </span>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <br class="clear_float" />
+                                <br class="clear_float" />
+                                <br class="clear_float" />
+                                <!-- <t t-if="o.hotel_pkg"> -->
+                                <table width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th style="min-width: 250px;width: 250px;max-width: 250px;">Hotel</th>
+                                            <th style="min-width: 250px;width: 250px;max-width: 250px;">Names</th>
+                                            <th style="min-width: 100px;width: 100px;max-width: 100px;">Check In</th>
+                                            <th style="min-width: 100px;width: 100px;max-width: 100px;">Check Out</th>
+                                            <th style="min-width: 60px;width: 60px;max-width: 82px;">Nights</th>
+                                            <!-- <th style="min-width: 150px;width: 150px;max-width: 150px;">Room Type</th> -->
+                                            <th style="min-width: 100px;width: 100px;max-width: 100px;">Meal Plan</th>
+                                            <th>Transfer</th>
+                                            <th style="min-width: 60px;width: 60px;max-width: 82px;">Guests</th>
+                                            <t t-if="o.quote_builder == False">
+                                                <th>HCN</th>
+                                            </t>
+                                            <!-- <th>Confirmation Number</th> -->
+                                            <!-- <th>Room Quantity</th> -->
+                                            <!--        <th>Amount</th>
+                                                <th>Exchange Rate</th>
+                                                <th>Commission</th>
+                                                <th>Total</th> -->
+                                            <th t-if="o.quote_builder == True">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-set="sr" t-value="0" />
+                                        <t t-foreach="o.hotel_pkg" t-as="h">
+                                            <t t-set="sr" t-value="sr+1" />
+                                            <tr>
+                                              <!--   <td>
+                                                            <span t-esc="sr"></span>
+                                                        </td> -->
+                                                <td>
+                                                    <a t-att-href="url">
+                                                        <span t-esc="h.hotel_id.name" title="Map"></span>
+                                                    </a>
+                                                </td>
+                                                <!-- <td>
+                                                            <span t-esc="h.supplier.name"></span>
+                                                        </td> -->
+                                                <td>
+                                                    <t t-foreach="h.customer_m2m" t-as="cust">
+                                                        <span t-esc="cust.name"></span><br />
+                                                    </t>
+                                                </td>
+                                                <td>
+                                                    <t t-if="h.date_from">
+                                                        <span t-esc="time.strftime('%d %B %Y',time.strptime(str(h.date_from),'%Y-%m-%d'))"></span>
+                                                    </t>
+                                                </td>
+                                                <td>
+                                                    <t t-if="h.date_to">
+                                                        <span t-esc="time.strftime('%d %B %Y',time.strptime(str(h.date_to),'%Y-%m-%d'))"></span>
+                                                    </t>
+                                                </td>
+                                                <td>
+                                                    <span t-esc="h.nights"></span>
+                                                </td>
+                                                <!-- <td>
+                                                            <t t-foreach="h.room_type" t-as="rt">
+                                                                <span t-esc="rt.name"></span>
+                                                                <br/>
+                                                            </t>
+                                                        </td> -->
+                                                <td>
+                                                    <t t-foreach="h.hotel_meal_plan" t-as="mp">
+                                                        <span t-esc="mp.name"></span>
+                                                        <br />
+                                                    </t>
+                                                </td>
+                                                <td>
+                                                    <t t-foreach="h.transfer" t-as="tr">
+                                                        <span t-esc="tr.name"></span>
+                                                        <br />
+                                                    </t>
+                                                </td>
+                                                
+                                                <td>
+                                                    <span t-esc="h.no_of_person"></span>
+                                                </td>
+                                                <t t-if="o.quote_builder == False">
+                                                    <td>
+                                                        <span t-esc="h.confirmation_no"></span>
+                                                    </td>
+                                                </t>
+                                                <td t-if="o.quote_builder == True">
+                                                    <span t-esc="h.total"></span>
+                                                    <span t-esc="o.currency_id.symbol"></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Room Type</td>
+                                                <td colspan="9">
+                                                    <span t-esc="getRoomTypes(h.room_type)"></span>
+                                                </td>
+                                            </tr>
+                                            <t t-if="h.supplier.hotel_link">
+                                                <tr>
+                                                    <td>Hotel Link</td>
+                                                    <td colspan="9">
+                                                        <a t-att-href="h.supplier.hotel_link">
+                                                            <span>(Click Here)</span>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                            <t t-if="h.special_remarks">
+                                                <tr>
+                                                    <td>Special Remarks</td>
+                                                    <td colspan="9">
+                                                        <span t-esc="h.special_remarks"></span>
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                        </t>
+                                    </tbody>
+                                </table>
+                                <br />
+                                <div>
+                                    <p style="font-weight:bold;">Terms &amp; Conditions  and Remarks</p>
+                                    <div class="all_daata">
+                                        <p>
+                                            <span t-raw="o.hotels_cancel_policy"></span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <br /><br />
+                                <br/>
+                                <t t-if="o.stamp">
+                                    <img src="/resveration_itinerary_report/static/src/img/stamp_new.png" style="width: 18%;float: right;" />
+                                </t>
+                                <!-- <t t-if="not sr in my_data"> -->
+                                <!-- <div class="page-break" t-attf-style="page-break-inside: avoid !important;page-break-after: always !important;" /> -->
+                                <!-- </t> -->
+                               <!--  <div class="page-break" style="page-break-inside: avoid !important;page-break-after: always !important;" />
+                                <br class="clear_float" />
+                                <div class="main_div">
+                                    <div class="left_div_2">
+                                        <p style="text-align:center;font-size:21px;font-style: italic">
+                                            <span>A Quality Holidays With Us</span>
+                                        </p>
+                                        <p style="font-size:110px;font-style: italic">SPEND</p>
+                                        <p style="font-style: italic">
+                                            <span>UNLIMITED LUXURY FOR MIND, BODY, SOUL</span>
+                                        </p>
+                                    </div>
+                                    <div class="right_div_2">
+                                        <img height="100" width="200" t-if="100ompany_id.logo" t-att-src="image_data_uri(o.company_id.logo)"/>
+                                    </div>
+                                </div>
+                                <br class="clear_float" />
+                                <br class="clear_float" />
+                                <br class="clear_float" />
+                                <br class="clear_float" />
+                                <br class="clear_float" />
+                                <t t-if="o.hotels_cancel_policy != '&lt;p&gt;&lt;br&gt;&lt;/p&gt;'">
+                                    <div>
+                                        <p style="margin-left:20px;font-size:30px;color: #927f73">Terms &amp; Conditions</p>
+                                        <div class="all_daata" style="margin-left:30px">
+                                            <p>
+                                                <span t-raw="o.hotels_cancel_policy"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </t> -->
+                                <div class="page-break" style="page-break-inside: avoid !important;page-break-after: always !important;" />
+                                <br class="clear_float" />
+                                <div class="main_div">
+                                    <div class="left_div_2">
+                                        <p style="text-align:center;font-size:21px;font-style: italic">
+                                    
+                                        </p>
+                                        <p style="font-size:80px;font-style: italic">UNLIMITED</p>
+                                        <p style="font-style: italic">
+                                            <span>LUXURY FOR MIND, BODY, SOUL</span>
+                                        </p>
+                                    </div>
+                                    <div class="right_div_2">
+                                        <img  width="100%" t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)"/>
+                                    </div>
+                                </div>
+                                <br class="clear_float" />
+                                <br class="clear_float" />
+                                <br class="clear_float" />
+                                <br class="clear_float" />
+                                <br class="clear_float" />
+                                <div class="main_div">
+                                    <p class="term">General Instructions:</p>
+                                    <p class="arabic">
+                                        <span t-raw="o.term_condition"></span>
+                                    </p>
+                                    <div style="width: 100%">
+                                        <div style="width: 30%;float: left;">
+                                            <p>.</p>
+                                        </div>
+                                        <div style="float: left;width: 70%;">
+                                            <!-- <img src="/voucher_report/static/src/img/signature.png" style="width: 30%;float: right;height: 230px;"/>    -->
+                                            <!-- <img src="/voucher_report/static/src/img/stamp.png" style="height: 100px;width: 20%;float: right;margin-top: 20px;"/> -->
+                                        </div>
+                                    </div>
+                                    <!-- <br class="clear_float" />
+                                    <div>
+                                        <p style="text-align:center;">
+                                            <u>
+                                                <span>This is a system generated voucher and does not require a signature</span>
+                                            </u>
+                                        </p>
+                                    </div> -->
+                                </div>
+                                <!-- </t> -->
+                            </div>
+                        </div>
+                        <!--end of page-->
+                    </t>
+                </t>
+                <!-- </t> -->
+            </t>
+        </template>
+    </data>
+</odoo>

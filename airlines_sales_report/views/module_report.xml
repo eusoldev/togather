@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="airlines_sales_report">
+            <t t-call="web.html_container">
+                <t t-call="web.basic_layout">
+                    <t t-call="airlines_sales_report.airlines_sales_report_tempalate">
+                        <div class="page">
+                            <style type="text/css">
+                            @media (min-width: 992px) .container {
+                                width: 100%;
+                            }
+
+                            @media (min-width: 768px) .container {
+                                width: 100%;
+                            }
+
+                            .container {
+                                width: 100%;
+                            }
+
+                            body {
+                                margin: 0px !important;
+                            }
+
+                            body.o_in_iframe {
+                                margin-top: 0px !important;
+                            }
+
+                            .header,
+                            .footer {
+                                display: none !important;
+                            }
+
+                            .main_wraper {
+                                margin: 0px auto;
+                            }
+
+                            .p_div {
+                                font-weight: bold;
+                            }
+
+                            .sale_div {
+                                text-align: center;
+                                font-weight: bold;
+                                font-size: 25px;
+                            }
+
+                            table {
+                                border-collapse: collapse;
+                                border: 1px solid black;
+                                background: 1px solid gray;
+                            }
+
+                            th {
+                                border-collapse: collapse;
+                                border: 1px solid black;
+                                text-align: center;
+                                font-weight: bold;
+                                padding:7px;
+                                font-size:10px;
+                                background: #eaded7 !important;
+                                color: #3d3838;
+                            }
+
+                            .bg_col {
+                                background: gainsboro;
+                            }
+
+                            td {
+                                border-collapse: collapse;
+                                border: 1px solid black;
+                                text-align: center;
+                                padding: 7px;
+                                font-size: 10px;
+                            }
+
+                            .right_td {
+                                text-align: right;
+                                padding-right: 6px;
+                            }
+
+                            .main_box {
+                                width: 100%;
+                            }
+
+                            .box_a {
+                                width: 50%;
+                                float: left;
+                                display: inline-block;
+                            }
+
+                            .box_b {
+                                float: left;
+                                width: 50%;
+                                display: inline-block;
+                                margin-bottom: 10px;
+                            }
+
+
+
+                            .span_custom img {
+                                width: 70px !important;
+                                height: 70px !important;
+                                float: right;
+                            }
+
+                            h5 {
+                                margin: 5px;
+                                font-weight: 500;
+                                margin-bottom: 10px;
+                            }
+
+                            .clearfloat {
+                                clear: both;
+                                float: none;
+                                width: 100%;
+                                height: 1px;
+                                display: block;
+                            }
+
+                            .agent {
+                                float: right;
+                                display: inline-block;
+                                width: 65%;
+                            }
+
+
+                            .agent_custom {
+
+                                width: 70% !important;
+                            }
+
+                            .agent_dept {
+                                float: right;
+                                display: inline-block;
+                                width: 79%;
+                            }
+
+                            .agent_div {
+                                float: right;
+                                display: inline-block;
+                                width: 65%;
+                            }
+
+                            .main_div {
+                                width: 100%;
+                            }
+
+                            .left_div {
+                                float: left;
+                                font-size: 13px;
+                                width: 50%;
+                            }
+
+                            .right_div {
+                                width: 50%;
+                                float: left;
+                                font-size: 13px;
+                            }
+
+                            .solid_div {
+                                font-weight: bold,
+                            }
+
+                            .th_width {
+                                width: 120px;
+                                min-width: 120px;
+                                max-width: 120px;
+                            }
+                            </style>
+                            <div class="main_wraper">
+                               
+                                <t t-if="main_list">
+                                    <br class="clearfloat" />
+                                    <p class="sale_div">Airline Sale Report</p>
+                                    <p style="text-align: center;">
+                                        <b>
+                                            <span>From:</span>
+                                        </b>
+                                        <u>
+                                            <span t-esc="time.strftime('%d %b %Y',time.strptime(str(form),'%Y-%m-%d'))"></span>
+                                        </u>
+                                        <b>
+                                            <span>TO:</span>
+                                        </b>
+                                        <u>
+                                            <span t-esc="time.strftime('%d %b %Y',time.strptime(str(to),'%Y-%m-%d'))"></span>
+                                        </u>
+                                    </p>
+                                    <br class="clearfloat" />
+                                       
+                                    <div class="main_div">
+                                        <div class="left_div">
+                                            <p>
+                                                <b><span class="solid">No Of Booking:</span></b>
+                                                <span class="agent agent_custom" t-esc="serial_total" style="font-weight:bold"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <!-- </t> -->
+                                    <table class="display" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th class="th_width">Supplier</th>
+                                                <!-- <th>Branch</th> -->
+                                                <th style="width:9%;">Customer</th>
+                                                <th>RQ No.</th>
+                                                <th>Salesperson</th>
+                                                <th>From</th>
+                                                <th>To</th>
+                                                <th style="width:10%;">E-Ticket</th>
+                                                <!-- <th>PNR </th> -->
+                                                <th class="th_width">Class</th>
+                                                <th>Departure Date</th>
+                                                <th>Return</th>
+                                                <th>No of Guests</th>
+                                                <th>Net</th>
+                                                <th>Commission</th>
+                                                <th>Total</th>
+                                            </tr>
+                                        </thead>
+                                        <t t-set="totalguest" t-value="0" />
+                                        <t t-set="totalnet" t-value="0" />
+                                        <t t-set="totalcommission" t-value="0" />
+                                        <t t-set="totalamount" t-value="0" />
+                                        <t t-foreach="main_list" t-as="o">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <span t-esc="o['supplier']"></span>
+                                                    </td>
+                                                    <!-- <td>
+                                                    </td> -->
+                                                    <td>
+                                                        <t t-foreach="o['customer']" t-as="cus">
+                                                            <span t-esc="cus"></span>
+                                                        </t>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o['rq_number']"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o['sale_person']"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o['form_loc']"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o['to_loc']" />
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o['e-ticket']"></span>
+                                                    </td>
+                                                    <!--  <td>
+                                                    <span t-esc="o['airline_pnr']"></span>
+                                                </td> -->
+                                                    <td>
+                                                        <span t-esc="o['class']"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o['departure_date']"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o['return_date']"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o['no_of_guest']"></span>
+                                                        <t t-set="totalguest" t-value="totalguest + o['no_of_guest']" />
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="'{0:,}'.format(int(o['net']))"></span>
+                                                        <t t-set="totalnet" t-value="totalnet + o['net']" />
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="'{0:,}'.format(int(o['commission']))"></span>
+                                                        <t t-set="totalcommission" t-value="totalcommission + o['commission']" />
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="'{0:,}'.format(int(o['total']))"></span>
+                                                        <t t-set="totalamount" t-value="totalamount + o['total']" />
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </t>
+                                        <tr style="background-color:#eaded7 !important;">
+                                            <td style="font-weight:bold; border-left:none;" colspan="11"> Total</td>
+                                            <td style="font-weight:bold">
+                                                <span t-esc="'{0:,}'.format(int(totalguest))"></span>
+                                            </td>
+                                            <td style="font-weight:bold">
+                                                <span t-esc="'{0:,}'.format(int(totalnet))"></span>
+                                            </td>
+                                            <td style="font-weight:bold">
+                                                <span t-esc="'{0:,}'.format(int(totalcommission))"></span>
+                                            </td>
+                                            <td style="font-weight:bold">
+                                                <span t-esc="'{0:,}'.format(int(totalamount))"></span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    
+                                </t>
+                                
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

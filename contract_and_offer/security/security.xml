@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="security_group_for_contract_and_offer" model="res.groups">
+            <field name="name">security_group_for_contract_and_offer</field>
+            <field name="user_ids" eval="[Command.link(ref('base.user_admin'))]"/>
+        </record>
+        <record id="security_group_for_contract_trees" model="res.groups">
+            <field name="name">Contract Trees security Group</field>
+            <field name="user_ids" eval="[Command.link(ref('base.user_admin'))]"/>
+        </record>
+        <record id="new_hotel_type_cnofr_security" model="res.groups">
+            <field name="name">Add New Hotel Types</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,101 @@
+<odoo>
+    <data>
+        <!-- <record id="view_partner>_form_sequence_ext" model="ir.ui.view">
+            <field name="name">view_partner>_form_sequence_ext</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base_geolocalize.view_crm_partner_geo_form" />
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='geo_location']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record> -->
+        <record id="view_partner>_form_sequence_ext" model="ir.ui.view">
+            <field name="name">view_partner>_form_sequence_ext</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@class='o_address_format']" position="after">
+                    <field name='partner_type' required="1" />
+                    <field name='financial_term' invisible="partner_type =='others'" />
+                    <field name='credit_days' invisible="partner_type =='others' or financial_term=='pre_paid'" />
+                    <field name="company_registration" />
+                </xpath>
+                <xpath expr="//div[@class ='oe_button_box']" position="inside">
+                    <button name="action_open_partner_orders" type="object" icon="fa-shopping-cart" string="Reservations" invisible="sale_order_count ==0">
+                        <field name="sale_order_count" nolabel="1" widget="statinfo" invisible="sale_order_count ==0" />
+                    </button>
+                </xpath>
+                <xpath expr="//field[@name='phone']" position="attributes">
+                    <attribute name="required">0</attribute>
+                </xpath>
+                <xpath expr="//form/sheet/div[2]/div[1]" position="before">
+                    <div class="o_row">
+                        <field name='serial_no' readonly="1" />
+                    </div>
+                    <field name='current_user' invisible="1" />
+                    <field name='id' invisible="1" />
+                </xpath>
+            </field>
+        </record>
+        <record id="add_the_boolean_on_seating" model="ir.ui.view">
+            <field name="name">add_the_boolean_on_seating</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='other_preferences']" position="inside">
+                    <field name="admin_user" />
+                </xpath>
+            </field>
+        </record>
+        <!-- auto generate sequence for Vendors -->
+        <record id="vendor_auto_sequence" model="ir.sequence">
+            <field name="name">vendor_auto_sequence</field>
+            <field name="code">vr.sequence</field>
+            <field name="active">TRUE</field>
+            <field name="prefix">SUP-</field>
+            <field name="padding">4</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+        </record>
+        <!-- auto generate sequence for Customers -->
+        <record id="customer_auto_sequence" model="ir.sequence">
+            <field name="name">customer_auto_sequence</field>
+            <field name="code">cr.sequence</field>
+            <field name="active">TRUE</field>
+            <field name="prefix">CRQ-</field>
+            <field name="padding">4</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+        </record>
+        <record id="group_config_access" model="res.groups">
+            <field name="name">Configuration Access Group</field>
+          
+            <field name="user_ids" eval="[Command.link(ref('base.user_root')), Command.link(ref('base.user_admin'))]"/>
+        </record>
+        <record id="menu_hide_group_config_access" model="res.groups">
+            <field name="name">Menu Hide Access Group</field>
+            <!-- <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/> -->
+        </record>
+       
+        <!-- <menuitem id="hr_timesheet.timesheet_menu_root" name="Timesheets" sequence="55" groups="res_partner_ext.menu_hide_group_config_access" web_icon="hr_timesheet,static/description/icon_timesheet.png" /> -->
+       
+        <!-- <menuitem id="contacts.res_partner_menu_config" name="Configuration" parent="contacts.menu_contacts" groups="res_partner_ext.group_config_access" sequence="2" />
+        
+        <menuitem id="sale.menu_sale_config" name="Configuration" parent="sale.sale_menu_root" sequence="6" groups="res_partner_ext.group_config_access" />
+        <menuitem id="sales_team.menu_sale_config" name="Configuration" parent="sale.sale_menu_root" sequence="6" groups="res_partner_ext.group_config_access" />
+        <menuitem id="crm.crm_menu_config" name="Configuration" parent="crm.crm_menu_root" sequence="25" groups="res_partner_ext.group_config_access" />
+       
+        <menuitem id="hr.menu_human_resources_configuration" name="Configuration" parent="hr.menu_hr_root" groups="res_partner_ext.group_config_access" sequence="100" />
+       
+        <menuitem id="event.menu_event_configuration" name="Configuration" parent="event.event_main_menu" sequence="100" groups="res_partner_ext.group_config_access" />
+      
+        <menuitem id="project.menu_project_config" name="Configuration" parent="project.menu_main_pm" sequence="100" groups="res_partner_ext.group_config_access" />
+       
+        <menuitem name="Configuration" id="mass_mailing.mass_mailing_configuration" parent="mass_mailing.mass_mailing_menu_root" sequence="100" groups="res_partner_ext.group_config_access" />
+        <menuitem name="Settings" id="base.menu_administration" web_icon="base,static/description/settings.png" sequence="500" groups="res_partner_ext.group_config_access" /> -->
+       
+    </data>
+</odoo>

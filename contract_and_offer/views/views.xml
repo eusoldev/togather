@@ -1,0 +1,256 @@
+<odoo>
+    <data>
+        <record id="contract_and_offfer_ext" model="ir.ui.view">
+            <field name="name">contract_form_ext</field>
+            <field name="model">contract.offer</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="hotel_name" required="1" />
+                                <field name="date" />
+                                <field name="add_new_hotel_types" />
+                            </group>
+                            <group>
+                                <field name="country_name" />
+                                <field name="contract_currency" />
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="contracts" string="Contracts">
+                                <field name="tree_link_id">
+                                    <list editable="bottom" nolabel="1">
+                                        <field name="contract" widget="binary" readonly="contract !=False" force_save='1' />
+                                        <!-- <field name="url" widget="url"/> -->
+                                        <field name="new_url" widget="url" readonly="1" force_save="1" />
+                                        <field name="Validity_from" />
+                                        <field name="upload_date" readonly="1" />
+                                        <field name="status" />
+                                        <field name="note" />
+                                    </list>
+                                </field>
+                            </page>
+                            <page name="packages" string="Packages">
+                                <field name="tree_link_id_2">
+                                    <list editable="bottom" nolabel="1">
+                                        <field name="contract" widget="binary" readonly="contract !=False" force_save='1' />
+                                        <!-- <field name="url" widget="url"/> -->
+                                        <field name="new_url" widget="url" readonly="1" force_save="1" />
+                                        <field name="Validity_from" />
+                                        <field name="upload_date" readonly="1" />
+                                        <field name='book_by_date' />
+                                        <field name="status" />
+                                        <field name="note" />
+                                    </list>
+                                </field>
+                            </page>
+                            <page name="offers" string="Offers">
+                                <field name="tree_link_id_3">
+                                    <list editable="bottom" nolabel="1">
+                                        <field name="contract" widget="binary" readonly="contract !=False" force_save='1' />
+                                        <!-- <field name="url" widget="url"/> -->
+                                        <field name="new_url" widget="url" readonly="1" force_save="1" />
+                                        <field name="Validity_from" />
+                                        <field name="upload_date" readonly="1" />
+                                        <field name='book_by_date' />
+                                        <field name="status" />
+                                        <field name="note" />
+                                    </list>
+                                </field>
+                            </page>
+                            <page name="others" string="Others">
+                                <field name="tree_link_id_4">
+                                    <list editable="bottom" nolabel="1">
+                                        <field name="contract" widget="binary" readonly="contract !=False" force_save='1' />
+                                        <!-- <field name="url" widget="url"/> -->
+                                        <field name="new_url" widget="url" readonly="1" force_save="1" />
+                                        <field name="Validity_from" />
+                                        <field name="upload_date" readonly="1" />
+                                        <field name='book_by_date' />
+                                        <field name="status" />
+                                        <field name="note" />
+                                    </list>
+                                </field>
+                            </page>
+                            <page name="activities" string="Activities">
+                                <field name="tree_link_id_5">
+                                    <list editable="bottom" nolabel="1">
+                                        <field name="contract" widget="binary" readonly="contract !=False" force_save='1' />
+                                        <!-- <field name="url" widget="url"/> -->
+                                        <field name="new_url" widget="url" readonly="1" force_save="1" />
+                                        <field name="Validity_from" />
+                                        <field name="upload_date" readonly="1" />
+                                        <field name='book_by_date' />
+                                        <field name="status" />
+                                        <field name="note" />
+                                    </list>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <chatter />
+                </form>
+            </field>
+        </record>
+        <record id="contract_offer_tree_view" model="ir.ui.view">
+            <field name="name">contract_offer_tree_view</field>
+            <field name="model">contract.offer</field>
+            <field name="arch" type="xml">
+                <list string="Contracts and Offers" default_order='hotel_name'>
+                    <field name="country_name" />
+                    <field name="hotel_name" />
+                    <field name="add_new_hotel_types" />
+                    <!-- <field name="date"/> -->
+                </list>
+            </field>
+        </record>
+        <record id="action_apn_sizing_ext" model="ir.actions.act_window">
+            <field name="name">Contracts and Offers</field>
+            <field name="res_model">contract.offer</field>
+            <field name="view_mode">list,form</field>
+            <field name="context" eval="{'search_default_group_add_new_hotel_types':1,'search_default_group_hotel_name':0,'search_default_group_country_name':0}"></field>
+        </record>
+        <!-- ,'group_by':'hotel_type' -->
+        <menuitem id="apn_sizing_ext_main" name="Contracts and Offers" action="action_apn_sizing_ext" web_icon="contract_and_offer,static/src/img/contact.png" groups="contract_and_offer.security_group_for_contract_and_offer" />
+        <record id="contract_offer_tree_view_filter" model="ir.ui.view">
+            <field name="name">contract_offer_tree_view_filter</field>
+            <field name="model">contract.offer</field>
+            <field name="arch" type="xml">
+                <search string="Contracts">
+                    <field name="hotel_name" />
+                    <field name="country_name" />
+                    <field name="add_new_hotel_types" />
+                    <filter name="group_hotel_name" string="Hotel Name" icon="terp-partner" context="{'group_by':'hotel_name'}" />
+                    <filter name="group_country_name" string="Country Name" icon="terp-partner" context="{'group_by':'country_name'}" />
+                    <filter name="group_hotel_type" string="Type" icon="terp-partner" context="{'group_by':'add_new_hotel_types'}" />
+                </search>
+            </field>
+        </record>
+        <!-- contract offer trees views -->
+        <record id="contracts_tree_view" model="ir.ui.view">
+            <field name="name">Contracts Tree View</field>
+            <field name="model">contract.offer.tree</field>
+            <field name="arch" type="xml">
+                <list string="Contracts Tree" default_order='Validity_from'>
+                    <field name="Validity_from" />
+                    <!-- <field name="url"/> -->
+                    <field name="upload_date" />
+                    <field name="status" />
+                    <field name="note" />
+                    <field name="tree_link" />
+                </list>
+            </field>
+        </record>
+        <record id="packages_tree_view" model="ir.ui.view">
+            <field name="name">Package Tree View</field>
+            <field name="model">contract.tree</field>
+            <field name="arch" type="xml">
+                <list string="Package Tree" default_order='Validity_from'>
+                    <field name="Validity_from" />
+                    <!-- <field name="url"/> -->
+                    <field name="upload_date" />
+                    <field name="book_by_date" />
+                    <field name="status" />
+                    <field name="note" />
+                    <field name="tree_link_2" />
+                </list>
+            </field>
+        </record>
+        <record id="offer_tree_view" model="ir.ui.view">
+            <field name="name">Offer Tree View</field>
+            <field name="model">contract.tree.offer</field>
+            <field name="arch" type="xml">
+                <list string="Offer Tree" default_order='Validity_from'>
+                    <field name="Validity_from" />
+                    <!-- <field name="url"/> -->
+                    <field name="upload_date" />
+                    <field name="book_by_date" />
+                    <field name="status" />
+                    <field name="note" />
+                    <field name="tree_link_3" />
+                </list>
+            </field>
+        </record>
+        <record id="others_tree_view" model="ir.ui.view">
+            <field name="name">Others Tree View</field>
+            <field name="model">contract.tree.others</field>
+            <field name="arch" type="xml">
+                <list string="Others Tree" default_order='Validity_from'>
+                    <field name="Validity_from" />
+                    <!-- <field name="url"/> -->
+                    <field name="upload_date" />
+                    <field name="book_by_date" />
+                    <field name="status" />
+                    <field name="note" />
+                    <field name="tree_link_4" />
+                </list>
+            </field>
+        </record>
+        <!-- contract offer trees actions -->
+        <record id="action_contract_trees" model="ir.actions.act_window">
+            <field name="name">Contracts Trees Action</field>
+            <field name="res_model">contract.offer.tree</field>
+            <field name="view_mode">list,form</field>
+        </record>
+        <record id="action_packages_trees" model="ir.actions.act_window">
+            <field name="name">Packages Trees Action</field>
+            <field name="res_model">contract.tree</field>
+            <field name="view_mode">list,form</field>
+        </record>
+        <record id="action_offer_trees" model="ir.actions.act_window">
+            <field name="name">Offers Trees Action</field>
+            <field name="res_model">contract.tree.offer</field>
+            <field name="view_mode">list,form</field>
+        </record>
+        <record id="action_others_trees" model="ir.actions.act_window">
+            <field name="name">Others Trees Action</field>
+            <field name="res_model">contract.tree.others</field>
+            <field name="view_mode">list,form</field>
+        </record>
+        <record model="ir.ui.view" id="add_new_hotel_type_form_view">
+            <field name="name">new_hotel.form.view</field>
+            <field name="model">new.hotel.add_types</field>
+            <field name="arch" type="xml">
+                <form string="Add New Hotel Types">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="add_new_hotel_type_name" readonly="1" />
+                            </h1>
+                        </div>
+                        <group>
+                            <field name="add_new_hotel_type_name" required='1' />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- tree view -->
+        <record id="add_new_hotel_type_tree_view" model="ir.ui.view">
+            <field name="name">new_hotel.tree.view</field>
+            <field name="model">new.hotel.add_types</field>
+            <field name="arch" type="xml">
+                <list string="Add New Hotel Types">
+                    <field name="add_new_hotel_type_name" />
+                </list>
+            </field>
+        </record>
+        <!-- action -->
+        <record id="add_new_hotel_type_form_view_record" model="ir.actions.act_window">
+            <field name="name">Add New Hotel Types</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">new.hotel.add_types</field>
+            <field name="view_mode">list,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Add New Hotel Type's Now! </p>
+            </field>
+        </record>
+        <!-- menuitem for budget -->
+        <menuitem name="Hotel Types" id="new_hotel_type_cnofr_menu" parent="contract_and_offer.apn_sizing_ext_main" sequence="100" groups="contract_and_offer.new_hotel_type_cnofr_security" />
+        <menuitem name="Add New Hotel Types" id="new_hotel_type_cnofr_menu_sub" parent="new_hotel_type_cnofr_menu" sequence="1" groups="contract_and_offer.new_hotel_type_cnofr_security" action="add_new_hotel_type_form_view_record" />
+        <record id="contract_and_offer.action_apn_sizing_ext" model="ir.actions.act_window">
+            <field name="context">{'search_default_group_add_new_hotel_types': 1}</field>
+        </record>
+    </data>
+</odoo>

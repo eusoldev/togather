@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="resvervation_itinerary_report_format" model="report.paperformat">
+            <field name="name">Itinerary Report</field>
+            <field name="default" eval="True" />
+            <!-- <field name="format">A4</field> -->
+            <field name="format">custom</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">10</field>
+            <field name="page_height">350</field>
+            <field name="page_width">300</field>
+            <field name="margin_bottom">10</field>
+            <field name="margin_left">10</field>
+            <field name="margin_right">10</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">50</field>
+            <field name="dpi">90</field>
+        </record>
+    
+        
+        <record id="itinerary_report_id" model="ir.actions.report">
+            <field name="name">Reservation Itinerary Report</field>
+            <field name="model">reservation.order</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">resveration_itinerary_report.purchase_order_ext</field>
+            <field name="report_file">resveration_itinerary_report.purchase_order_ext</field>
+            <field name="print_report_name">'%s-%s' %('Reservation Itinerary Report',object.partner_id.name)</field>
+            <field name="binding_model_id" ref="travel_package.model_reservation_order" />
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="resvervation_itinerary_report_format" />
+        </record>
+    </data>
+</odoo>

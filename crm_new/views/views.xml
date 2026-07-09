@@ -1,0 +1,273 @@
+<odoo>
+    <data>
+        <!-- Remove standard My Quotations menu from CRM to avoid confusion with travel workflow -->
+        <delete model="ir.ui.menu" id="sale_crm.sale_order_menu_quotations_crm" />
+        <record id="travel_type_fomr_ext" model="ir.ui.view">
+            <field name="name">travel_type_fomr_ext</field>
+            <field name="model">crm.new</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="travel_type" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="travel_type_tree_ext" model="ir.ui.view">
+            <field name="name">travel_type_tree_ext</field>
+            <field name="model">crm.new</field>
+            <field name="type">list</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="travel_type" />
+                </list>
+            </field>
+        </record>
+        <record id="travel_type_action" model="ir.actions.act_window">
+            <field name="name">Travel Type</field>
+            <field name="res_model">crm.new</field>
+            <field name="view_mode">list,form</field>
+        </record>
+        <record id="cre_leads_form_view_ext" model="ir.ui.view">
+            <field name="name">cre_leads_form_view_ext</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_lead_view_form" />
+            <field name="arch" type="xml">
+                <!-- 1. Technical Adjustments: Hiding unnecessary standard fields -->
+                <xpath expr="//field[@name='team_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='date_deadline']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='priority']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='user_id']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                </xpath>
+                <xpath expr="//header" position="inside">
+                    <button name="action_create_quotation_builder" string="Build Quotation" type="object" class="btn-primary" invisible="quotation_builder_count > 0" />
+                    <button name="action_create_reservation" string="Build Reservation" type="object" class="btn-primary" invisible="reservation_count > 0" />
+                </xpath>
+                <xpath expr="//div[@class='oe_button_box']" position="attributes">
+                    <attribute name="invisible">0</attribute>
+                </xpath>
+                <xpath expr="//div[@class='oe_button_box']" position="inside">
+                    <button name="action_view_quotation_builders" type="object" class="oe_stat_button" icon="fa-suitcase">
+                        <field name="quotation_builder_count" widget="statinfo" string="Trip Packages" />
+                    </button>
+                    <button name="action_view_reservations" type="object" class="oe_stat_button" icon="fa-calendar">
+                        <field name="reservation_count" widget="statinfo" string="Reservations" />
+                    </button>
+                </xpath>
+                <!-- 3. Key Layout Refinements: Standardize Labels and Financials -->
+                <xpath expr="//field[@name='name']" position="attributes">
+                    <attribute name="placeholder">Subject</attribute>
+                </xpath>
+                <xpath expr="//field[@name='expected_revenue']" position="attributes">
+                    <attribute name="string">Client Budget</attribute>
+                </xpath>
+                <xpath expr="//field[@name='expected_revenue']" position="attributes">
+                    <attribute name="string">Client Budget</attribute>
+                    <attribute name="invisible">0</attribute>
+                </xpath>
+                <xpath expr="//h2" position="after">
+                    <div class="col-auto mb-2" style="margin-top:-20px;" invisible="sale_amount_total == 0">
+                        <label for="sale_amount_total" class="oe_edit_only" string="Actual Revenue" />
+                        <div class="d-flex align-items-center">
+                            <field name="sale_amount_total" widget="monetary" options="{'currency_field': 'company_currency'}" class="fw-bold fs-3 text-success" />
+                        </div>
+                    </div>
+                </xpath>
+                <xpath expr="//field[@name='tag_ids']" position="after">
+                    <field name="source_id" string="Source" options="{'no_create_edit': True, 'no_open': True}" />
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="enquiry_type" />
+                </xpath>
+                <xpath expr="//field[@name='phone']" position="after">
+                    <field name="country_id" string="Destination" options="{'no_create': True, 'no_open': True}" />
+                </xpath>
+                <xpath expr="//field[@name='country_id']" position="replace" />
+                <!-- 4. Tab and Page Management: Consolidation to prevent duplicate tabs in Odoo 18 -->
+                <xpath expr="//page[@name='extra']" position="replace" />
+                <xpath expr="//page[@name='lead']" position="replace">
+                    <page name="extra_info_consolidated" string="Extra Information">
+                        <group>
+                            <group string="Travel Details">
+                                <field name="travel_type" options="{'no_create': True}" />
+                                <field name="enquiry_type" />
+                                <field name="guest1" string="Adults" />
+                                <field name="guest2" string="Kids" />
+                                <field name="guest3" string="Infants" />
+                                <field name="total_guest" string="Total Guests" readonly="1" class="fw-bold" />
+                                <label for="trip_date_from" string="Trip Dates" />
+                                <div class="o_row">
+                                    <field name="trip_date_from" placeholder="Start Date" class="oe_inline" />
+                                    <span class="mx-2"> to </span>
+                                    <field name="trip_date_to" placeholder="End Date" class="oe_inline" />
+                                </div>
+                            </group>
+                            <group string="Financial Overview">
+                                <field name="company_currency" invisible="1" />
+                                <field name="sale_amount_total" widget="monetary" options="{'currency_field': 'company_currency'}" string="Actual Revenue" />
+                                <field name="company_id" groups="base.group_multi_company" />
+                            </group>
+                            <group string="Marketing" name="marketing">
+                                <field name="campaign_id" options="{'no_create_edit': True, 'no_open': True}" />
+                                <field name="medium_id" options="{'no_create_edit': True, 'no_open': True}" />
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+        <record id="cre_leads_sale_crm_form_view_ext" model="ir.ui.view">
+            <field name="name">cre_leads_sale_crm_form_view_ext</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="sale_crm.crm_case_form_view_oppor" />
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_sale_quotations_new']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_view_sale_quotation']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_view_sale_order']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+        <!-- 5. Back-link from Quotation Builder to Lead -->
+        <record id="quotation_builder_form_link_ext" model="ir.ui.view">
+            <field name="name">quotation_builder_form_link_ext</field>
+            <field name="model">quotation.builder</field>
+            <field name="inherit_id" ref="quotation_builder.quotation_builder_form_ext" />
+            <field name="arch" type="xml">
+                <xpath expr="//sheet/div[hasclass('oe_title')]" position="before">
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_crm_lead" type="object" class="oe_stat_button" icon="fa-star" invisible="not lead_id">
+                            <div class="o_stat_info">
+                                <span class="o_stat_text">CRM Lead</span>
+                            </div>
+                        </button>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+        <!-- 6. Back-link from Reservation (Sale Order) to Lead -->
+        <record id="reservation_order_reservation_link_ext" model="ir.ui.view">
+            <field name="name">reservation_order_reservation_link_ext</field>
+            <field name="model">reservation.order</field>
+            <field name="inherit_id" ref="travel_package.view_reservation_order_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="inside">
+                    <button name="action_view_crm_lead" type="object" string="CRM Lead" icon="fa-star" invisible="not lead_id" class="btn-secondary" />
+                </xpath>
+                <xpath expr="//div[@name='button_box']" position="inside">
+                    <button name="action_view_crm_lead" type="object" class="oe_stat_button" icon="fa-star" invisible="not lead_id">
+                        <div class="o_stat_info">
+                            <span class="o_stat_text">CRM Lead</span>
+                        </div>
+                    </button>
+                </xpath>
+            </field>
+        </record>
+        <record id="crm_case_tree_view_oppor_ext" model="ir.ui.view">
+            <field name="name">cre_leads_form_view_ext</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_tree_view_oppor" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='expected_revenue']" position="attributes">
+                    <attribute name="string">Client Budget</attribute>
+                </xpath>
+                <xpath expr="//field[@name='expected_revenue']" position="after">
+                    <field name="sale_amount_total" string="Actual Revenue" widget="monetary" optional="show" />
+                </xpath>
+                <xpath expr="//field[@name='probability']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='team_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='phone']" position="replace">
+                    <field name="phone" optional="show" />
+                </xpath>
+                <xpath expr="//field[@name='user_id']" position="replace">
+                    <field name="user_id" optional="show" />
+                </xpath>
+                <xpath expr="//field[@name='country_id']" position="attributes">
+                    <attribute name="string">Destination</attribute>
+                </xpath>
+                <xpath expr="//field[@name='name']" position="attributes">
+                    <attribute name="string">Subject</attribute>
+                </xpath>
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="trip_date_from" optional="show" string="Start Date" />
+                    <field name="total_guest" optional="show" string="Guests" />
+                </xpath>
+            </field>
+        </record>
+        <!-- 8. Kanban Card Enrichment -->
+        <record id="crm_case_kanban_view_leads_ext" model="ir.ui.view">
+            <field name="name">crm_case_kanban_view_leads_ext</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_kanban_view_leads" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <div class="text-muted small">
+                        <field name="trip_date_from" invisible="not trip_date_from" />
+                        <span invisible="not trip_date_from or not country_id"> | </span>
+                        <field name="country_id" options="{'no_open': True, 'no_create': True}" />
+                    </div>
+                    <div class="text-muted small" invisible="not last_builder_ref and not last_reservation_ref">
+                        <span invisible="not last_builder_ref"><i class="fa fa-file-text-o me-1" />Builder:
+                            <field name="last_builder_ref" /></span>
+                        <span invisible="not last_builder_ref or not last_reservation_ref"> | </span>
+                        <span invisible="not last_reservation_ref"><i class="fa fa-ticket me-1" />Res:
+                            <field name="last_reservation_ref" /></span>
+                    </div>
+                    <div class="text-muted small" invisible="total_guest == 0">
+                        <i class="fa fa-users me-1" />
+                        <field name="total_guest" /> Guests
+                    </div>
+                </xpath>
+                <xpath expr="//field[@name='expected_revenue']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='expected_revenue']" position="after">
+                    <div class="mt-1">
+                        <div class="text-primary fw-bold small">Budget:
+                            <field name="expected_revenue" widget="monetary" options="{'currency_field': 'company_currency'}" />
+                        </div>
+                        <div class="text-success fw-bold small" invisible="sale_amount_total == 0">
+                            Actual:
+                            <field name="sale_amount_total" widget="monetary" />
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+        <!-- 9. Quick Create Form Label Sync -->
+        <record id="quick_create_opportunity_form_ext" model="ir.ui.view">
+            <field name="name">quick_create_opportunity_form_ext</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.quick_create_opportunity_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='expected_revenue']" position="attributes">
+                    <attribute name="string">Client Budget</attribute>
+                </xpath>
+                <xpath expr="//field[@name='name']" position="attributes">
+                    <attribute name="string">Subject</attribute>
+                </xpath>
+            </field>
+        </record>
+        <menuitem name="Travel Type" id="travel_type_actions" parent="crm.crm_menu_config" action="travel_type_action" sequence="1" />
+    </data>
+</odoo>

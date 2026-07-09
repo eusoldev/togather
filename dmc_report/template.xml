@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="paperformat_dmc_report" model="report.paperformat">
+            <field name="name">Page For DMC Report</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">5</field>
+            <field name="margin_bottom">0</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">8</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">10</field>
+            <field name="dpi">90</field>
+        </record>
+
+
+
+        <record id="report_dmc_report" model="ir.actions.report">
+            <field name="name">DMC Report</field>
+            <field name="model">dmc.report</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">dmc_report.dmc_report</field>
+            <field name="report_file">dmc_report.dmc_report</field>
+            <field name="print_report_name">DMC Report</field>
+            <field name="attachment"/>
+            <field name="binding_model_id" ref="dmc_report.model_dmc_report"/>
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="paperformat_dmc_report" />
+        </record>
+
+        <record id="report_for_dmc_report_xlsx" model="ir.actions.report">
+            <field name="name">Airline Report</field>
+            <field name="model">dmc.report</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">dmc_report.dmc_report_xlsx</field>
+            <field name="report_file">dmc_report.dmc_report_xlsx</field>
+            <field name="print_report_name">Check Arrival Report</field>
+            <field name="attachment"/>
+            <field name="binding_model_id" ref="dmc_report.model_dmc_report"/>
+        </record>
+            
+        <record id="dmc_report_wizard" model="ir.ui.view">
+            <field name="name">hotel_production_report_records_wizard</field>
+            <field name="model">dmc.report</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Report">
+                        
+                    <group name="group_top">
+                        <group name="group_left">
+                            <field name="date_range"/>
+                            <field name="form"/>
+                            <field name="report_type"/>
+                            <field name="company_id" invisible="1"/>
+                            <field name="booking_type" />
+                        </group>
+
+                        <group name="group_right">
+                            <field name="print_excel"/>
+                            <field name="to"/>
+                            <field name="typee"/>
+                            <field name="partner_id" invisible = "report_type =='destination' or typee=='all'" required="report_type in ('vendor','hotel') or typee=='specific'" widget="many2many_tags" domain="[('hotel_supplier','=',True)]" options="{'no_open':True,'no_create': True}" />
+
+                            <field name="country_id" invisible = "report_type in ['vendor','hotel'] or typee=='all'" required="report_type=='destination' or typee=='specific'" widget="many2many_tags" options="{'no_open':True,'no_create': True}" />
+                        </group>
+
+                    </group>
+                    
+                        <footer style="height: 30px !important; border: none !important;">
+                            <button name="generate_report" type="object" string="Print" class = "oe_highlight" />
+                        </footer>
+
+                </form>
+            </field>
+        </record>
+
+        <record id="dmc_report_menu_action" model="ir.actions.act_window">
+            <field name="name">DMC Report</field>
+            <field name="res_model">dmc.report</field>
+            <!-- <field name="view_type">form</field> -->
+            <field name="view_mode">list,form</field>
+            <field name="view_id" ref="dmc_report_wizard"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="dmc_report_menu_item" name="DMC Report" action="dmc_report_menu_action" parent="account.menu_finance_reports" groups="dmc_report.security_group_for_dmc_report"/>
+
+          <template id="dmc_report_template">
+            <style type="text/css">
+            
+            </style>
+            <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+            <t t-if="not o" t-set="o" t-value="doc" />
+            <t t-if="not company">
+                <t t-if="company_id">
+                    <t t-set="company" t-value="company_id" />
+                </t>
+                <t t-elif="o and 'company_id' in o">
+                    <t t-set="company" t-value="o.company_id.sudo()" />
+                </t>
+                <t t-else="else">
+                    <t t-set="company" t-value="res_company" />
+                </t>
+            </t>
+            <div class="o_background_header" style="min-height: 190px !important;">
+                <div class="float-right">
+                    <h3 class="mt0 text-right" t-field="company.report_header" />
+                </div>
+                <div class="main_div" style="width:100%;">
+                    <div class="left_div" style="float:left; width:39%;margin-left:20px;height:0px">
+                        <t t-tif="company.logo">
+                            
+                            <img style="float:left;width:50%; margin-top:10px;height:100px; margin-left:10px" t-if="company.logo" t-att-src="image_data_uri(company.logo)"/>
+                        </t>
+                    </div>
+                    <div class="right_div" style="float:right; width:27%; margin:0px;text-align:start;">
+                        <p style="font-weight: bold;font-size: 18px;color:#927f73;">
+                            <span>Contact Us:</span>
+                        </p>
+                      
+                        <p style="margin:0px;;color:#927f73;font-size:18px">
+                            <!-- <span class="solid">Phone No:</span> -->
+                            <span class="liquid" t-esc="company.phone"></span>
+                        </p>
+                        <p style="margin:0px;;color:#927f73;font-size:18px">
+                            <span class="solid">Email:</span>
+                            <span class="liquid" t-esc="company.email"></span>
+                        </p>
+                        <p style="margin:0px;;color:#927f73;font-size:18px">
+                            <span class="solid" style="font-weight:bold;font-size:18px">Offices Address:</span>
+                            <span class="liquid">Riyadh | Jeddah | Dubai</span>
+                        </p>
+                        <br />
+                        <p style="margin:0px;">
+
+                           <!--  <span class="solid">
+                                <a href="https://www.instagram.com/rawnaq_tourism?igshid=OGQ5ZDc2ODk2ZA==" style="color:white">
+                                    <i class="fab fa-instagram" style="color:#927f73; font-size:30px; margin-right:12px;"></i>
+                                </a>
+                            </span> -->
+                            <span class="solid">
+                                <a t-att-href="company.social_instagram" style="color:white">
+                                    <i class="fab fa-instagram" style="color:#927f73; font-size:30px; margin-right:12px;"></i>
+                                </a>
+                            </span>
+                            <span class="solid">
+                                <a t-att-href="company.social_facebook" style="color:white">
+                                    <i class="fab fa-facebook" style="color:#927f73; font-size:30px;margin-right:12px;"></i>
+                                </a>
+                            </span>
+                            <span class="solid">
+                                <a t-att-href="company.social_youtube" style="color:white">
+                                    <i class="fab fa-snapchat-square" style="color:#927f73; font-size:30px; margin-right:12px;"></i>
+                                </a>
+                            </span>
+                            <span class="solid">
+                                <a t-att-href="company.social_linkedin" style="color:white">
+                                    <i class="fab fa-linkedin" style="color:#927f73; font-size:30px; margin-right:12px;"></i>
+                                </a>
+                            </span>
+                            <span class="solid">
+                                <a t-att-href="company.social_twitter" style="color:white">
+                                    <!-- <i class="fab fa-twitter-square" style="color:#927f73; font-size:30px;"></i> -->
+                                    <img src="/voucher_report/static/src/img/twitter.png" style="width:7.4%;color: #927f73;margin-top: -15px;" />
+                                </a>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <t t-raw="0" />
+        </template>
+        
+    </data>
+</odoo>

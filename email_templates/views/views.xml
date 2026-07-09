@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="email_module_form_view" model="ir.ui.view">
+        <field name="name"> view.email.form</field>
+        <field name="model">custom.email</field>
+        <field name="arch" type="xml">
+            <form string="Email Form">
+                <sheet>
+                    <div><p style="margin-bottom:0px;font-size:17px;"><b>Name</b></p>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <notebook>
+                        <page string="Mail Body" name="mail_body">
+                            <field name="body_html" class="oe_read_only" widget="html"
+                                options="{'cssReadonly': 'mass_mailing.iframe_css_assets_readonly'}"/>
+                            <field name="body_arch" class="o_mail_body oe_edit_only" widget="mass_mailing_html"
+                                options="{
+                                    'snippets': 'mass_mailing.email_designer_snippets',
+                                    'cssEdit': 'mass_mailing.iframe_css_assets_edit',
+                                    'inline-field': 'body_html'
+                            }" />
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="email_module_tree">
+        <field name="name">email_module list</field>
+        <field name="model">custom.email</field>
+        <field name="arch" type="xml">
+            <list delete="0"  export_xlsx="false" import="false">
+                <field name="name" />
+            </list>
+        </field>
+    </record>
+    
+    <record model="ir.actions.act_window" id="custom_email_module">
+        <field name="name">email_module window</field>
+        <field name="res_model">custom.email</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_email_work" model="ir.actions.act_window">
+        <field name="name">Email Template</field>
+        <field name="res_model">custom.email</field>
+        <field name="view_mode">list,form,kanban</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your First Record
+            </p>
+        </field>
+    </record>
+
+    <menuitem action="action_email_work" id="email_menu" name="Email Templates" parent="mass_mailing.mass_mailing_menu"/>
+</odoo>

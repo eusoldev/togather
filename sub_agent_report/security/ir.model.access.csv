@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+A_2,sub_agent_report,sub_agent_report.model_sub_agent_report,sub_agent_report.security_group_for_sub_agent_report,1,1,1,1
+A_1,sub_agent_report,sub_agent_report.model_sub_client_report,sub_agent_report.security_group_for_sub_client_report,1,1,1,1

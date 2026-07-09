@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+
+access_weekly_form,access.weekly.form,weekly_report.model_weekly_form,weekly_report.group_weekly_custom_user,1,1,1,0
+access_weekly_report_tree,access.weekly.report.tree,weekly_report.model_weekly_report_tree,weekly_report.group_weekly_custom_user,1,1,1,0
+
+
+access_weekly_form_admin,access.weekly.form,weekly_report.model_weekly_form,weekly_report.group_weekly_custom_admin,1,1,1,1
+access_weekly_report_tree_admin,access.weekly.report.tree,weekly_report.model_weekly_report_tree,weekly_report.group_weekly_custom_admin,1,1,1,1

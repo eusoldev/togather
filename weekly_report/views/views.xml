@@ -1,0 +1,200 @@
+<odoo>
+    <data>
+        <record id="weekly_report_form" model="ir.ui.view">
+            <field name="name">weekly_report_form</field>
+            <field name="model">weekly.form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="button_draft" string=" Draft" type="object" class="btn-primary" invisible='1' />
+                        <!-- attrs="{'invisible': [('state', 'in', ['draft'])]}" -->
+                        <button name="button_verified" string="Submitted" type="object" class="btn-primary"  invisible="state =='sub'"  confirm="Are you sure to submit this file "/>
+                        <!-- <button name="button_confirm" string="Confirm" type="object" class="btn-primary" attrs="{'invisible': [('state', 'in', ['confirm','sub'])]}" confirm="Are You confirm Without Attchment File" invisible="1" /> -->
+                        <field name="state" widget="statusbar" />
+                        <!-- statusbar_visible="confirm,draft,submitted" -->
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <!-- <field name="s_no" readonly="1" /> -->
+                            </h1>
+                        </div>
+
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True" />
+                        <group>
+                            <group>
+                                <field name="date_From" options="{'no_create': True, 'no_create_edit':True,'no_open':True,}"    readonly="1" force_save="1"/>
+                                <field name="employee_id"  required='1' options="{'no_create': True, 'no_create_edit':True,'no_open':True,}" readonly="1"/>
+                                <field name="attachment_id" widget="binary" readonly="state =='sub'"/>
+                                <field name="week_field" readonly="1" force_save="1"/>
+                                
+                            </group>
+                            <group>
+                                <field name="date_to"  readonly="1" force_save="1" />
+                                <field name="employee_department" options="{'no_create': True, 'no_create_edit':True,'no_open':True,}"  readonly="1" force_save='1'/>
+                                <field name="week" invisible="1"/>
+                                <field name="active" groups="weekly_report.security_group_for_validate_reports"/>
+                                <field name="get_id" invisible="1" />
+                                <field name="get_ids" invisible="1" />
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Detail">
+                                <field name="task_detail" readonly="state =='sub'"/>
+                            </page>
+                            <page string="Comment">
+
+                                <group>
+                                    
+                                <field name="report_comments" readonly="get_ids !=12" />
+                                </group>
+
+                                <field name="check_c" string="Re-Comment" invisible="1" />
+
+                            </page>
+                            <page string="Reply">
+                                <group>
+                                <field name="report_replys"/>
+                                     <!-- attrs="{'readonly': ['|',('state','in',['sub']),('check_c_r','in',['three','two'])]}" -->
+                                </group>
+                                <field name="check_c_r" invisible="1" />
+                            </page>
+                        </notebook>
+
+                    </sheet>
+                    <chatter/>
+                    
+                </form>
+            </field>
+        </record>
+        <record id="weekly_report_tree" model="ir.ui.view">
+            <field name="name">weekly_report_tree</field>
+            <field name="model">weekly.form</field>
+            <field name="arch" type="xml">
+                <list string="Tree">
+                    <field name="employee_id" />
+                    <field name="employee_department" />
+                    <field name="date_From" force_save="1"/>
+                    <field name="date_to" force_save="1" />
+                    <field name="state" />
+                </list>
+            </field>
+        </record>
+        <record id="action_weekly_report_action" model="ir.actions.act_window">
+            <field name="name">Weekly Report</field>
+            <field name="res_model">weekly.form</field>
+            <field name="view_mode">list,form</field>
+            
+        </record>
+        <menuitem id="Weekly_Report" name="Weekly Report" web_icon="weekly_report,static/description/icon.png/" sequence='1' />
+        <!-- 2nd action -->
+        <record id="action_for_draft_weekly_report" model="ir.actions.act_window">
+            <field name="name">Weekly Report</field>
+            <field name="res_model">weekly.form</field>
+            <field name="view_mode">list,form</field>
+            <field name="domain">[('state', '=', 'draft')]</field>
+            <field name="context" eval="{'default_active': 1}"/>
+            <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'list', 'view_id': ref('weekly_report_tree')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('weekly_report_form')})]" />
+        </record>
+        <record id="action_weekly_report_action_validat" model="ir.actions.act_window">
+            <field name="name">Weekly Report</field>
+            <field name="res_model">weekly.form</field>
+            <field name="view_mode">list,form</field>
+            <field name="domain">[('state', '=', 'sub')]</field>
+            <field name="context" eval="{'default_active': 1}"/>
+            <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'list', 'view_id': ref('weekly_report_tree')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('weekly_report_form')})]" />
+        </record>
+        <menuitem id="Weekly_Report_2nd" name="Weekly Report" sequence='2' parent='Weekly_Report' />
+
+        <menuitem id="Weekly_Report_4rd" name="Weekly Report Draft" sequence='1' parent='Weekly_Report_2nd' action='action_for_draft_weekly_report'  groups='weekly_report.security_group_for_draft_reports'/>
+
+        <menuitem id="Weekly_Report_5rd" name="Weekly Report Submitted" sequence='1' parent='Weekly_Report_2nd' action='action_weekly_report_action_validat' groups='weekly_report.security_group_for_validate_reports'  />
+
+        <!-- <record id="weekly_report_access" model="ir.rule">
+            <field name="name">weekly_report_access</field>
+            <field name="model_id" ref="model_weekly_form"/>
+            <field name="domain_force">[('employee_id', '=',user.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+            <field name="active" eval="True"/>
+            <field name="groups" eval="[(4, ref('weekly_report.security_group_for_draft_reports'))]"/>
+        </record>
+
+        <record id="weekly_report_access_for_admin" model="ir.rule">
+            <field name="name">weekly_report_access_for_admin</field>
+            <field name="model_id" ref="model_weekly_form"/>
+            <field name="domain_force">[(1, '=',1)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+            <field name="active" eval="True"/>
+            <field name="groups" eval="[(4, ref('weekly_report.security_group_for_validate_reports'))]"/>
+        </record> -->
+
+
+        <record id="view_users_form_inherit_for_week_report" model="ir.ui.view">
+            <field name="name">res.users.form</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='other_preferences']" position="inside">
+                    <field name="weekly_report"/>
+                </xpath>
+            </field>
+        </record>
+
+
+
+
+
+
+
+
+
+        <record id="virew_res_partners_inherit_exx" model="ir.ui.view">
+            <field name="name">res.partner.form.ex</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='vat']" position="attributes">
+                    <attribute name="string">Vat ID</attribute>
+                </xpath>
+            </field>
+        </record>
+
+
+
+
+
+
+        <record id="virew_res_cmm_partners_inherit_exx" model="ir.ui.view">
+                <field name="name">res.company.form.exxs</field>
+                <field name="model">res.company</field>
+                <field name="inherit_id" ref="base.view_company_form"/>
+                <field name="arch" type="xml">
+                    <xpath expr="//field[@name='vat']" position="attributes">
+                        <attribute name="string">Vat ID</attribute>
+                    </xpath>
+
+                    <xpath expr="//field[@name='vat']" position="after">
+
+                        <field name="custom_cr_number"></field>
+                    </xpath>
+                </field>
+            </record>
+
+
+
+
+
+
+
+    </data> 
+</odoo>

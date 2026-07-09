@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<odoo>
+	<data>
+
+    <!-- <record id="invoice_tree_ext_commissioned" model="ir.ui.view">
+        <field name="name">invoice_tree_ext_commissioned</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_invoice_tree"/>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name='is_commissioned'/>
+            </xpath>
+        </field>
+    </record> -->
+		<record id="security_group_for_vat_admin" model="res.groups">
+            <field name="name">Security Group For Vat Admin</field>
+        </record>
+		<record id="vat_detailed_view" model="ir.ui.view"> 
+			<field name="name">vat_detailed</field> 
+			<field name="model">vat.detailed</field> 
+			<field name="arch" type="xml"> 
+				<form string="Form" >
+					<header>
+						<button name="get_data" string="Generate" type="object" class="oe_highlight"  invisible="state =='validated'"/>
+						
+						<button name="cancel_commission" string="Cancel" type="object" class="oe_highlight"  invisible="state =='draft'" groups='vat_detailed.security_group_for_vat_admin'/>
+						<button name="excel_report" string="Excel Report" type="object" class="oe_highlight" invisible="state =='draft'"/>
+
+						<field name="state" widget="statusbar"/>
+						
+					</header>
+					<sheet>
+						<group name="group_between">
+							<group>
+								<field name="date_from" readonly="state =='validated'"/>
+								<field name="employee_id"  force_save="1" readonly="state =='validated'"/>
+								<field name="sale" readonly="1" force_save="1"/>
+								<field name="cost_goods_sold" readonly="1" force_save="1"/>
+								<field name="gross_profit" readonly="1" force_save="1"/>
+								<field name="vat" readonly="1" force_save="1"/>
+							</group>
+							<group>
+								<field name="date_to" readonly="state =='validated'"/>
+								<field name="pat" readonly="1" force_save="1"/>
+								<!-- <field name="expenses" readonly="1" force_save="1"/> -->
+								<field name="profit_loss" readonly="1" force_save="1"/>
+								<field name="percentage" readonly="1" force_save="1"/>
+								<field name="commission" readonly="1" force_save="1"/>
+								<field name="vendor_bill" readonly="1" force_save="1"/>
+							</group>
+						</group>
+						<notebook>
+							<page name="vat_detailed_tree" string="Commission Detailed">
+								<field name="vat_detail" readonly="1" force_save="1">
+									<list editable="bottom">
+										<field name="employee" column_invisible="1"/>
+										<field name="percentage" column_invisible="1"/>
+										<field name="voucher"/>
+										<field name="arrival_date"/>
+										<field name="departure_date"/>
+										<field name="hotel_ids" widget="many2many_tags"/>
+										<field name="partner_id"/>
+										<field name="journal_entry"/>
+										<field name="invoice_payment_state"/>
+										<field name="financial_term"/>
+										<field name="commission" sum ="total"/>
+										<field name="salesperson"/>
+									</list>
+								</field>
+							</page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="vat_detailed_tree_view" model="ir.ui.view"> 
+			<field name="name">Vat Tree View</field> 
+			<field name="model">vat.detailed</field> 
+			<field name="arch" type="xml"> 
+			<list >
+				<field name="employee_id"/>
+				<field name="date_from"/>
+				<field name="date_to"/>
+			</list>
+			</field>
+		</record>
+		<record id="vat_detailed_action_id" model="ir.actions.act_window">
+		    <field name="name">Employee Commission</field>
+		    <field name="res_model">vat.detailed</field>
+		    <field name="view_mode">list,form</field>
+		</record>
+		<menuitem action="vat_detailed_action_id" id="menu_vat_detailed"  name="Employee Commission" parent="account.menu_finance_entries"/>
+		<!-- parent="account.menu_finance_entries_accounting_miscellaneous" -->
+		<!-- need this code -->
+
+
+
+
+		<!-- <report id="report_for_vat_detailed_xlsx" model="vat.detailed" name="vat_detailed.vat_detailed.xlsx" file="vat_detailed.vat_detailed.xlsx" report_type="xlsx" string="Employee Commision Report"  menu="False" attachment_use="False" /> -->
+
+		<record id="report_for_vat_detailed_xlsx" model="ir.actions.report">
+            <field name="name">Employee Commision Report</field>
+            <field name="model">vat.detailed</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">vat_detailed.vat_detailed.xlsx</field>
+            <field name="report_file">vat_detailed.vat_detailed.xlsx</field>
+            <field name="print_report_name">'Employee Commision Report - %s' % (object.employee_id.name)</field>
+            <field name="attachment"/>
+            <field name="binding_model_id" ref="vat_detailed.model_vat_detailed"/>
+        </record>
+
+
+	</data>
+</odoo>

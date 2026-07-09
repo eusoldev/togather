@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+A_1,hotel_production_report,hotel_production_report.model_hotel_production_report,hotel_production_report.security_group_for_hotel_production_report,1,1,1,1

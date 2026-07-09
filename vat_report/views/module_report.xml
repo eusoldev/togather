@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <template id="vat_report">
+
+            <t t-call="web.html_container">
+                <t t-call="web.basic_layout">
+
+                    <t t-call="vat_report.vate_report_template">
+
+                        <div class="page">
+
+                            <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"/>
+                            <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"/>
+                            <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"/>
+                            <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"/>
+                            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"/>
+                            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"/>
+                            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"/>
+                            <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"/>
+                            <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"/>
+                            <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/>
+                            <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css"/>
+                            <script>
+                                $(document).ready(function() {
+                                   $('table.display').DataTable( {
+                                     "paging":   false,
+                                     "ordering": false,
+                                        dom: 'Bfrtip',
+                                        buttons: [
+                                            'excel'
+                                        ]
+                                    });
+                                } );
+                            </script>
+                                        <!-- ,'pdf' -->
+
+                            <style type="text/css">
+                                @media (min-width: 992px)
+                                .container {
+                                    width: 100%;
+                                }
+
+                                @media (min-width: 768px)
+                                .container {
+                                    width: 100%;
+                                }
+                                .container {
+                                    width: 100%;
+                                }
+                                body {
+                                    margin: 0px !important;
+                                }
+                                body.o_in_iframe {
+                                    margin-top: 0px !important;
+                                }
+                                .header,
+                                .footer {
+                                    display: none !important;
+                                }
+                                .main_wraper {
+                                    width: 100%;
+                                    margin: 0px auto;
+                                }
+                                .p_div {
+                                    font-weight: bold;
+                                }
+                                .sale_div {
+                                    text-align: center;
+                                    font-weight: bold;
+                                    font-size: 25px;
+                                }
+                                table {
+                                    border-collapse: collapse;
+                                    border:1px solid black;
+                                    background:1px solid gray; 
+                                }
+                                th {
+                                    border-collapse: collapse;
+                                    border: 1px solid black;
+                                    text-align: center;
+                                    font-weight: bold;
+                                    padding: 10px;
+                                    font-size: 15px;
+                                    background: #eaded7 !important;
+                                    color: #3d3838;
+                                }
+                                .bg_col {
+                                    background: gainsboro;
+                                }
+                                td {
+                                    border-collapse: collapse;
+                                    border:1px solid black;
+                                    text-align: center;
+                                    font-weight: bold;
+                                    padding: 10px;
+                                    font-size: 15px;
+                                }
+                                .right_td {
+                                    text-align: right;  
+                                    padding-right: 6px;
+                                }
+                                .main_box {
+                                    width: 100%;
+                                }
+                                .box_a {
+                                    width: 50%;
+                                    float: left;
+                                    display: inline-block;
+                                }
+                                .box_b {
+                                    float: left;
+                                    width: 50%;
+                                    display: inline-block;
+                                    margin-bottom: 10px;
+                                }
+                                
+                                h5 {
+                                    margin: 5px;
+                                    font-weight: 500;
+                                    margin-bottom: 10px;
+                                }
+                                .clearfloat {
+                                    clear: both;
+                                    float: none;
+                                    width: 100%;
+                                    height: 1px;
+                                    display: block;
+                                }
+                                p {
+                                    margin-top: 0;
+                                    margin-bottom: 1rem;
+                                    font-size: 30px;
+                                }
+                            </style>
+
+                            <div class="main_wraper">
+
+                                <!-- <div class="main_box">
+
+                                    <div class="box_a">
+                                        
+                                        <t t-foreach="company" t-as="e">
+
+                                            <h3><b>
+                                                <span t-esc="e.name"></span>
+                                            </b> </h3>
+                                            <h5>
+                                                <span t-esc="e.street"></span>
+                                            </h5>
+                                            <h5>
+                                                <span t-esc="e.street2"></span>
+                                                <span t-esc="e.city"></span>
+                                                <span t-esc="e.country_id.name"></span>
+                                            </h5>
+                                            <h5>CR No:
+                                                <span t-esc="e.company_registry"></span>
+                                            </h5>
+                                            <h5>Ph:
+                                                <span t-esc="e.phone"></span>
+                                            </h5>
+                                            <h5>Email:
+                                                <span t-esc="e.email"></span>
+                                            </h5>
+                                            <h5>Vat:
+                                                <span t-esc="e.vat"></span>
+                                            </h5>
+
+                                        </t>
+
+                                    </div>
+
+                                    <div class="box_b">
+                                        
+                                        <img t-att-src="'data:image/png;base64,%s' % to_text(company.logo)"/>
+
+                                    </div>
+
+                                </div> -->
+                                <br class="clearfloat"/>
+                                <p class="sale_div">VAT Report or P&amp;L</p>
+                                <p style="text-align: center;">
+                                    <b>
+                                        <span>From:</span>
+                                    </b>
+                                    <u>
+                                        <span t-esc="time.strftime('%d %b %Y',time.strptime(str(form),'%Y-%m-%d'))"></span>
+                                    </u>
+                                    <b>
+                                        <span>TO:</span>
+                                    </b>
+                                    <u>
+                                        <span t-esc="time.strftime('%d %b %Y',time.strptime(str(to),'%Y-%m-%d'))"></span>
+                                    </u>
+                                </p>
+                              <!--   <p>
+                                    <b><span class="solid">VAT:</span></b>
+                                    <span t-esc="company.vat"></span>
+                                </p> -->
+                                <table id="example" class="display" style="width:100%">
+                                    
+                                    <thead>
+                                        <tr>
+                                            <th>Sale</th>
+                                            <th>Cost of goods sold</th>
+                                            <th>Gross profit</th>
+                                            <th>Expenses</th>
+                                            <th>Profit After Expense (PAE)</th>
+                                            <th>VAT%</th>
+                                            <th>PAT</th>
+                                            <th>Profit/Loss</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <span t-esc="'{0:,.2f}'.format(float(sale_amt))"></span>
+                                            </td>
+                                            <td>
+                                                <span t-esc="'{0:,.2f}'.format(float(pur_amt))"></span>
+                                            </td>
+                                            <td>
+                                                <span t-esc="'{0:,.2f}'.format(float(gross_profit))"></span>
+                                            </td>
+                                            <td>
+                                                <span t-esc="'{0:,.2f}'.format(float(expense))"></span>
+                                            </td>
+                                            <td>
+                                                <span t-esc="'{0:,.2f}'.format(float(profit_after_expen))"></span>
+                                            </td>
+                                            <td>
+                                                <span t-esc="'{0:,.2f}'.format(float(vat_amt))"></span>
+                                            </td>
+                                            <td>
+                                                <span t-esc="'{0:,.2f}'.format(float(pat_amt))">expense</span>
+                                            </td>
+                                            
+                                            
+                                            <td>
+                                                <span t-esc="'{0:,.2f}'.format(float(pnl_amt))"></span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <t t-if="sale_list">
+                                    <p>
+                                        <b><span class="solid">Sale</span></b>
+                                    </p>
+                                    <table id="example" class="display" style="width:100%">
+                                        
+                                        <thead>
+                                            <tr>
+                                                <th>Invoice No</th>
+                                                <th>Branch</th>
+                                                <th>Invoice Date</th>
+                                                <th>Customer</th>
+                                                <th>Total Amount</th>
+                                                <th>Amount Due</th>
+                                                <th>Invoice Status</th>
+                                            </tr>
+                                        </thead>
+                                        <t t-set="total_amount" t-value="0"/>
+                                        <t t-set="amount_Due" t-value="0"/>
+                                        <t t-foreach="sale_list" t-as="sale">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <span t-esc="sale['invoice_no']"></span>
+                                                    </td>
+                                                     <td>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="sale['invoice_date']"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="sale['customer']"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="'{0:,.2f}'.format(float(sale['total_amount']))"></span>
+                                                        <t t-set="total_amount" t-value="total_amount+sale['total_amount']"/>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="'{0:,.2f}'.format(float(sale['amount_Due']))"></span>
+                                                        <t t-set="amount_Due" t-value="amount_Due+sale['amount_Due']"/>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="sale['status']"></span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </t>
+                                        <tr>
+                                            <th colspan="3">Total</th>
+                                            <th>-</th>
+                                            <th>
+                                                <span t-esc="'{0:,.2f}'.format(float(total_amount))"></span>
+                                            </th>
+                                            <th>
+                                                <span t-esc="'{0:,.2f}'.format(float(amount_Due))"></span>
+                                            </th>
+                                            <th></th>
+                                        </tr>
+                                    </table><br/><br/>
+                                </t>
+                                <t t-if="purchase_list">
+                                    <p>
+                                        <b><span class="solid">Cost of Goods Sold</span></b>
+                                    </p>
+                                    <table id="example" class="display" style="width:100%">
+                                        
+                                        <thead>
+                                            <tr>
+                                                <th>Bill No</th>
+                                                <th>Branch</th>
+                                                <th>Bill Date</th>
+                                                <th>Vendor</th>
+                                                <th>Total Amount</th>
+                                                <th>Amount Due</th>
+                                                <th>Bill Status</th>
+                                            </tr>
+                                        </thead>
+                                        <t t-set="total_amount" t-value="0"/>
+                                        <t t-set="amount_Due" t-value="0"/>
+                                        <t t-foreach="purchase_list" t-as="pur">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <span t-esc="pur['invoice_no']"></span>
+                                                    </td>
+                                                     <td>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="pur['invoice_date']"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="pur['customer']"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="'{0:,.2f}'.format(float(pur['total_amount']))"></span>
+                                                        <t t-set="total_amount" t-value="total_amount+pur['total_amount']"/>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="'{0:,.2f}'.format(float(pur['amount_Due']))"></span>
+                                                        <t t-set="amount_Due" t-value="amount_Due+pur['amount_Due']"/>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="pur['status']"></span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </t>
+                                        <tr>
+                                            <th colspan="3">Total</th>
+                                            <th>-</th>
+                                            <th>
+                                                <span t-esc="'{0:,.2f}'.format(float(total_amount))"></span>
+                                            </th>
+                                            <th>
+                                                <span t-esc="'{0:,.2f}'.format(float(amount_Due))"></span>
+                                            </th>
+                                            <th></th>
+                                        </tr>
+                                    </table>
+                                </t>
+                                <t t-if="expense_list">
+                                    <p>
+                                        <b><span class="solid">Expense</span></b>
+                                    </p>
+                                    <table id="example" class="display" style="width:100%">
+                                        
+                                        <thead>
+                                            <tr>
+                                                <th>Bill No</th>
+                                                <th>Branch</th>
+                                                <th>Bill Date</th>
+                                                <th>Debit</th>
+                                                <th>Credit</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <t t-foreach="expense_list" t-as="exp">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <span t-esc="exp['bill_no']"></span>
+                                                    </td>
+                                                    <td>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="exp['bill_date']"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="'{0:,.2f}'.format(float(exp['debit']))"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="'{0:,.2f}'.format(float(exp['credit']))"></span>
+                                                    </td>
+                                                    <td style="text-transform: capitalize">
+                                                        <span t-esc="exp['status']"></span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </t>
+                                    </table><br/><br/>
+                                </t>
+                            </div>
+
+                        </div>
+                    </t>
+                    
+                </t>
+            </t>
+
+        </template>
+
+    </data>
+
+</odoo>

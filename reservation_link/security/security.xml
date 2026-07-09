@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="reservation_link_security" model="res.groups">
+            <field name="name">Add reservation link Button</field>
+             <field name="user_ids" eval="[(4, ref('base.user_admin'))]"/>
+        </record>
+
+        <record id="email_for_security_custom" model="res.groups">
+            <field name="name">Email Button </field>
+             <field name="user_ids" eval="[(4, ref('base.user_admin'))]"/>
+        </record>
+
+    </data>
+</odoo>

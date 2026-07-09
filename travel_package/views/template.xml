@@ -1,0 +1,1178 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="terms_condtion_form_view" model="ir.ui.view">
+            <field name="name">terms_condtion_form_view</field>
+            <field name="model">terms.condtions</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="name" required="1" />
+                        </group>
+                        <group></group>
+                    </group>
+                    <notebook>
+                        <page string="Flights">
+                            <group>
+                                <field name='flights_cancel_policy' widget='html' placeholder="General Instructions and Cancelation Policy" />
+                            </group>
+                        </page>
+                        <page string="Hotels">
+                            <group>
+                                <field name='hotels_cancel_policy' widget='html' placeholder="General Instructions and Cancelation Policy" />
+                            </group>
+                        </page>
+                        <page string="Transfer">
+                            <group>
+                                <field name='transfers_cancel_policy' widget='html' placeholder="General Instructions and Cancelation Policy" />
+                            </group>
+                        </page>
+                        <page string="Tours">
+                            <group>
+                                <field name='tours_cancel_policy' widget='html' placeholder="General Instructions and Cancelation Policy" />
+                            </group>
+                        </page>
+                        <page string="Visa">
+                            <group>
+                                <field name='visa_cancel_policy' widget='html' placeholder="General Instructions and Cancelation Policy" />
+                            </group>
+                        </page>
+                        <page string="Package">
+                            <group>
+                                <field name='packages_cancel_policy' widget='html' placeholder="General Instructions and Cancelation Policy" />
+                            </group>
+                        </page>
+                        <page string="Private Jet">
+                            <group>
+                                <field name='private_jet_cancel_policy' widget='html' placeholder="General Instructions and Cancelation Policy" />
+                            </group>
+                        </page>
+                        <page string="Yacht">
+                            <group>
+                                <field name='yacht_cancel_policy' widget='html' placeholder="General Instructions and Cancelation Policy" />
+                            </group>
+                        </page>
+                        <page string="Cruise">
+                            <group>
+                                <field name='cruise_cancel_policy' widget='html' placeholder="General Instructions and Cancelation Policy" />
+                            </group>
+                        </page>
+                        <page string="Other">
+                            <group>
+                                <field name='other_cancel_policy' widget='html' placeholder="General Instructions and Cancelation Policy" />
+                            </group>
+                        </page>
+                        <page string="General Instructions">
+                            <group>
+                                <field name='voucher_cancel_policy' widget='html' placeholder="General Instructions and Cancelation Policy" />
+                            </group>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+        <record id="action_terms_condtion_form_view" model="ir.actions.act_window">
+            <field name="name">General Instructions</field>
+            <field name="res_model">terms.condtions</field>
+            <field name="view_mode">list,form</field>
+        </record>
+        <record id="occasions_main_form" model="ir.ui.view">
+            <field name="name">res.partner.occasion</field>
+            <field name="model">customer.event</field>
+            <field name="arch" type="xml">
+                <form string="Occasions">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name='event_return' string="Customer" />
+                                <field name='date' />
+                            </group>
+                            <group>
+                                <field name='event' />
+                                <field name='enable' />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="detination_main_form" model="ir.ui.view">
+            <field name="name">detination_main_form</field>
+            <field name="model">destination.name</field>
+            <field name="arch" type="xml">
+                <form string="Occasions">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name='name' />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="destination_tree_view" model="ir.ui.view">
+            <field name="name">destination_tree_view</field>
+            <field name="model">destination.name</field>
+            <field name="arch" type="xml">
+                <list string="Destination">
+                    <field name="name" />
+                </list>
+            </field>
+        </record>
+        <record id="destination_action_id" model="ir.actions.act_window">
+            <field name="name">Destination</field>
+            <field name="res_model">destination.name</field>
+            <field name="view_mode">list,form</field>
+        </record>
+        <menuitem action="destination_action_id" id="menu_vat_detailed" name="Destination" parent="contacts.res_partner_menu_config" />
+        
+        <record id="view_reservation_order_form" model="ir.ui.view">
+            <field name="name">reservation.order.form</field>
+            <field name="model">reservation.order</field>
+            <field name="arch" type="xml">
+                <form string="Reservation" class="o_sale_order">
+                    <header invisible="quote_builder==False">
+                        <button name="create_pkg_from_quote" type="object" string="Create Reservation" class="oe_highlight" />
+                    </header>
+                    <header invisible="quote_builder==True">
+                        <button name="create_invoice" type="object" string="Create Invoice" invisible="stages !='validate'" />
+                        <button name="set_to_validate" type="object" string="Confirmed" invisible="stages not in ('draft')" />
+                        <button name="set_to_draft" type="object" string="Draft" invisible="stages not in ('cancel')" groups="travel_package.draft_button_in_reservations" />
+                        <button name="set_to_draft" type="object" string="Draft" invisible="stages not in ('validate')" />
+                        <button name="action_voucher_sent" string="Send by Email" type="object" class="btn-primary" />
+                        <button name="data_auto_correct" type="object" string="Refresh" invisible="stages !='validate'" />
+                        <field name="stages" widget="statusbar" statusbar_visible="draft,validate,cancel" />
+                        <button name="archive" type="object" string="Archive" invisible="1" />
+                        <button name="unarchive" type="object" string="Un-Archive" invisible="1" />
+                        <!-- <button name='wizards_sms' type='object' string="SMS" class='oe_highlight' /> -->
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box" invisible="quote_builder == True">
+                            <button class="oe_stat_button" name="view_rec_inv" style="margin-left:150px;" type="object" icon="fa-file-text-o">
+                                <field string="Customer Invoice" name="rec_count_inv" widget="statinfo" />
+                            </button>
+                            <button class="oe_stat_button" name="view_cust_note_rec" type="object" icon="fa-file-text-o">
+                                <field string="Customer Credits" name="cust_credits_count" widget="statinfo" />
+                            </button>
+                            <button class="oe_stat_button" name="view_rec" type="object" icon="fa-file-text-o">
+                                <field string="Vendor Bills" name="rec_count" widget="statinfo" />
+                            </button>
+                            <button class="oe_stat_button" name="view_vendor_note_rec" type="object" icon="fa-file-text-o">
+                                <field string="Vendor Credits" name="vendor_credits_count" widget="statinfo" />
+                            </button>
+                            <!-- <button name="action_view_invoice" type="object" class="oe_stat_button" icon="fa-pencil-square-o" invisible="invoice_count ==0">
+                                <field name="invoice_count" widget="statinfo" string="Invoices" />
+                            </button> -->
+                        </div>
+                        <field name="image" widget="image" class="oe_left oe_avatar" readonly="stages in ('validate','cancel')" />
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" invisible="1" readonly="stages in ('validate','cancel')" />
+                                <field name="has_duplicate_sale_orders" invisible="1" />
+                                <field name="duplicate_sale_order_message" invisible="1" />
+                                <div class="alert alert-danger" role="alert" style="display:inline-flex; align-items:center; gap:8px; margin-bottom:0px; font-size:12px; white-space:nowrap;" invisible="not has_duplicate_sale_orders">
+                                    <span>Duplicate Reservation Warning: <strong>
+                                            <field name="duplicate_sale_order_message" readonly="1" nolabel="1" class="oe_inline" /></strong></span>
+                                    <button name="action_log_duplicate_sale_orders" type="object" string="OK" class="btn btn-sm btn-light" />
+                                </div>
+                                <field name="name_package" placeholder="Package Name" required="quote_builder == False" readonly="stages in ('validate','cancel')" />
+                                <!-- invisible="stages in ('validate','cancel')" -->
+                            </h1>
+                            <h2>
+                                <field name="year" readonly="stages in ('validate','cancel')" string="Year" placeholder="Year" required='1' />
+                            </h2>
+                            <h2>
+                                <field name="name" string="Sequence" placeholder="Sequence" readonly='1' />
+                            </h2>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="package" readonly="stages in ('validate','cancel')" invisible="1" />
+                                <field name="active" invisible="1" />
+                                <field name="quote_builder" invisible="1" />
+                                <field name="partner_id" string="Customer Name" widget="res_partner_many2one" context="{'res_partner_search_mode': 'customer', 'show_address': 1, 'show_vat': True, 'default_b2c_customer':True}" options='{"always_reload": True}' required="1" domain="[('b2c_customer', '=', 'true')]" readonly="stages in ('validate','cancel')" />
+                                <field name="reservation_type" force_save="1" readonly="stages in ('validate','cancel')" />
+                                <field name="job_of_company" readonly='1' force_save="1" invisible="1" />
+                                <field name="partner_id_mtom" invisible='1' widget="many2many_tags" readonly="stages in ('validate','cancel')" />
+                                <field name="no_of_particpents" required="1" readonly="stages in ('validate','cancel')" />
+                                <field name="destination" widget='many2many_tags' readonly="stages in ('validate','cancel')" />
+                                <field name="price_list" invisible="1" readonly="stages in ('validate','cancel')" />
+                                <field name="arrival_date" required="1" readonly="stages in ('validate','cancel')" />
+                                <field name="departure_date" required="1" readonly="stages in ('validate','cancel')" />
+                                <field name="agent" readonly="stages in ('validate','cancel')" />
+                                <field name="get_term_conditions" readonly="stages in ('validate','cancel')" />
+                                <field name="summary" readonly="stages in ('validate','cancel')" />
+                                <field name="x_flight_detail" />
+                                <field name="commissioned" invisible="0" readonly="stages in ('validate','cancel')" />
+                                <field name="stamp" invisible="0" readonly="stages in ('validate','cancel')" />
+                                <!-- readonly="stages in ('validate','cancel')"/> -->
+                                <field name="invoice_add" readonly="stages in ('validate','cancel')" invisible="1" />
+                                <field name="delivery_add" invisible="1" readonly="stages in ('validate','cancel')" />
+                                <field name="quotation_template" invisible="1" readonly="stages in ('validate','cancel')" />
+                            </group>
+                            <group>
+                                <field name="validity_date" invisible="stages in ('validate','cancel')" readonly="stages in ('validate','cancel')" />
+                                <div class="o_td_label" groups="base.group_no_one" invisible="stages in ('validate','cancel')" readonly="stages in ('validate','cancel')">
+                                    <label for="date_order" string="Reservation Date" />
+                                </div>
+                                <field name="date_order" nolabel="1" groups="base.group_no_one" invisible="stages in ('validate','cancel')" readonly="stages in ('validate','cancel')" />
+                                <div class="o_td_label" readonly="stages in ('validate','cancel')" invisible="stages in ('draft')">
+                                    <label for="date_order" string="Order Date" />
+                                </div>
+                                <field name="date_order" required="stages in ('validate','cancel')" invisible="stages in ('draft')" readonly="stages in ('validate','cancel')" nolabel="1" />
+                                <field name="payment_term" readonly="stages in ('validate','cancel')" />
+                                <field name="payment_date_custom" readonly="stages in ('validate','cancel')" required="0" />
+                                <field name="customer_ref" readonly="stages in ('validate','cancel')" />
+                                <field name="reason_to_cancel"  />
+                                <field name="hotel_arrival" readonly="stages in ('validate','cancel')" />
+                                <field name="hotel_return" readonly="stages in ('validate','cancel')" />
+                                <field name="package_reference"  invisible="stages in ('draft')" readonly="stages in ('validate','cancel')" options="{'no_create_edit': True, 'no_open': True}" />
+                                <!-- <field name="credit_limit_check" /> -->
+                                <field name="credit_limit_reached" style="color:red" invisible="1" force_save="1" readonly="stages in ('validate','cancel')" />
+                                <field name="invoice_exist" invisible="1" />
+                                <field name="bill_exist" invisible="1" />
+                                <field name="field_to_run_function" invisible="1" />
+                                <field name="custom_invoice_status_compute" invisible="1" />
+                                <field name="custom_image" invisible="1" widget="image" />
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Summary">
+                                <field name="itinarnay_package" readonly="1">
+                                    <list editable="bottom">
+                                        <field name="product_id" required="1" options="{'no_open':True,'no_create': True}" />
+                                        <!--   <field name="supplier_id" domain="[('supplier_rank','=',1)]"/> -->
+                                        <field name="customer_m2m" options="{'no_open':True,'no_create': True}" widget="many2many_tags" />
+                                        <field name="supplier" options="{'no_open':True,'no_create': True}" />
+                                        <field name="description" />
+                                        <field name="date_from" />
+                                        <field name="date_to" />
+                                        <field name="service_tax_type" />
+                                        <field name="service_type" column_invisible="1" force_save='1' />
+                                        <field name="price" sum="Total" />
+                                        <!-- <field name="amnt_fc" sum="Total"/> -->
+                                        <field name="commission" sum="Total" />
+                                        <field name="total" sum="Total" />
+                                        <field name="all_old_hotel_record" column_invisible="1" />
+                                        <field name="bill_id" readonly="1" />
+                                        <button name="create_bill_of_vendor" string="Vendor Bill" type='object' class='oe_highlight' />
+                                    </list>
+                                    <form>
+                                        <group>
+                                            <group>
+                                                <field name="product_id" required="1" options="{'no_open':True,'no_create': True}" />
+                                                <field name="customer_m2m" options="{'no_open':True,'no_create': True}" widget="many2many_tags" />
+                                                <field name="supplier" options="{'no_open':True,'no_create': True}" />
+                                                <field name="description" />
+                                                <field name="date_from" />
+                                                <field name="date_to" />
+                                            </group>
+                                            <group>
+                                                <field name="service_type" invisible="1" force_save='1' />
+                                                <field name="price" sum="Total" />
+                                                <field name="commission" sum="Total" />
+                                                <field name="total" sum="Total" />
+                                                <field name="bill_id" readonly="1" />
+                                                <button name="create_bill_of_vendor" string="Vendor Bill" type='object' class='oe_highlight' />
+                                            </group>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                            <page string="Flights">
+                                <field name="flights_pkg" context="{'default_customer':partner_id,'default_no_of_person':no_of_particpents,'default_service_type':'flight','default_departures':arrival_date,'default_arrival': departure_date}" readonly="stages in ('validate','cancel')">
+                                    <list >
+                                        <field name="sequence" widget="handle" readonly="0" />
+                                        <field name="airline" string="Airline Name" />
+                                        <field name="product_id" required='0' options="{'no_open':True,'no_create': True}" domain="[('prod_serv_typecategory','=','flight')]" />
+                                        <field name="supplier" required='1' domain="[('airline_supplier','=',True)]" options="{'no_open':True,'no_create': True}" />
+                                        <field name="customer_m2m" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" widget="many2many_tags" />
+                                        <field name="customer" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" column_invisible="1" />
+                                        <field name="date_from"></field>
+                                        <field name="date_to"></field>
+                                        <field name="from_loc" string="From" />
+                                        <field name="to_loc" string="To" />
+                                        <field name="e_ticket" />
+                                        <field name="e_ticket_m2m" widget='many2many_tags' />
+                                        <field name="flight" column_invisible="1" />
+                                        <field name="fight_class" />
+                                        <field name="departures" />
+                                        <field name="arrival" />
+                                        <field name="bag" column_invisible="1" />
+                                        <field name="terminal" column_invisible="1" />
+                                        <field name="airline_pnr" column_invisible="1" />
+                                        <field name="no_of_person" sum="Total" />
+                                        <field name="amnt_fc" />
+                                        <field name="currency_name" />
+                                        <field name="exchange_rate" />
+                                        <field name="price" sum='Total' />
+                                        <field name="commission" sum='Total' />
+                                        <field name="total" sum='Total' />
+                                        <field name="itinarnay_return" column_invisible='1' />
+                                        <field name="flights_return" column_invisible='1' />
+                                    </list>
+                                    <form>
+                                        <group>
+                                            <group>
+                                                <field name="airline" string="Airline Name" />
+                                                <field name="product_id" required='0' options="{'no_open':True,'no_create': True}" domain="[('prod_serv_typecategory','=','flight')]" />
+                                                <field name="supplier" domain="['|',('airline_supplier','=',True),('dmc','=',True)]" required="1" options="{'no_open':True,'no_create': True}" />
+                                                <field name="customer_m2m" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" widget="many2many_tags" />
+                                                <field name="from_loc" string="From" />
+                                                <field name="to_loc" string="To" />
+                                                <field name="e_ticket" />
+                                                <field name="airline_pnr" string="PNR" />
+                                                <field name="fight_class" />
+                                                <field name="departures" />
+                                                <field name="arrival" />
+                                            </group>
+                                            <group>
+                                                <field name="no_of_person" sum="Total" />
+                                                <field name="amnt_fc" />
+                                                <field name="service_tax_type" required="1" />
+                                                <field name="currency_name" />
+                                                <field name="exchange_rate" />
+                                                <field name="price" sum='Total' />
+                                                <field name="commission" sum='Total' />
+                                                <field name="total" sum='Total' />
+                                            </group>
+                                        </group>
+                                    </form>
+                                </field>
+                                <group>
+                                    <field name='flights_cancel_policy' widget='html' placeholder="Flight Cancelation Policy" readonly="stages in ('validate','cancel')" />
+                                </group>
+                            </page>
+                            <page string="Hotels">
+                                <field name="hotel_pkg" context="{'default_customer':partner_id, 'default_no_of_person':no_of_particpents, 'default_service_type':'hotel','default_date_from':arrival_date,'default_date_to':departure_date}" readonly="stages in ('validate','cancel')">
+                                    <list >
+                                        <field name="sequence" widget="handle" readonly="0" />
+                                        <field name="hotel_id" required="0" options="{'no_open':True,'no_create': True}" domain="[('hotel_supplier','=',True)]" />
+                                        <field name="product_id" required="0" options="{'no_open':True,'no_create': True}" domain="[('prod_serv_typecategory','=','hotel')]" />
+                                        <field name="supplier" domain="['|','|',('hotel_supplier','=',True),('bed_bank','=',True),('dmc','=',True)]" required="1" options="{'no_open':True,'no_create': True}" />
+                                        <field name="customer_m2m" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" widget="many2many_tags" />
+                                        <field name="customer" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" column_invisible="1" />
+                                        <field name="confirmation_no" />
+                                        <field name="date_from" string="Check In" />
+                                        <field name="date_to" string="Check Out" />
+                                        <field name="room_occupancy" column_invisible="1" />
+                                        <field name="nights" />
+                                        <field name="room_type" widget="many2many_tags" />
+                                        <field name="room_qty" />
+                                        <field name="hotel_meal_plan" widget='many2many_tags' />
+                                        <field name="no_of_person" column_invisible="0" />
+                                        <field name="transfer" widget='many2many_tags' />
+                                        <field name="amnt_fc" />
+                                        <field name="currency_name" />
+                                        <field name="occasion" />
+                                        <field name="special_remarks" />
+                                        <field name="offered_applied" />
+                                        <field name="exchange_rate" />
+                                        <field name="price" />
+                                        <field name="commission" />
+                                        <field name="total" sum='Total' />
+                                        <field name="itinarnay_return" column_invisible='1' />
+                                        <field name="hotel_return" column_invisible='1' />
+                                        <button name="action_hotel_email_sent" string="Send Email" type="object" class="oe_highlight" />
+                                        <button name="action_hotel_email_historys" string="History" type="object" class="oe_highlight" />
+                                    </list>
+                                    <form>
+                                        <header>
+                                            <button name="action_hotel_email_sent" string="Send Email" type="object" class="oe_highlight" />
+                                        </header>
+                                        <group>
+                                            <group>
+                                                <field name="hotel_id" required="0" options="{'no_open':True,'no_create': True}" domain="[('hotel_supplier','=',True)]" />
+                                                <field name="product_id" required="0" options="{'no_open':True,'no_create': True}" domain="[('prod_serv_typecategory','=','hotel')]" />
+                                                <field name="supplier" domain="['|','|',('hotel_supplier','=',True),('bed_bank','=',True),('dmc','=',True)]" required="1" options="{'no_open':True,'no_create': True}" />
+                                                <field name="customer_m2m" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" widget="many2many_tags" />
+                                                <field name="customer" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" invisible="1" />
+                                                <field name="confirmation_no" />
+                                                <field name="date_from" string="Check In" />
+                                                <field name="date_to" string="Check Out" />
+                                                <field name="room_occupancy" invisible="1" />
+                                                <field name="nights" />
+                                                <field name="room_type" widget="many2many_tags" />
+                                                <field name="room_qty" />
+                                                <field name="hotel_meal_plan" widget='many2many_tags' />
+                                                <field name="no_of_person" invisible="0" />
+                                            </group>
+                                            <group>
+                                                <field name="transfer" widget='many2many_tags' />
+                                                <field name="amnt_fc" />
+                                                <field name="service_tax_type" required="1" />
+                                                <field name="currency_name" />
+                                                <field name="occasion" />
+                                                <field name="special_remarks" />
+                                                <field name="offered_applied" />
+                                                <!-- <field name="rate"/> -->
+                                                <field name="exchange_rate" />
+                                                <field name="price" />
+                                                <field name="commission" />
+                                                <field name="total" sum='Total' />
+                                                <field name="commission_able" />
+                                                <field name="fell_date" invisible="commission_able==False" />
+                                                <!-- <field name="payment_term" required="1" invisible="commission_able==False" /> -->
+                                                <field name="itinarnay_return" invisible='1' />
+                                                <field name="hotel_return" invisible='1' />
+                                            </group>
+                                        </group>
+                                    </form>
+                                </field>
+                                <group>
+                                    <field name='hotels_cancel_policy' widget='html' placeholder="Hotels Cancelation Policy" readonly="stages in ('validate','cancel')" />
+                                </group>
+                            </page>
+                            <page string="Transfer">
+                                <field name="transportation_pkg" context="{'default_customer':partner_id, 'default_no_of_person':no_of_particpents, 'default_service_type':'transfer'}" readonly="stages in ('validate','cancel')">
+                                    <list >
+                                        <field name="sequence" widget="handle" readonly="0" />
+                                        <field name="product_id" domain="[('prod_serv_typecategory','=','transfer')]" required="0" options="{'no_open':True,'no_create': True}" />
+                                        <field name="supplier" domain="[('transfer_supplier','=',True)]" required="1" options="{'no_open':True,'no_create': True}" />
+                                        <field name="customer_m2m" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" widget="many2many_tags" />
+                                        <field name="customer" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" column_invisible="1" />
+                                        <field name="date_from"></field>
+                                        <field name="date_to"></field>
+                                        <field name="confirmation_no" />
+                                        <field name="pick_up_place" />
+                                        <field name="drop_of_place" />
+                                        <field name="date" />
+                                        <field name="drop_off_date" />
+                                        <field name="free_space_time" />
+                                        <field name="transfer_type" />
+                                        <field name="vehicle_type" />
+                                        <field name="wait_time_policy" />
+                                        <field name="rent_car" />
+                                        <field name="no_of_person" string="Hours" column_invisible="1" />
+                                        <field name="amnt_fc" />
+                                        <field name="currency_name" />
+                                        <field name="exchange_rate" />
+                                        <field name="price" />
+                                        <field name="commission" />
+                                        <field name="total" />
+                                        <button name="action_transfer_email_sent" string="Send Email" type="object" class="oe_highlight" />
+                                    </list>
+                                    <form>
+                                        <header>
+                                            <button name="action_transfer_email_sent" string="Send Email" type="object" class="oe_highlight" />
+                                        </header>
+                                        <group>
+                                            <group>
+                                                <field name="product_id" domain="[('prod_serv_typecategory','=','transfer')]" required="0" options="{'no_open':True,'no_create': True}" />
+                                                <field name="supplier" domain="['|',('transfer_supplier','=',True),('dmc','=',True)]" required="1" options="{'no_open':True,'no_create': True}" />
+                                                <field name="customer_m2m" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" widget="many2many_tags" />
+                                                <field name="customer" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" invisible="1" />
+                                                <field name="confirmation_no" />
+                                                <field name="date_from" string="Pickup Date" />
+                                                <field name="date_to" string="Departure Date" />
+                                                <field name="pick_up_place" />
+                                                <field name="drop_of_place" />
+                                                <field name="date" string="Date &amp; Time" />
+                                                <field name="transfer_type" />
+                                                <field name="vehicle_type" />
+                                                <field name="wait_time_policy" />
+                                                <field name="rent_car" />
+                                            </group>
+                                            <group>
+                                                <field name="amnt_fc" />
+                                                <field name="service_tax_type" required="1" />
+                                                <field name="currency_name" />
+                                                <field name="exchange_rate" />
+                                                <field name="price" />
+                                                <field name="commission" />
+                                                <field name="total" />
+                                            </group>
+                                        </group>
+                                    </form>
+                                </field>
+                                <group>
+                                    <field name='transfers_cancel_policy' widget='html' placeholder="Transfers Cancelation Policy" readonly="stages in ('validate','cancel')" />
+                                </group>
+                            </page>
+                            <page string="Tours">
+                                <field name="tours_pkg" context="{'default_customer':partner_id, 'default_no_of_person':no_of_particpents, 'default_service_type':'tours'}" readonly="stages in ('validate','cancel')">
+                                    <list >
+                                        <field name="sequence" widget="handle" readonly="0" />
+                                        <field name="product_id" domain="[('prod_serv_typecategory','=','tour')]" required="0" options="{'no_open':True,'no_create': True}" />
+                                        <field name="supplier" domain="[('tours_supplier','=',True)]" required="1" options="{'no_open':True,'no_create': True}" />
+                                        <field name="customer_m2m" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" widget="many2many_tags" />
+                                        <field name="customer" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" column_invisible="1" />
+                                        <field name="confirmation_no" />
+                                        <field name="date_from" />
+                                        <field name="date_to" />
+                                        <field name="description" />
+                                        <field name="guided_or_not" />
+                                        <field name="days_valid" />
+                                        <field name="issue_date" />
+                                        <field name="ticket_day" />
+                                        <field name="no_of_person" string="Qty" column_invisible="1" />
+                                        <field name="amnt_fc" />
+                                        <field name="currency_name" />
+                                        <field name="exchange_rate" />
+                                        <field name="price" />
+                                        <field name="commission" />
+                                        <field name="total" sum='Total' />
+                                        <button name="action_tour_email_sent" string="Send Email" type="object" class="oe_highlight" />
+                                        <!-- <field name="tours_subtotal" /> -->
+                                    </list>
+                                    <form>
+                                        <header>
+                                            <button name="action_tour_email_sent" string="Send Email" type="object" class="oe_highlight" />
+                                        </header>
+                                        <group>
+                                            <group>
+                                                <field name="product_id" domain="[('prod_serv_typecategory','=','tour')]" required="0" options="{'no_open':True,'no_create': True}" />
+                                                <field name="supplier" domain="['|',('tours_supplier','=',True),('dmc','=',True)]" required="1" options="{'no_open':True,'no_create': True}" />
+                                                <field name="customer_m2m" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" widget="many2many_tags" />
+                                                <field name="customer" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" invisible="1" />
+                                                <field name="confirmation_no" />
+                                                <field name="date_from" />
+                                                <field name="date_to" />
+                                                <field name="description" />
+                                                <field name="guided_or_not" />
+                                                <field name="days_valid" />
+                                                <field name="issue_date" />
+                                                <field name="ticket_day" />
+                                                <field name="no_of_person" string="Qty" invisible="1" />
+                                            </group>
+                                            <group>
+                                                <field name="amnt_fc" />
+                                                <field name="service_tax_type" required="1" />
+                                                <field name="currency_name" />
+                                                <field name="exchange_rate" />
+                                                <field name="price" />
+                                                <field name="commission" />
+                                                <field name="total" sum='Total' />
+                                            </group>
+                                        </group>
+                                    </form>
+                                </field>
+                                <group>
+                                    <field name='tours_cancel_policy' widget='html' placeholder="Tours Cancelation Policy" readonly="stages in ('validate','cancel')" />
+                                </group>
+                            </page>
+                            <page string="Visa">
+                                <field name="visa_pkg" context="{'default_customer':partner_id, 'default_no_of_person':no_of_particpents, 'default_service_type':'visa'}" readonly="stages in ('validate','cancel')">
+                                    <list >
+                                        <field name="sequence" widget="handle" readonly="0" />
+                                        <field name="product_id" domain="[('prod_serv_typecategory','=','visa')]" required="0" options="{'no_open':True,'no_create': True}" />
+                                        <field name="supplier" domain="[('visa_supplier','=',True),('dmc','=',True)]" required="1" options="{'no_open':True,'no_create': True}" />
+                                        <field name="customer_m2m" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" widget="many2many_tags" />
+                                        <field name="customer" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" column_invisible="1" />
+                                        <field name="date_from"></field>
+                                        <field name="date_to"></field>
+                                        <field name="confirmation_no" />
+                                        <field name="date_from" />
+                                        <field name="date_to" />
+                                        <field name="description" />
+                                        <field name="visa_status" />
+                                        <field name="no_of_person" string="Ordered Qty" column_invisible="1" />
+                                        <field name="currency_name" />
+                                        <field name="amnt_fc" />
+                                        <field name="exchange_rate" />
+                                        <field name="price" />
+                                        <field name="commission" />
+                                        <field name="total" sum='Total' />
+                                        <button name="action_visa_email_sent" string="Send Email" type="object" class="oe_highlight" />
+                                    </list>
+                                    <form>
+                                        <header>
+                                            <button name="action_visa_email_sent" string="Send Email" type="object" class="oe_highlight" />
+                                        </header>
+                                        <group>
+                                            <group>
+                                                <field name="product_id" domain="[('prod_serv_typecategory','=','visa')]" required="0" options="{'no_open':True,'no_create': True}" />
+                                                <field name="supplier" domain="['|',('visa_supplier','=',True),('dmc','=',True)]" required="1" options="{'no_open':True,'no_create': True}" />
+                                                <field name="customer_m2m" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" widget="many2many_tags" />
+                                                <field name="customer" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" invisible="1" />
+                                                <field name="confirmation_no" />
+                                                <field name="date_from" />
+                                                <field name="date_to" />
+                                                <field name="description" />
+                                                <field name="visa_status" />
+                                                <field name="no_of_person" string="Ordered Qty" invisible="1" />
+                                            </group>
+                                            <group>
+                                                <field name="amnt_fc" />
+                                                <field name="service_tax_type" required="1" />
+                                                <field name="currency_name" />
+                                                <field name="exchange_rate" />
+                                                <field name="price" />
+                                                <field name="commission" />
+                                                <field name="total" sum='Total' />
+                                            </group>
+                                        </group>
+                                    </form>
+                                </field>
+                                <group>
+                                    <field name='visa_cancel_policy' widget='html' placeholder="Tours Cancelation Policy" readonly="stages in ('validate','cancel')" />
+                                </group>
+                            </page>
+                            <page string="Ready Packages">
+                                <field name="packages_pkg" context="{'default_customer':partner_id, 'default_no_of_person':no_of_particpents,'default_service_type':'ready_package'}" readonly="stages in ('validate','cancel')">
+                                    <list >
+                                        <field name="sequence" widget="handle" readonly="0" />
+                                        <field name="product_id" domain="[('prod_serv_typecategory','=','package')]" required="0" options="{'no_open':True,'no_create': True}" />
+                                        <field name="supplier" required="1" domain="[('package_supplier','=',True)]" options="{'no_open':True,'no_create': True}" />
+                                        <field name="customer_m2m" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" widget="many2many_tags" />
+                                        <field name="customer" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" column_invisible="1" />
+                                        <field name="category" required='0' />
+                                        <field name="date_from" />
+                                        <field name="date_to" />
+                                        <field name="confirmation_no" />
+                                        <field name="validity" />
+                                        <field name="no_of_nights" />
+                                        <field name="rooms_type" />
+                                        <field name="meal_plan" />
+                                        <field name="transfer_mode" />
+                                        <field name="no_of_person" string="Guest No" column_invisible="1" />
+                                        <field name="added_values" />
+                                        <field name="amnt_fc" />
+                                        <field name="currency_name" />
+                                        <field name="exchange_rate" />
+                                        <field name="price" />
+                                        <field name="product_type" />
+                                        <field name="commission" />
+                                        <field name="total" sum='Total' />
+                                        <button name="action_ready_packg_email_sent" string="Send Email" type="object" class="oe_highlight" />
+                                    </list>
+                                    <form>
+                                        <header>
+                                            <button name="action_ready_packg_email_sent" string="Send Email" type="object" class="oe_highlight" />
+                                        </header>
+                                        <group>
+                                            <group>
+                                                <field name="product_id" domain="[('prod_serv_typecategory','=','package')]" required="0" options="{'no_open':True,'no_create': True}" />
+                                                <field name="supplier" domain="['|',('private_jet','=',True),('dmc','=',True)]" required="1" options="{'no_open':True,'no_create': True}" />
+                                                <field name="customer_m2m" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" widget="many2many_tags" />
+                                                <field name="customer" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" invisible="1" />
+                                                <field name="category" required='0' />
+                                                <field name="date_from" />
+                                                <field name="date_to" />
+                                                <field name="confirmation_no" />
+                                                <field name="validity" />
+                                                <field name="no_of_nights" />
+                                                <field name="rooms_type" />
+                                                <field name="meal_plan" />
+                                            </group>
+                                            <group>
+                                                <field name="transfer_mode" />
+                                                <field name="no_of_person" string="Guest No" invisible="1" />
+                                                <field name="added_values" />
+                                                <field name="amnt_fc" />
+                                                <field name="service_tax_type" required="1" />
+                                                <field name="currency_name" />
+                                                <field name="exchange_rate" />
+                                                <field name="price" />
+                                                <field name="product_type" />
+                                                <field name="commission" />
+                                                <field name="total" sum='Total' />
+                                            </group>
+                                        </group>
+                                    </form>
+                                </field>
+                                <group>
+                                    <field name='packages_cancel_policy' widget='html' placeholder="Tours Cancelation Policy" readonly="stages in ('validate','cancel')" />
+                                </group>
+                            </page>
+                            <page string="Private Jet">
+                                <field name="privatejet_pkg" context="{'default_customer':partner_id, 'default_no_of_person':no_of_particpents, 'default_service_type':'private_jet','default_departures':arrival_date,'default_arrival':departure_date}" readonly="stages in ('validate','cancel')">
+                                    <list >
+                                        <field name="sequence" widget="handle" readonly="0" />
+                                        <field name="product_id" required='1' options="{'no_open':True,'no_create': True}" domain="[('prod_serv_typecategory','=','private')]" />
+                                        <field name="supplier" required='1' domain="[('travel_agency','=',True)]" options="{'no_open':True,'no_create': True}" />
+                                        <field name="customer_m2m" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" widget="many2many_tags" />
+                                        <field name="customer" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" column_invisiblel="1" />
+                                        <field name="date_from" />
+                                        <field name="date_to" />
+                                        <field name="from_to" />
+                                        <field name="flight" />
+                                        <field name="fight_class" />
+                                        <field name="departures" />
+                                        <field name="arrival" />
+                                        <field name="bag" />
+                                        <field name="terminal" />
+                                        <field name="airline_pnr" />
+                                        <field name="no_of_person" sum='Total' column_invisiblel="1" />
+                                        <field name="amnt_fc" />
+                                        <field name="currency_name" />
+                                        <field name="exchange_rate" />
+                                        <field name="price" sum='Total' />
+                                        <field name="commission" sum='Total' />
+                                        <field name="total" sum='Total' />
+                                        <button name="action_private_jet_email_sent" string="Send Email" type="object" class="oe_highlight" />
+                                    </list>
+                                    <form>
+                                        <header>
+                                            <button name="action_private_jet_email_sent" string="Send Email" type="object" class="oe_highlight" />
+                                        </header>
+                                        <group>
+                                            <group>
+                                                <field name="product_id" domain="[('prod_serv_typecategory','=','private')]" options="{'no_create_edit': True, 'no_open': True}" />
+                                                <field name="supplier" domain="['|',('private_jet','=',True),('dmc','=',True)]" required="1" options="{'no_open':True,'no_create': True}" />
+                                                <field name="customer_m2m" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" widget="many2many_tags" />
+                                                <field name="customer" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" invisible="1" />
+                                                <field name="date_from" />
+                                                <field name="date_to" />
+                                                <field name="from_to" />
+                                                <field name="flight" />
+                                                <field name="fight_class" />
+                                                <field name="departures" />
+                                                <field name="arrival" />
+                                                <!-- <field name="bag" /> -->
+                                                <!-- <field name="terminal" /> -->
+                                                <field name="airline_pnr" />
+                                            </group>
+                                            <group>
+                                                <field name="no_of_person" sum='Total' invisible="1" />
+                                                <field name="bag" />
+                                                <field name="terminal" />
+                                                <field name="amnt_fc" />
+                                                <field name="service_tax_type" required="1" />
+                                                <field name="currency_name" />
+                                                <field name="exchange_rate" />
+                                                <field name="price" sum='Total' />
+                                                <field name="commission" sum='Total' />
+                                                <field name="total" sum='Total' />
+                                            </group>
+                                        </group>
+                                    </form>
+                                </field>
+                                <group>
+                                    <field name='private_jet_cancel_policy' widget='html' placeholder="Tours Cancelation Policy" readonly="stages in ('validate','cancel')" />
+                                </group>
+                            </page>
+                            <page string="Yacht">
+                                <field name="yacht_pkg" context="{'default_customer':partner_id, 'default_no_of_person':no_of_particpents,'default_service_type':'yacht','default_date_from':arrival_date,'default_date_to':departure_date}" readonly="stages in ('validate','cancel')">
+                                    <list >
+                                        <field name="sequence" widget="handle" readonly="0" />
+                                        <field name="supplier" domain="[('yacht_supplier','=',True)]" required='1' options="{'no_open':True,'no_create': True}" />
+                                        <field name="customer_m2m" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" widget="many2many_tags" />
+                                        <field name="customer" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" column_invisible="1" />
+                                        <field name="confirmation_no" />
+                                        <field name="date_from" />
+                                        <field name="date_to" />
+                                        <field name="description" />
+                                        <field name="duration" />
+                                        <field name="yacht_type" />
+                                        <field name="meal_plan" />
+                                        <field name="occupancy" />
+                                        <field name="departure_place" />
+                                        <field name="arrival_place" />
+                                        <field name="no_of_person" column_invisible="1" />
+                                        <field name="amnt_fc" />
+                                        <field name="currency_name" />
+                                        <field name="exchange_rate" />
+                                        <field name="price" />
+                                        <field name="commission" />
+                                        <field name="total" sum='Total' />
+                                        <button name="action_yachat_email_sent" string="Send Email" type="object" class="oe_highlight" />
+                                    </list>
+                                    <form>
+                                        <header>
+                                            <button name="action_yachat_email_sent" string="Send Email" type="object" class="oe_highlight" />
+                                        </header>
+                                        <group>
+                                            <group>
+                                                <field name="product_id" domain="[('prod_serv_typecategory','=','yacht')]" options="{'no_create_edit': True, 'no_open': True}" />
+                                                <field name="supplier" domain="['|',('yacht_supplier','=',True),('dmc','=',True)]" required="1" options="{'no_open':True,'no_create': True}" />
+                                                <field name="customer_m2m" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" widget="many2many_tags" />
+                                                <field name="customer" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" column_invisible="1" />
+                                                <field name="confirmation_no" />
+                                                <field name="date_from" />
+                                                <field name="date_to" />
+                                                <field name="description" />
+                                                <field name="duration" />
+                                                <field name="yacht_type" />
+                                                <field name="meal_plan" />
+                                                <field name="occupancy" />
+                                                <field name="departure_place" />
+                                                <field name="arrival_place" />
+                                                <!--  <field name="date_from" />
+                                    <field name="date_to" /> -->
+                                            </group>
+                                            <group>
+                                                <field name="amnt_fc" />
+                                                <field name="service_tax_type" required="1" />
+                                                <field name="currency_name" />
+                                                <field name="exchange_rate" />
+                                                <field name="price" />
+                                                <field name="commission" />
+                                                <field name="total" sum='Total' />
+                                            </group>
+                                        </group>
+                                    </form>
+                                </field>
+                                <group>
+                                    <field name='yacht_cancel_policy' widget='html' placeholder="Tours Cancelation Policy" readonly="stages in ('validate','cancel')" />
+                                </group>
+                            </page>
+                            <page string="Cruises">
+                                <field name="cruises_pkg" context="{'default_customer':partner_id, 'default_no_of_person':no_of_particpents, 'default_service_type':'cruise','default_date_from':arrival_date,'default_date_to':departure_date}" readonly="stages in ('validate','cancel')">
+                                    <list >
+                                        <field name="sequence" widget="handle" readonly="0" />
+                                        <field name="supplier" domain="[('cruise_supplier','=',True)]" required='1' options="{'no_open':True,'no_create': True}" />
+                                        <field name="customer_m2m" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" widget="many2many_tags" />
+                                        <field name="customer" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" invisible="1" />
+                                        <field name="confirmation_no" />
+                                        <field name="date_from" />
+                                        <field name="date_to" />
+                                        <field name="description" />
+                                        <field name="duration" />
+                                        <field name="cabin_type" />
+                                        <field name="meal_plan" />
+                                        <field name="occupancy" />
+                                        <field name="departure_place" />
+                                        <field name="arrival_place" />
+                                        <field name="no_of_person" invisible="1" />
+                                        <field name="amnt_fc" />
+                                        <field name="currency_name" />
+                                        <field name="exchange_rate" />
+                                        <field name="price" />
+                                        <field name="commission" />
+                                        <field name="total" sum='Total' />
+                                        <button name="action_cruises_email_sent" string="Send Email" type="object" class="oe_highlight" />
+                                    </list>
+                                    <form>
+                                        <header>
+                                            <button name="action_cruises_email_sent" string="Send Email" type="object" class="oe_highlight" />
+                                        </header>
+                                        <group>
+                                            <group>
+                                                <field name="product_id" domain="[('prod_serv_typecategory','=','cruise')]" options="{'no_create_edit': True, 'no_open': True}" />
+                                                <field name="supplier" domain="['|',('cruise_supplier','=',True),('dmc','=',True)]" required="1" options="{'no_open':True,'no_create': True}" />
+                                                <field name="customer_m2m" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" widget="many2many_tags" />
+                                                <field name="customer" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" column_invisible="1" />
+                                                <field name="confirmation_no" />
+                                                <field name="date_from" />
+                                                <field name="date_to" />
+                                                <field name="description" />
+                                                <field name="duration" />
+                                                <field name="cabin_type" />
+                                                <field name="meal_plan" />
+                                                <field name="occupancy" />
+                                                <field name="departure_place" />
+                                                <field name="arrival_place" />
+                                            </group>
+                                            <group>
+                                                <field name="no_of_person" column_invisible="1" />
+                                                <field name="amnt_fc" />
+                                                <field name="service_tax_type" required="1" />
+                                                <field name="currency_name" />
+                                                <field name="exchange_rate" />
+                                                <field name="price" />
+                                                <field name="commission" />
+                                                <field name="total" sum='Total' />
+                                            </group>
+                                        </group>
+                                    </form>
+                                </field>
+                                <group>
+                                    <field name='cruise_cancel_policy' widget='html' placeholder="Tours Cancelation Policy" readonly="stages in ('validate','cancel')" />
+                                </group>
+                            </page>
+                            <page string="Other Services">
+                                <field name="otherservices_pkg" context="{'default_customer':partner_id, 'default_no_of_person':no_of_particpents, 'default_service_type':'other','default_date_from':arrival_date,'default_date_to':departure_date}" readonly="stages in ('validate','cancel')">
+                                    <list >
+                                        <field name="sequence" widget="handle" readonly="0" />
+                                        <field name="product_id" domain="[('prod_serv_typecategory','=','other')]" options="{'no_create_edit': True, 'no_open': True}" />
+                                        <field name="supplier" domain="[('service_supplier','=',True)]" required='1' options="{'no_open':True,'no_create': True}" />
+                                        <field name="customer_m2m" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" widget="many2many_tags" />
+                                        <field name="customer" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" column_invisible="1" />
+                                        <field name="confirmation_no" />
+                                        <field name="description" />
+                                        <field name="date_from" />
+                                        <field name="date_to" />
+                                        <field name="no_of_person" column_invisible="1" />
+                                        <field name="amnt_fc" />
+                                        <field name="currency_name" />
+                                        <field name="exchange_rate" />
+                                        <field name="price" />
+                                        <field name="commission" />
+                                        <field name="total" sum='Total' />
+                                        <button name="action_other_service_email_sent" string="Send Email" type="object" class="oe_highlight" />
+                                    </list>
+                                    <form>
+                                        <header>
+                                            <button name="action_other_service_email_sent" string="Send Email" type="object" class="oe_highlight" />
+                                        </header>
+                                        <group>
+                                            <group>
+                                                <field name="product_id" domain="[('prod_serv_typecategory','=','other')]" options="{'no_create_edit': True, 'no_open': True}" />
+                                                <field name="supplier" domain="['|',('service_supplier','=',True),('dmc','=',True)]" required="1" options="{'no_open':True,'no_create': True}" />
+                                                <field name="customer_m2m" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" widget="many2many_tags" />
+                                                <field name="customer" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" invisible="1" />
+                                                <field name="confirmation_no" />
+                                                <field name="description" />
+                                                <field name="date_from" />
+                                                <field name="date_to" />
+                                            </group>
+                                            <group>
+                                                <field name="amnt_fc" />
+                                                <field name="service_tax_type" required="1" />
+                                                <field name="currency_name" />
+                                                <field name="exchange_rate" />
+                                                <field name="price" />
+                                                <field name="commission" />
+                                                <field name="total" sum='Total' />
+                                            </group>
+                                        </group>
+                                    </form>
+                                </field>
+                                <group>
+                                    <field name='other_cancel_policy' widget='html' placeholder="Tours Cancelation Policy" readonly="stages in ('validate','cancel')" />
+                                </group>
+                            </page>
+                            <page string="Sales and Marketing" name="sales_n_marketing">
+                                <group>
+                                    <group name="sales_person" string="Sales">
+                                        <field name="user_id" readonly="stages in ('validate','cancel')" />
+                                        <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company" />
+                                        <field name="journal_entry" readonly="1" invisible="1" />
+                                        <field name="sales_team" readonly="stages in ('validate','cancel')" />
+                                    </group>
+                                    <!--  <group name="sale_info" string="Invoicing">
+                                        <field name="fiscal_position_id" options="{'no_create': True}" readonly="stages in ('validate','cancel')" />
+                                        <field name="invoice_status" groups="base.group_no_one" />
+                                    </group> -->
+                                </group>
+                                <group>
+                                    <!-- <group string="Reporting" name="sale_reporting" groups="base.group_no_one" invisible="1">
+                                        <group name="technical" colspan="2" class="mb-0">
+                                            <field name="origin" />
+                                        </group>
+                                        <group name="utm_link" colspan="2" />
+                                    </group>
+                                    <group string="Marketing" name="utm_link" groups="base.group_no_one">
+                                        <field name="campaign_id" invisible="1" />
+                                        <field name="medium_id" readonly="stages in ('validate','cancel')" />
+                                        <field name="source_id" readonly="stages in ('validate','cancel')" />
+                                    </group> -->
+                                    <group string="Commission Summary" name="commission_sumary" groups="base.group_no_one" invisible="1">
+                                        <field name="flights_commission" readonly="1" force_save="1" />
+                                        <field name="hotels_commission" readonly="1" force_save="1" />
+                                        <field name="transfer_commission" readonly="1" force_save="1" />
+                                        <field name="tours_commission" readonly="1" force_save="1" />
+                                        <field name="visa_commission" readonly="1" force_save="1" />
+                                        <field name="packages_commission" readonly="1" force_save="1" />
+                                        <field name="private_jet_commission" readonly="1" force_save="1" />
+                                        <field name="yacht_commission" readonly="1" force_save="1" />
+                                        <field name="cruises_commission" readonly="1" force_save="1" />
+                                        <field name="other_services_commission" readonly="1" force_save="1" />
+                                        <field name="total_commission" readonly="1" force_save="1" />
+                                    </group>
+                                </group>
+                            </page>
+                            <!-- <page groups="base.group_no_one" string="Customer Signature" name="customer_signature" invisible="require_signature ==False or signed_by ==False or signature ==False or signed_on ==False">
+                                <group>
+                                    <field name="signed_by" readonly="stages in ('validate','cancel')" />
+                                    <field name="signed_on" readonly="stages in ('validate','cancel')" />
+                                    <field name="signature" widget="image" readonly="stages in ('validate','cancel')" />
+                                </group>
+                            </page> -->
+                            <page string="General Instructions" name="term_conditions">
+                                <group>
+                                    <field name='term_condition' placeholder="General Instructions" readonly="stages in ('validate','cancel')" />
+                                    <!-- widget='html' -->
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <chatter />
+                </form>
+            </field>
+        </record>
+        <record id="reservation_order_tree_ext" model="ir.ui.view">
+            <field name="name">reservation_order_tree_ext</field>
+            <field name="model">reservation.order</field>
+            <field name="type">list</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="date_order" string="Creation Date" />
+                    <field name="name" string="Number" width="110px;" />
+                    <field name="partner_id" />
+                    <field name="agent" />
+                    <field name="arrival_date" />
+                    <field name="departure_date" />
+                    <field name="name_package" string="Reservation" readonly="stages in ('validate','cancel')" />
+                    <field name="package_total" />
+                    <field name="stages" string="Package Status" />
+                    <field name="custom_invoice_status" column_invisible="1" />
+                    <field name="custom_invoice_status_new" />
+                </list>
+            </field>
+        </record>
+        <record id="action_package_validate" model="ir.actions.act_window">
+            <field name="name">Reservations</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">reservation.order</field>
+            <field name="view_mode">list,kanban,form,pivot,graph</field>
+            <field name="domain">[('package', '=',1),('quote_builder','=',False)]</field>
+            <field name="context" eval="{'default_package': 1,'default_quote_builder': 0,'readonly_by_pass': True}" />
+            <field name="view_ids" eval="[(5, 0, 0),
+(0, 0, {'view_mode': 'list', 'view_id': ref('reservation_order_tree_ext')}),
+(0, 0, {'view_mode': 'form', 'view_id': ref('view_reservation_order_form')})]" />
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Create a Quotation, the first step of a new sale.
+                </p>
+                <p>
+                    Once the quotation is confirmed, it becomes a sales order.
+                    You'll be able to invoice it and collect payments.
+                    From the <i>Sales Orders</i> menu, you can track delivery
+                    orders or services.
+                </p>
+            </field>
+        </record>
+        <record id="product_form_ext_template" model="ir.ui.view">
+            <field name="name">product_form_ext_hr_expense</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="account.product_template_form_view" />
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='taxes_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='supplier_taxes_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record id="product_form_ext" model="ir.ui.view">
+            <field name="name">product_form_ext</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view" />
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='barcode']" position="after">
+                    <field name="guide_supplier" />
+                    <field name="custom_value" />
+                    <field name="prod_serv_typecategory" />
+                    <!-- <field name="hotel_link"  attrs="{'invisible': [('prod_serv_typecategory','not in',['hotel'])]}" widget='url'/> -->
+                    <!-- <field name="is_visa"/> -->
+                </xpath>
+                <xpath expr="//notebook/page[1]" position="after">
+                    <page name='package_info' string="Package">
+                        <group stirng='Package'>
+                            <group>
+                                <field name='validity' />
+                                <field name='no_of_nights' />
+                                <field name='room_type' widget="many2many_tags" />
+                                <field name='meal_plan' />
+                            </group>
+                            <group>
+                                <field name='transfer_mode' />
+                                <field name='added_values' />
+                                <field name='rate' />
+                                <field name='product_type' />
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+                <xpath expr="//notebook/page[6]" position="after">
+                    <page name='term_condition' string="Term and Conditions" invisible="prod_serv_typecategory not in ('hotel')">
+                        <group>
+                            <field name='term_and_cond' />
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+        <record id="group_ext_for_notify" model="res.groups">
+            <field name="name">event_reminder</field>
+        </record>
+        <record id="draft_button_in_reservations" model="res.groups">
+            <field name="name">draft_button_in_reservations</field>
+        </record>
+        <menuitem id="main_menu" name="Reservations" groups="travel_package.security_group" web_icon="travel_package,static/src/img/travel.png" />
+        <menuitem id="main_menu_reservations" parent="main_menu" name="Reservations" groups="travel_package.security_group" sequence="0" />
+        <menuitem id="menu_confirm" parent="main_menu_reservations" name="Package" action="action_package_validate" sequence="9" groups="travel_package.security_group" />
+        <menuitem id="menu_term_conditions" parent="main_menu_reservations" name="General Instructions" action="action_terms_condtion_form_view" sequence="100" groups="travel_package.security_group" />
+        <!-- Quote Builder -->
+        <record id="action_quote_validate" model="ir.actions.act_window">
+            <field name="name">Quote Builder</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">reservation.order</field>
+            <field name="view_mode">list,kanban,form,pivot,graph</field>
+            <!-- <field name="search_view_id" ref="sale_order_view_search_inherit_sale"/> -->
+            <field name="domain">[('package', '=',1),('quote_builder','=',True)]</field>
+            <!-- ,('stages','=','validate') -->
+            <field name="context" eval="{'default_package': 1,'default_quote_builder': True}" />
+            <field name="view_ids" eval="[(5, 0, 0),
+    (0, 0, {'view_mode': 'list', 'view_id': ref('reservation_order_tree_ext')}),
+    (0, 0, {'view_mode': 'form', 'view_id': ref('view_reservation_order_form')})]" />
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Create a Quote Builder, the first step of a new sale.
+                </p>
+                <p>
+                    Once the quotation is confirmed, it becomes a Travel Package.
+                    You'll be able to invoice it and collect payments.
+                    From the <i>Travel Packages</i> menu, you can track delivery
+                    orders or services.
+                </p>
+            </field>
+        </record>
+        <record id="action_customer_event" model="ir.actions.act_window">
+            <field name="name">Occassions</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">customer.event</field>
+            <field name="view_mode">list,form</field>
+        </record>
+        <menuitem id="customer_event_menu" parent="contacts.menu_contacts" name="Occassions" action="action_customer_event" sequence="2" />
+        <record id="activity_type" model="mail.activity.type">
+            <field name="name">Occasions Notifications</field>
+            <field name="res_model" ref="model_customer_event" />
+        </record>
+        <record model="ir.cron" id="customer_payment_due_notification">
+            <field name="name">Automatic Send Customer Payment Notification</field>
+            <field name="model_id" ref="model_customer_event" />
+            <field name="active">True</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="state">code</field>
+            <field name="code">model.send_notification()</field>
+        </record>
+        <record model="ir.cron" id="send_thankyou_sms_cron_job">
+            <field name="name">Automatic Send SMS Of Thank You</field>
+            <field name="model_id" ref="model_reservation_order" />
+            <field name="active">True</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="state">code</field>
+            <field name="code">model.send_thankyou_sms()</field>
+        </record>
+        <record id="travel_package_auto_sequence" model="ir.sequence">
+            <field name="name">travel_package_auto_sequence</field>
+            <field name="code">tp.auto.sequence</field>
+            <field name="prefix">RQ-</field>
+            <field name="padding">4</field>
+            <field eval="1" name="number_next" />
+            <field eval="1" name="number_increment" />
+            <field eval="False" name="company_id" />
+        </record>
+        <!-- owerriding odoo's contacts action to set default company type -->
+        <record id="travel_package_search_view" model="ir.ui.view">
+            <field name="name">travel.package.search.view</field>
+            <field name="model">reservation.order</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name_package" string="Package Name" filter_domain="['|', ('name_package', 'ilike', self),('name', 'ilike', self)]" />
+                    <field name="name" string="Package Order" filter_domain="['|', ('name', 'ilike', self), ('partner_id', 'child_of', self)]" />
+                    <field name="agent" />
+                    <filter string="Invoice Status" name="custom_invoice_status" context="{'group_by': 'custom_invoice_status'}" invisible="1"/>
+                    <filter string="Invoice Status" name="filter_custom_invoice_status_new" context="{'group_by': 'custom_invoice_status_new'}" />
+                    <filter string="Archived RQ's" domain="[('active', '!=', 'True')]" name="my_active_filter_own"/>
+                    <filter string="Invoice Exist" name="invoice_exist" context="{'group_by': 'invoice_exist'}" />
+                    <filter string="Bill Exist" name="bill_exist" context="{'group_by': 'bill_exist'}" />
+                    <filter string="Package Status" name="stages" context="{'group_by': 'stages'}" />
+                    <field name="hotel_pkg" string="Commissionable" filter_domain="[('hotel_pkg.commission_able', '=', True)]" />
+                    <filter string="Commissionable" name="commission_able" domain="[('hotel_pkg.commission_able', '=', True)]" />
+                </search>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,1555 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="voucher_report_report">
+            <t t-call="web.html_container">
+                <t t-call="web.basic_layout">
+                    <!-- <t t-call="web.external_layout_background"> -->
+                    <t t-foreach="docs" t-as="o">
+                        <div class="page">
+                            <!-- style="background-color: #f2f2f2;"> -->
+                            <!-- style="border: 1px solid;"> -->
+                            <style type="text/css">
+                            @media (min-width: 1200px) {
+                                .container {
+                                    width: 100%;
+                                }
+                            }
+
+                            @media (min-width: 992px) {
+                                .container {
+                                    width: 100%;
+                                }
+                            }
+
+                            @media (min-width: 768px) {
+                                .container {
+                                    width: 100%;
+                                }
+                            }
+
+                            .container {
+                                width: 100%;
+                            }
+
+                            body.o_in_iframe {
+                                margin: 0px !important;
+                                padding: 0px !important;
+                            }
+
+                            .header,
+                            .footer {
+                                display: none !important;
+                            }
+
+                            .main_wraper {
+                                width: 100%;
+                                background-image: url(/base/static/img/bg_background_template.jpg);
+                                background-size: cover;
+                                background-position: bottom center;
+                                background-repeat: no-repeat;
+                                min-height: 1000px;
+                            }
+
+                            .main_div {
+                                width: 100%;
+                            }
+
+                            .main_div_last {
+                                width: 100%;
+                            }
+
+                            .main_div_last p {
+                                width: 100%;
+                                margin: 0px !important;
+                                margin-bottom: 10px !important;
+                            }
+
+                            p {
+                                margin: 0px !important;
+                                margin-bottom: 10px !important;
+                            }
+
+                            
+
+                            h2 {
+                                text-align: center;
+                                font-weight: bold;
+                                font-size: 35px;
+                            }
+
+                            img {
+                                max-width: 100%;
+                               
+                                max-height: 140px;
+                                color: rgb(81, 203, 206);
+                            }
+
+                            .left_div img {
+                              
+                            }
+
+                            .left_div_2 {
+                                float: left;
+                                width: 50%;
+                                font-size: 13px;
+                            }
+
+                            .right_div_2 {
+                                width: 50%;
+                                float: left;
+                                font-size: 13px;
+                            }
+
+                            .left_div_3 {
+                                width: 95%;
+                                float: left;
+                                font-size: 13px;
+                            }
+
+                            .left_div p {
+                                margin: 0px;
+                            }
+
+                            .solid_div {}
+
+                            .liquid_div {
+                                font-size: 12px;
+                                width: 60%;
+                                float: right;
+                            }
+
+                            .left_div_2 p {
+                                margin: 0px;
+                            }
+
+                            .right_div_2 p {
+                                margin: 0px;
+                            }
+
+                            table {
+                                border-collapse: collapse;
+                                border: 1px solid black;
+                                margin-top: 5px;
+                            }
+
+                            th {
+                                border-collapse: collapse;
+                                font-size: 13px;
+                                padding: 8px;
+                                text-align: left;
+                                font-weight: bold;
+                                border: 1px solid black;
+                                background: #eaded7;
+                            }
+
+                            td {
+                                border-collapse: collapse;
+                                font-size: 13px;
+                                padding: 5px;
+                                text-align: left;
+                                border: 1px solid black;
+                            }
+
+                            .clear_float {
+                                clear: both;
+                                float: none;
+                                height: 0px;
+                                width: 0px;
+                                display: block;
+                            }
+
+                            .head {
+                                background-color: #927f73;
+                                margin: 4px;
+                                font-size: 18px;
+                                padding: 10px;
+                                color: white;
+                                font-weight: bold;
+                                margin-top: 10px;
+                            }
+
+                            .term {
+                                text-align: center;
+                                font-size: 25px;
+                                font-weight: bold;
+                            }
+
+                            .footer_logo {
+                                width: 1100px;
+                                margin: 0px auto;
+                                text-align: center;
+                            }
+
+                            .arabic {
+                                margin-right: 70px;
+                            }
+
+                            .all_daata p {
+                                margin: 0 !important;
+                                line-height: 1rem !important;
+                            }
+                            a {
+                                color: #927f73 !important;
+                                text-decoration: none !important;
+                                background-color: transparent !important;
+                                font-weight: bold !important;
+                            }
+                            </style>
+                            <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+                            <div class="main_wraper">
+                                <div>
+                                    <div>
+                                        <t t-foreach="company" t-as="c">
+                                            <div class="main_div" style="width:100%;">
+                                                <div class="left_div" style="float:left; width:39%;margin-left:17px;">
+                                                    
+                                                    <img style="float:left;" t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)"/>
+                                                </div>
+                                                <div class="right_div" style="float:right; width:35%; margin:0px;text-align:start;">
+                                                    <p style="font-weight: bold;font-size: 15px;color:#927f73;">
+                                                        <!-- <span class="liquid" t-esc="c.name"></span> -->
+                                                        <span>Contact Us:</span>
+                                                    </p>
+                                                    
+                                                    <p style="margin-top:15px;color:#927f73;">
+                                                        <!-- <span class="solid">Phone No:</span> -->
+                                                        <span class="liquid" t-esc="c.phone"></span>
+                                                    </p>
+                                                    <p style="margin-top:15px;color:#927f73;">
+                                                        <span class="solid">Email:</span>
+                                                        <span class="liquid" t-esc="c.email"></span>
+                                                    </p>
+                                                    <p style="margin-top:15px;color:#927f73;">
+                                                        <!-- <span class="solid">Phone No:</span> -->
+                                                        <span class="solid" style="font-weight:bold;">Offices Address:</span>
+                                                        <span class="liquid">Riyadh | Jeddah | Dubai</span>
+                                                    </p>
+                                                    <br />
+                                                    <p style="margin:0px;">
+                                                        <span class="solid">
+                                                            <a t-att-href="c.social_instagram" style="color:white">
+                                                                <i class="fab fa-instagram" style="color:#927f73; font-size:30px; margin-right:12px;"></i>
+                                                            </a>
+                                                        </span>
+                                                        <!-- <span class="solid">
+                                                            <a href="https://www.instagram.com/rawnaq_tourism?igshid=OGQ5ZDc2ODk2ZA==" style="color:white">
+                                                                <i class="fab fa-instagram" style="color:#927f73; font-size:30px; margin-right:12px;"></i>
+                                                            </a>
+                                                        </span> -->
+                                                        <span class="solid">
+                                                            <a t-att-href="c.social_facebook" style="color:white">
+                                                                <i class="fab fa-facebook" style="color:#927f73; font-size:30px;margin-right:12px;"></i>
+                                                            </a>
+                                                        </span>
+                                                        <span class="solid">
+                                                            <a t-att-href="c.social_youtube" style="color:white">
+                                                                <i class="fab fa-snapchat-square" style="color:#927f73; font-size:30px; margin-right:12px;"></i>
+                                                            </a>
+                                                        </span>
+                                                        <span class="solid">
+                                                            <a t-att-href="c.social_linkedin" style="color:white">
+                                                                <i class="fab fa-linkedin" style="color:#927f73; font-size:30px; margin-right:12px;"></i>
+                                                            </a>
+                                                        </span>
+                                                        <span class="solid">
+                                                            <a t-att-href="c.social_twitter" style="color:white">
+                                                                <!-- <i class="fab fa-twitter-square" style="color:#927f73; font-size:30px;"></i> -->
+                                                                <img src="/voucher_report/static/src/img/twitter.png" style="width: 5.5%;color: #927f73;margin-top: -15px;" />
+                                                            </a>
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </t>
+                                    </div>
+                                    <br class="clear_float" />
+                                    <!-- <p style="border-bottom: 4px solid blue; margin: 0px;"></p> -->
+                                </div>
+                                <br class="clear_float" />
+                                <h2>
+                                    <!-- <span>Voucher</span> -->
+                                    <span t-if="o.quote_builder == True">Quotation</span>
+                                    <span t-if="o.quote_builder == False">Confirmation</span>
+                                    <!-- <span t-if="o.stages == 'validate'">Voucher</span> -->
+                                </h2>
+                               
+                                <table width="100%">
+                                    <tr>
+                                        <th colspan="50" class="th_head" style="background-color: #927f73;text-align: center;font-size: 20px;color:white">
+                                            <span t-if="o.quote_builder == False">Booking Information</span>
+                                            <span t-if="o.quote_builder == True">Quotation Information</span>
+                                        </th>
+                                    </tr>
+                                    <t t-if="o.quote_builder == False">
+                                        <tr>
+                                            <th class="th_width">Confirmation No.</th>
+                                            <td>
+                                                <span t-esc="o.name"></span>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                    <tr>
+                                        <th class="th_width">Guests Name</th>
+                                        <td>
+                                            <t t-set="com" t-value="0" />
+                                            <t t-foreach="customer_m2m" t-as="g">
+                                                <!-- <t t-set="com" t-value="com+1" />
+                                                <t t-if="com > 1">
+                                                    , <span t-esc="g.title.name"></span>
+                                                </t>
+                                                <t t-else="">
+                                                    <span t-esc="g.title.name"></span>
+                                                </t>
+                                                <span t-esc="g.name"></span> -->
+                                                <t t-if="g.category">
+                                                    (<span style="text-transform: capitalize;" t-esc="g.category"></span>)
+                                                </t>
+                                            </t>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="th_width">Guests</th>
+                                        <td>
+                                            <span t-esc="o.no_of_particpents"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="th_width">Destination</th>
+                                        <td>
+                                            <t t-set="com" t-value="0" />
+                                            <t t-foreach="o.destination" t-as="d">
+                                                <t t-set="com" t-value="com+1" />
+                                                <t t-if="com > 1">
+                                                    , <span t-esc="d.name"></span>
+                                                </t>
+                                                <t t-else="">
+                                                    <span t-esc="d.name"></span>
+                                                </t>
+                                            </t>
+                                        </td>
+                                    </tr>
+                                    <t t-if="o.agent">
+                                        <tr>
+                                            <th class="th_width">Sub-Agent</th>
+                                            <td>
+                                                <span t-esc="o.agent.name"></span>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                    <!-- <tr>
+                                        <th class="th_width">Delievery Address</th>
+                                        <td>
+                                            <span t-esc="o.delivery_add"></span>
+                                        </td>
+                                    </tr> -->
+                                     <tr>
+                                        <th class="th_width">Arrival Date</th>
+                                        <t t-if="o.arrival_date">
+                                            <td>
+                                                <span t-esc="time.strftime('%d %B %Y',time.strptime(str(o.arrival_date),'%Y-%m-%d'))"></span>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                    <tr>
+                                        <th class="th_width">Departure Date</th>
+                                        <t t-if="o.departure_date">
+                                            <td>
+                                                <span t-esc="time.strftime('%d %B %Y',time.strptime(str(o.departure_date),'%Y-%m-%d'))"></span>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                    <tr>
+                                        <th class="th_width">Arrival Flight</th>
+                                        <!-- – Flight No -->
+                                        <td>
+                                            <span t-esc="o.hotel_arrival.name"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="th_width">Departure Flight</th>
+                                        <!-- – Flight No -->
+                                        <td>
+                                            <span t-esc="o.hotel_return.name"></span>
+                                        </td>
+                                    </tr>
+                                </table><br /><br />
+                                <t t-if="o.summary">
+                                    <div class="page_set">
+                                        <t t-if="o.itinarnay_package">
+                                            <!-- <h3 class="head">Summary</h3> -->
+                                            <table width="100%">
+                                                <tr>
+                                                    <th colspan="50" class="head">Summary</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>Product</th>
+                                                    <!-- <th>Supplier</th> -->
+                                                    <th>Description</th>
+                                                    <th>Date From</th>
+                                                    <th>Date To</th>
+                                                    <!-- <th>Service Type</th> -->
+                                                </tr>
+                                               <!-- <t t-foreach="sorted(o.itinarnay_package, key=lambda l: (l.date_from or '', l.arrival or ''))" t-as="it"> -->
+                                                <t t-foreach="o.itinarnay_package" t-as="it">
+                                                    <t t-if="it.description != 'Flight'">
+                                                        <tr>
+                                                            <td>
+                                                                <span t-esc="it.product_id.name"></span>
+                                                            </td>
+                                                            <!-- <td>
+                                                                <span t-esc="it.supplier.name"></span>
+                                                            </td> -->
+                                                            <td>
+                                                                <span t-esc="it.description"></span>
+                                                            </td>
+                                                            <td>
+                                                                <t t-if="it.date_from">
+                                                                    <!-- <span t-esc="it.date_from"></span> -->
+                                                                    <span t-esc="time.strftime('%d %B %Y',time.strptime(str(it.date_from),'%Y-%m-%d'))"></span>
+                                                                </t>
+                                                            </td>
+                                                            <td>
+                                                                <t t-if="it.date_to">
+                                                                    <span t-esc="time.strftime('%d %B %Y',time.strptime(str(it.date_to),'%Y-%m-%d'))"></span>
+                                                                </t>
+                                                            </td>
+                                                            <!-- <td style="text-transform: capitalize !important;">
+                                                                <span t-esc="it.service_type"></span>
+                                                            </td> -->
+                                                        </tr>
+                                                    </t>
+                                                </t>
+                                            </table><br /><br />
+                                        </t>
+                                    </div>
+                                </t>
+                                <div class="page_set">
+                                  
+                                    <t t-if="o.x_flight_detail">
+                                        <t t-if="o.flights_pkg">
+                                        <!-- <h3 class="head">Flights</h3> -->
+                                        <table width="100%">
+                                            <tr>
+                                                <th colspan="50"  class="head">Flights</th>
+                                            </tr>
+                                            <tr>
+                                                <th>Airline</th>
+                                                <!--<th>Supplier</th>-->
+                                                <th>Names</th>
+                                                <th>From/To</th>
+                                                <th>Flight</th>
+                                                <th>Class</th>
+                                                <th>Departure Date</th>
+                                                <th>Arrival Date</th>
+                                                <th>Bag</th>
+                                                <th>Terminal</th>
+                                                <th>Airline PNR</th>
+                                                <th>Guests</th>
+                                                <!-- <th>Amount</th> -->
+                                                <!-- <th>Exchange Rate</th> -->
+                                                <!-- <th>Commis<sion</th> -->
+                                                <!-- <th>Total</th> -->
+                                            </tr>
+                                            <t t-foreach="sorted(o.flights_pkg, key=lambda l: (l.departures or '', l.arrival or ''))" t-as="fl">
+                                            <!-- <t t-foreach="sorted(o.flights_pkg, key=lambda l: l.departures or '')" t-as="fl"> -->
+                                                <tr>
+                                                    <td>
+                                                        <span t-esc="fl.airline.name"></span>
+                                                    </td>
+                                                    <!-- <td>
+                                                        <span t-esc="fl.supplier.name"></span>
+                                                    </td> -->
+                                                    <td>
+                                                        <span t-esc="fl.customer.name"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="fl.from_to"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="fl.flight"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="fl.fight_class.name"></span>
+                                                    </td>
+                                                    <td>
+                                                        <t t-if="fl.departures">
+                                                            <span t-esc="(datetime.datetime.strptime(str(fl.departures), '%Y-%m-%d %H:%M:%S')+ datetime.timedelta(hours=5)).strftime('%d %B %Y')" />
+                                                        </t>
+                                                    </td>
+                                                    <td>
+                                                        <t t-if="fl.arrival">
+                                                            <span t-esc="(datetime.datetime.strptime(str(fl.arrival), '%Y-%m-%d %H:%M:%S')+ datetime.timedelta(hours=5)).strftime('%d %B %Y')" />
+                                                        </t>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="fl.bag"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="fl.terminal"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="fl.airline_pnr"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="fl.no_of_person"></span>
+                                                    </td>
+                                                    <!-- <td> -->
+                                                  <!--       <span t-esc="'{0:,.2f}'.format(float(fl.price))"></span>
+                                                        <span t-esc="fl.currency_name.symbol"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="'{0:,.2f}'.format(float(fl.exchange_rate))"></span>
+                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                    </td> -->
+                                                    <!-- <td>
+                                                        <span t-esc="'{0:,.2f}'.format(float(fl.commission))"></span>
+                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                    </td> -->
+                                                   <!--  <td>
+                                                        <span t-esc="'{0:,.2f}'.format(float(fl.total))"></span>
+                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                    </td> -->
+                                                </tr>
+                                            </t>
+                                        </table>
+                                        <div>
+                                            <p>Terms &amp; Conditions and Remarks:</p>
+                                            <p>
+                                                <span t-raw="o.flights_cancel_policy"></span>
+                                            </p>
+                                            <br /><br />
+                                        </div>
+                                    </t>
+                                    </t>
+                                </div>
+                                <div class="page_set">
+                                    <t t-if="o.hotel_pkg">
+                                        <!-- <h3 class="head">Hotels</h3> -->
+                                        <table width="100%">
+                                            <tr>
+                                                <th colspan="50" class="head">Hotels</th>
+                                            </tr>
+                                            <tr>
+                                                <!-- <th>Category</th> -->
+                                                <th style="min-width: 250px !important;width: 250px !important;max-width: 250px !important;">Hotel</th>
+                                                <th style="min-width: 250px !important;width: 250px !important;max-width: 250px !important;">Names</th>
+                                                <th style="min-width: 100px;width: 100px;max-width: 100px;">Check In</th>
+                                                <th style="min-width: 100px;width: 100px;max-width: 100px;">Check Out</th>
+                                                <th style="min-width: 60px;width: 60px;max-width: 60px;">Nights</th>
+                                                <!-- <th style="min-width: 150px;width: 150px;max-width: 150px;">Room Type</th> -->
+                                                <th style="min-width: 100px;width: 100px;max-width: 100px;">Meal Plan</th>
+                                                <th>Transfer</th>
+                                                <th style="min-width: 60px;width: 60px;max-width: 60px;">Guests</th>
+                                                <t t-if="o.quote_builder == False">
+                                                    <th>HCN</th>
+                                                </t>
+                                                <!-- <th>Confirmation Number</th> -->
+                                                <!-- <th>Room Quantity</th> -->
+                                                <!--        <th>Amount</th>
+                                                <th>Exchange Rate</th>
+                                                <th>Commission</th>
+                                                <th>Total</th> -->
+                                                <!-- <th t-if="o.quote_builder == True">Total</th> -->
+                                            </tr>
+                                            <t t-foreach="sorted(o.hotel_pkg, key=lambda l: (l.date_from or '', l.date_to or ''))" t-as="h">
+                                            <!-- <t t-foreach="o.hotel_pkg" t-as="h"> -->
+                                                <tr>
+                                                    <!-- <td>
+                                                        <span t-esc="h.category.name"></span>
+                                                    </td> -->
+                                                    <td>
+                                                        <a t-att-href="get_url(h.hotel_id)">
+                                                            <span t-esc="h.hotel_id.name" title="Map"></span>
+                                                        </a>
+                                                    </td>
+                                                    <!-- <td>
+                                                        <span t-esc="h.supplier.name"></span>
+                                                    </td> -->
+                                                    <td>
+                                                        <t t-foreach="h.customer_m2m" t-as="cust">
+                                                            <span t-esc="cust.name"></span><br />
+                                                        </t>
+                                                    </td>
+                                                    <td>
+                                                        <t t-if="h.date_from">
+                                                            <span t-esc="time.strftime('%d %B %Y',time.strptime(str(h.date_from),'%Y-%m-%d'))"></span>
+                                                        </t>
+                                                    </td>
+                                                    <td>
+                                                        <t t-if="h.date_to">
+                                                            <span t-esc="time.strftime('%d %B %Y',time.strptime(str(h.date_to),'%Y-%m-%d'))"></span>
+                                                        </t>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="h.nights"></span>
+                                                    </td>
+                                                    <!-- <td>
+                                                        <t t-foreach="h.room_type" t-as="rt">
+                                                            <span t-esc="rt.name"></span>
+                                                            <br/>
+                                                        </t>
+                                                    </td> -->
+                                                    <td>
+                                                        <t t-foreach="h.hotel_meal_plan" t-as="mp">
+                                                            <span t-esc="mp.name"></span>
+                                                            <br />
+                                                        </t>
+                                                    </td>
+                                                    <td>
+                                                        <t t-foreach="h.transfer" t-as="tr">
+                                                            <span t-esc="tr.name"></span>
+                                                            <br />
+                                                        </t>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="h.no_of_person"></span>
+                                                    </td>
+                                                    <t t-if="o.quote_builder == False">
+                                                        <td>
+                                                            <span t-esc="h.confirmation_no"></span>
+                                                        </td>
+                                                    </t>
+                                                    <!-- <td>
+                                                        <span t-esc="h.room_occupancy.name"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="h.nights"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="h.room_qty"></span>
+                                                    </td> -->
+                                                    <!--    <td>
+                                                        <span t-esc="h.amnt_fc"></span> 
+                                                        <span t-esc="h.currency_name.symbol"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="h.exchange_rate"></span> 
+                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="h.commission"></span> 
+                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="h.total"></span> 
+                                                        <span t-esc="o.currency_id.symbol"></span> 
+                                                    </td> -->
+                                                   <!--  <td t-if="o.quote_builder == True">
+                                                        <span t-esc="h.total"></span>
+                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                    </td> -->
+                                                </tr>
+                                                <tr>
+                                                    <th>Room Type</th>
+                                                    <td colspan="9">
+                                                        <span t-esc="getRoomTypes(h.room_type)"></span>
+                                                        <!-- <t t-set="count" t-value="0"/> -->
+                                                        <!-- <t t-foreach="h.room_type" t-as="rt"> -->
+                                                        <!-- <t t-set="count" t-value="count+1"/> -->
+                                                        <!-- <span t-esc="rt.name"></span>   -->
+                                                        <!-- <span t-esc="getRoomTypes(rt)"></span>   -->
+                                                        <!-- <t t-if="count > 1">
+                                                                <span>, </span>
+                                                            </t> -->
+                                                        <!-- </t> -->
+                                                    </td>
+                                                </tr>
+                                                <t t-if="h.supplier.hotel_link">
+                                                    <tr>
+                                                        <th>Hotel Link</th>
+                                                        <td colspan="9">
+                                                            <a t-att-href="h.supplier.hotel_link">
+                                                                <span>(Click Here)</span>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </t>
+                                                <t t-if="h.special_remarks">
+                                                    <tr>
+                                                        <th>Special Remarks</th>
+                                                        <td colspan="9">
+                                                            <span t-esc="h.special_remarks"></span>
+                                                        </td>
+                                                    </tr>
+                                                </t>
+                                            </t>
+                                        </table>
+                                        <br />
+                                        <div>
+                                            <p style="font-weight:bold;">Terms &amp; Conditions</p>
+                                            <div class="all_daata">
+                                                <p>
+                                                    <span t-raw="o.hotels_cancel_policy"></span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <br /><br />
+                                    </t>
+                                </div>
+                                <div class="page_set">
+                                    <t t-if="o.transportation_pkg">
+                                        <!-- <h3 class="head">Transfer</h3> -->
+                                        <table width="100%">
+                                            <tr>
+                                                <th colspan="50" class="head">Transfer</th>
+                                            </tr>
+                                            <tr>
+                                                <th>Product</th>
+                                                <!-- <th>Supplier</th> -->
+                                                <th>Names</th>
+                                                <th>Confirmation Number</th>
+                                                <th>Pick Up</th>
+                                                <th>Drop-off</th>
+                                                <th>Pick-Up Date</th>
+                                                <!-- <th>Drop-Off Date</th> -->
+                                                <!-- <th>Time</th> -->
+                                                <th>Transfer Type</th>
+                                                <th>Vehicle Type</th>
+                                                <th>Wait Time Policy</th>
+                                                <th>Rent Car</th>
+                                                <th>Hours</th>
+                                                <!-- <th>Amount</th>
+                                                <th>Exchange Rate</th>
+                                                <th>Commission</th>
+                                                <th>Total</th> -->
+                                                <!-- <th t-if="o.quote_builder == True">Total</th> -->
+                                            </tr>
+                                            <t t-foreach="o.transportation_pkg" t-as="t">
+                                                <tr>
+                                                    <td>
+                                                        <span t-esc="t.product_id.name"></span>
+                                                    </td>
+                                                    <!-- <td>
+                                                        <span t-esc="t.supplier.name"></span>
+                                                    </td> -->
+                                                    <td>
+                                                        <t t-foreach="t.customer_m2m" t-as="cust">
+                                                            <span t-esc="cust.name"></span><br />
+                                                        </t>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="t.confirmation_no"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="t.pick_up_place"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="t.drop_of_place"></span>
+                                                    </td>
+                                                    <td>
+                                                        <!-- <span t-esc="t.date"></span> -->
+                                                        <t t-if="t.date">
+                                                            <span t-esc="(datetime.datetime.strptime(str(t.date), '%Y-%m-%d %H:%M:%S')+ datetime.timedelta(hours=5)).strftime('%d %B %Y')" />
+                                                        </t>
+                                                    </td>
+                                                    <!-- <td>
+                                                        <t t-if="t.drop_off_date">
+                                                            <span t-esc="datetime.datetime.strptime(str(t.drop_off_date), '%Y-%m-%d').strftime('%d %B %Y')" />
+                                                        </t>
+                                                    </td>
+                                                    <td>
+                                                        <t t-if="t.free_space_time">
+                                                            <span t-esc="t.free_space_time" />
+                                                        </t>
+                                                    </td> -->
+                                                    <td>
+                                                        <span t-esc="t.transfer_type.name"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="t.vehicle_type.name"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="t.wait_time_policy.name"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="t.rent_car"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="t.hours"></span>
+                                                    </td>
+                                                    <!-- <td>
+                                                        <span t-esc="t.price"></span> 
+                                                        <span t-esc="t.currency_name.symbol"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="t.exchange_rate"></span> 
+                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="t.commission"></span> 
+                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="t.total"></span> 
+                                                        <span t-esc="o.currency_id.symbol"></span> 
+                                                    </td> -->
+                                                    <!-- <td t-if="o.quote_builder == True">
+                                                        <span t-esc="t.total"></span>
+                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                    </td> -->
+                                                </tr>
+                                            </t>
+                                        </table>
+                                        <br />
+                                        <div>
+                                            <p style="font-weight:bold;">Terms &amp; Conditions and Remarks</p>
+                                            <div class="all_daata">
+                                                <p>
+                                                    <span t-raw="o.transfers_cancel_policy"></span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <br /><br />
+                                    </t>
+                                </div>
+                                <div class="page_set">
+                                    <t t-if="o.tours_pkg">
+                                        <!-- <h3 class="head">Tours</h3> -->
+                                        <table width="100%">
+                                            <tr>
+                                                <th colspan="50" class="head">Tours</th>
+                                            </tr>
+                                            <tr>
+                                                <th>Product</th>
+                                                <!-- <th>Supplier</th> -->
+                                                <th>Names</th>
+                                                <th>Confirmation Number</th>
+                                                <th>Description</th>
+                                                <th>Guided/Not Guided</th>
+                                                <th>Days Valid</th>
+                                                <th>Issue Date</th>
+                                                <th>Ticket Day</th>
+                                                <th>Qty</th>
+                                                <!--    <th>Amount</th>
+                                                <th>Exchange Rate</th>
+                                                <th>Commission</th>
+                                                <th>Total</th> -->
+                                                <!-- <th t-if="o.quote_builder == True">Total</th> -->
+                                            </tr>
+                                            <t t-foreach="o.tours_pkg" t-as="tu">
+                                                <tr>
+                                                    <td>
+                                                        <span t-esc="tu.product_id.name"></span>
+                                                    </td>
+                                                    <!-- <td>
+                                                        <span t-esc="tu.supplier.name"></span>
+                                                    </td> -->
+                                                    <td>
+                                                        <t t-foreach="tu.customer_m2m" t-as="cust">
+                                                            <span t-esc="cust.name"></span><br />
+                                                        </t>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="tu.confirmation_no"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="tu.description"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="tu.guided_or_not"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="tu.days_valid.days"></span>
+                                                    </td>
+                                                    <td>
+                                                        <t t-if="tu.issue_date">
+                                                            <span t-esc="tu.issue_date"></span>
+                                                        </t>
+                                                    </td>
+                                                    <td>
+                                                        <t t-if="tu.ticket_day">
+                                                            <span t-esc="tu.ticket_day.days"></span>
+                                                        </t>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="tu.no_of_person"></span>
+                                                    </td>
+                                                    <!--            <td>
+                                                        <span t-esc="tu.ticket_price"></span> 
+                                                        <span t-esc="tu.currency_name.symbol"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="tu.exchange_rate"></span> 
+                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="tu.commission"></span> 
+                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="tu.total"></span> 
+                                                        <span t-esc="o.currency_id.symbol"></span> 
+                                                    </td> -->
+                                                   <!--  <td t-if="o.quote_builder == True">
+                                                        <span t-esc="tu.total"></span>
+                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                    </td> -->
+                                                </tr>
+                                            </t>
+                                        </table>
+                                        <br />
+                                        <div>
+                                            <p style="font-weight:bold;">Terms &amp; Conditions and Remarks</p>
+                                            <div class="all_daata">
+                                                <p>
+                                                    <span t-raw="o.tours_cancel_policy"></span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <br /><br />
+                                    </t>
+                                </div>
+                                <div class="page_set">
+                                    <t t-if="o.visa_pkg">
+                                        <!-- <h3 class="head">Visa</h3> -->
+                                        <table width="100%">
+                                            <tr>
+                                                <th colspan="50" class="head">Visa</th>
+                                            </tr>
+                                            <tr>
+                                                <th>Product</th>
+                                                <!-- <th>Supplier</th> -->
+                                                <th>Names</th>
+                                                <th>Confirmation Number</th>
+                                                <th>Description</th>
+                                                <th>Visa Status</th>
+                                                <th>Ordered Quantity</th>
+                                                <!--    <th>Amount</th>
+                                                <th>Exchange Rate</th>
+                                                <th>Commission</th>
+                                                <th>Total</th> -->
+                                                <!-- <th t-if="o.quote_builder == True">Total</th> -->
+                                            </tr>
+                                            <t t-foreach="o.visa_pkg" t-as="v">
+                                                <tr>
+                                                    <td>
+                                                        <span t-esc="v.product_id.name"></span>
+                                                    </td>
+                                                    <!-- <td>
+                                                        <span t-esc="v.supplier.name"></span>
+                                                    </td> -->
+                                                    <td>
+                                                        <t t-foreach="v.customer_m2m" t-as="cust">
+                                                            <span t-esc="cust.name"></span><br />
+                                                        </t>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="v.confirmation_no"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="v.description"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="v.visa_status"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="v.no_of_person"></span>
+                                                    </td>
+                                                    <!-- <td>
+                                                        <span t-esc="v.price"></span> 
+                                                        <span t-esc="v.currency_name.symbol"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="v.exchange_rate"></span> 
+                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="v.commission"></span> 
+                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="v.total"></span> 
+                                                        <span t-esc="o.currency_id.symbol"></span> 
+                                                    </td> -->
+                                                    <!-- <td t-if="o.quote_builder == True">
+                                                        <span t-esc="v.total"></span>
+                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                    </td> -->
+                                                </tr>
+                                            </t>
+                                        </table>
+                                        <br />
+                                        <div>
+                                            <p style="font-weight:bold;">Terms &amp; Conditions and Remarks</p>
+                                            <div class="all_daata">
+                                                <p>
+                                                    <span t-raw="o.visa_cancel_policy"></span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <br /><br />
+                                    </t>
+                                </div>
+                                <div class="page_set">
+                                    <t t-if="o.packages_pkg">
+                                        <!-- <h3 class="head">Ready Packages</h3> -->
+                                        <table width="100%">
+                                            <tr>
+                                                <th colspan="50" class="head">Ready Packages</th>
+                                            </tr>
+                                            <tr>
+                                                <th>Product</th>
+                                                <!-- <th>Supplier</th> -->
+                                                <th>Names</th>
+                                                <th>Guest Category</th>
+                                                <th>Confirmation Number</th>
+                                                <th>Validity (Start/Expire)</th>
+                                                <th>No of Nights</th>
+                                                <th>Room Type</th>
+                                                <th>Meal Plan</th>
+                                                <th>Transfer Mode</th>
+                                                <th>Guest No</th>
+                                                <th>Added Values</th>
+                                                <th>Product Type</th>
+                                                <!--    <th>Amount</th>
+                                                <th>Exchange Rate</th>
+                                                <th>Commission</th>
+                                                <th>Total</th> -->
+                                                <!-- <th t-if="o.quote_builder == True">Total</th> -->
+                                            </tr>
+                                            <t t-foreach="o.packages_pkg" t-as="pkg">
+                                                <tr>
+                                                    <td>
+                                                        <span t-esc="pkg.product_id.name"></span>
+                                                    </td>
+                                                    <!-- <td>
+                                                        <span t-esc="pkg.supplier.name"></span>
+                                                    </td> -->
+                                                    <td>
+                                                        <t t-foreach="pkg.customer_m2m" t-as="cust">
+                                                            <span t-esc="cust.name"></span><br />
+                                                        </t>
+                                                    </td>
+                                                    <td style="text-transform: capitalize !important;">
+                                                        <span t-esc="pkg.category"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="pkg.confirmation_no"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="pkg.validity"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="pkg.no_of_nights"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="pkg.room_type.name"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="pkg.meal_plan.name"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="pkg.transfer_mode"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="pkg.guest_no"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="pkg.added_values"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="pkg.product_type"></span>
+                                                    </td>
+                                                    <!-- <td>
+                                                        <span t-esc="pkg.amnt_fc"></span>
+                                                        <span t-esc="pkg.currency_name.symbol"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="pkg.exchange_rate"></span> 
+                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="pkg.commission"></span> 
+                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="pkg.total"></span> 
+                                                        <span t-esc="o.currency_id.symbol"></span> 
+                                                    </td> -->
+                                                    <!-- <td t-if="o.quote_builder == True">
+                                                        <span t-esc="pkg.total"></span>
+                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                    </td> -->
+                                                </tr>
+                                            </t>
+                                        </table>
+                                        <br />
+                                        <div>
+                                            <p style="font-weight:bold;">Terms &amp; Conditions and Remarks</p>
+                                            <div class="all_daata">
+                                                <p>
+                                                    <span t-raw="o.packages_cancel_policy"></span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <br /><br />
+                                    </t>
+                                </div>
+                                <div class="page_set">
+                                    <t t-if="o.privatejet_pkg">
+                                        <!-- <h3 class="head">Private Jet</h3> -->
+                                        <table width="100%">
+                                            <tr>
+                                                <th colspan="50" class="head">Private Jet</th>
+                                            </tr>
+                                            <tr>
+                                                <th>Airline</th>
+                                                <!-- <th>Supplier</th> -->
+                                                <th>Names</th>
+                                                <th>From/To</th>
+                                                <th>Flight</th>
+                                                <th>Class</th>
+                                                <th>Departures Date</th>
+                                                <th>Arrival Date</th>
+                                                <th>Bag</th>
+                                                <th>Terminal</th>
+                                                <th>Airline PNR</th>
+                                                <th>Guests</th>
+                                                <!-- <th>Amount</th>
+                                                <th>Exchange Rate</th>
+                                                <th>Commission</th>
+                                                <th>Total</th> -->
+                                                <!-- <th t-if="o.quote_builder == True">Total</th> -->
+                                            </tr>
+                                            <t t-foreach="sorted(o.privatejet_pkg, key=lambda l: (l.departures or '', l.arrival or ''))" t-as="prv">
+                                            <!-- <t t-foreach="o.privatejet_pkg" t-as="prv"> -->
+                                                <tr>
+                                                    <td>
+                                                        <span t-esc="prv.airline.name"></span>
+                                                    </td>
+                                                    <!-- <td>
+                                                        <span t-esc="prv.supplier.name"></span>
+                                                    </td> -->
+                                                    <td>
+                                                        <t t-foreach="prv.customer_m2m" t-as="cust">
+                                                            <span t-esc="cust.name"></span><br />
+                                                        </t>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="prv.from_to"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="prv.flight"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="prv.fight_class"></span>
+                                                    </td>
+                                                     <td>
+                                                        <span t-esc="prv.departures"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="prv.arrival"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="prv.bag"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="prv.terminal"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="prv.airline_pnr"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="prv.no_of_person"></span>
+                                                    </td>
+                                                    <!--            <td>
+                                                        <span t-esc="prv.price"></span> 
+                                                        <span t-esc="prv.currency_name.symbol"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="prv.exchange_rate"></span> 
+                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="prv.commission"></span> 
+                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="prv.total"></span> 
+                                                        <span t-esc="o.currency_id.symbol"></span> 
+                                                    </td> -->
+                                                    <!-- <td t-if="o.quote_builder == True">
+                                                        <span t-esc="prv.total"></span>
+                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                    </td> -->
+                                                </tr>
+                                            </t>
+                                        </table>
+                                        <br />
+                                        <div>
+                                            <p style="font-weight:bold;">Terms &amp; Conditions and Remarks</p>
+                                            <div class="all_daata">
+                                                <p>
+                                                    <span t-raw="o.private_jet_cancel_policy"></span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <br /><br />
+                                    </t>
+                                </div>
+                                <div class="page_set">
+                                    <t t-if="o.yacht_pkg">
+                                        <!-- <h3 class="head">Yacht</h3> -->
+                                        <table width="100%">
+                                            <tr>
+                                                <th colspan="50" class="head">Yacht</th>
+                                            </tr>
+                                            <tr>
+                                                <!-- <th>Supplier</th> -->
+                                                <th>Names</th>
+                                                <th>Confirmation Number</th>
+                                                <th>Description</th>
+                                                <th>Duration</th>
+                                                <th>Yacht Type</th>
+                                                <th>Meal Plan</th>
+                                                <th>Occupancy</th>
+                                                <th>Departure Place</th>
+                                                <th>Arrival Place</th>
+                                                <th>Date From</th>
+                                                <th>Date To</th>
+                                                <th>Guests</th>
+                                                <!-- <th>Amount</th>
+                                                <th>Exchange Rate</th>
+                                                <th>Commission</th>
+                                                <th>Total</th> -->
+                                                <!-- <th t-if="o.quote_builder == True">Total</th> -->
+                                            </tr>
+                                            <t t-foreach="sorted(o.yacht_pkg, key=lambda l: (l.date_from or '', l.date_to or ''))" t-as="y">
+                                            <!-- <t t-foreach="o.yacht_pkg" t-as="y"> -->
+                                                <tr>
+                                                    <!-- <td>
+                                                        <span t-esc="y.supplier.name"></span>
+                                                    </td> -->
+                                                    <td>
+                                                        <t t-foreach="y.customer_m2m" t-as="cust">
+                                                            <span t-esc="cust.name"></span><br />
+                                                        </t>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="y.confirmation_no"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="y.description"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="y.duration"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="y.yacht_type.name"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="y.meal_plan.name"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="y.occupancy"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="y.departure_place"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="y.arrival_place"></span>
+                                                    </td>
+                                                    <td>
+                                                        <t t-if="y.date_from">
+                                                            <span t-esc="y.date_from"></span>
+                                                        </t>
+                                                    </td>
+                                                    <td>
+                                                        <t t-if="y.date_from">
+                                                            <span t-esc="y.date_to"></span>
+                                                        </t>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="y.no_of_person"></span>
+                                                    </td>
+                                                    <!--    <td>
+                                                        <span t-esc="y.price"></span> 
+                                                        <span t-esc="y.currency_name.symbol"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="y.exchange_rate"></span> 
+                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="y.commission"></span> 
+                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="y.total"></span> 
+                                                        <span t-esc="o.currency_id.symbol"></span> 
+                                                    </td> -->
+                                                   <!--  <td t-if="o.quote_builder == True">
+                                                        <span t-esc="y.total"></span>
+                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                    </td> -->
+                                                </tr>
+                                            </t>
+                                        </table>
+                                        <br />
+                                        <div>
+                                            <p style="font-weight:bold;">Terms &amp; Conditions and Remarks</p>
+                                            <div class="all_daata">
+                                                <p>
+                                                    <span t-raw="o.yacht_cancel_policy"></span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <br /><br />
+                                    </t>
+                                </div>
+                                <div class="page_set">
+                                    <t t-if="o.cruises_pkg">
+                                        <!-- <h3 class="head">Cruises</h3> -->
+                                        <table width="100%">
+                                            <tr>
+                                                <th colspan="50" class="head">Cruises</th>
+                                            </tr>
+                                            <tr>
+                                                <!-- <th>Supplier</th> -->
+                                                <th>Names</th>
+                                                <th>Confirmation Number</th>
+                                                <th>Description</th>
+                                                <th>Duration</th>
+                                                <th>Cabin Type</th>
+                                                <th>Meal Plan</th>
+                                                <th>Occupancy</th>
+                                                <th>Departure Place</th>
+                                                <th>Arrival Place</th>
+                                                <th>Date From</th>
+                                                <th>Date To</th>
+                                                <th>Guests</th>
+                                                <!--            <th>Amount</th>
+                                                <th>Exchange Rate</th>
+                                                <th>Commission</th>
+                                                <th>Total</th> -->
+                                                <!-- <th t-if="o.quote_builder == True">Total</th> -->
+                                            </tr>
+                                            <t t-foreach="sorted(o.cruises_pkg, key=lambda l: (l.date_from or '', l.date_to or ''))" t-as="cr">
+                                            <!-- <t t-foreach="o.cruises_pkg" t-as="cr"> -->
+                                                <tr>
+                                                    <!-- <td>
+                                                        <span t-esc="cr.supplier.name"></span>
+                                                    </td> -->
+                                                    <td>
+                                                        <t t-foreach="cr.customer_m2m" t-as="cust">
+                                                            <span t-esc="cust.name"></span><br />
+                                                        </t>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="cr.confirmation_no"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="cr.description"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="cr.duration"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="cr.cabin_type.name"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="cr.meal_plan.name"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="cr.occupancy"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="cr.departure_place"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="cr.arrival_place"></span>
+                                                    </td>
+                                                    <td>
+                                                        <t t-if="cr.date_from">
+                                                            <span t-esc="cr.date_from"></span>
+                                                        </t>
+                                                    </td>
+                                                    <td>
+                                                        <t t-if="cr.date_to">
+                                                            <span t-esc="cr.date_to"></span>
+                                                        </t>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="cr.no_of_person"></span>
+                                                    </td>
+                                                    <!--    <td>
+                                                        <span t-esc="cr.price"></span> 
+                                                        <span t-esc="cr.currency_name.symbol"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="cr.exchange_rate"></span> 
+                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="cr.commission"></span> 
+                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="cr.total"></span> 
+                                                        <span t-esc="o.currency_id.symbol"></span> 
+                                                    </td> -->
+                                                    <!-- <td t-if="o.quote_builder == True">
+                                                        <span t-esc="cr.total"></span>
+                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                    </td> -->
+                                                </tr>
+                                            </t>
+                                        </table>
+                                        <br />
+                                        <div>
+                                            <p style="font-weight:bold;">Terms &amp; Conditions and Remarks</p>
+                                            <div class="all_daata">
+                                                <p>
+                                                    <span t-raw="o.cruise_cancel_policy"></span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <br /><br />
+                                    </t>
+                                </div>
+                                <div class="page_set">
+                                    <t t-if="o.otherservices_pkg">
+                                        <!-- <h3 class="head">Other Services</h3> -->
+                                        <table width="100%">
+                                            <tr>
+                                                <th colspan="50" class="head">Other Services</th>
+                                            </tr>
+                                            <tr>
+                                                <!-- <th>Supplier</th> -->
+                                                <th>Names</th>
+                                                <th>Confirmation Number</th>
+                                                <th>Description</th>
+                                                <th>Date From</th>
+                                                <th>Date To</th>
+                                                <th>Guests</th>
+                                                <!--        <th>Amount</th>
+                                                <th>Exchange Rate</th>
+                                                <th>Commission</th>
+                                                <th>Total</th> -->
+                                                <!-- <th t-if="o.quote_builder == True">Total</th> -->
+                                            </tr>
+                                            <!-- <t t-foreach="o.otherservices_pkg" t-as="ots"> -->
+                                            <t t-foreach="sorted(o.otherservices_pkg, key=lambda l: (l.date_from or '', l.date_to or ''))" t-as="ots">
+                                                <tr>
+                                                    <!-- <td>
+                                                        <span t-esc="ots.supplier.name"></span>
+                                                    </td> -->
+                                                    <td>
+                                                        <t t-foreach="ots.customer_m2m" t-as="cust">
+                                                            <span t-esc="cust.name"></span><br />
+                                                        </t>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="ots.confirmation_no"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="ots.description"></span>
+                                                    </td>
+                                                    <td>
+                                                        <t t-if="ots.date_from">
+                                                            <span t-esc="ots.date_from"></span>
+                                                        </t>
+                                                    </td>
+                                                    <td>
+                                                        <t t-if="ots.date_to">
+                                                            <span t-esc="ots.date_to"></span>
+                                                        </t>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="ots.no_of_person"></span>
+                                                    </td>
+                                                    <!--    <td>
+                                                        <span t-esc="ots.price"></span> 
+                                                        <span t-esc="ots.currency_name.symbol"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="ots.exchange_rate"></span> 
+                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="ots.commission"></span> 
+                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="ots.total"></span> 
+                                                        <span t-esc="o.currency_id.symbol"></span> 
+                                                    </td> -->
+                                                   <!--  <td t-if="o.quote_builder == True">
+                                                        <span t-esc="ots.total"></span>
+                                                        <span t-esc="o.currency_id.symbol"></span>
+                                                    </td> -->
+                                                </tr>
+                                            </t>
+                                        </table>
+                                        <br />
+                                        <div>
+                                            <p style="font-weight:bold;">Terms &amp; Conditions and Remarks</p>
+                                            <div class="all_daata">
+                                                <p>
+                                                    <span t-raw="o.other_cancel_policy" />
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <br /><br />
+                                    </t>
+                                </div>
+                                <br class="clear_float" />
+                                <t t-if="o.stamp">
+                                    <img src="/voucher_report/static/src/img/stamp_new.png" style="width: 15%;float: right;" />
+                                </t>
+                                <br class="clear_float" />
+                                <div class="main_div" style="page-break-before: always; page-break-after: always;">
+                                    <p class="term">General Instructions:</p>
+                                    <p class="arabic">
+                                        <span t-raw="o.term_condition"></span>
+                                    </p>
+                                    <div style="width: 100%">
+                                        <div style="width: 30%;float: left;">
+                                            <p>.</p>
+                                        </div>
+                                        <div style="float: left;width: 70%;">
+                                            <!-- <img src="/voucher_report/static/src/img/signature.png" style="width: 30%;float: right;height: 230px;"/>    -->
+                                            <!-- <img src="/voucher_report/static/src/img/stamp.png" style="height: 100px;width: 20%;float: right;margin-top: 20px;"/> -->
+                                        </div>
+                                    </div>
+                                    <br class="clear_float" />
+                                    <div>
+                                        <p style="text-align:center;">
+                                            <u>
+                                                <span>This is a system generated confirmation and does not require a signature</span>
+                                            </u>
+                                        </p>
+                                        <div class="footer_logo">
+                                            <img src="/voucher_report/static/src/img/company.png"/>
+                                            <!-- <t t-foreach="company" t-as="c">
+                                                <img t-att-src="'data:image/png;base64,%s' %to_text(c.logo)" />
+                                                <p>
+                                                    <a t-att-href="c.website">
+                                                        <span>www.rawnaqtourism.com</span>
+                                                    </a>
+                                                </p>
+                                            </t> -->
+                                            <!-- <img t-att-src="'/voucher_report/static/src/img/footer_logo.jpg'" style="height: 140px;position: fixed;bottom: 0;width: 960px;"/> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end of page-->
+                    </t>
+                </t>
+            </t>
+        </template>
+        <!-- <template id="assets_backend" name="add_custome_footer" inherit_id="web.external_layout">
+            <p style="text-align:center">
+                <u>
+                    <span>This is a system generated voucher and does not require a signature</span>
+                </u>
+            </p>
+            <div>
+                <img t-att-src="'/voucher_report/static/src/img/footer_logo.jpg'" style="height: 140px;margin-top: 175px;"/>
+            </div>
+        </template> -->
+    </data>
+</odoo>

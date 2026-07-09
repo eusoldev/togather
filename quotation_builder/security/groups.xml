@@ -1,0 +1,8 @@
+<odoo>
+    <data noupdate="1">
+       <!--  <record id="quotation_builder" model="res.groups">
+            <field name="name">Quotation Builders</field>
+        </record> -->
+        
+    </data>
+</odoo>

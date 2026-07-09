@@ -1,0 +1,15 @@
+<odoo>
+    <data noupdate="0">
+        <record id="security_group_for_sub_agent_report" model="res.groups">
+            <field name="name">Security Group For sub_agent_report</field>
+            <field name="user_ids" eval="[(4, ref('base.user_admin'))]"/>
+        </record>
+
+
+         <record id="security_group_for_sub_client_report" model="res.groups">
+            <field name="name">Security Group For sub_client_report</field>
+            <field name="user_ids" eval="[(4, ref('base.user_admin'))]"/>
+        </record>
+
+    </data>
+</odoo>

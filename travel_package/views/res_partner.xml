@@ -1,0 +1,352 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="view_res_bank_form_ext" model="ir.ui.view">
+            <field name="name">view_res_bank_form_ext</field>
+            <field name="model">res.bank</field>
+            <field name="inherit_id" ref="base.view_res_bank_form" />
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='bic']" position="after">
+                    <field name="iban" />
+                    <field name="swift_code" />
+                    <field name="add" />
+                </xpath>
+                <xpath expr="//field[@name='email']" position="after">
+                    <field name="logo" widget="image" />
+                </xpath>
+            </field>
+        </record>
+        <record id="view_company_form_inherit_social_media_ext" model="ir.ui.view">
+            <field name="name">view_company_form_inherit_social_media_ext</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="social_media.view_company_form_inherit_social_media" />
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='social_github']" position="attributes">
+                    <attribute name="string">Instagram Account 1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='social_youtube']" position="attributes">
+                    <attribute name="string">Snapchat Account</attribute>
+                </xpath>
+                <xpath expr="//field[@name='social_instagram']" position="attributes">
+                    <attribute name="string">Instagram Account 2</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record id="res_company_form_view_inherit_sms" model="ir.ui.view">
+            <field name="name">res.company.form.inherit.sms</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//sheet" position="inside">
+                    <group>
+                        <field name="custom_thank_you" />
+                       
+                    </group>
+                </xpath>
+                 <xpath expr="//field[@name='color']" position="after">
+                    <field name="header_image" widget="image" class="float-left oe_avatar"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="vendor_form_ext" model="ir.ui.view">
+            <field name="name">vendor_form_ext</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                
+                <xpath expr="/form/*" position="before">
+                    <header>
+                        <button name='create_travel_package' type='object' string='Reservations' class='oe_highlight' />
+                    </header>
+                </xpath>
+                <xpath expr="//field[@name='street2']" position="replace">
+                    <field name="street2" placeholder="Street 2..." class="o_address_street" invisible="company_type =='person'" />
+                </xpath>
+                <xpath expr="//field[@name='city']" position="replace">
+                    <field name="city" placeholder="City" class="o_address_city" invisible="company_type =='person'" />
+                </xpath>
+                <xpath expr="//field[@name='zip']" position="replace">
+                    <field name="zip" placeholder="zip" class="o_address_city" invisible="company_type =='person'" />
+                </xpath>
+                <xpath expr="//field[@name='state_id']" position="replace">
+                    <field name="state_id" placeholder="State" class="o_address_city" invisible="company_type =='person'" />
+                </xpath>
+                <xpath expr="//field[@name='country_id']" position="replace">
+                    <field name="country_id" placeholder="Country" class="o_address_city" invisible="company_type =='person'" />
+                </xpath>
+                <!-- </div> -->
+                <xpath expr="//field[@name='phone']" position="replace">
+                    <field name="phone" required="1" />
+                </xpath>
+                <xpath expr="(//field[@name='phone'])[1]" position="after">
+                    <field name="mobile" />
+                </xpath>
+                <xpath expr="//field[@name='email']" position="replace">
+                    <field name="email" />
+                </xpath>
+                
+                <xpath expr="//field[@name='property_payment_term_id']" position="after">
+                    <field name='credit_limit' invisible="1" />
+                </xpath>
+                <xpath expr="//field[@name='email']" position="after">
+                    <button name='send_email' type='object' string="Email" class='oe_highlight' />
+                </xpath>
+                <xpath expr="//field[@name='mobile']" position="after">
+                    <button name='sms_wizard' type='object' string="SMS" class='oe_highlight' />
+                </xpath>
+                
+                <xpath expr="//field[@name='street']" position="replace">
+                    <field name="street" placeholder="Street..." class="o_address_street" invisible="company_type == 'person'" nolabel="1" />
+                    <field name="ind_street" placeholder="Street..." class="o_address_street" invisible="company_type == 'company'" nolabel="1" />
+                </xpath>
+                <xpath expr="//field[@name='street2']" position="replace">
+                    <field name="street2" placeholder="Street 2..." class="o_address_street" invisible="company_type == 'person'" nolabel="1" />
+                    <field name="ind_street2" placeholder="Street 2..." class="o_address_street" invisible="company_type == 'company'" nolabel="1" />
+                </xpath>
+                <xpath expr="//field[@name='city']" position="replace">
+                    <field name="city" placeholder="City" class="o_address_city" invisible="company_type == 'person'" nolabel="1" />
+                    <field name="ind_city" placeholder="City" class="o_address_city" invisible="company_type == 'company'" nolabel="1" />
+                </xpath>
+                <xpath expr="//field[@name='state_id']" position="replace">
+                    <field name="state_id" class="o_address_state" placeholder="State" options='{"no_open": true}' invisible="company_type == 'person'" nolabel="1" />
+                    <field name="ind_state_id" class="o_address_state" placeholder="State" options='{"no_open": true}' context="{'country_id': country_id, 'zip': zip}" invisible="company_type == 'company'" nolabel="1" />
+                </xpath>
+                <xpath expr="//field[@name='zip']" position="replace">
+                    <field name="zip" placeholder="ZIP" class="o_address_zip" invisible="company_type == 'person'" nolabel="1" />
+                    <field name="ind_zip" placeholder="ZIP" class="o_address_zip" invisible="company_type == 'company'" nolabel="1" />
+                </xpath>
+                <xpath expr="//field[@name='country_id']" position="replace">
+                    <field name="country_id" placeholder="Country" class="o_address_country" options='{"no_open": true, "no_create": true}' invisible="company_type == 'person'" nolabel="1" />
+                    <field name="ind_country_id" placeholder="Country" class="o_address_country" options='{"no_open": true, "no_create": true}' invisible="company_type == 'company'" nolabel="1" />
+                    
+                </xpath>
+               
+                <xpath expr="//field[@name='category_id']" position="after">
+                   
+                    <field name="transfer_supplier" />
+                    <field name="airline_supplier" />
+                    <field name="cruise_supplier" />
+                    <field name="bed_bank" />
+                    <field name="tours_supplier" />
+                    <field name="private_jet" />
+                    <!-- <field name="tours_supplier" /> -->
+                    <field name="yacht_supplier" />
+                    <field name="service_supplier" />
+                    <field name="is_contract" readonly="0" force_save="1" />
+                    <field name="passport_no" placeholder="Enter Passport Number" invisible="is_company == True" />
+                    <field name="job_of_company" placeholder="Enter Company name" />
+                    <field name="national_id" placeholder="Enter National Id Number" invisible="is_company == True" />
+                    <field name="dob" placeholder="Enter Date of Birth" invisible="is_company == True" />
+                    <field name="age" invisible="is_company == True" readonly="1" force_save="1" />
+                    <field name="nationality_of_client" />
+                    <field name="frequent_flier" widget="many2many_tags" />
+                    <field name="agent" invisible='1' />
+                    <field name="resturant" invisible='1' />
+                    <field name="supplier_meal" invisible='1' />
+                    <field name="guide_supplier" invisible='1' />
+                    <field name="vip" />
+                    <!-- <field name="title" /> -->
+                    <field name="blacklist" />
+                    <field name="blacklist_reason" invisible="blacklist ==False" />
+                    <field name="visa_supplier" string="Visa Supplier" />
+                    <field name="hotel_supplier" />
+                    <field name="rawnaq_team" />
+                    <field name="ticketing_supplier" invisible='1' />
+                    <field name="dmc" />
+                    <field name="travel_agency" />
+                    <field name="commission_amount" invisible="travel_agency == False" />
+                    <field name="b2c_customer" />
+                    <field name="hotel_link" widget='url' invisible="hotel_supplier == False" />
+                    <field name='end_consumer_type' invisible="b2c_customer == False " />
+                    <field name='other_user_detaile' invisible="b2c_customer == False or end_consumer_type !='others'" />
+                    <button name='notify_dues' string="Notify Dues" type='object' class='oe_highlight' />
+                </xpath>
+                <xpath expr="//field[@name='function']" position="before">
+                    <field name="gender" placeholder="Select Gender (Male/Female)" invisible="is_company == True" />
+                   
+                    <field name="category" placeholder="Select Age category (Infant/Child/Adult)" invisible="is_company == True" />
+                </xpath>
+                <xpath expr="//page[1]" position='after'>
+                    <page string=' Family Members' invisible="company_type =='company'">
+                        <field name="sub_customer">
+                            <list editable="bottom">
+                                <field name="b2c_customer" invisible="1" />
+                                <field name="customer_name" required='1' context="{'res_partner_search_mode': 'customer', 'show_address': 1, 'show_vat': True, 'default_b2c_customer':True}" />
+                                <field name="relation" />
+                                <field name="title" />
+                                <field name="dob" />
+                                <field name="age" readonly="1" force_save="1" />
+                                <field name="passport_no" />
+                                <field name="national_id" />
+                                <field name="nationality_of_client" />
+                                <field name="category" required="0" />
+                            </list>
+                        </field>
+                    </page>
+                    <page string='Occasion'>
+                        <field name="customer_events">
+                            <list editable="bottom">
+                                <field name="date" required="1" />
+                                <field name="event" required="1" />
+                                <field name="enable" />
+                            </list>
+                        </field>
+                    </page>
+                    <page string='Contracts' invisible="company_type =='person'">
+                        <field name="contracts_tree">
+                            <list editable="bottom">
+                                <field name="contract_title" required='1' />
+                                <field name="start_date" />
+                                <field name="end_date" />
+                                <field name="attachment" widget="many2many_binary" />
+                            </list>
+                        </field>
+                    </page>
+                    <page string='GDS Numbers' invisible="company_type =='person'">
+                        <field name="company_numbers">
+                            <list editable="bottom">
+                                <field name="gds_type" required='1' />
+                                <field name="gds_id" readonly='0' />
+                            </list>
+                        </field>
+                    </page>
+                    <page string="Attachments" name='attachments_page'>
+                        <group name="group_top" string="Attachments" invisible="company_type =='company'">
+                            <group>
+                                <field name="national_id_copy" widget="many2many_binary" />
+                                <field name="passport_copy" widget="many2many_binary" />
+                                <field name="credit_card" widget="many2many_binary" />
+                            </group>
+                            <group>
+                                <field name="business_card" widget="many2many_binary" />
+                                <field name="other_attachments" widget="many2many_binary" />
+                            </group>
+                        </group>
+                        <field name='attachments_tree' invisible="company_type =='person'">
+                            <list editable="bottom">
+                                <field name='description' required="1" />
+                                <field name='attachment' widget="many2many_binary" />
+                            </list>
+                        </field>
+                    </page>
+                    <page string="Legal Documents" name='reg_id_page' invisible="company_type =='person'">
+                        <group name="group_top" string="Legal Documents">
+                            <group>
+                                <field name="commercial_reg" widget="many2many_binary" />
+                                <field name="vat_cert" widget="many2many_binary" />
+                                <field name="non_disc_agre" widget="many2many_binary" />
+                                <field name="municiple_lisc" widget="many2many_binary" />
+                                <field name="tourism_lisc" widget="many2many_binary" />
+                            </group>
+                            <group>
+                                <field name="chamber_comm_cert" widget="many2many_binary" />
+                                <field name="ministry_lab_lisc" widget="many2many_binary" />
+                                <field name="gosi" widget="many2many_binary" />
+                                <field name="wasel" widget="many2many_binary" />
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+        <!-- Adding Fields in Account Tree in invoicing tab -->
+        <record id="view_partner_property_form_ext" model="ir.ui.view">
+            <field name="name">view_partner_property_form_ext</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="account.view_partner_property_form" />
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <!-- <xpath expr="//group[@name='accounting_entries']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath> -->
+                <xpath expr="//page[@name='accounting']" position="attributes">
+                    <attribute name="string">Bank Details</attribute>
+                </xpath>
+                <xpath expr="//field[@name='bank_ids']" position="replace">
+                    <div style="width: 200% !important;">
+                        <field name="bank_ids" nolabel="1">
+                            <list editable="bottom">
+                                <field name="sequence" widget="handle" />
+                                <field name="bank_id" />
+                                <field name="acc_number" />
+                                <field name="acc_holder_name" invisible="1" />
+                                <field name="account_name" />
+                                <field name="iban" />
+                                <field name="swift_code" />
+                                <field name="bank_address" />
+                                <field name="currency" />
+                                <field name="phone_no" />
+                                <field name="email" />
+                            </list>
+                        </field>
+                    </div>
+                    <group string="Accounting Entries" name="accounting_entries" groups="account.group_account_user">
+                        <field name="currency_id" invisible="1" />
+                        <field name="property_account_receivable_id" />
+                        <field name="property_account_payable_id" />
+                    </group>
+                </xpath>
+            </field>
+        </record>
+       
+        <record id="res_partner_title_tree" model="ir.ui.view">
+            <field name="name">res.partner.title.list</field>
+            <field name="model">res.partner.title</field>
+            <field name="arch" type="xml">
+                <list string="Contact Titles" editable="bottom">
+                    <field name="sequence_title" widget="handle"/>
+                    <field name="name"/>
+                    <field name="shortcut"/>
+                    <field name="active"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="res_partner_title_form" model="ir.ui.view">
+            <field name="name">res.partner.title.form</field>
+            <field name="model">res.partner.title</field>
+            <field name="arch" type="xml">
+                <form string="Contact Title">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="shortcut"/>
+                            <field name="sequence_title"/>
+                            <field name="active"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+       <record id="contacts.action_contacts" model="ir.actions.act_window">
+            <field name="name">Contacts</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">kanban,list,form,activity</field>
+            <field name="search_view_id" ref="base.view_res_partner_filter" />
+            <field name="context">{'default_is_company': False}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a contact in your address book
+                </p>
+                <p>
+                    Odoo helps you to easily track all activities related to a customer.
+                </p>
+            </field>
+        </record>
+        <record id="view_users_form_ext" model="ir.ui.view">
+            <field name="name">view_users_form_ext</field>
+            <field name="model">res.users</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="base.view_users_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='other_preferences']" position="inside">
+                    <field name="payment_admin" />
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

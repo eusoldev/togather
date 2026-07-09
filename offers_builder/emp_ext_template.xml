@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<odoo>
+	<data>
+
+		<record id="offers_builder_form_view" model="ir.ui.view">
+		    <field name="name">offers_builder_form_view</field>
+		    <field name="model">offers.builder</field>
+		    <field name="type">form</field>
+		    <field name="arch" type="xml">
+		    	<form>
+		    		<sheet>
+		    			<group>
+			    			<group>
+			    				<field name="hotel" options="{'no_open':True,'no_create': True}"  required="1"/>
+			    				<!-- domain="[('hotel_supplier','=',True)]" -->
+			    				<field name="offer" required="1"/>
+			    				<field name="offer_to" required="1"/>
+			    				<field name="subject"/>
+			    			</group>
+			    			<group>
+			    				<field name="date_of_stay" required="1"/>
+			    				<field name="date_to" required="1"/>
+			    				<field name="logo" widget="image"/>
+			    			</group>
+			    		</group>
+			    		<notebook>
+			    			<page string="Detail">
+					    		<field name="offers_builder_tree">
+					    			<list editable="bottom">
+					    				<field name="room_type" required="1"/>
+					    				<field name="night_3"/>
+					    				<field name="night_4"/>
+					    				<field name="night_5"/>
+					    				<field name="extra_adult"/>
+					    			</list>
+					    		</field>
+					    		<h1>Supplement Type</h1>
+					    		<field name="supplement_type_tree">
+					    			<list editable="bottom">
+					    				<field name="supplement_type" required="1"/>
+					    				<field name="price" required="1"/>
+					    			</list>
+					    		</field>
+					    	</page>
+			    			<page string="Package Inclusions">
+			    				<group>
+					    			<field name="package_inclusions"/>
+					    		</group>
+					    	</page>
+			    			<page string="Exclusive Benefits">
+			    				<group>
+					    			<field name="exclusive_benefits"/>
+					    		</group>
+					    	</page>
+			    			<page string="Honeymooners Benefits">
+			    				<group>
+					    			<field name="honeymooners_benefits"/>
+					    		</group>
+					    	</page>
+			    			<page string="Terms &amp; Conditions">
+			    				<group>
+					    			<field name="terms_conditions"/>
+					    		</group>
+					    	</page>
+					    </notebook>
+		    		</sheet>
+		    		<chatter/>
+		    	</form>
+		    </field>
+		</record>
+
+		<record id="offers_builder_tree_view" model="ir.ui.view">
+		    <field name="name">offers_builder_tree_view</field>
+		    <field name="model">offers.builder</field>
+		    <field name="type">list</field>
+		    <field name="arch" type="xml">
+		    	<list>
+    				<field name="hotel"/>
+    				<field name="subject"/>
+    				<field name="offer"/>
+    				<field name="offer_to"/>
+    				<field name="date_of_stay"/>
+    				<field name="date_to"/>
+		    	</list>
+		    </field>
+		</record>
+
+    <record id="action_offers_builder" model="ir.actions.act_window">
+        <field name="name">Offers Builder</field>
+        <field name="res_model">offers.builder</field>
+        <field name="view_mode">list,form</field>
+    </record>
+   <menuitem id="menu_offers_builder" name="Offers Builder" groups="offers_builder.offers_builder_group" web_icon="offers_builder,static/src/img/icon.png" />
+   <menuitem id="child_menu_offers_builder" parent="menu_offers_builder" name="Offers Builder" groups="offers_builder.offers_builder_group"/>
+   <menuitem id="child_menu_offers_builder_id" parent="child_menu_offers_builder" name="Offers Builder" action="action_offers_builder" groups="offers_builder.offers_builder_group" />
+ 
+
+	</data>
+</odoo>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<data>
+
+		<template id="flight_report_report">
+			<t t-call="web.html_container">
+				<t t-call="web.internal_layout">
+					<t t-foreach="docs" t-as="o">
+						<div class="page" t-attf-style="width:100%;margin:0px;">
+
+						    <style type="text/css">
+						    	
+						    	body{
+						    		background-color: #fff !important;
+						    	}
+
+							    @media (min-width: 1200px) {
+							        .container {
+							            width: 100%;
+							        }
+							    }
+
+							    @media (min-width: 992px) {
+							        .container {
+							            width: 100%;
+							        }
+							    }
+
+							    @media (min-width: 768px) {
+							        .container {
+							            width: 100%;
+							        }
+							    }
+
+							    .container {
+							        width: 100%;
+							    }
+
+							    body.o_in_iframe {
+							        margin: 0px !important;
+							        padding: 0px !important;
+							    }
+
+							    .header,
+							    .footer {
+							        display: none !important;
+							    }
+                                @font-face {
+                                    font-family: 'NafeesNastaleeq';
+                                    src: url('/welcome_letter_report/static/src/fonts/NafeesNastaleeq.eot?#iefix') format('embedded-opentype'),  
+                                        url('/welcome_letter_report/static/src/fonts/NafeesNastaleeq.woff') format('woff'), 
+                                        url('/welcome_letter_report/static/src/fonts/NafeesNastaleeq.ttf')  format('truetype'), 
+                                        url('/welcome_letter_report/static/src/fonts/NafeesNastaleeq.svg#NafeesNastaleeq') format('svg');
+                                    font-weight: normal;
+                                    font-style: normal;
+                                }
+                                .main_wraper {
+                                    font-family: 'NafeesNastaleeq' ,'Open Sans', sans-serif;
+                                    font-family:Helvetica,Verdana,Arial,sans,Lucida Grande,Calibri;
+                                }
+
+							    .main_wraper {
+							        width: 100%;
+							    }
+
+							    .report_data {
+								    position: absolute !important;
+								    z-index: 0;
+								    left: 10%;
+								    top: 40%;
+								    line-height: 3;
+								    margin-top: 110px;
+								    width: 100%;
+								    font-size: 18px;
+							    }
+							    .english {
+							    	text-align: left;
+									
+									
+							    }
+							    .arabic {
+							    	text-align: right;
+								    margin-right: 25%;
+									font-family: 'NafeesNastaleeq' ,'Arial', arial !important;
+							    }
+						    </style>
+						    <div class="main_wraper" >
+						        <img src="/welcome_letter_report/static/src/img/Welcome_Letter.png" height="1445" width="100%"/>
+						        <div class="report_data">
+						        	<br/>
+						        	<br/>
+						        	<br/>
+						        	<br/>						        	
+							        <div class="english">
+										<div>Dear
+											<t t-if="o.hotel_return.partner_id.name">
+
+												<b><span style="font-weight: bold;" t-esc="o.hotel_return.partner_id.name"/></b>.
+											</t> 
+											<b><span style="font-weight: bold;" t-esc="o.hotel_return.partner_id.name"/>,</b></div>
+
+										<div>Warm welcome to <b><span style="font-weight: bold;" t-esc="o.hotel_id.name"/></b></div>
+
+										<div>I hope that you had a pleasant flight and that you are excited about your trip.</div>
+
+										<div>Please inform me if there’s anything we can do to help you feel at home during your stay </div>
+										<div>or to enhance your experience.</div>
+
+										<div>Please share your moments by tagging us in our social media accounts or our google account.</div> 
+
+										<div style="margin:0px">Sincerely,</div>
+
+										<div style="margin:0px">Togather Tourism Team</div>
+									</div>
+
+									<div class="arabic">
+										<div>، <b><span style="font-weight: bold;" t-esc="o.hotel_return.partner_id.name"/></b>   عميلنا العريز ،</div>
+
+										<div> <b><span style="font-weight: bold;" t-esc="o.hotel_id.name"/></b>   مرحبًا بكم في </div>
+
+										<div>أتمنى أن تكون قد حظيت برحلة ممتعة وأن تكون متحمساً لإقامتكم.</div>
+
+										<div>يرجى مشاركة لحظاتك من خلال وضع تقييم لنا في حسابات وسائل التواصل الاجتماعي الخاصة بنا أو<br/> حسابنا على جوجل</div> 
+
+										<div>يرجى إعلامنا إذا كان هناك أي شيء يمكننا القيام به لجعلك تشعر
+										وكأنك في بيتك هنا في رحلتكم <br/>وإذا كان هناك أي شيء آخر يمكننا القيام به لضمان تجربة رائعة يرى التواصل معنا.</div>
+
+										<div>,بإخلاص و إتقان</div>
+
+										<div>فريق رونق للسياحة</div>
+									</div>
+
+
+
+						    	</div>
+						    </div>
+
+						</div><!--end of page-->
+					</t>
+				</t>
+			</t>
+		</template>
+	</data>
+</odoo>

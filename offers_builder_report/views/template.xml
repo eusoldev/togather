@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+    	<record id="offers_builder_report_template" model="report.paperformat">
+            <field name="name">Voucher</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">10</field>
+            <field name="margin_bottom">0</field>
+            <field name="margin_left">10</field>
+            <field name="margin_right">10</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">10</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <!-- <report
+            id="offers_builder_pdf" 
+            model="offers.builder"
+            name="offers_builder_report.offers_builder_report"
+            file="offers_builder_report.offers_builder_report"
+            report_type="qweb-pdf"
+            paperformat="offers_builder_report_template"
+            print_report_name="'Offers Builder - %s' % (object.hotel.name )"
+            string="Offers Builder Report"/> -->
+
+        <record id="offers_builder_pdf" model="ir.actions.report">
+            <field name="name">Offers Builder Report</field>
+            <field name="model">offers.builder</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">offers_builder_report.offers_builder_report</field>
+            <field name="report_file">offers_builder_report.offers_builder_report</field>
+            <field name="print_report_name">'Offers Builder - %s' % (object.hotel.name)</field>
+            <field name="binding_model_id" ref="offers_builder.model_offers_builder" />
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="offers_builder_report_template" />
+        </record>
+
+    </data>
+</odoo>

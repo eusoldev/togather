@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_res_partner_ext_res_partner_ext,res_partner_ext.res_partner_ext,model_res_partner_ext_res_partner_ext,base.group_user,1,1,1,1

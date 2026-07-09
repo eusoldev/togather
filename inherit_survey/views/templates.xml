@@ -1,0 +1,2451 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="inherit_init_survey" inherit_id="survey.survey_fill_form_start">
+            <xpath expr="//div[hasclass('wrap') and hasclass('o_survey_start')]" position="before">
+                <style>
+                    #top,
+                #bottom {
+                    display: none !important;
+                }
+
+                .custom_div_h2 {
+                    align-items: center;
+                    display: flex;
+                    justify-content: flex-start;
+                }
+
+                .customer_name {
+                    margin: 20px 0 0 0;
+                    align-items: center;
+                    flex-direction: column;
+                    display: flex;
+                    justify-content: center;
+                }
+
+                .custom_div_h2 h3,
+                .heading,
+                .custom_div_info h5,
+                .watermark {
+                    transition: .3s all ease-in;
+                    color: #eaded7;
+                    text-decoration: none;
+                }
+
+                .watermark {
+                    text-decoration: none;
+                }
+
+                .watermark:hover {
+                    color: black;
+                }
+
+                .col-sm-2 strong,
+                .heading {
+                    color: #eaded7;
+                }
+
+                .table_custom thead th {
+                    color: #eaded7;
+                }
+
+                .hotelss strong {
+
+                    color: #eaded7;
+                }
+
+                .hotelss {
+                    margin-bottom: 10px;
+                }
+
+                .header_custom {
+                    align-items: flex-start;
+                    display: flex;
+                    justify-content: space-between;
+                }
+
+                .header_custom img {
+                    margin-top: -10px;
+                    height: 130px;
+                }
+
+                .left_portion {
+                    align-items: flex-start;
+                    display: flex;
+                    justify-content: space-between;
+                }
+
+                .img_c {
+                    overflow: initial !important;
+                    margin-right: 10px;
+                }
+
+                .right_portion {
+                    text-align: right;
+                    display: flex;
+                    justify-content: center;
+                    align-items: flex-end;
+                    flex-direction: column;
+                }
+
+                .col-sm-2 {
+                    max-width: 15%;
+                    flex: 15%;
+                    margin-bottom: 5px;
+                }
+
+                .table_custom td,
+                .table_custom th {
+                    padding-left: 0px !important;
+                }
+
+                .img_1 {
+                    height: 100px;
+                }
+
+                .img_3 {
+                    height: 100px;
+                }
+
+                .img_2 {
+                    height: 140px;
+                }
+
+                .custom_float_img {
+
+                    display: flex;
+                    justify-content: flex-end;
+                    flex-direction: row;
+                    align-items: center;
+                }
+
+                @media only screen and (max-width:1199px) {
+
+                    .custom_div_h2 h3,
+                    .heading {
+                        font-size: 25px;
+                    }
+
+                    .custom_div_info h5 {
+                        font-size: 17px;
+
+                    }
+
+                    .watermark {
+                        font-size: 15px;
+
+                    }
+                }
+
+                @media only screen and (max-width:991px) {
+                    .container {
+                        max-width: 90%;
+                    }
+
+                    .col-sm-2 {
+                        max-width: 17%;
+                        flex: 17%;
+
+                    }
+
+                    .custom_div_info div {
+                        width: 50%;
+                        justify-content: flex-start !important;
+                        margin-bottom: 20px;
+                    }
+                }
+
+                @media only screen and (max-width:863px) {
+                    .container {
+                        max-width: 92%;
+                    }
+
+                    .col-sm-2 {
+                        max-width: 20%;
+                    }
+                }
+
+                @media only screen and (max-width:800px) {
+                    .container {
+                        max-width: 93%;
+                    }
+
+                    .col-sm-2 {
+                        max-width: 18%;
+                        flex: 18%;
+                    }
+
+                    b,
+                    strong,
+                    .header_custom span,
+                    .customer_name span {
+                        font-size: 14px;
+                    }
+
+                    .table td,
+                    .table th {
+                        font-size: 14px;
+                    }
+
+                    .custom_div_h2 h2 {
+                        font-size: 1.5rem;
+                    }
+                }
+
+                @media only screen and (max-width:720px) {
+
+                    .custom_div_h2 h3,
+                    .heading {
+                        font-size: 22px;
+                    }
+
+                    .custom_div_info div {
+                        width: 100%;
+                        justify-content: flex-start !important;
+                        margin-bottom: 20px;
+                    }
+                }
+
+                @media only screen and (max-width:700px) {
+
+
+                    .custom_div_ttle {
+                        height: 60px !important;
+                    }
+
+
+
+                    .form_hyperpay,
+                    .last_footer {
+                        margin-top: 0px !important;
+                        padding-top: 0px !important;
+                    }
+
+                    .container {
+                        max-width: 94%;
+                    }
+
+                    .col-sm-2 {
+                        max-width: 20%;
+                        flex: 20%;
+                    }
+
+                    b,
+                    strong,
+                    .customer_name span {
+                        font-size: 14px;
+                    }
+
+                    .table td,
+                    .table th {
+                        font-size: 14px;
+                    }
+
+                    .custom_div_h2 h2 {
+                        font-size: 1.4rem;
+                    }
+                }
+
+
+                @media only screen and (max-width:655px) {
+                    .header_custom {
+                        flex-direction: column;
+                        align-items: center;
+                        display: flex;
+                        justify-content: center;
+                    }
+
+                    .right_portion {
+                        margin-top: 20px;
+                        text-align: center;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: column;
+                    }
+
+                }
+
+                @media only screen and (max-width:624px) {
+
+
+                    #custom_btn_1 a,
+                    #custom_btn_2 a {
+                        margin-top: 0px !important;
+                        margin-bottom: 50px !important;
+                    }
+
+
+                    .form-control-lg {
+                        font-size: 13px !important;
+                    }
+
+                    .wpwl-label-brand,
+                    .wpwl-wrapper-brand,
+                    .wpwl-wrapper-registration-registrationId,
+                    .wpwl-wrapper-registration-brand,
+                    .wpwl-wrapper-registration-number,
+                    .wpwl-wrapper-registration-expiry {
+                        padding-right: 10px !important;
+                    }
+
+                    .container {
+                        max-width: 96%;
+                    }
+
+                    .col-sm-2 {
+                        max-width: 25%;
+                        flex: 25%;
+                    }
+
+                    b,
+                    strong {
+                        font-size: 14px;
+                    }
+
+                    .table td,
+                    .table th {
+                        font-size: 14px;
+                    }
+
+                    .custom_div_h2 h2 {
+                        font-size: 1.4rem;
+                    }
+
+                    .img_1 {
+                        height: 90px;
+                    }
+
+                    .img_3 {
+                        height: 90px;
+                    }
+
+                    .img_2 {
+                        height: 120px;
+                    }
+
+                }
+
+                @media only screen and (max-width:550px) {
+
+                    .custom_div_h2 h3,
+                    .heading {
+                        font-size: 19.5px;
+                    }
+                }
+
+                @media only screen and (max-width:488px) {
+                    .container {
+                        max-width: 96%;
+                    }
+
+                    .col-sm-2 {
+                        max-width: 28%;
+                        flex: 28%;
+                    }
+
+                    b,
+                    strong {
+                        font-size: 14px;
+                    }
+
+                    .table td,
+                    .table th {
+                        font-size: 14px;
+                    }
+
+                    .custom_div_h2 h2 {
+                        font-size: 1.4rem;
+                    }
+
+                    .img_1 {
+                        height: 90px;
+                    }
+
+                    .img_3 {
+                        height: 90px;
+                    }
+
+                    .img_2 {
+                        height: 120px;
+                    }
+
+                    .custom_float_img {
+                        display: flex;
+                        justify-content: center;
+                        flex-direction: row;
+                        align-items: center;
+                        flex-wrap: wrap;
+                    }
+
+                    .table_color_blue th {
+                        width: 15%;
+                    }
+
+                    .table_color_blue th,
+                    td {
+                        font-size: 13px;
+                    }
+
+                    #informations {
+                        align-items: flex-start;
+                        justify-content: space-between;
+                        margin-bottom: 20px;
+                    }
+
+                    .col-6 {
+                        flex: 70%;
+                        max-width: 70%;
+                    }
+
+                }
+
+
+                @media only screen and (max-width:465px) {
+                    .th_priceunit {
+                        text-align: center !important;
+                    }
+
+                    .custom_div_h2 h3,
+                    .heading {
+                        font-size: 18.5px;
+                    }
+                }
+
+                @media only screen and (max-width:435px) {
+                    .container {
+                        max-width: 96%;
+                    }
+
+                    .col-sm-2 {
+                        max-width: 31%;
+                        flex: 31%;
+                    }
+
+                }
+
+
+                @media only screen and (max-width:393px) {
+                    .container {
+                        max-width: 96%;
+                    }
+
+                    .col-sm-2 {
+                        max-width: 32%;
+                        flex: 32%;
+                    }
+
+                    .table td,
+                    .table th {
+                        font-size: 12px;
+                    }
+
+                    .custom_div_h2 h2 {
+                        font-size: 1.2rem;
+                    }
+
+                    p,
+                    b,
+                    strong,
+                    .header_custom span,
+                    .customer_name span {
+                        font-size: 13px;
+                    }
+
+                }
+
+
+                @media only screen and (max-width:361px) {
+                    .container {
+                        max-width: 98%;
+                    }
+
+                    .col-sm-2 {
+                        max-width: 35%;
+                        flex: 35%;
+                    }
+
+                    .col-sm-2:nth-child(even) {
+                        text-align: right;
+                    }
+
+                    .table td,
+                    .table th {
+                        font-size: 10px;
+                    }
+
+                    .custom_div_h2 h2 {
+                        font-size: 1.1rem;
+                    }
+
+                    p,
+                    b,
+                    strong,
+                    .header_custom span,
+                    .customer_name span {
+                        font-size: 12px;
+                    }
+
+                }
+
+                @media only screen and (max-width:330px) {
+
+                    .wpwl-brand,
+                    .wpwl-img {
+                        width: 35px !important;
+                    }
+
+                }
+
+                .custom_div_info {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    flex-wrap: wrap;
+                }
+                </style>
+                <div class="container mt-4">
+                    <t t-foreach="company_id" t-as="o">
+                        <div class="header_custom mb-4">
+                            <div class="left_portion">
+                                <div class="img_c">
+                                    <img t-if="o.logo" t-att-src="image_data_uri(o.logo)" />
+                                </div>
+                                <div class="right_title">
+                                    <span t-esc="o.partner_id.name" style="font-weight:bold;" />
+                                    <br />
+                                    <span t-esc="o.partner_id.street" />
+                                    <br />
+                                    <span t-esc="o.city" />
+                                    <span t-esc="o.zip" />
+                                    <span t-esc="o.country_id.name" />
+                                    <br />
+                                    <span t-esc="o.partner_id.street2" />
+                                    <br />
+                                    <span t-esc="o.city" />
+                                    <span t-esc="o.zip" />
+                                    <span t-esc="o.country_id.name" />
+                                </div>
+                            </div>
+                            <div class="right_portion">
+                                <div>
+                                    <span style="font-weight:bold;">Contact Us:</span><span t-esc="o.partner_id.phone" />
+                                </div>
+                                <div>
+                                    <span t-esc="o.partner_id.website" />
+                                </div>
+                                <div>
+                                    <span style="font-weight:bold;">Vat No:</span><span t-esc="o.partner_id.vat" />
+                                </div>
+                                <div>
+                                    <span t-esc="o.partner_id.email" />
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </xpath>
+            <xpath expr="//div[hasclass('wrap') and hasclass('o_survey_start')]" position="replace">
+                <style>
+                    .btn_custom:hover {
+                    color: #fff !important;
+                }
+                </style>
+                <div class="wrap">
+                    <div class="oe_structure" id="oe_structure_survey_init_1" />
+                    <div class="container">
+                        <t t-if="answer.test_entry" t-call="survey.back" />
+                        <div class='jumbotron mt32'>
+                            <h1 t-field='survey.title' />
+                            <div t-field='survey.description' class="oe_no_empty" />
+                            <div t-if="survey.is_time_limited">
+                                <p>
+                                    <span>Time limit for this survey: </span>
+                                    <span class="font-weight-bold text-danger" t-field="survey.time_limit" t-options="{'widget': 'duration', 'unit': 'minute'}"></span>
+                                </p>
+                            </div>
+
+                            <button type="submit" value="start" class="btn btn-primary btn-lg disabled">
+                                <t t-if="survey.certification">
+                                    Start Certification
+                                </t>
+                                <t t-else="">
+                                    Start Survey
+                                </t>
+                            </button>
+                          
+                        </div>
+                    </div>
+                    <div class="oe_structure" id="oe_structure_survey_init_2" />
+                </div>
+            </xpath>
+        </template>
+        <template id="inherit_page_header_survey" inherit_id="survey.survey_fill_header">
+            <xpath expr="//div[@class='o_survey_nav pt16 mb-2']" position="before">
+                <style>
+                    #top,
+                #bottom {
+                    display: none !important;
+                }
+
+                .custom_div_h2 {
+                    align-items: center;
+                    display: flex;
+                    justify-content: flex-start;
+                }
+
+                .customer_name {
+                    margin: 20px 0 0 0;
+                    align-items: center;
+                    flex-direction: column;
+                    display: flex;
+                    justify-content: center;
+                }
+
+                .custom_div_h2 h3,
+                .heading,
+                .custom_div_info h5,
+                .watermark {
+                    transition: .3s all ease-in;
+                    color: #eaded7;
+                    text-decoration: none;
+                }
+
+                .watermark {
+                    text-decoration: none;
+                }
+
+                .watermark:hover {
+                    color: black;
+                }
+
+                .col-sm-2 strong,
+                .heading {
+                    color: #eaded7;
+                }
+
+                .table_custom thead th {
+                    color: #eaded7;
+                }
+
+                .hotelss strong {
+
+                    color: #eaded7;
+                }
+
+                .hotelss {
+                    margin-bottom: 10px;
+                }
+
+                .header_custom {
+                    align-items: flex-start;
+                    display: flex;
+                    justify-content: space-between;
+                }
+
+                .header_custom img {
+                    margin-top: -10px;
+                    height: 130px;
+                }
+
+                .left_portion {
+                    align-items: flex-start;
+                    display: flex;
+                    justify-content: space-between;
+                }
+
+                .img_c {
+                    overflow: initial !important;
+                    margin-right: 10px;
+                }
+
+                .right_portion {
+                    text-align: right;
+                    display: flex;
+                    justify-content: center;
+                    align-items: flex-end;
+                    flex-direction: column;
+                }
+
+                .col-sm-2 {
+                    max-width: 15%;
+                    flex: 15%;
+                    margin-bottom: 5px;
+                }
+
+                .table_custom td,
+                .table_custom th {
+                    padding-left: 0px !important;
+                }
+
+                .img_1 {
+                    height: 100px;
+                }
+
+                .img_3 {
+                    height: 100px;
+                }
+
+                .img_2 {
+                    height: 140px;
+                }
+
+                .custom_float_img {
+
+                    display: flex;
+                    justify-content: flex-end;
+                    flex-direction: row;
+                    align-items: center;
+                }
+
+                @media only screen and (max-width:1199px) {
+
+                    .custom_div_h2 h3,
+                    .heading {
+                        font-size: 25px;
+                    }
+
+                    .custom_div_info h5 {
+                        font-size: 17px;
+
+                    }
+
+                    .watermark {
+                        font-size: 15px;
+
+                    }
+                }
+
+                @media only screen and (max-width:991px) {
+                    .container {
+                        max-width: 90%;
+                    }
+
+                    .col-sm-2 {
+                        max-width: 17%;
+                        flex: 17%;
+
+                    }
+
+                    .custom_div_info div {
+                        width: 50%;
+                        justify-content: flex-start !important;
+                        margin-bottom: 20px;
+                    }
+                }
+
+                @media only screen and (max-width:863px) {
+                    .container {
+                        max-width: 92%;
+                    }
+
+                    .col-sm-2 {
+                        max-width: 20%;
+                    }
+                }
+
+                @media only screen and (max-width:800px) {
+                    .container {
+                        max-width: 93%;
+                    }
+
+                    .col-sm-2 {
+                        max-width: 18%;
+                        flex: 18%;
+                    }
+
+                    b,
+                    strong,
+                    .header_custom span,
+                    .customer_name span {
+                        font-size: 14px;
+                    }
+
+                    .table td,
+                    .table th {
+                        font-size: 14px;
+                    }
+
+                    .custom_div_h2 h2 {
+                        font-size: 1.5rem;
+                    }
+                }
+
+                @media only screen and (max-width:720px) {
+
+                    .custom_div_h2 h3,
+                    .heading {
+                        font-size: 22px;
+                    }
+
+                    .custom_div_info div {
+                        width: 100%;
+                        justify-content: flex-start !important;
+                        margin-bottom: 20px;
+                    }
+                }
+
+                @media only screen and (max-width:700px) {
+
+
+                    .custom_div_ttle {
+                        height: 60px !important;
+                    }
+
+
+
+                    .form_hyperpay,
+                    .last_footer {
+                        margin-top: 0px !important;
+                        padding-top: 0px !important;
+                    }
+
+                    .container {
+                        max-width: 94%;
+                    }
+
+                    .col-sm-2 {
+                        max-width: 20%;
+                        flex: 20%;
+                    }
+
+                    b,
+                    strong,
+                    .customer_name span {
+                        font-size: 14px;
+                    }
+
+                    .table td,
+                    .table th {
+                        font-size: 14px;
+                    }
+
+                    .custom_div_h2 h2 {
+                        font-size: 1.4rem;
+                    }
+                }
+
+
+                @media only screen and (max-width:655px) {
+                    .header_custom {
+                        flex-direction: column;
+                        align-items: center;
+                        display: flex;
+                        justify-content: center;
+                    }
+
+                    .right_portion {
+                        margin-top: 20px;
+                        text-align: center;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: column;
+                    }
+
+                }
+
+                @media only screen and (max-width:624px) {
+
+
+                    #custom_btn_1 a,
+                    #custom_btn_2 a {
+                        margin-top: 0px !important;
+                        margin-bottom: 50px !important;
+                    }
+
+
+                    .form-control-lg {
+                        font-size: 13px !important;
+                    }
+
+                    .wpwl-label-brand,
+                    .wpwl-wrapper-brand,
+                    .wpwl-wrapper-registration-registrationId,
+                    .wpwl-wrapper-registration-brand,
+                    .wpwl-wrapper-registration-number,
+                    .wpwl-wrapper-registration-expiry {
+                        padding-right: 10px !important;
+                    }
+
+                    .container {
+                        max-width: 96%;
+                    }
+
+                    .col-sm-2 {
+                        max-width: 25%;
+                        flex: 25%;
+                    }
+
+                    b,
+                    strong {
+                        font-size: 14px;
+                    }
+
+                    .table td,
+                    .table th {
+                        font-size: 14px;
+                    }
+
+                    .custom_div_h2 h2 {
+                        font-size: 1.4rem;
+                    }
+
+                    .img_1 {
+                        height: 90px;
+                    }
+
+                    .img_3 {
+                        height: 90px;
+                    }
+
+                    .img_2 {
+                        height: 120px;
+                    }
+
+                }
+
+                @media only screen and (max-width:550px) {
+
+                    .custom_div_h2 h3,
+                    .heading {
+                        font-size: 19.5px;
+                    }
+                }
+
+                @media only screen and (max-width:488px) {
+                    .container {
+                        max-width: 96%;
+                    }
+
+                    .col-sm-2 {
+                        max-width: 28%;
+                        flex: 28%;
+                    }
+
+                    b,
+                    strong {
+                        font-size: 14px;
+                    }
+
+                    .table td,
+                    .table th {
+                        font-size: 14px;
+                    }
+
+                    .custom_div_h2 h2 {
+                        font-size: 1.4rem;
+                    }
+
+                    .img_1 {
+                        height: 90px;
+                    }
+
+                    .img_3 {
+                        height: 90px;
+                    }
+
+                    .img_2 {
+                        height: 120px;
+                    }
+
+                    .custom_float_img {
+                        display: flex;
+                        justify-content: center;
+                        flex-direction: row;
+                        align-items: center;
+                        flex-wrap: wrap;
+                    }
+
+                    .table_color_blue th {
+                        width: 15%;
+                    }
+
+                    .table_color_blue th,
+                    td {
+                        font-size: 13px;
+                    }
+
+                    #informations {
+                        align-items: flex-start;
+                        justify-content: space-between;
+                        margin-bottom: 20px;
+                    }
+
+                    .col-6 {
+                        flex: 70%;
+                        max-width: 70%;
+                    }
+
+                }
+
+
+                @media only screen and (max-width:465px) {
+                    .th_priceunit {
+                        text-align: center !important;
+                    }
+
+                    .custom_div_h2 h3,
+                    .heading {
+                        font-size: 18.5px;
+                    }
+                }
+
+                @media only screen and (max-width:435px) {
+                    .container {
+                        max-width: 96%;
+                    }
+
+                    .col-sm-2 {
+                        max-width: 31%;
+                        flex: 31%;
+                    }
+
+                }
+
+
+                @media only screen and (max-width:393px) {
+                    .container {
+                        max-width: 96%;
+                    }
+
+                    .col-sm-2 {
+                        max-width: 32%;
+                        flex: 32%;
+                    }
+
+                    .table td,
+                    .table th {
+                        font-size: 12px;
+                    }
+
+                    .custom_div_h2 h2 {
+                        font-size: 1.2rem;
+                    }
+
+                    p,
+                    b,
+                    strong,
+                    .header_custom span,
+                    .customer_name span {
+                        font-size: 13px;
+                    }
+
+                }
+
+
+                @media only screen and (max-width:361px) {
+                    .container {
+                        max-width: 98%;
+                    }
+
+                    .col-sm-2 {
+                        max-width: 35%;
+                        flex: 35%;
+                    }
+
+                    .col-sm-2:nth-child(even) {
+                        text-align: right;
+                    }
+
+                    .table td,
+                    .table th {
+                        font-size: 10px;
+                    }
+
+                    .custom_div_h2 h2 {
+                        font-size: 1.1rem;
+                    }
+
+                    p,
+                    b,
+                    strong,
+                    .header_custom span,
+                    .customer_name span {
+                        font-size: 12px;
+                    }
+
+                }
+
+                @media only screen and (max-width:330px) {
+
+                    .wpwl-brand,
+                    .wpwl-img {
+                        width: 35px !important;
+                    }
+
+                }
+
+                .custom_div_info {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    flex-wrap: wrap;
+                }
+                </style>
+                <div class="container mt-4">
+                    <t t-foreach="company_id" t-as="o">
+                        <div class="header_custom mb-4">
+                            <div class="left_portion">
+                                <div class="img_c">
+                                    <img t-if="o.logo" t-att-src="image_data_uri(o.logo)" />
+                                </div>
+                                <div class="right_title">
+                                    <span t-esc="o.partner_id.name" style="font-weight:bold;" />
+                                    <br />
+                                    <span t-esc="o.partner_id.street" />
+                                    <br />
+                                    <span t-esc="o.city" />
+                                    <span t-esc="o.zip" />
+                                    <span t-esc="o.country_id.name" />
+                                    <br />
+                                    <span t-esc="o.partner_id.street2" />
+                                    <br />
+                                    <span t-esc="o.city" />
+                                    <span t-esc="o.zip" />
+                                    <span t-esc="o.country_id.name" />
+                                </div>
+                            </div>
+                            <div class="right_portion">
+                                <div>
+                                    <span style="font-weight:bold;">Contact Us:</span><span t-esc="o.partner_id.phone" />
+                                </div>
+                                <div>
+                                    <span t-esc="o.partner_id.website" />
+                                </div>
+                                <div>
+                                    <span style="font-weight:bold;">Vat No:</span><span t-esc="o.partner_id.vat" />
+                                </div>
+                                <div>
+                                    <span t-esc="o.partner_id.email" />
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </xpath>
+        </template>
+   
+        <template id="inherit_finish_survey" inherit_id="survey.survey_fill_form_done">
+            <xpath expr="//div[@class='wrap']" position="before">
+                <style>
+                    #top,
+                #bottom {
+                    display: none !important;
+                }
+
+                .custom_div_h2 {
+                    align-items: center;
+                    display: flex;
+                    justify-content: flex-start;
+                }
+
+                .customer_name {
+                    margin: 20px 0 0 0;
+                    align-items: center;
+                    flex-direction: column;
+                    display: flex;
+                    justify-content: center;
+                }
+
+                .custom_div_h2 h3,
+                .heading,
+                .custom_div_info h5,
+                .watermark {
+                    transition: .3s all ease-in;
+                    color: #eaded7;
+                    text-decoration: none;
+                }
+
+                .watermark {
+                    text-decoration: none;
+                }
+
+                .watermark:hover {
+                    color: black;
+                }
+
+                .col-sm-2 strong,
+                .heading {
+                    color: #eaded7;
+                }
+
+                .table_custom thead th {
+                    color: #eaded7;
+                }
+
+                .hotelss strong {
+
+                    color: #eaded7;
+                }
+
+                .hotelss {
+                    margin-bottom: 10px;
+                }
+
+                .header_custom {
+                    align-items: flex-start;
+                    display: flex;
+                    justify-content: space-between;
+                }
+
+                .header_custom img {
+                    margin-top: -10px;
+                    height: 130px;
+                }
+
+                .left_portion {
+                    align-items: flex-start;
+                    display: flex;
+                    justify-content: space-between;
+                }
+
+                .img_c {
+                    overflow: initial !important;
+                    margin-right: 10px;
+                }
+
+                .right_portion {
+                    text-align: right;
+                    display: flex;
+                    justify-content: center;
+                    align-items: flex-end;
+                    flex-direction: column;
+                }
+
+                .col-sm-2 {
+                    max-width: 15%;
+                    flex: 15%;
+                    margin-bottom: 5px;
+                }
+
+                .table_custom td,
+                .table_custom th {
+                    padding-left: 0px !important;
+                }
+
+                .img_1 {
+                    height: 100px;
+                }
+
+                .img_3 {
+                    height: 100px;
+                }
+
+                .img_2 {
+                    height: 140px;
+                }
+
+                .custom_float_img {
+
+                    display: flex;
+                    justify-content: flex-end;
+                    flex-direction: row;
+                    align-items: center;
+                }
+
+                @media only screen and (max-width:1199px) {
+
+                    .custom_div_h2 h3,
+                    .heading {
+                        font-size: 25px;
+                    }
+
+                    .custom_div_info h5 {
+                        font-size: 17px;
+
+                    }
+
+                    .watermark {
+                        font-size: 15px;
+
+                    }
+                }
+
+                @media only screen and (max-width:991px) {
+                    .container {
+                        max-width: 90%;
+                    }
+
+                    .col-sm-2 {
+                        max-width: 17%;
+                        flex: 17%;
+
+                    }
+
+                    .custom_div_info div {
+                        width: 50%;
+                        justify-content: flex-start !important;
+                        margin-bottom: 20px;
+                    }
+                }
+
+                @media only screen and (max-width:863px) {
+                    .container {
+                        max-width: 92%;
+                    }
+
+                    .col-sm-2 {
+                        max-width: 20%;
+                    }
+                }
+
+                @media only screen and (max-width:800px) {
+                    .container {
+                        max-width: 93%;
+                    }
+
+                    .col-sm-2 {
+                        max-width: 18%;
+                        flex: 18%;
+                    }
+
+                    b,
+                    strong,
+                    .header_custom span,
+                    .customer_name span {
+                        font-size: 14px;
+                    }
+
+                    .table td,
+                    .table th {
+                        font-size: 14px;
+                    }
+
+                    .custom_div_h2 h2 {
+                        font-size: 1.5rem;
+                    }
+                }
+
+                @media only screen and (max-width:720px) {
+
+                    .custom_div_h2 h3,
+                    .heading {
+                        font-size: 22px;
+                    }
+
+                    .custom_div_info div {
+                        width: 100%;
+                        justify-content: flex-start !important;
+                        margin-bottom: 20px;
+                    }
+                }
+
+                @media only screen and (max-width:700px) {
+
+
+                    .custom_div_ttle {
+                        height: 60px !important;
+                    }
+
+
+
+                    .form_hyperpay,
+                    .last_footer {
+                        margin-top: 0px !important;
+                        padding-top: 0px !important;
+                    }
+
+                    .container {
+                        max-width: 94%;
+                    }
+
+                    .col-sm-2 {
+                        max-width: 20%;
+                        flex: 20%;
+                    }
+
+                    b,
+                    strong,
+                    .customer_name span {
+                        font-size: 14px;
+                    }
+
+                    .table td,
+                    .table th {
+                        font-size: 14px;
+                    }
+
+                    .custom_div_h2 h2 {
+                        font-size: 1.4rem;
+                    }
+                }
+
+
+                @media only screen and (max-width:655px) {
+                    .header_custom {
+                        flex-direction: column;
+                        align-items: center;
+                        display: flex;
+                        justify-content: center;
+                    }
+
+                    .right_portion {
+                        margin-top: 20px;
+                        text-align: center;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: column;
+                    }
+
+                }
+
+                @media only screen and (max-width:624px) {
+
+
+                    #custom_btn_1 a,
+                    #custom_btn_2 a {
+                        margin-top: 0px !important;
+                        margin-bottom: 50px !important;
+                    }
+
+
+                    .form-control-lg {
+                        font-size: 13px !important;
+                    }
+
+                    .wpwl-label-brand,
+                    .wpwl-wrapper-brand,
+                    .wpwl-wrapper-registration-registrationId,
+                    .wpwl-wrapper-registration-brand,
+                    .wpwl-wrapper-registration-number,
+                    .wpwl-wrapper-registration-expiry {
+                        padding-right: 10px !important;
+                    }
+
+                    .container {
+                        max-width: 96%;
+                    }
+
+                    .col-sm-2 {
+                        max-width: 25%;
+                        flex: 25%;
+                    }
+
+                    b,
+                    strong {
+                        font-size: 14px;
+                    }
+
+                    .table td,
+                    .table th {
+                        font-size: 14px;
+                    }
+
+                    .custom_div_h2 h2 {
+                        font-size: 1.4rem;
+                    }
+
+                    .img_1 {
+                        height: 90px;
+                    }
+
+                    .img_3 {
+                        height: 90px;
+                    }
+
+                    .img_2 {
+                        height: 120px;
+                    }
+
+                }
+
+                @media only screen and (max-width:550px) {
+
+                    .custom_div_h2 h3,
+                    .heading {
+                        font-size: 19.5px;
+                    }
+                }
+
+                @media only screen and (max-width:488px) {
+                    .container {
+                        max-width: 96%;
+                    }
+
+                    .col-sm-2 {
+                        max-width: 28%;
+                        flex: 28%;
+                    }
+
+                    b,
+                    strong {
+                        font-size: 14px;
+                    }
+
+                    .table td,
+                    .table th {
+                        font-size: 14px;
+                    }
+
+                    .custom_div_h2 h2 {
+                        font-size: 1.4rem;
+                    }
+
+                    .img_1 {
+                        height: 90px;
+                    }
+
+                    .img_3 {
+                        height: 90px;
+                    }
+
+                    .img_2 {
+                        height: 120px;
+                    }
+
+                    .custom_float_img {
+                        display: flex;
+                        justify-content: center;
+                        flex-direction: row;
+                        align-items: center;
+                        flex-wrap: wrap;
+                    }
+
+                    .table_color_blue th {
+                        width: 15%;
+                    }
+
+                    .table_color_blue th,
+                    td {
+                        font-size: 13px;
+                    }
+
+                    #informations {
+                        align-items: flex-start;
+                        justify-content: space-between;
+                        margin-bottom: 20px;
+                    }
+
+                    .col-6 {
+                        flex: 70%;
+                        max-width: 70%;
+                    }
+
+                }
+
+
+                @media only screen and (max-width:465px) {
+                    .th_priceunit {
+                        text-align: center !important;
+                    }
+
+                    .custom_div_h2 h3,
+                    .heading {
+                        font-size: 18.5px;
+                    }
+                }
+
+                @media only screen and (max-width:435px) {
+                    .container {
+                        max-width: 96%;
+                    }
+
+                    .col-sm-2 {
+                        max-width: 31%;
+                        flex: 31%;
+                    }
+
+                }
+
+
+                @media only screen and (max-width:393px) {
+                    .container {
+                        max-width: 96%;
+                    }
+
+                    .col-sm-2 {
+                        max-width: 32%;
+                        flex: 32%;
+                    }
+
+                    .table td,
+                    .table th {
+                        font-size: 12px;
+                    }
+
+                    .custom_div_h2 h2 {
+                        font-size: 1.2rem;
+                    }
+
+                    p,
+                    b,
+                    strong,
+                    .header_custom span,
+                    .customer_name span {
+                        font-size: 13px;
+                    }
+
+                }
+
+
+                @media only screen and (max-width:361px) {
+                    .container {
+                        max-width: 98%;
+                    }
+
+                    .col-sm-2 {
+                        max-width: 35%;
+                        flex: 35%;
+                    }
+
+                    .col-sm-2:nth-child(even) {
+                        text-align: right;
+                    }
+
+                    .table td,
+                    .table th {
+                        font-size: 10px;
+                    }
+
+                    .custom_div_h2 h2 {
+                        font-size: 1.1rem;
+                    }
+
+                    p,
+                    b,
+                    strong,
+                    .header_custom span,
+                    .customer_name span {
+                        font-size: 12px;
+                    }
+
+                }
+
+                @media only screen and (max-width:330px) {
+
+                    .wpwl-brand,
+                    .wpwl-img {
+                        width: 35px !important;
+                    }
+
+                }
+
+                .custom_div_info {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    flex-wrap: wrap;
+                }
+                </style>
+                <div class="container mt-4">
+                    <t t-foreach="company_id" t-as="o">
+                        <div class="header_custom mb-4">
+                            <div class="left_portion">
+                                <div class="img_c">
+                                    <img t-if="o.logo" t-att-src="image_data_uri(o.logo)" />
+                                </div>
+                                <div class="right_title">
+                                    <span t-esc="o.partner_id.name" style="font-weight:bold;" />
+                                    <br />
+                                    <span t-esc="o.partner_id.street" />
+                                    <br />
+                                    <span t-esc="o.city" />
+                                    <span t-esc="o.zip" />
+                                    <span t-esc="o.country_id.name" />
+                                    <br />
+                                    <span t-esc="o.partner_id.street2" />
+                                    <br />
+                                    <span t-esc="o.city" />
+                                    <span t-esc="o.zip" />
+                                    <span t-esc="o.country_id.name" />
+                                </div>
+                            </div>
+                            <div class="right_portion">
+                                <div>
+                                    <span style="font-weight:bold;">Contact Us:</span><span t-esc="o.partner_id.phone" />
+                                </div>
+                                <div>
+                                    <span t-esc="o.partner_id.website" />
+                                </div>
+                                <div>
+                                    <span style="font-weight:bold;">Vat No:</span><span t-esc="o.partner_id.vat" />
+                                </div>
+                                <div>
+                                    <span t-esc="o.partner_id.email" />
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </xpath>
+            <xpath expr="//div[@class='wrap']" position="replace">
+                <style>
+                    .btn.btn-primary.btn-lg:hover {
+                    color: white !important;
+                }
+
+                .custom_revoew {
+                    color: #eaded7 !important;
+                }
+                </style>
+                <div class="wrap">
+                    <div class="container">
+                        <t t-if="answer.test_entry" t-call="survey.back" />
+                        <div class="jumbotron mt32">
+                            <h1>Thank you!</h1>
+                            <div t-field="survey.thank_you_message" class="oe_no_empty" />
+                            <div class="row">
+                                <div class="col">
+                                    <t t-if="survey.scoring_type != 'no_scoring'">
+                                        <div>You scored
+                                            <t t-esc="answer.quizz_score" />%</div>
+                                        <t t-if="answer.quizz_passed">
+                                            <div>Congratulations, you have passed the test!</div>
+                                            <div t-if="survey.certificate" class="mt16 mb16">
+                                                <a role="button" class="btn btn-primary btn-lg" t-att-href="'/survey/%s/get_certification' % survey.id">
+                                                    <i class="fa fa-fw fa-trophy" role="img" aria-label="Download certification" title="Download certification" />
+                                                    Download certification
+                                                </a>
+                                            </div>
+                                        </t>
+                                        <t t-else="">
+                                            <div>Unfortunately, you have failed the test.</div>
+                                        </t>
+                                    </t>
+                                    <t t-call="survey.retake_survey_button" />
+                                    <div t-if="survey.scoring_type != 'scoring_without_answers'">
+                                        If you wish, you can <a class="custom_revoew" t-att-href="'/survey/print/%s?answer_token=%s&amp;review=True' % (survey.access_token, answer.token)">review your answers</a>
+                                    </div>
+                                </div>
+                                <div class="col-6 text-center" t-if="survey.certification_give_badge and answer.quizz_passed">
+                                    <img t-att-src="'/web/image/gamification.badge/%s/image_128' % survey.certification_badge_id.id" />
+                                    <div>You received the badge <span class="font-weight-bold" t-esc="survey.certification_badge_id.name" />!</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container js_surveyresult p-4" t-if="graph_data">
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active survey_graph" t-att-quizz-score="answer.quizz_score" t-att-id="'graph_question_%d' % answer.id" t-att-data-question_id="answer.id" data-graph_type="doughnut" t-att-graph-data="graph_data">
+                                <canvas id="doughnut_chart"></canvas>
+                                <span class="o_overall_performance"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="oe_structure" />
+                </div>
+            </xpath>
+        </template>
+        <template id="inherit_print_survey" inherit_id="survey.survey_page_print">
+            <xpath expr="//div[@class='wrap']" position="before">
+                <style>
+                    #top,
+                #bottom {
+                    display: none !important;
+                }
+
+                .custom_div_h2 {
+                    align-items: center;
+                    display: flex;
+                    justify-content: flex-start;
+                }
+
+                .customer_name {
+                    margin: 20px 0 0 0;
+                    align-items: center;
+                    flex-direction: column;
+                    display: flex;
+                    justify-content: center;
+                }
+
+                .custom_div_h2 h3,
+                .heading,
+                .custom_div_info h5,
+                .watermark {
+                    transition: .3s all ease-in;
+                    color: #eaded7;
+                    text-decoration: none;
+                }
+
+                .watermark {
+                    text-decoration: none;
+                }
+
+                .watermark:hover {
+                    color: black;
+                }
+
+                .col-sm-2 strong,
+                .heading {
+                    color: #eaded7;
+                }
+
+                .table_custom thead th {
+                    color: #eaded7;
+                }
+
+                .hotelss strong {
+
+                    color: #eaded7;
+                }
+
+                .hotelss {
+                    margin-bottom: 10px;
+                }
+
+                .header_custom {
+                    align-items: flex-start;
+                    display: flex;
+                    justify-content: space-between;
+                }
+
+                .header_custom img {
+                    margin-top: -10px;
+                    height: 130px;
+                }
+
+                .left_portion {
+                    align-items: flex-start;
+                    display: flex;
+                    justify-content: space-between;
+                }
+
+                .img_c {
+                    overflow: initial !important;
+                    margin-right: 10px;
+                }
+
+                .right_portion {
+                    text-align: right;
+                    display: flex;
+                    justify-content: center;
+                    align-items: flex-end;
+                    flex-direction: column;
+                }
+
+                .col-sm-2 {
+                    max-width: 15%;
+                    flex: 15%;
+                    margin-bottom: 5px;
+                }
+
+                .table_custom td,
+                .table_custom th {
+                    padding-left: 0px !important;
+                }
+
+                .img_1 {
+                    height: 100px;
+                }
+
+                .img_3 {
+                    height: 100px;
+                }
+
+                .img_2 {
+                    height: 140px;
+                }
+
+                .custom_float_img {
+
+                    display: flex;
+                    justify-content: flex-end;
+                    flex-direction: row;
+                    align-items: center;
+                }
+
+                @media only screen and (max-width:1199px) {
+
+                    .custom_div_h2 h3,
+                    .heading {
+                        font-size: 25px;
+                    }
+
+                    .custom_div_info h5 {
+                        font-size: 17px;
+
+                    }
+
+                    .watermark {
+                        font-size: 15px;
+
+                    }
+                }
+
+                @media only screen and (max-width:991px) {
+                    .container {
+                        max-width: 90%;
+                    }
+
+                    .col-sm-2 {
+                        max-width: 17%;
+                        flex: 17%;
+
+                    }
+
+                    .custom_div_info div {
+                        width: 50%;
+                        justify-content: flex-start !important;
+                        margin-bottom: 20px;
+                    }
+                }
+
+                @media only screen and (max-width:863px) {
+                    .container {
+                        max-width: 92%;
+                    }
+
+                    .col-sm-2 {
+                        max-width: 20%;
+                    }
+                }
+
+                @media only screen and (max-width:800px) {
+                    .container {
+                        max-width: 93%;
+                    }
+
+                    .col-sm-2 {
+                        max-width: 18%;
+                        flex: 18%;
+                    }
+
+                    b,
+                    strong,
+                    .header_custom span,
+                    .customer_name span {
+                        font-size: 14px;
+                    }
+
+                    .table td,
+                    .table th {
+                        font-size: 14px;
+                    }
+
+                    .custom_div_h2 h2 {
+                        font-size: 1.5rem;
+                    }
+                }
+
+                @media only screen and (max-width:720px) {
+
+                    .custom_div_h2 h3,
+                    .heading {
+                        font-size: 22px;
+                    }
+
+                    .custom_div_info div {
+                        width: 100%;
+                        justify-content: flex-start !important;
+                        margin-bottom: 20px;
+                    }
+                }
+
+                @media only screen and (max-width:700px) {
+
+
+                    .custom_div_ttle {
+                        height: 60px !important;
+                    }
+
+
+
+                    .form_hyperpay,
+                    .last_footer {
+                        margin-top: 0px !important;
+                        padding-top: 0px !important;
+                    }
+
+                    .container {
+                        max-width: 94%;
+                    }
+
+                    .col-sm-2 {
+                        max-width: 20%;
+                        flex: 20%;
+                    }
+
+                    b,
+                    strong,
+                    .customer_name span {
+                        font-size: 14px;
+                    }
+
+                    .table td,
+                    .table th {
+                        font-size: 14px;
+                    }
+
+                    .custom_div_h2 h2 {
+                        font-size: 1.4rem;
+                    }
+                }
+
+
+                @media only screen and (max-width:655px) {
+                    .header_custom {
+                        flex-direction: column;
+                        align-items: center;
+                        display: flex;
+                        justify-content: center;
+                    }
+
+                    .right_portion {
+                        margin-top: 20px;
+                        text-align: center;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: column;
+                    }
+
+                }
+
+                @media only screen and (max-width:624px) {
+
+
+                    #custom_btn_1 a,
+                    #custom_btn_2 a {
+                        margin-top: 0px !important;
+                        margin-bottom: 50px !important;
+                    }
+
+
+                    .form-control-lg {
+                        font-size: 13px !important;
+                    }
+
+                    .wpwl-label-brand,
+                    .wpwl-wrapper-brand,
+                    .wpwl-wrapper-registration-registrationId,
+                    .wpwl-wrapper-registration-brand,
+                    .wpwl-wrapper-registration-number,
+                    .wpwl-wrapper-registration-expiry {
+                        padding-right: 10px !important;
+                    }
+
+                    .container {
+                        max-width: 96%;
+                    }
+
+                    .col-sm-2 {
+                        max-width: 25%;
+                        flex: 25%;
+                    }
+
+                    b,
+                    strong {
+                        font-size: 14px;
+                    }
+
+                    .table td,
+                    .table th {
+                        font-size: 14px;
+                    }
+
+                    .custom_div_h2 h2 {
+                        font-size: 1.4rem;
+                    }
+
+                    .img_1 {
+                        height: 90px;
+                    }
+
+                    .img_3 {
+                        height: 90px;
+                    }
+
+                    .img_2 {
+                        height: 120px;
+                    }
+
+                }
+
+                @media only screen and (max-width:550px) {
+
+                    .custom_div_h2 h3,
+                    .heading {
+                        font-size: 19.5px;
+                    }
+                }
+
+                @media only screen and (max-width:488px) {
+                    .container {
+                        max-width: 96%;
+                    }
+
+                    .col-sm-2 {
+                        max-width: 28%;
+                        flex: 28%;
+                    }
+
+                    b,
+                    strong {
+                        font-size: 14px;
+                    }
+
+                    .table td,
+                    .table th {
+                        font-size: 14px;
+                    }
+
+                    .custom_div_h2 h2 {
+                        font-size: 1.4rem;
+                    }
+
+                    .img_1 {
+                        height: 90px;
+                    }
+
+                    .img_3 {
+                        height: 90px;
+                    }
+
+                    .img_2 {
+                        height: 120px;
+                    }
+
+                    .custom_float_img {
+                        display: flex;
+                        justify-content: center;
+                        flex-direction: row;
+                        align-items: center;
+                        flex-wrap: wrap;
+                    }
+
+                    .table_color_blue th {
+                        width: 15%;
+                    }
+
+                    .table_color_blue th,
+                    td {
+                        font-size: 13px;
+                    }
+
+                    #informations {
+                        align-items: flex-start;
+                        justify-content: space-between;
+                        margin-bottom: 20px;
+                    }
+
+                    .col-6 {
+                        flex: 70%;
+                        max-width: 70%;
+                    }
+
+                }
+
+
+                @media only screen and (max-width:465px) {
+                    .th_priceunit {
+                        text-align: center !important;
+                    }
+
+                    .custom_div_h2 h3,
+                    .heading {
+                        font-size: 18.5px;
+                    }
+                }
+
+                @media only screen and (max-width:435px) {
+                    .container {
+                        max-width: 96%;
+                    }
+
+                    .col-sm-2 {
+                        max-width: 31%;
+                        flex: 31%;
+                    }
+
+                }
+
+
+                @media only screen and (max-width:393px) {
+                    .container {
+                        max-width: 96%;
+                    }
+
+                    .col-sm-2 {
+                        max-width: 32%;
+                        flex: 32%;
+                    }
+
+                    .table td,
+                    .table th {
+                        font-size: 12px;
+                    }
+
+                    .custom_div_h2 h2 {
+                        font-size: 1.2rem;
+                    }
+
+                    p,
+                    b,
+                    strong,
+                    .header_custom span,
+                    .customer_name span {
+                        font-size: 13px;
+                    }
+
+                }
+
+
+                @media only screen and (max-width:361px) {
+                    .container {
+                        max-width: 98%;
+                    }
+
+                    .col-sm-2 {
+                        max-width: 35%;
+                        flex: 35%;
+                    }
+
+                    .col-sm-2:nth-child(even) {
+                        text-align: right;
+                    }
+
+                    .table td,
+                    .table th {
+                        font-size: 10px;
+                    }
+
+                    .custom_div_h2 h2 {
+                        font-size: 1.1rem;
+                    }
+
+                    p,
+                    b,
+                    strong,
+                    .header_custom span,
+                    .customer_name span {
+                        font-size: 12px;
+                    }
+
+                }
+
+                @media only screen and (max-width:330px) {
+
+                    .wpwl-brand,
+                    .wpwl-img {
+                        width: 35px !important;
+                    }
+
+                }
+
+                .custom_div_info {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    flex-wrap: wrap;
+                }
+                </style>
+                <div class="container mt-4">
+                    <t t-foreach="company_id" t-as="o">
+                        <div class="header_custom mb-4">
+                            <div class="left_portion">
+                                <div class="img_c">
+                                    <img t-if="o.logo" t-att-src="image_data_uri(o.logo)" />
+                                </div>
+                                <div class="right_title">
+                                    <span t-esc="o.partner_id.name" style="font-weight:bold;" />
+                                    <br />
+                                    <span t-esc="o.partner_id.street" />
+                                    <br />
+                                    <span t-esc="o.city" />
+                                    <span t-esc="o.zip" />
+                                    <span t-esc="o.country_id.name" />
+                                    <br />
+                                    <span t-esc="o.partner_id.street2" />
+                                    <br />
+                                    <span t-esc="o.city" />
+                                    <span t-esc="o.zip" />
+                                    <span t-esc="o.country_id.name" />
+                                </div>
+                            </div>
+                            <div class="right_portion">
+                                <div>
+                                    <span style="font-weight:bold;">Contact Us:</span><span t-esc="o.partner_id.phone" />
+                                </div>
+                                <div>
+                                    <span t-esc="o.partner_id.website" />
+                                </div>
+                                <div>
+                                    <span style="font-weight:bold;">Vat No:</span><span t-esc="o.partner_id.vat" />
+                                </div>
+                                <div>
+                                    <span t-esc="o.partner_id.email" />
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </xpath>
+            <xpath expr="//div[@class='wrap']" position="replace">
+                <style>
+                    .btn.btn-primary.btn-lg:hover {
+                    color: white !important;
+                }
+
+                .custom_revoew {
+                    color: #eaded7 !important;
+                }
+                </style>
+                <div class="wrap">
+                    <div class="container">
+                        <t t-if="answer.test_entry" t-call="survey.back" />
+                        <div class='jumbotron mt32'>
+                            <h1><span t-field='survey.title' /></h1>
+                            <t t-if="survey.description">
+                                <div t-field='survey.description' class="oe_no_empty" />
+                            </t>
+                            <t t-if="review" t-call="survey.retake_survey_button" />
+                        </div>
+                        <br />
+                        <br />
+                        <div role="form" class="js_surveyform" t-att-name="'%s' % (survey.id)" t-att-data-prefill="'/survey/prefill/%s/%s' % (survey.access_token, answer.token)">
+                            <t t-foreach='survey.question_and_page_ids' t-as='question'>
+                                <hr t-if="question.is_page and question != survey.page_ids[0]" />
+                                <div t-if="question.is_page" class="o_page_header">
+                                    <h1 t-field='question.title' />
+                                    <div t-if="question.description" t-field='question.description' class="oe_no_empty" />
+                                </div>
+                                <t t-if="not question.is_page and not answer or (question in answer.question_ids)">
+                                    <t t-set="prefix" t-value="'%s_%s' % (survey.id, question.id)" />
+                                    <div class="js_question-wrapper" t-att-id="prefix">
+                                        <h2>
+                                            <span t-field='question.question' />
+                                            <span t-if="question.constr_mandatory" class="text-danger">*</span>
+                                            <span t-if="quizz_correction" class="badge badge-pill" t-att-data-score-question="question.id"></span>
+                                        </h2>
+                                        <t t-if="question.description">
+                                            <div class="text-muted oe_no_empty" t-field='question.description' />
+                                        </t>
+                                        <t t-if="question.question_type == 'free_text'">
+                                            <t t-call="survey.free_text" />
+                                        </t>
+                                        <t t-if="question.question_type == 'textbox'">
+                                            <t t-call="survey.textbox" />
+                                        </t>
+                                        <t t-if="question.question_type == 'numerical_box'">
+                                            <t t-call="survey.numerical_box" />
+                                        </t>
+                                        <t t-if="question.question_type == 'date'">
+                                            <t t-call="survey.date" />
+                                        </t>
+                                        <t t-if="question.question_type == 'datetime'">
+                                            <t t-call="survey.datetime" />
+                                        </t>
+                                        <t t-if="question.question_type == 'simple_choice'">
+                                            <t t-call="survey.simple_choice" />
+                                        </t>
+                                        <t t-if="question.question_type == 'multiple_choice'">
+                                            <t t-call="survey.multiple_choice" />
+                                        </t>
+                                        <t t-if="question.question_type == 'matrix'">
+                                            <t t-call="survey.matrix" />
+                                        </t>
+                                        <div class="js_errzone alert alert-danger mt-2 " style="display:none;" role="alert"></div>
+                                    </div>
+                                </t>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+        
+        <template id="inherit_simple_choice_survey" inherit_id="survey.question_simple_choice">
+            <xpath expr="//div[@class='row g-2 o_survey_answer_wrapper o_survey_form_choice']" position="replace">
+                <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' />
+                <div t-if="question.display_mode == 'columns' or not answer.token" class="row g-2 o_survey_answer_wrapper o_survey_form_choice">
+                    <div t-foreach='question.labels_ids' t-as='label' t-attf-class="col-lg-#{question.column_nb}">
+                        <label t-att-class="' bg-success ' if quizz_correction and label.answer_score > 0.0 else None">
+                            <input type="radio" t-att-name="prefix" t-att-value='label.id' />
+                            <!-- <span t-field='label.value' /> -->
+                            <t t-if="label.value == '1' ">
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                            </t>
+                            <t t-if="label.value == '2' ">
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                            </t>
+                            <t t-if="label.value == '3' ">
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                            </t>
+                            <t t-if="label.value == '4' ">
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                            </t>
+                            <t t-if="label.value == '5' ">
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                            </t>
+                            <t t-if="label.value == '6' ">
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                            </t>
+                            <t t-if="label.value == '7' ">
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                            </t>
+                            <t t-if="label.value == '8' ">
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                            </t>
+                            <t t-if="label.value == '9' ">
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                            </t>
+                            <t t-if="label.value == '10' ">
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                                <i style="color:Gold; font-size:20px; margin-left:10px;" class='fa fa-star'></i>
+                            </t>
+                        </label>
+                    </div>
+                    <div t-if='question.comments_allowed and question.comment_count_as_answer' class="js_comments col-lg-12">
+                        <label>
+                            <input type="radio" t-att-name="prefix" value="-1" />
+                            <span t-field="question.comments_message" />
+                        </label>
+                        <textarea type="text" class="form-control" rows="1" t-att-name="'%s_%s' % (prefix, 'comment')" />
+                        </div>
+            <div t-if='question.comments_allowed and not question.comment_count_as_answer' class="col-lg-12">
+                <span t-field="question.comments_message"/>
+                <textarea type="text" class="form-control" rows="1" t-att-name="'%s_%s' % (prefix, 'comment')" data-oe-survey-othert="1"/>
+            </div>
+        </div>
+        </xpath>
+        </template>
+
+
+    </data>
+</odoo>

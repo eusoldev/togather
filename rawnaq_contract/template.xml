@@ -1,0 +1,475 @@
+<?xml version="1.0"?>
+<odoo>
+	<data>
+		<record id="contracr_form_view" model="ir.ui.view"> 
+			<field name="name">Service Contract</field> 
+			<field name="model">contract.form</field> 
+			<field name="arch" type="xml"> 
+			<form string="Form" >
+				<header>
+					<button name="action_set_new" string="New" type="object" class="oe_highlight"  invisible="state in ('new','renew','expired','cancel')"/>
+
+					<button name="action_set_running" string="Running" type="object" class="oe_highlight" invisible="state in ('running','expired','cancel')" />
+
+					<button name="action_set_renew" string="Renew" type="object" class="oe_highlight" invisible="state in ('new','renew','expired','cancel')"/>
+
+					<button name="action_set_expired" string="Expired" type="object" class="oe_highlight" invisible="state in ('new','renew','expired','cancel')"/>
+
+					<button name="action_set_cancel" string="Cancel" type="object" class="oe_highlight" />
+					<field name="state" widget="statusbar"/>
+				</header>
+				<sheet>
+					<group name="group_first">
+						<h1>
+							<field name="name" placeholder="Contract Reference"  readonly="state !='new'" required="0"/>
+						</h1>
+					</group>
+					<group name="group_between">
+						<group>
+							<field name="supplier" readonly="state !='new'" required="1"/>
+						</group>
+						<group>
+							<field name="contract_type" readonly="state !='new'" required="0"/>
+
+						</group>
+					</group>
+					<group name="group_2nd" string="Contract Validity">
+						<group name="group_right">
+							<group>
+								<field name="date_start" readonly="state !='new'" required="1"/>
+							</group>
+							<group>
+								<field name="date_end" readonly="state !='new'" required="0"/>
+							</group>
+						</group>
+						<group name="group_left">
+						</group>
+					</group>
+					<notebook>
+						<page name = "contract_information" string = "Contract Information">
+							<field name="product_detail" readonly="state !='new'" >
+								<list editable="bottom" delete="false" >
+									<field name="product" />
+									<field name="season" />
+									<field name="desc" />
+								</list>
+							</field>
+						</page>
+						<page name = "notes" string = "Notes">
+							<field name="note" />
+						</page>
+					</notebook>
+				</sheet>
+			</form>
+			</field>
+		</record>
+		<record id="contract_tree_view" model="ir.ui.view"> 
+			<field name="name">Contract Tree View</field> 
+			<field name="model">contract.form</field> 
+			<field name="arch" type="xml"> 
+			<list >
+				<field name="name"/>
+				<field name="supplier"/>
+				<field name="contract_type"/>
+				<field name="date_start"/>
+				<field name="date_end"/>
+			</list>
+			</field>
+		</record>
+		<record id="contract_action_id" model="ir.actions.act_window">
+		    <field name="name">Contract</field>
+		    <field name="res_model">contract.form</field>
+		    <field name="view_mode">list,form</field>
+		</record>
+		<menuitem action="contract_action_id" id="menu_contract" parent="travel_package.main_menu" name="Contracts"/>
+
+		<!-- Product/All Service Seprate menus -->
+
+    <!-- <record id="product_product_form_ext" model="ir.ui.view">
+        <field name="name">product_product_form_ext</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name ="string">Name</attribute>       
+            </xpath>
+        </field>
+    </record> -->
+
+		<record id="action_flight" model="ir.actions.act_window">
+		    <field name="name">Flight</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">product.product</field>
+		    <field name="view_mode">list,form</field>
+		    <field name="domain">[('prod_serv_typecategory', '=','flight')]</field>
+		    <field name="context" eval="{'default_prod_serv_typecategory':'flight','readonly_by_pass': True}"/>
+		</record>
+
+		<record id="action_hotel" model="ir.actions.act_window">
+		    <field name="name">Hotel</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">product.product</field>
+		    <field name="view_mode">list,form</field>
+		    <field name="domain">[('prod_serv_typecategory', '=','hotel')]</field>
+		    <field name="context" eval="{'default_prod_serv_typecategory':'hotel','readonly_by_pass': True}"/>
+		</record>
+
+		<record id="action_transfer" model="ir.actions.act_window">
+		    <field name="name">Transfer</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">product.product</field>
+		    <field name="view_mode">list,form</field>
+		    <field name="domain">[('prod_serv_typecategory', '=','transfer')]</field>
+		    <field name="context" eval="{'default_prod_serv_typecategory':'transfer','readonly_by_pass': True}"/>
+		</record>
+
+		<record id="action_tour" model="ir.actions.act_window">
+		    <field name="name">Tour</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">product.product</field>
+		    <field name="view_mode">list,form</field>
+		    <field name="domain">[('prod_serv_typecategory', '=','tour')]</field>
+		    <field name="context" eval="{'default_prod_serv_typecategory':'tour','readonly_by_pass': True}"/>
+		</record>
+
+		<record id="action_visa" model="ir.actions.act_window">
+		    <field name="name">Visa</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">product.product</field>
+		    <field name="view_mode">list,form</field>
+		    <field name="domain">[('prod_serv_typecategory', '=','visa')]</field>
+		    <field name="context" eval="{'default_prod_serv_typecategory':'visa','readonly_by_pass': True}"/>
+		</record>
+
+		<record id="action_package" model="ir.actions.act_window">
+		    <field name="name">Package</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">product.product</field>
+		    <field name="view_mode">list,form</field>
+		    <field name="domain">[('prod_serv_typecategory', '=','package')]</field>
+		    <field name="context" eval="{'default_prod_serv_typecategory':'package','readonly_by_pass': True}"/>
+		</record>
+
+		<record id="action_private" model="ir.actions.act_window">
+		    <field name="name">Private Jet</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">product.product</field>
+		    <field name="view_mode">list,form</field>
+		    <field name="domain">[('prod_serv_typecategory', '=','private')]</field>
+		    <field name="context" eval="{'default_prod_serv_typecategory':'private','readonly_by_pass': True}"/>
+		</record>
+
+		<record id="action_yacht" model="ir.actions.act_window">
+		    <field name="name">Yacht</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">product.product</field>
+		    <field name="view_mode">list,form</field>
+		    <field name="domain">[('prod_serv_typecategory', '=','yacht')]</field>
+		    <field name="context" eval="{'default_prod_serv_typecategory':'yacht','readonly_by_pass': True}"/>
+		</record>
+
+		<record id="action_cruise" model="ir.actions.act_window">
+		    <field name="name">Cruise</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">product.product</field>
+		    <field name="view_mode">list,form</field>
+		    <field name="domain">[('prod_serv_typecategory', '=','cruise')]</field>
+		    <field name="context" eval="{'default_prod_serv_typecategory':'cruise','readonly_by_pass': True}"/>
+		</record>
+
+		<record id="action_other" model="ir.actions.act_window">
+		    <field name="name">Other Service</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">product.product</field>
+		    <field name="view_mode">list,form</field>
+		    <field name="domain">[('prod_serv_typecategory', '=','other')]</field>
+		    <field name="context" eval="{'default_prod_serv_typecategory':'other','readonly_by_pass': True}"/>
+		</record>
+
+		<menuitem id="menu_all_service" parent="travel_package.main_menu" name="All Services"/>
+		<menuitem action="action_flight" id="menu_flight" parent="menu_all_service" name="Flight"/>
+		<menuitem action="action_hotel" id="menu_hotel" parent="menu_all_service" name="Hotel"/>
+		<menuitem action="action_transfer" id="menu_transfer" parent="menu_all_service" name="Transfer"/>
+		<menuitem action="action_tour" id="menu_tour" parent="menu_all_service" name="Tour"/>
+		<menuitem action="action_visa" id="menu_visa" parent="menu_all_service" name="Visa"/>
+		<menuitem action="action_package" id="menu_package" parent="menu_all_service" name="Package"/>
+		<menuitem action="action_private" id="menu_private" parent="menu_all_service" name="Private Jet"/>
+		<menuitem action="action_yacht" id="menu_yacht" parent="menu_all_service" name="Yacht"/>
+		<menuitem action="action_cruise" id="menu_cruise" parent="menu_all_service" name="Cruise"/>
+		<menuitem action="action_other" id="menu_other" parent="menu_all_service" name="Other Service"/>
+
+		<!-- Sprate Contract Menus -->
+
+
+		<record id="action_contact_vip" model="ir.actions.act_window">
+		    <field name="name">VIP</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">res.partner</field>
+		    <field name="view_mode">list,form</field>
+		    <field name="domain">[('vip', '=',1)]</field>
+		    <field name="context" eval="{'default_vip':1,'readonly_by_pass': True}"/>
+		</record>
+
+		<record id="action_contact_blacklist" model="ir.actions.act_window">
+		    <field name="name">Blacklist</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">res.partner</field>
+		    <field name="view_mode">list,form</field>
+		    <field name="domain">[('blacklist', '=',1)]</field>
+		    <field name="context" eval="{'default_blacklist':1,'readonly_by_pass': True}"/>
+		</record>
+
+		<record id="action_contact_visa_supplier" model="ir.actions.act_window">
+		    <field name="name">Visa Supplier</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">res.partner</field>
+		    <field name="view_mode">list,form</field>
+		    <field name="domain">[('visa_supplier', '=',1)]</field>
+		    <field name="context" eval="{'default_visa_supplier':1,'readonly_by_pass': True}"/>
+		</record>
+
+		<record id="action_contact_hotel_supplier" model="ir.actions.act_window">
+		    <field name="name">Hotel Supplier</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">res.partner</field>
+		    <field name="view_mode">list,form</field>
+		    <field name="domain">[('hotel_supplier', '=',1)]</field>
+		    <field name="context" eval="{'default_hotel_supplier':1,'readonly_by_pass': True}"/>
+		</record>
+
+		<record id="action_contact_rawnaq_team" model="ir.actions.act_window">
+		    <field name="name">Team</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">res.partner</field>
+		    <field name="view_mode">list,form</field>
+		    <field name="domain">[('rawnaq_team', '=',1)]</field>
+		    <field name="context" eval="{'default_rawnaq_team':1,'readonly_by_pass': True}"/>
+		</record>
+
+		<record id="action_contact_dmc" model="ir.actions.act_window">
+		    <field name="name">DMC</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">res.partner</field>
+		    <field name="view_mode">list,form</field>
+		    <field name="domain">[('dmc', '=',1)]</field>
+		    <field name="context" eval="{'default_dmc':1,'readonly_by_pass': True}"/>
+		</record>
+
+		<record id="action_contact_travel_agency" model="ir.actions.act_window">
+		    <field name="name">Travel Agency</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">res.partner</field>
+		    <field name="view_mode">list,form</field>
+		    <field name="domain">[('travel_agency', '=',1)]</field>
+		    <field name="context" eval="{'default_travel_agency':1,'readonly_by_pass': True}"/>
+		</record>
+
+		<record id="action_contact_b2c_customer" model="ir.actions.act_window">
+		    <field name="name">B2C Customer</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">res.partner</field>
+		    <field name="view_mode">list,form</field>
+		    <field name="domain">[('b2c_customer', '=',1)]</field>
+		    <field name="context" eval="{'default_b2c_customer':1,'readonly_by_pass': True}"/>
+		</record>
+
+		<record id="action_contact_transfer_supplier" model="ir.actions.act_window">
+		    <field name="name">Transfer Supplier</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">res.partner</field>
+		    <field name="view_mode">list,form</field>
+		    <field name="domain">[('transfer_supplier', '=',1)]</field>
+		    <field name="context" eval="{'default_transfer_supplier':1,'readonly_by_pass': True}"/>
+		</record>
+
+		<record id="action_contact_airline_supplier" model="ir.actions.act_window">
+		    <field name="name">Airline Supplier</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">res.partner</field>
+		    <field name="view_mode">list,form</field>
+		    <field name="domain">[('airline_supplier', '=',1)]</field>
+		    <field name="context" eval="{'default_airline_supplier':1,'readonly_by_pass': True}"/>
+		</record>
+
+		<record id="action_contact_cruise_supplier" model="ir.actions.act_window">
+		    <field name="name">Cruise Supplier</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">res.partner</field>
+		    <field name="view_mode">list,form</field>
+		    <field name="domain">[('cruise_supplier', '=',1)]</field>
+		    <field name="context" eval="{'default_cruise_supplier':1,'readonly_by_pass': True}"/>
+		</record>
+
+		<record id="action_contact_bed_bank" model="ir.actions.act_window">
+		    <field name="name">Bed Bank</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">res.partner</field>
+		    <field name="view_mode">list,form</field>
+		    <field name="domain">[('bed_bank', '=',1)]</field>
+		    <field name="context" eval="{'default_bed_bank':1,'readonly_by_pass': True}"/>
+		</record>
+
+		<record id="action_contact_tours_supplier" model="ir.actions.act_window">
+		    <field name="name">Tours Supplier</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">res.partner</field>
+		    <field name="view_mode">list,form</field>
+		    <field name="domain">[('tours_supplier', '=',1)]</field>
+		    <field name="context" eval="{'default_tours_supplier':1,'readonly_by_pass': True}"/>
+		</record>
+
+		<record id="action_contact_yacht_supplier" model="ir.actions.act_window">
+		    <field name="name">Yacht Supplier</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">res.partner</field>
+		    <field name="view_mode">list,form</field>
+		    <field name="domain">[('yacht_supplier', '=',1)]</field>
+		    <field name="context" eval="{'default_yacht_supplier':1,'readonly_by_pass': True}"/>
+		</record>
+
+		<record id="action_contact_service_supplier" model="ir.actions.act_window">
+		    <field name="name">Service Supplier</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">res.partner</field>
+		    <field name="view_mode">list,form</field>
+		    <field name="domain">[('service_supplier', '=',1)]</field>
+		    <field name="context" eval="{'default_service_supplier':1,'readonly_by_pass': True}"/>
+		</record>
+
+		<menuitem action="action_contact_vip" id="menu_contact_vip" parent="contacts.res_partner_menu_contacts" name="VIP"/>
+		<menuitem action="action_contact_blacklist" id="menu_contact_blacklist" parent="contacts.res_partner_menu_contacts" name="Blacklist"/>
+		<menuitem action="action_contact_visa_supplier" id="menu_contact_visa_supplier" parent="contacts.res_partner_menu_contacts" name="Visa Supplier"/>
+		<menuitem action="action_contact_hotel_supplier" id="menu_contact_hotel_supplier" parent="contacts.res_partner_menu_contacts" name="Hotel Supplier"/>
+		<menuitem action="action_contact_rawnaq_team" id="menu_contact_rawnaq_team" parent="contacts.res_partner_menu_contacts" name="Team"/>
+		<menuitem action="action_contact_dmc" id="menu_contact_dmc" parent="contacts.res_partner_menu_contacts" name="DMC"/>
+		<menuitem action="action_contact_travel_agency" id="menu_contact_travel_agency" parent="contacts.res_partner_menu_contacts" name="Travel Agency"/>
+		<menuitem action="action_contact_b2c_customer" id="menu_contact_b2c_customer" parent="contacts.res_partner_menu_contacts" name="B2C Customer"/>
+		<menuitem action="action_contact_transfer_supplier" id="menu_contact_transfer_supplier" parent="contacts.res_partner_menu_contacts" name="Transfer Supplier"/>
+		<menuitem action="action_contact_airline_supplier" id="menu_contact_airline_supplier" parent="contacts.res_partner_menu_contacts" name="Airline Supplier"/>
+		<menuitem action="action_contact_cruise_supplier" id="menu_contact_cruise_supplier" parent="contacts.res_partner_menu_contacts" name="Cruise Supplier"/>
+		<menuitem action="action_contact_bed_bank" id="menu_contact_bed_bank" parent="contacts.res_partner_menu_contacts" name="Bed Bank"/>
+		<menuitem action="action_contact_tours_supplier" id="menu_contact_tours_supplier" parent="contacts.res_partner_menu_contacts" name="Tours Supplier"/>
+		<menuitem action="action_contact_yacht_supplier" id="menu_contact_yacht_supplier" parent="contacts.res_partner_menu_contacts" name="Yacht Supplier"/>
+		<menuitem action="action_contact_service_supplier" id="menu_contact_service_supplier" parent="contacts.res_partner_menu_contacts" name="Service Supplier"/>
+
+		<!-- Vendor Bill Menus -->
+
+    <!-- <record id="vendor_bill_form_ext" model="ir.ui.view">
+        <field name="name">vendor_bill_form_ext</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='ref']" position="after">
+                <field name="prod_serv_typecategory" attrs="{'invisible': [('type','in',['out_invoice','entry'])]}"/>
+            </xpath>
+
+        </field>
+    </record> -->
+
+		<record id="action_vendor_bill_flight" model="ir.actions.act_window">
+		    <field name="name">Flight</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">account.move</field>
+		    <field name="view_mode">list,pivot,form</field>
+		    <field name="domain">[('prod_serv_typecategory', '=','flight')]</field>
+		    <field name="context" eval="{'default_prod_serv_typecategory':'flight','default_move_type':'in_invoice','readonly_by_pass': True}"/>
+		</record>
+
+		<record id="action_vendor_bill_hotel" model="ir.actions.act_window">
+		    <field name="name">Hotel</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">account.move</field>
+		    <field name="view_mode">list,pivot,form</field>
+		    <field name="domain">[('prod_serv_typecategory', '=','hotel')]</field>
+		    <field name="context" eval="{'default_prod_serv_typecategory':'hotel','default_move_type':'in_invoice','readonly_by_pass': True}"/>
+		</record>
+
+		<record id="action_vendor_bill_transfer" model="ir.actions.act_window">
+		    <field name="name">Transfer</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">account.move</field>
+		    <field name="view_mode">list,pivot,form</field>
+		    <field name="domain">[('prod_serv_typecategory', '=','transfer')]</field>
+		    <field name="context" eval="{'default_prod_serv_typecategory':'transfer','default_move_type':'in_invoice','readonly_by_pass': True}"/>
+		</record>
+
+		<record id="action_vendor_bill_tour" model="ir.actions.act_window">
+		    <field name="name">Tour</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">account.move</field>
+		    <field name="view_mode">list,pivot,form</field>
+		    <field name="domain">[('prod_serv_typecategory', '=','tour')]</field>
+		    <field name="context" eval="{'default_prod_serv_typecategory':'tour','default_move_type':'in_invoice','readonly_by_pass': True}"/>
+		</record>
+
+		<record id="action_vendor_bill_visa" model="ir.actions.act_window">
+		    <field name="name">Visa</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">account.move</field>
+		    <field name="view_mode">list,pivot,form</field>
+		    <field name="domain">[('prod_serv_typecategory', '=','visa')]</field>
+		    <field name="context" eval="{'default_prod_serv_typecategory':'visa','default_move_type':'in_invoice','readonly_by_pass': True}"/>
+		</record>
+
+		<record id="action_vendor_bill_package" model="ir.actions.act_window">
+		    <field name="name">Package</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">account.move</field>
+		    <field name="view_mode">list,pivot,form</field>
+		    <field name="domain">[('prod_serv_typecategory', '=','package')]</field>
+		    <field name="context" eval="{'default_prod_serv_typecategory':'package','default_move_type':'in_invoice','readonly_by_pass': True}"/>
+		</record>
+
+		<record id="action_vendor_bill_private" model="ir.actions.act_window">
+		    <field name="name">Private Jet</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">account.move</field>
+		    <field name="view_mode">list,pivot,form</field>
+		    <field name="domain">[('prod_serv_typecategory', '=','private')]</field>
+		    <field name="context" eval="{'default_prod_serv_typecategory':'private','default_move_type':'in_invoice','readonly_by_pass': True}"/>
+		</record>
+
+		<record id="action_vendor_bill_yacht" model="ir.actions.act_window">
+		    <field name="name">Yacht</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">account.move</field>
+		    <field name="view_mode">list,pivot,form</field>
+		    <field name="domain">[('prod_serv_typecategory', '=','yacht')]</field>
+		    <field name="context" eval="{'default_prod_serv_typecategory':'yacht','default_move_type':'in_invoice','readonly_by_pass': True}"/>
+		</record>
+
+		<record id="action_vendor_bill_cruise" model="ir.actions.act_window">
+		    <field name="name">Cruise</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">account.move</field>
+		    <field name="view_mode">list,pivot,form</field>
+		    <field name="domain">[('prod_serv_typecategory', '=','cruise')]</field>
+		    <field name="context" eval="{'default_prod_serv_typecategory':'cruise','default_move_type':'in_invoice','readonly_by_pass': True}"/>
+		</record>
+
+		<record id="action_vendor_bill_other" model="ir.actions.act_window">
+		    <field name="name">Other Service</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">account.move</field>
+		    <field name="view_mode">list,pivot,form</field>
+		    <field name="domain">[('prod_serv_typecategory', '=','other')]</field>
+		    <field name="context" eval="{'default_prod_serv_typecategory':'other','default_move_type':'in_invoice','readonly_by_pass': True}"/>
+		</record>
+
+		<menuitem id="menu_vendor_bill" parent="travel_package.main_menu" name="Vendor Bills"/>
+		<menuitem action="action_vendor_bill_flight" id="menu_vendor_bill_flight" parent="menu_vendor_bill" name="Flight"/>
+		<menuitem action="action_vendor_bill_hotel" id="menu_vendor_bill_hotel" parent="menu_vendor_bill" name="Hotel"/>
+		<menuitem action="action_vendor_bill_transfer" id="menu_vendor_bill_transfer" parent="menu_vendor_bill" name="Transfer"/>
+		<menuitem action="action_vendor_bill_tour" id="menu_vendor_bill_tour" parent="menu_vendor_bill" name="Tour"/>
+		<menuitem action="action_vendor_bill_visa" id="menu_vendor_bill_visa" parent="menu_vendor_bill" name="Visa"/>
+		<menuitem action="action_vendor_bill_package" id="menu_vendor_bill_package" parent="menu_vendor_bill" name="Package"/>
+		<menuitem action="action_vendor_bill_private" id="menu_vendor_bill_private" parent="menu_vendor_bill" name="Private Jet"/>
+		<menuitem action="action_vendor_bill_yacht" id="menu_vendor_bill_yacht" parent="menu_vendor_bill" name="Yacht"/>
+		<menuitem action="action_vendor_bill_cruise" id="menu_vendor_bill_cruise" parent="menu_vendor_bill" name="Cruise"/>
+		<menuitem action="action_vendor_bill_other" id="menu_vendor_bill_other" parent="menu_vendor_bill" name="Other Service"/>
+
+
+	</data>
+</odoo>

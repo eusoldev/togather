@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="hotel_production_report">
+            <t t-call="web.html_container">
+                <t t-call="web.basic_layout">
+                    <t t-call="hotel_production_report.hotel_production_report_template">
+                        <div class="page">
+                            <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js" />
+                            <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"/>
+                            <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"/>
+                            <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"/>
+                            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"/>
+                            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"/>
+                            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"/>
+                            <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"/>
+                            <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"/>
+                            <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/>
+                            <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css"/>
+
+                            <script>
+                                $(document).ready(function() {
+                                   $('#example').DataTable( {
+                                     "paging":   false,
+                                     "ordering": false,
+                                        dom: 'Bfrtip',
+                                        buttons: [
+                                            'excel'
+                                        ]
+                                    });
+                                } );
+                            </script>
+                            <!-- ,'pdf' -->
+                            <style type="text/css">
+                            @media (min-width: 992px) .container {
+                                width: 100%;
+                            }
+
+                            @media (min-width: 768px) .container {
+                                width: 100%;
+                            }
+
+                            .container {
+                                width: 100%;
+                            }
+
+                            body {
+                                margin: 0px !important;
+                            }
+
+                            body.o_in_iframe {
+                                margin-top: 0px !important;
+                            }
+
+                            .header,
+                            .footer {
+                                display: none !important;
+                            }
+
+                            .main_wraper {
+                                width: 100%;
+                                margin: 0px auto;
+                            }
+
+                            .p_div {
+                                font-weight: bold;
+                            }
+
+                            .sale_div {
+                                text-align: center;
+                                font-weight: bold;
+                                font-size: 25px;
+                            }
+
+                            table {
+                                border-collapse: collapse;
+                                border: 1px solid black;
+                                background: 1px solid gray;
+                            }
+
+                            th {
+                                vertical-align: middle;
+                                border-collapse: collapse;
+                                border: 1px solid black;
+                                text-align: center;
+                                font-weight: bold;
+                                padding: 10px;
+                                font-size: 13px;
+                                background: #eaded7 !important;
+                                color: #3d3838;
+                            }
+
+                            .bg_col {
+                                background: gainsboro;
+                            }
+
+                            td {
+                                border-collapse: collapse;
+                                border: 1px solid black;
+                                text-align: center;
+                                padding: 10px;
+                                font-size: 12px;
+                            }
+
+                            .right_td {
+                                text-align: right;
+                                padding-right: 6px;
+                            }
+
+                            .main_box {
+                                width: 100%;
+                            }
+
+                            .box_a {
+                                width: 50%;
+                                float: left;
+                                display: inline-block;
+                            }
+
+                            .box_b {
+                                float: left;
+                                width: 50%;
+                                display: inline-block;
+                                margin-bottom: 10px;
+                            }
+
+
+
+                            h5 {
+                                margin: 5px;
+                                font-weight: 500;
+                                margin-bottom: 10px;
+                            }
+
+                            .clearfloat {
+                                clear: both;
+                                float: none;
+                                width: 100%;
+                                height: 1px;
+                                display: block;
+                            }
+
+                            .agent {
+                                border-bottom: 1px solid;
+                                display: inline-block;
+                                width: auto;
+                            }
+
+                            .main_div {
+                                width: 100%;
+                            }
+
+                            .left_div {
+                                float: left;
+                                font-size: 13px;
+                                width: 50%;
+                            }
+
+                            .right_div {
+                                width: 50%;
+                                float: left;
+                                font-size: 13px;
+                            }
+                            </style>
+                            <div class="main_wraper">
+                                <!-- <div class="main_box">
+                                    <div class="box_a">
+                                        <t t-foreach="company" t-as="e">
+                                            <h3><b>
+                                                    <span t-esc="e.name"></span>
+                                                </b> </h3>
+                                            <h5>
+                                                <span t-esc="e.street"></span>
+                                            </h5>
+                                            <h5>
+                                                <span t-esc="e.street2"></span>
+                                                <span t-esc="e.city">,</span>
+                                                <span t-esc="e.country_id.name"></span>
+                                            </h5>
+                                            <h5>CR No:
+                                                <span t-esc="e.company_registry"></span>
+                                            </h5>
+                                            <h5>Ph:
+                                                <span t-esc="e.phone"></span>
+                                            </h5>
+                                            <h5>Email:
+                                                <span t-esc="e.email"></span>
+                                            </h5>
+                                            <h5>Vat:
+                                                <span t-esc="e.vat"></span>
+                                            </h5>
+                                        </t>
+                                    </div>
+                                    <div class="box_b">
+                                        <img t-att-src="'data:image/png;base64,%s' % to_text(company.logo)" />
+                                    </div>
+                                </div> -->
+                                <br class="clearfloat" />
+                                <p class="sale_div">Hotel Production Report</p>
+                                <p style="text-align: center;">
+                                    <b>
+                                        <span>From:</span>
+                                    </b>
+                                    <u>
+                                        <span t-esc="time.strftime('%d %b %Y',time.strptime(str(form),'%Y-%m-%d'))"></span>
+                                    </u>
+                                    <b>
+                                        <span>TO:</span>
+                                    </b>
+                                    <u>
+                                        <span t-esc="time.strftime('%d %b %Y',time.strptime(str(to),'%Y-%m-%d'))"></span>
+                                    </u>
+                                </p>
+                                <p>
+                                    <b><span class="solid">Summary:</span></b>
+                                </p>
+                                <table class="display" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th class="solid" t-if="report_type == 'hotel'">Hotel Name</th>
+                                            <th class="solid" t-if="report_type == 'vendor'">Vendor</th>
+                                            <th class="solid" t-if="report_type == 'destination'">Destination Name</th>
+                                            <th>Total Bill Amount by SAR</th>
+                                        </tr>
+                                    </thead>
+                                    <t t-set="totalpkg" t-value="0" />
+                                    <tbody>
+                                        <t t-foreach="hotel_summary_list" t-as="a">
+                                            <tr>
+                                                <td>
+                                                    <span style="border-bottom:none" class="agent" t-esc="a['hotel_name']"></span>
+                                                </td>
+                                                <td style="font-weight:bold">
+                                                    <span t-esc="'{0:,}'.format(int(a['pkg_total']))"></span>
+                                                    <t t-set="totalpkg" t-value="totalpkg + a['pkg_total']" />
+                                                </td>
+                                            </tr>
+                                        </t>
+                                        <tr>
+                                            <td style="font-weight:bold">Grand Total</td>
+                                            <td style="font-weight:bold">
+                                                <span t-esc="'{0:,}'.format(int(totalpkg))"></span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <br class="clearfloat" />
+                                <t t-set="total" t-value="0" />
+                                <t t-foreach="hotel_main_list" t-as="a">
+                                    <div class="page-break" t-attf-style="page-break-inside: avoid !important;page-break-after: always !important;" />
+                                    <div class="main_all">
+                                        <div class="main_div">
+                                            <div class="left_div">
+                                                <p>
+                                                    <b><span class="solid" t-if="report_type=='hotel'">Hotel:</span></b>
+                                                    <b><span class="solid" t-if="report_type=='vendor'">Vendor:</span></b>
+                                                    <b><span class="solid" t-if="report_type=='destination'">Destination:</span></b>
+                                                    <span class="agent" t-esc="a['hotel']"></span>
+                                                </p>
+                                            </div>
+                                            <div class="right_div">
+                                                <p style="float:right;margin-right: 20px;">
+                                                    <b><span class="solid" style="margin-right: 10px;">No Of Booking:</span></b>
+                                                    <span class="agent" t-esc="a['serial_total']"></span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <table class="display" style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>Invoice No</th>
+                                                    <th>Branch</th>
+                                                    <th>RQ No</th>
+                                                    <th width="12%;">Customer Name</th>
+                                                    <th t-if="report_type=='hotel'" width="12%;">Hotel Name</th>
+                                                    <th t-if="report_type=='vendor'" width="12%;">Vendor Name</th>
+                                                    <th t-if="report_type=='destination'" width="12%;">Hotel Name</th>
+                                                    <th t-if="report_type=='destination'" width="12%;">Destination</th>
+                                                    <th width="12%;">Room Type</th>
+                                                    <th>No of Guest</th>
+                                                    <th> Book Date</th>
+                                                    <th> Arrival Date</th>
+                                                    <th> Check In</th>
+                                                    <th> Check Out</th>
+                                                    <th> Total Nights</th>
+                                                    <th>Amount FC</th>
+                                                    <th>Currency</th>
+                                                    <th> Total Bill Amount by SAR </th>
+                                                    <th>Creation Date </th>
+                                                    <th>Sales Person </th>
+                                                    <th>Bill Status</th>
+                                                </tr>
+                                            </thead>
+                                            <t t-set="totalnight" t-value="0" />
+                                            <t t-set="totalfc" t-value="0" />
+                                            <t t-set="totalpkg" t-value="0" />
+                                            <t t-foreach="a['main_list']" t-as="o">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <span t-esc="o['Invoice_no']"></span>
+                                                        </td>
+                                                        <td>
+                                                        </td>
+                                                        <td>
+                                                            <span t-esc="o['rq_number']"></span>
+                                                        </td>
+                                                        <td>
+                                                            <t t-if="o['customer_name']">
+                                                                <t t-foreach="o['customer_name']" t-as="b">
+                                                                    <span t-esc="b"></span>
+                                                                    <br />
+                                                                </t>
+                                                            </t>
+                                                        </td>
+                                                        <t t-if="report_type=='destination'">
+                                                            <td>
+                                                                <span t-esc="o['get_Hotel_name']"></span>
+                                                            </td>
+                                                        </t>
+                                                        <td>
+                                                            <t t-if="report_type=='hotel'">
+                                                                <t t-foreach="o['Hotel_name']" t-as="h">
+                                                                    <span t-esc="h"></span>
+                                                                    <br />
+                                                                </t>
+                                                            </t>
+                                                            <t t-if="not report_type=='hotel'">
+                                                                <span t-esc="o['Hotel_name']"></span>
+                                                            </t>
+                                                        </td>
+                                                        <td>
+                                                            <t t-foreach="o['room_type']" t-as="x">
+                                                                <span t-esc="x"></span>
+                                                            </t>
+                                                        </td>
+                                                        <td>
+                                                            <span t-esc="o['no_of_guest']"></span>
+                                                        </td>
+                                                        <td>
+                                                            <t t-if="o['date_order']">
+                                                                <span t-esc="(datetime.datetime.strptime(str(o['date_order']), '%Y-%m-%d %H:%M:%S')+ datetime.timedelta(hours=5))" />
+                                                            </t>
+                                                        </td>
+                                                        <td>
+                                                            <span t-esc="o['arrival_date']"></span>
+                                                        </td>
+                                                        <td>
+                                                            <span t-esc="o['check_in']"></span>
+                                                        </td>
+                                                        <td>
+                                                            <span t-esc="o['check_out']"></span>
+                                                        </td>
+                                                        <td>
+                                                            <span t-esc="o['nights']"></span>
+                                                            <t t-set="totalnight" t-value="totalnight + o['nights']" />
+                                                        </td>
+                                                        <td>
+                                                            <span t-esc="'{0:,}'.format(int(o['amount_fc']))"></span>
+                                                            <t t-set="totalfc" t-value="totalfc + o['amount_fc']" />
+                                                        </td>
+                                                        <td>
+                                                            <span t-esc="o['currency_id']"></span>
+                                                        </td>
+                                                        <td>
+                                                            <t t-if="o['toatal_pkage_amount'] &gt; 0">
+                                                                <span t-esc="'{0:,}'.format(int(o['toatal_pkage_amount']))"></span>
+                                                                <t t-set="totalpkg" t-value="totalpkg + o['toatal_pkage_amount']" />
+                                                            </t>
+                                                        </td>
+                                                        <td>
+                                                            <t t-if="o['creation_date']">
+                                                                <span t-esc="datetime.datetime.strptime(str(o['creation_date']), '%Y-%m-%d %H:%M:%S.%f').strftime('%B %d,%Y')"></span>
+                                                            </t>
+                                                        </td>
+                                                        <td>
+                                                            <span t-esc="o['sale_person']"></span>
+                                                        </td>
+                                                        <td>
+                                                            <span t-esc="o['status']"></span>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </t>
+                                            <tr>
+                                                <t t-if="report_type=='destination'">
+                                                    <td style="font-weight:bold; border-left:none" colspan="12">Grand Total</td>
+                                                </t>
+                                                <t t-else="">
+                                                    <td style="font-weight:bold; border-left:none" colspan="11">Grand Total</td>
+                                                </t>
+                                                <td style="font-weight:bold">
+                                                    <span t-esc="'{0:,}'.format(int(totalnight))"></span>
+                                                </td>
+                                                <td style="font-weight:bold">
+                                                    <span t-esc="'{0:,}'.format(int(totalfc))"></span>
+                                                </td>
+                                                <td></td>
+                                                <td style="font-weight:bold">
+                                                    <span t-esc="'{0:,}'.format(int(a['pkg_total']))"></span>
+                                                </td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <br />
+                                    <br />
+                                    <div class="page-break" t-attf-style="page-break-inside: avoid !important;page-break-after: always !important;" />
+                                </t>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

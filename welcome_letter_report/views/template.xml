@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+    	<record id="voucher_report_template" model="report.paperformat">
+            <field name="name">Welcome Letter</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">0</field>
+            <field name="margin_bottom">0</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">10</field>
+            <field name="dpi">90</field>
+        </record>
+
+       <!--  <report
+            id="welcome_letter_report_id" 
+            model="all.services"
+            name="welcome_letter_report.flight_report_report"
+            file="welcome_letter_report.flight_report_report"
+            report_type="qweb-pdf"
+            paperformat="voucher_report_template"
+            print_report_name="'Welcome Letter - %s' %(object.hotel_return.partner_id.name)"
+            string="Welcome Letter"/> -->
+
+
+        <record id="welcome_letter_report_id" model="ir.actions.report">
+            <field name="name">Welcome Letter</field>
+            <field name="model">all.services</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">welcome_letter_report.flight_report_report</field>
+            <field name="report_file">welcome_letter_report.flight_report_report</field>
+            <field name="print_report_name">'Welcome Letter- %s' % (object.hotel_return.partner_id.name)</field>
+            <field name="binding_model_id" ref="travel_package.model_all_services" />
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="voucher_report_template" />
+        </record>
+
+        <!-- <template id="external_layout_header_inherit_cr" inherit_id="web.internal_layout">
+            <xpath expr="//div[@class='header']" position="replace">
+                <div class="header">
+                </div>
+            </xpath>
+        </template> -->
+
+    </data>
+</odoo>

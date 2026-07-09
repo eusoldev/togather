@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+A_1,airlines_sales_report,airlines_sales_report.model_air_sales_report,airlines_sales_report.security_group_for_airlines_sales_report,1,1,1,1

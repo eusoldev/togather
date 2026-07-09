@@ -1,0 +1,67 @@
+<odoo>
+    <data>
+        <record id="cancelation_travel_package_ext" model="ir.ui.view">
+            <field name="name">cancelation.travel.package</field>
+            <field name="model">reservation.order</field>
+            <field name="inherit_id" ref="travel_package.view_reservation_order_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='set_to_validate']" position='after'>
+                    <button name="action_cancel" type="object" string="Cancel" invisible="stages !='validate'" />
+                </xpath>
+                <xpath expr="//page[@name='term_conditions']" position='after'>
+                    <page name='cancelation' string='Cancelation' invisible="quote_builder ==True">
+                        <field name="cancel_tree">
+                            <list>
+                                <field name="partner_id" required="1" />
+                                <field name="charges" required="1" />
+                                <field name="service_type" required="1" />
+                            </list>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+        <record id="package_cancelation_wizard" model="ir.ui.view">
+            <field name="name">package_cancelation_wizard</field>
+            <field name="model">package.cancelation.wizard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Package Cancelation">
+                    <group name="group_top">
+                        <group name="group_left">
+                            <field name="reason_to_cancel" required="1" />
+                            <field name="cancelation_charges" />
+                        </group>
+                        <group name="group_right">
+                            <!-- <field name="include_vendor_charges" /> -->
+                            <field name="create_customer_refund" />
+                            <field name="create_vendor_refund" />
+                            <field name="package_id" invisible="1" />
+                        </group>
+                    </group>
+                    <footer style="height: 30px !important; border: none !important;">
+                        <button name="cancel_package" type="object" string="Cancel Package" class="oe_highlight" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="package_cancelation_trees_views" model="ir.ui.view">
+            <field name="name">package_cancelation_trees_views</field>
+            <field name="model">cancel.charge</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Package Cancelation">
+                    <group name="group_top">
+                        <group name="group_left">
+                            <field name="partner_id" required="1" />
+                            <field name="charges" />
+                        </group>
+                        <group name="group_right">
+                            <field name="service_type" />
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

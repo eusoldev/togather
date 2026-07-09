@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="survey.mail_template_user_input_invite" model="mail.template">
+            <field name="subject">Participate to ${object.survey_id.title}</field>
+            <field name="body_html">
+                <![CDATA[
+                <div style="margin: 0px; padding: 0px; font-size: 13px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        <b>
+                        Dear ${object.partner_id.name or 'participant'}!</b><br /><br />
+                        Thank you for choosing, <br />
+
+                        We craft Unlimited luxury for Mind, Body and Soul.   <br />  
+
+                        We would appreciate it if you would take a moment to provide your feedback on your recent trip with us. <br />
+                        <br />
+
+                        <div style="margin: 16px 0px 16px 0px;">
+                            <a href="${('%s?answer_token=%s' % (object.survey_id.public_url, object.token)) | safe}" style="color:#fff !important; background-color: #eaded7; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;">
+                                % if object.survey_id.certificate:
+                                Start Certification
+                                % else:
+                                Start Survey
+                                % endif
+                            </a>
+                        </div>
+                        <br />
+
+
+
+                        We always endeavor to exceed every guest’s expectations and your feedback is a valuable contribution in improving our service.    <br />
+
+                        We greatly look forward to your return and value your patronage. <br />
+
+                        
+                        
+                       Please don't hesitate to contact your Travel Consultant or 
+                       <br />
+                       <br />
+
+                       <b> Thank you! </b>
+                        <br />
+
+                    </p>
+                </div>
+            ]]>
+            </field>
+        </record>
+       
+        <record id="inherit_survey_input_ext_form" model="ir.ui.view">
+            <field name="name">inherit_survey_input_ext_form</field>
+            <field name="model">survey.user_input</field>
+            <field name="inherit_id" ref="survey.survey_user_input_view_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="force_save">1</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='email']" position="attributes">
+                    <attribute name="force_save">1</attribute>
+                </xpath>
+
+
+            </field>
+        </record>
+    </data>
+</odoo>

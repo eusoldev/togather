@@ -1,0 +1,1520 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="quotation_builder_report">
+            <t t-call="web.basic_layout">
+                <t t-call="web.html_container">
+                    <meta name="viewport" content="width=device-width, initial-scale=1" />
+                    <t t-foreach="docs" t-as="o">
+                        <div class="page">
+                            <style type="text/css">
+                            @media (min-width: 1200px) {
+                                .container {
+                                    width: 100%;
+                                }
+                            }
+
+                            @media (min-width: 992px) {
+                                .container {
+                                    width: 100%;
+                                }
+                            }
+
+                            @media (min-width: 768px) {
+                                .container {
+                                    width: 100%;
+                                }
+                            }
+
+                            .container {
+                                width: 100%;
+                            }
+
+                            body.o_in_iframe {
+                                margin: 0px !important;
+                                padding: 0px !important;
+                            }
+
+                            .header,
+                            .footer {
+                                display: none !important;
+                            }
+
+                            .main_wraper {
+                                font-family: sans-serif;
+                                margin: 0px auto;
+                                padding: 0px 20px 20px 20px;
+                            }
+
+                            .main_div {
+                                width: 100%;
+                            }
+
+                            .left_div {
+                                width: 50%;
+                                float: left;
+
+                                font-size: 15px;
+                                color: #129397;
+                            }
+
+
+                            .right_div {
+                                width: 45%;
+                                margin-left: 20px;
+                                float: left;
+                                font-size: 13px;
+                                color: #129397;
+                            }
+
+                            .left_div .agent_1 {
+                                float: right;
+                                display: inline-block;
+                                width: 74%;
+                                color: #129397;
+                            }
+
+                            .left_div .agent {
+                                float: right;
+                                display: inline-block;
+                                width: 60%;
+                                color: #129397;
+                            }
+
+                            .left_div .html_fi {
+                                float: right;
+                                display: inline-block;
+                                width: 70%;
+                                color: #129397;
+                            }
+
+                            .left_div_2 {
+                                width: 20%;
+                                float: left;
+
+                                font-size: 13px;
+                                color: #129397;
+                            }
+
+                            .right_div_2 {
+                                line-height: .8rem;
+                                width: 75%;
+                                text-align: center;
+                                float: left;
+                                font-size: 22px;
+
+                                margin-top: 50px;
+                                color: #129397;
+                            }
+
+                            a {
+                                color: #129397;
+                            }
+
+                            .rawnaq_insta {
+                                width: 25%;
+                                float: left;
+                                font-size: 13px;
+
+                            }
+
+                            .rawnaq_insta_2 {
+                                width: 25%;
+                                float: left;
+                                font-size: 13px;
+
+                            }
+
+                            .rawnaq_mal {
+                                width: 25%;
+                                float: left;
+                                font-size: 13px;
+
+                            }
+
+                            .rawnaq_maldives {
+                                width: 25%;
+                                float: left;
+                                font-size: 13px;
+
+                            }
+
+                            .right_div .agent {
+
+                                float: right;
+                                display: inline-block;
+                                width: 73%;
+                            }
+
+                            .right_div .agent {
+
+                                float: right;
+                                display: inline-block;
+                                width: 73%;
+                            }
+
+                            .table_2 {
+                                border-collapse: collapse;
+                                border: 1px solid black;
+                            }
+
+                            .table_2 th {
+                                border-collapse: collapse;
+                                border: 1px solid #000;
+                                text-align: center;
+
+                                padding: 10px;
+                                font-size: 13px;
+                                background: #eaded7;
+
+                            }
+
+                            .table_2 td {
+                                border-collapse: collapse;
+                                border: 1px solid #000;
+                                text-align: center;
+                                padding: 20px 5px;
+                                font-size: 12px;
+                            }
+
+                            .clearfloat {
+                                clear: both;
+                                float: none;
+                                width: 100%;
+                                height: 1px;
+                                display: block;
+                            }
+
+                            .image_class {
+                                width: 100px;
+                            }
+
+                            .icons_anim i {
+                                font-size: 15px;
+                                color: white;
+                            }
+
+                            .icons_anim {
+                                float: left;
+                                border-radius: 50%;
+                                background-color: #000;
+                                padding: 3px 5px 0px 5px;
+                            }
+
+
+                            .custom_all_eng,
+                            .custom_all_eng p {
+                                color: #000 !important;
+                                line-height: 1rem !important;
+                            }
+
+                            .custom_all_eng p:first-child {
+                                display: inline !important;
+                            }
+
+                            .icons_anim_after {
+                                font-size: 15px;
+                                padding: 0px 5px 0px 5px;
+                                float: left;
+                                text-align: left;
+                                text-align: center;
+                            }
+
+                            .cancel_block {
+                                line-height: 2rem;
+                            }
+
+                            .image_div {
+                                height: 150px;
+                                width: 100px;
+                            }
+
+                            .foot_fix {
+                                width: 860px;
+                                position: fixed;
+                                bottom: -100vh;
+                                page-break-inside: avoid;
+                            }
+
+                            .head {
+                                background-color: #eaded7;
+                                margin: 4px;
+                                font-size: 18px;
+                                padding: 10px;
+                                color: white;
+
+                                margin-top: 10px;
+                                text-align: left;
+                            }
+
+
+                            .main_box {
+                                width: 70%;
+                                margin: 0 auto;
+                            }
+
+                            .box_a {
+                                margin-bottom: 50px;
+                                width: 100%;
+                                display: inline-block;
+                            }
+
+                            .box_b {
+                                float: right;
+                                width: 13%;
+                                display: inline-block;
+                                margin-bottom: 10px;
+                            }
+
+                            .box_b img {
+                                width: 100%;
+                            }
+
+
+                            .main_box img {
+                                width: 100%;
+                                height: 200px;
+                                float: left;
+                            }
+
+                            .main_box h5 {
+                                margin: 0px 0 3px 0 !important;
+                                font-weight: 500;
+                                margin-bottom: 10px;
+                                font-size: 14px !important;
+                            }
+
+                            .main_box h3 {
+                                margin: 0px 0 3px 0 !important;
+                                font-size: 1.2rem !important;
+                            }
+
+                            .heading_of_q {
+                                text-align: center;
+                                font-size: 35px;
+                                margin-bottom: 50px;
+                                text-align: center;
+                                font-weight: bold;
+                            }
+
+
+
+                            .table_1 {
+                                margin: 0 auto;
+                                border-collapse: collapse;
+                                border: 1px solid black;
+                            }
+
+                            .table_1 th {
+                                border-collapse: collapse;
+                                border: 1px solid #000;
+                                text-align: left;
+                                padding: 10px;
+                                font-size: 13px;
+                                font-weight: bold;
+
+                            }
+
+                            .table_1 th span {
+                                font-weight: 100;
+                                margin-left: 10px;
+                            }
+
+                            .main_box {
+                                padding-top: 10px;
+                                border-top: 4px solid black;
+                            }
+
+                            .inclusions_td p {
+                                margin: 0 !important;
+                                color: black;
+                            }
+
+                            .can_1 {
+                                width: 14%;
+                            }
+
+                            .main_logo {
+                                width: 100%;
+                            }
+
+                            th,
+                            td {
+                                vertical-align: middle;
+                            }
+
+                            .main_wraper {
+                                background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+                            }
+                            .page-break {
+                                page-break-inside: avoid !important;
+                                page-break-after: always !important;
+                            }
+                            </style>
+                            <div class="main_wraper">
+                                <div class="main_logo">
+                                    <div class="box_b">
+                                        <img t-att-src="'data:image/png;base64,%s' % to_text(company.logo)" />
+                                    </div>
+                                </div>
+                                <br class="clearfloat" />
+                                <h1 class="heading_of_q">Quotation</h1>
+                                <div class="main_box">
+                                    <div class="box_a">
+                                        <!-- <t t-foreach="company" t-as="e">
+                                            <h3><b>
+                                                    <span>RAWNAQ International Travel and Tourism – Travel Agency of The Year 2021 &amp; 2022 Award</span>
+                                                </b> </h3>
+                                            <h5>
+                                                Jeddah Office – Saudi Arabia – Kayyal Street 23434
+                                            </h5>
+                                            <h5>Riyadh Office – Saudi Arabia – Prince Sultan bin Abdulaziz
+                                            </h5>
+                                            <h5>+966112790509 / +966126285888
+                                            </h5>
+                                            <h5>Reservations@rawnaqtourism.com – www.rawnaqtourism.com
+                                            </h5>
+                                            <h5>One of RAWNAQ International Group of Companies.
+                                            </h5>
+                                            <h5>Prepared By <span t-esc="user_get"></span>
+                                            </h5>
+                                        </t> -->
+                                    </div>
+                                </div>
+                                <div class="main_div">
+                                    <table width="40%" class="table_1">
+                                        <tr>
+                                            <th style="width:37%; background:#eaded7;">Client Name:
+                                            </th>
+                                            <th>
+                                                <span class="agent_1" t-esc="o.client_name.name"></span>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:37%; background:#eaded7;">Date:
+                                            </th>
+                                            <th>
+                                                <span class="agent_1" t-esc="creation_date" />
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:37%; background:#eaded7;">Subject:
+                                            </th>
+                                            <th>
+                                                <span class="agent_1" t-esc="o.subject"></span>
+                                            </th>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <h4 style="margin: 20px 0px;font-size: 17px; font-weight:100;">We are pleased to quote you the following:</h4>
+                               
+                                <table width="100%" class="table_2">
+                                    <thead>
+                                        <tr>
+                                            <th>Hotel Name</th>
+                                            <th>Destination</th>
+                                            <!-- <th>Check In</th> -->
+                                            <th>Accommodation Type</th>
+                                            <th style="width: 12%;">Date</th>
+                                            <!-- <th>Check Out</th> -->
+                                            <th>Number of Nights</th>
+                                            <th>Number of Guests</th>
+                                            <th class="can_1">Meal Plan</th>
+                                            <th class="can_1">Cancellation</th>
+                                            <th>Inclusions</th>
+                                            <!-- <th> Number of Rooms</th> -->
+                                            <!-- <th>Number Of Villa</th> -->
+                                            <!-- <th>Transfer</th> -->
+                                            <!-- <th>Meal Plan</th> -->
+                                            <!-- <th>Total</th> -->
+                                            <th style="width:10%;">Rate</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="o.tree_link_id" t-as="d">
+                                            <tr>
+                                                <td>
+                                                    <a style="color:black;" t-att-href="d.resort_map">
+                                                        <t t-esc="d.resort_name.name">
+                                                            <span t-esc="d.resort_name.name"></span>
+                                                            
+                                                        </t>
+                                                                            
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <t t-set="sr" t-value="0" />
+                                                    <t t-foreach="d.tree_link.destination" t-as="des">
+                                                        <t t-set="sr" t-value="sr+1" />
+                                                        <t t-if="sr > 1">
+                                                            <span>,</span>
+                                                        </t>
+                                                        <span t-esc="des.name"></span>
+                                                    </t>
+                                                </td>
+                                                <td>
+                                                    <t t-set="rt" t-value="0" />
+                                                    <t t-foreach="d.room_type" t-as="rts">
+                                                        <t t-set="rt" t-value="rt+1" />
+                                                        <t t-if="rt > 1">
+                                                            <span>,</span>
+                                                        </t>
+                                                        <span t-esc="rts.name"></span>
+                                                    </t>
+                                                </td>
+                                                <td>
+                                                    <span t-esc="d.check_in"></span> / <span t-esc="d.check_out"></span>
+                                                </td>
+                                                <td>
+                                                    <span t-esc="d.no_of_nights"></span>
+                                                </td>
+                                                <td>
+                                                    <span t-esc="d.no_of_guest"></span>
+                                                </td>
+                                                <td>
+                                                    <t t-set="ml" t-value="0" />
+                                                    <t t-foreach="d.meal_plane" t-as="mal">
+                                                        <t t-set="ml" t-value="ml+1" />
+                                                        <t t-if="ml > 1">
+                                                            <span>,</span>
+                                                        </t>
+                                                        <span t-esc="mal.name"></span>
+                                                    </t>
+                                                </td>
+                                                <td class="inclusions_td">
+                                                    <span style="color:black;" t-raw="d.tree_canelattions" />
+                                                </td>
+                                                <td class="inclusions_td">
+                                                    <span style="color:black;" t-raw="d.inclusion.inclusion" />
+                                                </td>
+                                                <td>
+                                                    <span t-esc="d.rate_hotel.symbol"></span>
+                                                    <span t-esc="d.total"></span>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                               <!-- <t t-if="not srr in my_data"> -->
+                                    <div class="page-break" t-attf-style="page-break-inside: avoid !important;page-break-after: always !important;" />
+                                <!-- </t> -->
+                                <div class="cancel_block">
+                                    <br />
+                                    <t t-if="o.maldives_website_link">
+                                        <p style="text-align: left; line-height:1.5rem; color: #000;">
+                                            <span>We will be happy to supply any further information you may need and trust that you call on us to fill your order, which will receive our prompt and careful attention. The prices can be changed at anytime due to the high demand in this season. </span>
+                                            <br />
+                                        </p>
+                                    </t>
+                                </div>
+                                <div style="page-break-inside: avoid !important;page-break-after: always !important;" />
+                                <br />
+                                <p style="color: #000; margin-bottom:0;">
+                                    <span style="color: #000; margin-top:5px; background-color:white; font-size:20px;">Terms, Conditions &amp; Notes:</span>
+                                </p>
+                                <br />
+                                <t t-if="o.terms_conditions_eng ">
+                                    <span style="color: #000;" class="custom_all_eng">
+                                        <t t-raw="o.terms_conditions_eng    "></t>
+                                    </span>
+                                </t>
+                                <br />
+                                <br />
+                                <p style="color: #000; margin-bottom:0;">
+                                    <span style="color: #000; margin-top:5px; background-color:white; font-size:20px;">General Cancellation Policy:</span>
+                                </p>
+                                <br />
+                                <t t-if="o.cancel_new_eng">
+                                    <span style="color: #000;">- Free Cancellation <span t-esc="o.cancellation_days"></span></span>
+                                    <span style="color: #000;" class="custom_all_eng">
+                                        <t t-raw="o.cancel_new_eng"></t>
+                                    </span>
+                                </t>
+                                <br />
+                                <div class="foot_fix">
+                                    <p style="border-top: 5px solid #eaded7;"></p>
+                                    <!-- <div class="main_div">
+                                        <div class="rawnaq_insta">
+                                            <a href="https://www.instagram.com/rawnaq_tourism/">
+                                                 <img  width="100%" t-if="company.foot_tour" t-att-src="image_data_uri(company.foot_tour)" t-attf-style="width:100%;"/>
+                                            </a>
+                                        </div>
+                                        <div class="rawnaq_insta_2">
+                                            <a href="https://www.instagram.com/rawnaq_tourism/">
+                                                <img t-att-src="'data:image/png;base64,%s' % to_text(company.foot_con)" t-attf-style="width:100%;" />
+                                            </a>
+                                        </div>
+                                        <div class="rawnaq_mal">
+                                            <a href="https://twitter.com/Rawnaq_Maldives">
+                                                <img t-att-src="'data:image/png;base64,%s' % to_text(company.foot_mal)" t-attf-style="width:100%;" />
+                                            </a>
+                                        </div>
+                                        <div class="rawnaq_maldives">
+                                            <a href="https://www.snapchat.com/add/rawnaq.maldives">
+                                                <img t-att-src="'data:image/png;base64,%s' % to_text(company.foot_snap)" t-attf-style="width:100%;" />
+                                            </a>
+                                        </div>
+                                        <img t-att-src="'data:image/png;base64,%s' % to_text(company.foot)" t-attf-style="width:100%;" />
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+        <template id="quotation_builder_arabic">
+            <t t-call="web.html_container">
+                <!-- <t t-call="web.internal_layout"> -->
+                <!-- <t t-call="quotation_builder_report.external_layout_custome"> -->
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <!-- <t t-call="web.external_layout_background"> -->
+                <t t-foreach="docs" t-as="o">
+                    <div class="page">
+                        <!-- style="background-color: #f2f2f2;"> -->
+                        <!-- style="border: 1px solid;"> -->
+                        <style type="text/css">
+                        @media (min-width: 1200px) {
+                            .container {
+                                width: 100%;
+                            }
+                        }
+
+                        @media (min-width: 992px) {
+                            .container {
+                                width: 100%;
+                            }
+                        }
+
+                        @media (min-width: 768px) {
+                            .container {
+                                width: 100%;
+                            }
+                        }
+
+                        .container {
+                            width: 100%;
+                        }
+
+                        body.o_in_iframe {
+                            margin: 0px !important;
+                            padding: 0px !important;
+                        }
+
+                        .header,
+                        .footer {
+                            display: none !important;
+                        }
+
+                        .main_wraper {
+                            font-family: sans-serif;
+                            margin: 0px auto;
+                            padding: 0px 20px 20px 20px;
+                        }
+
+                        .main_div {
+                            width: 100%;
+                        }
+
+
+
+
+                        .left_div {
+                            width: 50%;
+                            float: left;
+
+                            font-size: 15px;
+                            color: #129397;
+                        }
+
+
+                        .right_div {
+                            width: 45%;
+                            margin-left: 20px;
+                            float: left;
+                            font-size: 13px;
+                            color: #129397;
+                        }
+
+                        .left_div .agent_1 {
+                            float: right;
+                            display: inline-block;
+                            width: 74%;
+                            color: #129397;
+                        }
+
+                        .left_div .agent {
+                            float: right;
+                            display: inline-block;
+                            width: 60%;
+                            color: #129397;
+                        }
+
+                        .left_div .html_fi {
+                            float: right;
+                            display: inline-block;
+                            width: 70%;
+                            color: #129397;
+                        }
+
+                        .left_div_2 {
+                            width: 20%;
+                            float: left;
+
+                            font-size: 13px;
+                            color: #129397;
+                        }
+
+                        .right_div_2 {
+                            line-height: .8rem;
+                            width: 75%;
+                            text-align: center;
+                            float: left;
+                            font-size: 22px;
+
+                            margin-top: 50px;
+                            color: #129397;
+                        }
+
+                        a {
+                            color: #129397;
+                        }
+
+                        .rawnaq_insta {
+                            width: 25%;
+                            float: left;
+                            font-size: 13px;
+
+                        }
+
+                        .rawnaq_insta_2 {
+                            width: 25%;
+                            float: left;
+                            font-size: 13px;
+
+                        }
+
+                        .rawnaq_mal {
+                            width: 25%;
+                            float: left;
+                            font-size: 13px;
+
+                        }
+
+                        .rawnaq_maldives {
+                            width: 25%;
+                            float: left;
+                            font-size: 13px;
+
+                        }
+
+                        .right_div .agent {
+
+                            float: right;
+                            display: inline-block;
+                            width: 73%;
+                        }
+
+                        .right_div .agent {
+
+                            float: right;
+                            display: inline-block;
+                            width: 73%;
+                        }
+
+                        .table_2 {
+                            border-collapse: collapse;
+                            border: 1px solid black;
+                        }
+
+                        .table_2 th {
+                            border-collapse: collapse;
+                            border: 1px solid #000;
+                            text-align: center;
+
+                            padding: 10px;
+                            font-size: 13px;
+                            background: #eaded7;
+
+                        }
+
+                        .table_2 td {
+                            border-collapse: collapse;
+                            border: 1px solid #000;
+                            text-align: center;
+                            padding: 20px 5px;
+                            font-size: 12px;
+                        }
+
+                        .clearfloat {
+                            clear: both;
+                            float: none;
+                            width: 100%;
+                            height: 1px;
+                            display: block;
+                        }
+
+                        .image_class {
+                            width: 100px;
+                        }
+
+                        .icons_anim i {
+                            font-size: 15px;
+                            color: white;
+                        }
+
+                        .icons_anim {
+                            float: left;
+                            border-radius: 50%;
+                            background-color: #000;
+                            padding: 3px 5px 0px 5px;
+                        }
+
+
+                        .custom_all_eng,
+                        .custom_all_eng p {
+                            text-align: right;
+                            color: #000 !important;
+                            line-height: 1rem !important;
+                        }
+
+                        .custom_all_eng p:first-child {
+                            text-align: right;
+                            display: inline !important;
+                        }
+
+                        .icons_anim_after {
+                            font-size: 15px;
+                            padding: 0px 5px 0px 5px;
+                            float: left;
+                            text-align: left;
+                            text-align: center;
+                        }
+
+                        .cancel_block {
+                            line-height: 2rem;
+                        }
+
+                        .image_div {
+                            height: 150px;
+                            width: 100px;
+                        }
+
+                        .foot_fix {
+                            width: 880px;
+                            position: fixed;
+                            bottom: -100vh;
+                            page-break-inside: avoid;
+                        }
+
+                        .head {
+                            background-color: #eaded7;
+                            margin: 4px;
+                            font-size: 18px;
+                            padding: 10px;
+                            color: white;
+
+                            margin-top: 10px;
+                            text-align: left;
+                        }
+
+
+                        .main_box {
+                            width: 70%;
+                            margin: 0 auto;
+                        }
+
+                        .box_a {
+                            text-align: right;
+                            margin-bottom: 50px;
+                            width: 100%;
+                            display: inline-block;
+                        }
+
+                        .box_b {
+                            float: right;
+                            width: 13%;
+                            display: inline-block;
+                            margin-bottom: 10px;
+                        }
+
+                        .box_b img {
+                            width: 100%;
+                        }
+
+                        .main_box img {
+                            width: 100%;
+                            height: 200px;
+                            float: left;
+                        }
+
+                        .main_box h5 {
+                            margin: 0px 0 3px 0 !important;
+                            font-weight: 500;
+                            margin-bottom: 10px;
+                            font-size: 14px !important;
+                        }
+
+                        .main_box h3 {
+                            margin: 0px 0 3px 0 !important;
+                            font-size: 1.2rem !important;
+                        }
+
+                        .heading_of_q {
+                            text-align: center;
+                            font-size: 35px;
+                            margin-bottom: 50px;
+                            text-align: center;
+                            font-weight: bold;
+                        }
+
+
+
+                        .table_1 {
+                            margin: 0 auto;
+                            border-collapse: collapse;
+                            border: 1px solid black;
+                        }
+
+                        .table_1 th {
+                            border-collapse: collapse;
+                            border: 1px solid #000;
+                            text-align: right;
+                            padding: 10px;
+                            font-size: 13px;
+                            font-weight: bold;
+
+                        }
+
+                        .table_1 th span {
+                            font-weight: 100;
+                            margin-right: 10px;
+                        }
+
+                        .main_box {
+                            padding-top: 10px;
+                            border-top: 4px solid black;
+                        }
+
+                        .inclusions_td p {
+                            margin: 0 !important;
+                            color: black;
+                        }
+
+                        .can_1 {
+                            width: 14%;
+                        }
+
+
+                        .main_logo {
+                            width: 100%;
+                        }
+
+                        th,
+                        td {
+                            vertical-align: middle;
+                        }
+
+                        .main_wraper {
+                            background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+                        }
+                        </style>
+                        <div class="main_wraper">
+                            <div class="main_logo">
+                                <div class="box_b">
+                                    <img t-att-src="'data:image/png;base64,%s' % to_text(company.logo)" />
+                                </div>
+                            </div>
+                            <br class="clearfloat" />
+                            <h1 class="heading_of_q">اقتباس</h1>
+                            <!-- <div class="main_box">
+                                <div class="box_a">
+                                    <t t-foreach="company" t-as="e">
+                                        <h3><b>
+                                                <span>الدولية للسفر والسياحة - جائزة وكالة السفر لعام 2021 و 2022 RAWNAQ</span>
+                                            </b> </h3>
+                                        <h5>
+                                            مكتب جدة - المملكة العربية السعودية - شارع كيال 23434
+                                        </h5>
+                                        <h5>
+                                            مكتب الرياض - المملكة العربية السعودية - الأمير سلطان بن عبدالعزيز
+                                        </h5>
+                                        <h5>+966112790509 / +966126285888
+                                        </h5>
+                                        <h5>Reservations@rawnaqtourism.com – www.rawnaqtourism.com
+                                        </h5>
+                                        <h5>.إحدى شركات مجموعة رونق الدولية
+                                        </h5>
+                                        <h5><span t-esc="user_get"></span> أُعدت بواسطة
+                                        </h5>
+                                    </t>
+                                </div>
+                            </div> -->
+                            <!-- <div>
+                                <div style="width: 19%;float: left;-size: 13px;color: #129397;">
+                                    <img t-att-src="'data:image/png;base64,%s' %to_text(company.logo)" style="width:120px" />
+                                </div> -->
+                            <!--  <div style="width: 79%;text-align: center;float: left;font-size: 22px;margin-top:0px;color: #129397;margin-bottom:0px">
+                                    <p style="margin-bottom:0px;  margin-top:0px;">
+                                        <span>Warm Welcome From</span>
+                                    </p>
+                                    <p style="margin-bottom:0px;  margin-top:0px;">
+                                        <span>RAWNAQ TOURISM</span>
+                                    </p>
+                                    <p style="margin-bottom:0px;  margin-top:0px;">
+                                        RAWNAQ Team is delighted to serve You, thank you for choosing us</p>
+                                </div> -->
+                            <!-- </div> -->
+                            <br class="clearfloat" />
+                            <div class="main_div">
+                                <table width="40%" class="table_1">
+                                    <tr>
+                                        <th>
+                                            <span class="agent_1" t-esc="o.client_name.name"></span>
+                                        </th>
+                                        <th style="width:37%; background:#eaded7;">
+                                            : اسم العميل
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <span class="agent_1" t-esc="creation_date" />
+                                        </th>
+                                        <th style="width:37%; background:#eaded7;">
+                                            : تاريخ
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <span class="agent_1" t-esc="o.subject"></span>
+                                        </th>
+                                        <th style="width:37%; background:#eaded7;">
+                                            :الموضوع
+                                        </th>
+                                    </tr>
+                                </table>
+                                <!-- <div class="left_div">
+                                    <p>
+                                        <span class="solid">Subject:</span>
+                                        <span class="agent_1" t-esc="o.subject"></span>
+                                    </p> -->
+                                <!--  <p>
+                                        <span class="solid">Destination:</span>
+                                        <span class="agent_1">
+                                            <t t-set="sr" t-value="0" />
+                                            <t t-foreach="o.destination" t-as="des">
+                                                <t t-set="sr" t-value="sr+1" />
+                                                <t t-if="sr > 1">
+                                                    <span>,</span>
+                                                </t>
+                                                <span t-esc="des.name"></span>
+                                            </t>
+                                        </span>
+                                    </p> -->
+                                <!--   <p>
+                                        <span class="solid">Client Name:</span>
+                                        <span class="agent_1" t-esc="o.client_name.name"></span>
+                                    </p>
+                                    <p>
+                                        <span class="solid">Date:</span>
+                                        <span class="agent_1" t-esc="creation_date" /> -->
+                                <!-- t-options='{"format": "MM/dd/yyyy H:M"}' -->
+                                <!-- </p> -->
+                                <!-- <p>
+                                        <span class="solid">The Number Refrence:</span>
+                                        <span class="agent" t-esc="o.reference"></span>
+                                    </p> -->
+                                <!-- </div> -->
+                            </div>
+                            <h4 style="text-align:right; margin: 20px 0px;font-size: 17px; font-weight:100;">:يسعدنا أن ننقل لكم ما يلي</h4>
+                            <br class="clearfloat" />
+                            <table width="100%" class="table_2">
+                                <thead>
+                                    <!--    <tr>
+                                        <th colspan="50" class="head">Hotels</th>
+                                    </tr> -->
+                                    <tr>
+                                        <th style="width:10%;">معدل</th>
+                                        <!-- <th>Check In</th> -->
+                                        <!-- <th>Check Out</th> -->
+                                        <th>تضمينات</th>
+                                        <!-- <th> Number of Rooms</th> -->
+                                        <!-- <th>Number Of Villa</th> -->
+                                        <!-- <th>Transfer</th> -->
+                                        <!-- <th>Meal Plan</th> -->
+                                        <!-- <th>Total</th> -->
+                                        <th class="can_1">خطة الوجبة</th>
+                                        <th class="can_1">إلغاء</th>
+                                        <th>عدد الضيوف</th>
+                                        <th>عدد الليالي</th>
+                                        <th>تاريخ</th>
+                                        <th style="width:12%;">نوع الإقامة</th>
+                                        <th>المكان المقصود</th>
+                                        <th>اسم فندق</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="o.tree_link_id" t-as="d">
+                                        <tr>
+                                            <td>
+                                                <span t-esc="d.rate_hotel.symbol"></span>
+                                                <span t-esc="d.total"></span>
+                                            </td>
+                                            <td class="inclusions_td">
+                                                <span style="color:black;" t-raw="d.inclusion.inclusion" />
+                                            </td>
+                                            <td>
+                                                <t t-set="ml" t-value="0" />
+                                                <t t-foreach="d.meal_plane" t-as="mal">
+                                                    <t t-set="ml" t-value="ml+1" />
+                                                    <t t-if="ml > 1">
+                                                        <span>,</span>
+                                                    </t>
+                                                    <span t-esc="mal.name"></span>
+                                                </t>
+                                            </td>
+                                            <td class="inclusions_td">
+                                                <span style="color:black;" t-raw="d.tree_canelattions" />
+                                            </td>
+                                            <td>
+                                                <span t-esc="d.no_of_guest"></span>
+                                            </td>
+                                            <td>
+                                                <span t-esc="d.no_of_nights"></span>
+                                            </td>
+                                            <td>
+                                                <span t-esc="d.check_in"></span> / <span t-esc="d.check_out"></span>
+                                            </td>
+                                            <td>
+                                                <t t-set="rt" t-value="0" />
+                                                <t t-foreach="d.room_type" t-as="rts">
+                                                    <t t-set="rt" t-value="rt+1" />
+                                                    <t t-if="rt > 1">
+                                                        <span>,</span>
+                                                    </t>
+                                                    <span t-esc="rts.name"></span>
+                                                </t>
+                                            </td>
+                                            <td>
+                                                <t t-set="sr" t-value="0" />
+                                                <t t-foreach="d.tree_link.destination" t-as="des">
+                                                    <t t-set="sr" t-value="sr+1" />
+                                                    <t t-if="sr > 1">
+                                                        <span>,</span>
+                                                    </t>
+                                                    <span t-esc="des.name"></span>
+                                                </t>
+                                            </td>
+                                            <td>
+                                                <a style="color:black;" t-att-href="d.resort_map">
+                                                        <t t-esc="d.resort_name.name">
+                                                            <span t-esc="d.resort_name.name"></span>
+                                                            
+                                                        </t>
+                                                                            
+                                                    </a>
+                                            </td>
+                                            <!--  <td>
+                                            <span t-esc="d.check_in"></span>
+                                        </td>
+                                        <td>
+                                            <span t-esc="d.check_out"></span>
+                                        </td>
+                                        <td>
+                                            <span t-esc="d.no_of_nights"></span>
+                                        </td>
+                                        <td>
+                                            <span t-esc="d.no_of_guest"></span>
+                                        </td>
+                                        <td>
+                                            <span t-esc="d.number_of_rooms"></span>
+                                        </td>
+                                        <td>
+                                            <t t-foreach="d.room_type" t-as="room">
+                                                <span t-esc="room.name"></span>
+                                            </t>
+                                        </td>
+                                        <td>
+                                            <span t-esc="d.number_of_villa"></span>
+                                        </td> -->
+                                            <!-- <td>
+                                            <t t-foreach="d.transfer" t-as="tran">
+                                                <span t-esc="tran.name"></span>
+                                            </t>
+                                        </td>
+                                        <td>
+                                            <t t-foreach="d.meal_plane" t-as="meal">
+                                                <span t-esc="meal.name"></span>
+                                            </t>
+                                        </td>
+                                        <td>
+                                            <span t-esc="d.total" t-options='{"widget": "float","precision": 2}'></span>
+                                        </td> -->
+                                        </tr>
+                                    </t>
+                                </tbody>
+                                <!-- <t t-if="d.resort_name.hotel_link">
+                                        <tr>
+                                            <th>Hotel Link</th>
+                                            <td colspan="9" style="text-align:left;font-weight:bold; font-size:13px;">
+                                                <a t-att-href="d.resort_name.hotel_link">
+                                                    <span>(Click Here)</span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </t> -->
+                            </table>
+                            <div class="cancel_block">
+                                <!--  <p style="color: #129397; margin-bottom:0;">
+                                        <span  style="color: #129397; margin-top:5px;" >Cancellation Policy</span>
+                                    </p>
+                                        <t t-if="o.cancel_new_eng">
+                                        <span  style="color: #129397;" >- Free Cancellation <span t-esc="o.cancellation_days"></span></span>
+                                        <span   style="color: #129397;" class="custom_all_eng">
+                                            
+
+                                            <t t-raw="o.cancel_new_eng"></t>
+                                        </span>
+                                        </t>
+
+                                        <t t-if="not o.cancel_new_eng">
+
+                                        -
+                                        <span>Free Cancellation <span t-esc="o.cancellation_days"></span> days before arrival,after that you could amend your booking dates depending on availabilty and price subject to change.</span>
+                                        <br />
+                                        -
+                                        <span>All the above rates and availabilty are price subject to Change.</span>
+                                        </t> -->
+                                <br />
+                                <t t-if="o.maldives_website_link">
+                                    <p style="text-align: right; line-height:1.5rem; color: #000;">
+                                        <span>سنكون سعداء لتقديم أي معلومات إضافية قد تحتاجها وتثق في أنك تتصل بنا لملء طلبك ، والتي ستحظى باهتمامنا الفوري والدقيق. يمكن تغيير الأسعار في أي وقت بسبب ارتفاع الطلب في هذا الموسم</span>
+                                        <br />
+                                        <!--  <span style="text-align: center;color: #129397;">
+                                                <a style="text-decoration: none; color: #129397;" href="https://www.rawnaqtourism.com/explore">https://rawnaqtourism.com/explore</a></span> -->
+                                    </p>
+                                </t>
+                            </div>
+                            <!-- <t t-if="sr &gt; 1"> -->
+                            <!-- </t> -->
+                            <div style="page-break-inside: avoid !important;page-break-after: always !important;" />
+                            <br />
+                            <p style="color: #000; margin-bottom:0; text-align:right;">
+                                <span style="color: #000; margin-top:5px; background-color:white; font-size:20px;">:الشروط والأحكام والملاحظات</span>
+                            </p>
+                            <br />
+                            <t t-if="o.terms_conditions_ar ">
+                                <div style="color: #000; text-align:right;">
+                                    <p style="color: #000; text-align:right;" class="custom_all_eng">
+                                        <t t-raw="o.terms_conditions_ar    "></t>
+                                    </p>
+                                </div>
+                            </t>
+                            <br />
+                            <br />
+                            <p style="color: #000; text-align:right; margin-bottom:0;">
+                                <span style="color: #000; margin-top:5px; background-color:white; font-size:20px;">:سياسة الإلغاء العامة</span>
+                            </p>
+                            <br />
+                            <t t-if="o.cancel_new_ar">
+                                <div style="color: #000; text-align:right">
+                                    <span style="color: #000; text-align:right">إلغاء مجاني - <span t-esc="o.cancellation_days"></span></span>
+                                    <span style="color: #000; text-align:right" class="custom_all_eng">
+                                        <t t-raw="o.cancel_new_ar"></t>
+                                    </span>
+                                </div>
+                            </t>
+                            <br />
+                            <div class="foot_fix">
+                                <p style="border-top: 5px solid #eaded7;"></p>
+                                <!-- <div class="main_div">
+                                    <div class="rawnaq_insta">
+                                        <a href="https://www.instagram.com/rawnaq_tourism/">
+                                             <img  width="100%" t-if="company.foot_tour" t-att-src="image_data_uri(company.foot_tour)" t-attf-style="width:100%;"/>
+                                        </a>
+                                    </div>
+                                    <div class="rawnaq_insta_2">
+                                        <a href="https://www.instagram.com/rawnaq_tourism/">
+                                            <img t-att-src="'data:image/png;base64,%s' % to_text(company.foot_con)" t-attf-style="width:100%;" />
+                                        </a>
+                                    </div>
+                                    <div class="rawnaq_mal">
+                                        <a href="https://twitter.com/Rawnaq_Maldives">
+                                            <img t-att-src="'data:image/png;base64,%s' % to_text(company.foot_mal)" t-attf-style="width:100%;" />
+                                        </a>
+                                    </div>
+                                    <div class="rawnaq_maldives">
+                                        <a href="https://www.snapchat.com/add/rawnaq.maldives">
+                                            <img t-att-src="'data:image/png;base64,%s' % to_text(company.foot_snap)" t-attf-style="width:100%;" />
+                                        </a>
+                                    </div>
+                                    <img t-att-src="'data:image/png;base64,%s' % to_text(company.foot)" t-attf-style="width:98%;" />
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <!--end of page-->
+                </t>
+                <!-- </t> -->
+                <!-- </t> -->
+            </t>
+        </template>
+        <template id="quotation_builder_email_t">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <div class="page">
+                        <style>
+                        .get_tds_p p:first-child {
+                            display: inline-block !important;
+                        }
+
+                        .get_sub_table tr,
+                        .get_sub_table tr td {
+                            width: 100% !important;
+                        }
+
+                        .one {
+                            float: left;
+                            width: 20%;
+                        }
+
+
+                        .two {
+                            width: 78%;
+                            float: right;
+                            text-align: left
+                        }
+
+                        .two p:first-child {
+                            display: inline;
+                        }
+
+                        .get_sub_table img {
+                            height: 250px;
+                        }
+
+                        table {
+                            width: 100%;
+                        }
+                        </style>
+                        <table border="0" cellpadding="0" cellspacing="0" style="background-color: #fff; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;">
+                            <tbody>
+                                <tr>
+                                    <td align="center">
+                                        <table class="get_sub_table" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: white; color: #454748; border-collapse:separate;">
+                                            <tbody>
+                                                <tr>
+                                                    <td align="center">
+                                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:white;padding: 0; border-collapse:separate;">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td valign="middle">
+                                                                        <span style="font-size:20px;font-weight: bold;">
+                                                                            Togather Tourism
+                                                                        </span>
+                                                                    </td>
+                                                                    <td valign="middle" align="right">
+                                                                        <img style="padding:0px;margin: 0px; height: 48px;" src="https://odoo.rawnaqtourism.com/web/binary/company_logo" alt="Togather Tourism" />
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="2" style="text-align:center;">
+                                                                        <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin:4px 0px 0px 0px;" />
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <t t-set="out_now" t-value="0"></t>
+                        <t t-foreach="o.tree_link_id" t-as="row">
+                            <t t-set="out_now" t-value="out_now+1"></t>
+                            <t t-if="out_now &gt; 1">
+                                <div style="page-break-after: always !important; page-break-before: always !important;" />
+                            </t>
+                            <div>
+                                <div style="font-size:14px;font-family:Arial,Helvetica,sans-serif; color:#515166; padding:0px">
+                                    <br />
+                                    Dear <t t-esc="row.tree_link.client_name.name"></t>
+                                    <br />
+                                    <br />
+                                    Greetings from <t t-esc="row.resort_name.name"></t>!
+                                    <br />
+                                    <br />
+                                    We are pleased to offer below.
+                                    <br />
+                                    <br />
+                                    <b> BELOW OFFERS ALSO INCLUDES FOLLOWING EXTRAS: </b>
+                                    <br />
+                                    Service charge by Hotel/Resorts, Government taxes
+                                    <br />
+                                    <b> On Arrival: </b> Meet &amp; greet service, assistance with the luggage
+                                    <br />
+                                    <b> Return Transfers: </b>International Airport - Hotel/Resort - International Airport
+                                    <br />
+                                    <b> Meal Plan: </b>as specified in the quotation/package
+                                    <br />
+                                    <b> On Departure: </b>Meet &amp; greet service, assistance with the luggage &amp; Check-in assistance at Airport
+                                    <br />
+                                    <br />
+                                    <h3 style="color:#d62d2d; font-size:1rem;">
+                                        <b>
+                                            Below offers are valid only until
+                                            <t t-if="row.tree_link.offers_validity_date">
+                                                <t t-esc="row.tree_link.offers_validity_date.strftime('%b %d, %Y')"></t>
+                                            </t>
+                                        </b>
+                                    </h3>
+                                    <span style="color:purple">
+                                        Villas are available at the moment but are SUBJECT TO AVAILABILITY AT THE TIME OF RESERVATIONS.
+                                    </span>
+                                </div>
+                                <table class="get_sub_table" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: white; color: #454748; border-collapse:separate;">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div style="font-size:14px;font-family:Arial,Helvetica,sans-serif; color:#515166; padding:10px 0px">
+                                                    <table style="width:100%; margin:0px auto; border:1px solid #e1e1e1">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="padding:10px 20px 10px 20px; background-color:#6F4E37;">
+                                                                    <span style="color:white;">
+                                                                        Quotation Number: [<t t-esc="row.tree_link.sr_no"></t>]
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
+                                                            <!-- <tr>
+                                                        <td style="text-align:left;padding:15px 20px 10px 20px">
+                                                            <a style="color:black;" t-att-href="row.resort_map">
+                                                            </a>
+                                                        </td>
+                                                    </tr> -->
+                                                            <tr>
+                                                                <td style="padding:10px 20px 10px 20px">
+                                                                    <a style="color:black;" t-att-href="row.resort_map">
+                                                                        <h2 style="font-size:1.2rem;"><b>
+                                                                                <t t-esc="row.resort_name.name"></t>
+                                                                            </b></h2>
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" style="text-align:center;">
+                                                                    <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin:4px 0px 0px 0px;" />
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="padding:10px 20px 10px 50px"> Villa Type:
+                                                                    <h3 style="width:100%; font-size:1rem; color:black; display:inline;">
+                                                                        <b>
+                                                                            <t t-esc="rooms_get_result"></t>
+                                                                        </b>
+                                                                    </h3>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" style="text-align:center;">
+                                                                    <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin:4px 0px 0px 0px;" />
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                               <td style="padding:10px 20px 10px 50px">
+                                                                    Stay Period:
+                                                                    <t t-f="row.date_from">
+                                                                      <!--<t t-set="check_in" t-value="str(row.check_in)"/>-->
+                                                                      <t t-esc="row.date_from"/>
+                                                                    </t>
+                                                                     to
+                                                                     <t t-f="row.date_to">
+                                                                        <t t-esc="row.date_to"/>
+                                                                    </t>
+                                                                    | ( <t t-esc="row.no_of_nights"/> Nights )
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" style="text-align:center;">
+                                                                    <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin:4px 0px 0px 0px;" />
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="padding:10px 20px 10px 50px">
+                                                                    Meals Include:
+                                                                    <t t-esc="meals_get_result"></t>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" style="text-align:center;">
+                                                                    <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin:4px 0px 0px 0px;" />
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="padding:10px 20px 10px 50px">
+                                                                    Transfer Included:
+                                                                    <t t-esc="transs_get_result"></t>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" style="text-align:center;">
+                                                                    <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin:4px 0px 0px 0px;" />
+                                                                </td>
+                                                            </tr>
+                                                            <tr style="display:flex; flex-wrap:wrap;">
+                                                                <td style="padding:10px 10px 10px 50px">
+                                                                    <div class="one">
+                                                                        Offers Applied :
+                                                                    </div>
+                                                                    <div class="two">
+                                                                        <t t-raw="row.offers_appiled"></t>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" style="text-align:center;">
+                                                                    <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin:4px 0px 0px 0px;" />
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="padding:10px 20px 10px 50px">
+                                                                    Total Guests : <t t-esc="row.no_of_guest"></t>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </t>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <!-- <td align="center" style="padding: 0 8px 0 8px; font-size:11px;">
+                                        <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 4px 0px;" />
+                                        <b>RAWNAQ Tourism</b><br />
+                                        <div style="color:#999999;">
+                                            +966544038879 / +966126285888
+                                            |
+                                            <a style="color: #999999;" href="mailto:info@rawnaqtourism.com">info@rawnaqtourism.com</a>
+                                            |
+                                            <a style="color: #999999;" href="http://www.rawnaqtourism.com">
+                                                http://www.rawnaqtourism.com
+                                            </a>
+                                        </div>
+                                    </td> -->
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

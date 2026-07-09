@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="check_arrival_date_report">
+            <t t-call="web.html_container">
+                <t t-call="web.basic_layout">
+                    <t t-call="check_arrival_date_report.arrival_and_departure_template">
+                        <div class="page">
+                            <style type="text/css">
+                            @media (min-width: 992px) .container {
+                                width: 100%;
+                            }
+
+                            @media (min-width: 768px) .container {
+                                width: 100%;
+                            }
+
+                            .container {
+                                width: 100%;
+                            }
+
+                            body {
+                                margin: 0px !important;
+                            }
+
+                            body.o_in_iframe {
+                                margin-top: 0px !important;
+                            }
+
+                            .header,
+                            .footer {
+                                display: none !important;
+                            }
+
+                            .main_wraper {
+                                width: 100%;
+                                background-image: url(/base/static/img/bg_background_template.jpg);
+                                background-size: cover;
+                                background-position: bottom center;
+                                background-repeat: no-repeat;
+                                min-height: 1000px;
+                            }
+
+                           
+
+                            td,th{
+                            vertical-align:middle;
+                            }
+
+                            .sale_div {
+                                text-align: center;
+                                font-weight: bold;
+                                font-size: 25px;
+                                margin-bottom: 0px;
+                            }
+
+                            table {
+                                border-collapse: collapse;
+                                border: 1px solid black;
+                                background: 1px solid gray;
+                            }
+
+                            th {
+                                border-collapse: collapse;
+                                border: 1px solid black;
+                                text-align: center;
+                                font-weight: bold;
+                                padding: 10px;
+                                font-size: 13px;
+                                background: #eaded7 !important;
+                                color: #3d3838;
+                            }
+
+                            td {
+                                border-collapse: collapse;
+                                border: 1px solid black;
+                                text-align: center;
+                                padding: 10px;
+                                font-size: 12px;
+                            }
+
+                            .clearfloat {
+                                clear: both;
+                                float: none;
+                                width: 100%;
+                                height: 1px;
+                                display: block;
+                            }
+                            </style>
+                            <div class="main_wraper">
+                                
+                                <br class="clearfloat" />
+                                <t t-if="arrival_dates">
+                                    <p class="sale_div">Arrival Date </p>
+                                    <p style="text-align: center;">
+                                        <b>
+                                            <span>From:</span>
+                                        </b>
+                                        <u>
+                                            <span t-esc="time.strftime('%d %b %Y',time.strptime(str(form),'%Y-%m-%d'))"></span>
+                                        </u>
+                                        <b>
+                                            <span>TO:</span>
+                                        </b>
+                                        <u>
+                                            <span t-esc="time.strftime('%d %b %Y',time.strptime(str(to),'%Y-%m-%d'))"></span>
+                                        </u>
+                                    </p>
+                                    <table class="display" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Guest Name</th>
+                                                <!-- <th>Branch</th> -->
+                                                <th>Reservations No</th>
+                                                <th>Hotel Name</th>
+                                                <th>Sub Agent</th>
+                                                <th>Contact Number</th>
+                                                <th>Arrival Date</th>
+                                                <th>Arrival Flight</th>
+                                                <th style="width:6%;">Confirmation Number </th>
+                                                <th>Room Quantity</th>
+                                                <th>Room Type</th>
+                                                <th>Meal Plan</th>
+                                                <th>Transfer Type</th>
+                                                <th style="width:5%">Special Remarks</th>
+                                                <th style="width:7% !important;"  >Applied Offer</th>
+                                                <th>Net Amount FC</th>
+                                            </tr>
+                                        </thead>
+                                        <t t-foreach="sorted(arrival_dates,key=lambda r:r['arrival_date'])" t-as="o">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <span t-esc="o['guest']"></span>
+                                                    </td>
+                                                     <td>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o['name']"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o['hotel']"></span>
+                                                    </td>
+                                                     <td>
+                                                        <t t-if="o['sub_agent']">
+                                                            
+                                                        <span t-esc="o['sub_agent']"></span>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <span>-</span>
+                                                        </t>
+                                                    </td>
+                                                    <td>
+                                                        <t t-if="o['contract_no']">
+                                                            <span t-esc="o['contract_no']"></span>
+                                                        </t>
+                                                        <t t-if="o['phone_no']">
+                                                            <span t-esc="o['phone_no']"></span>
+                                                        </t>
+                                                    </td>
+                                                    <td style="width:6%">
+                                                        <span t-esc="o['arrival_date']"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o['arrival_flight']"></span>
+                                                    </td>
+                                                    <!-- <td>
+                                                        <span t-esc="o['departure_date']"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o['departure_flight']"></span>
+                                                    </td> -->
+                                                    <td>
+                                                        <span t-esc="o['confirmation_no']"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o['room_qty']"></span>
+                                                    </td>
+                                                    <td>
+                                                        <t t-foreach="o['room_type']" t-as="room">
+                                                            <span t-esc="room" />
+                                                        </t>
+                                                    </td>
+                                                    <td>
+                                                        <t t-foreach="o['meal_plan']" t-as="meal">
+                                                            <span t-esc="meal" />
+                                                        </t>
+                                                    </td>
+                                                    <td>
+                                                        <t t-foreach="o['transfer_type']" t-as="trans">
+                                                            <span t-esc="trans" />
+                                                        </t>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o['special_remarks']"></span>
+                                                    </td>
+                                                    <td style="width:7% !important; padding:10px 5px !important; word-break:break-word;">
+                                                        <span t-esc="o['applied_offer']"></span>
+                                                    </td>
+                                                    <td >
+                                                        <span t-esc="o['fc_amount']" t-options='{"widget": "float","precision": 2}'></span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </t>
+                                    </table>
+                                </t>
+                                <br class="clearfloat" />
+                                <t t-if="departure_dates">
+                                    <p class="sale_div">Departure Date </p>
+                                    <p style="text-align: center;">
+                                        <b>
+                                            <span>From:</span>
+                                        </b>
+                                        <u>
+                                            <span t-esc="time.strftime('%d %b %Y',time.strptime(str(form),'%Y-%m-%d'))"></span>
+                                        </u>
+                                        <b>
+                                            <span>TO:</span>
+                                        </b>
+                                        <u>
+                                            <span t-esc="time.strftime('%d %b %Y',time.strptime(str(to),'%Y-%m-%d'))"></span>
+                                        </u>
+                                    </p>
+                                    <table class="display" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Guest Name</th>
+                                                <!-- <th>Branch</th> -->
+                                                <th>Reservations No</th>
+                                                <th>Contact Number</th>
+                                                <!-- <th>Arrival Flight</th> -->
+                                                <th>Departure Date</th>
+                                                <th>Departure Flight</th>
+                                                <th>Confirmation Number </th>
+                                                <th>Room Quantity</th>
+                                                <th>Room Type</th>
+                                                <th>Meal Plan</th>
+                                                <th>Transfer Type</th>
+                                                <th>Special Remarks</th>
+                                                <th>Applied Offer</th>
+                                                <th>Net Amount FC</th>
+                                            </tr>
+                                        </thead>
+                                        <t t-foreach="sorted(departure_dates,key=lambda r:r['departure_date'])" t-as="o">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <span t-esc="o['guest']"></span>
+                                                    </td>
+                                                     <td>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o['name']"></span>
+                                                    </td>
+                                                    <td>
+                                                       <t t-if="o['contract_no']">
+                                                            <span t-esc="o['contract_no']"></span>
+                                                        </t>
+                                                        <t t-if="o['phone_no']">
+                                                            <span t-esc="o['phone_no']"></span>
+                                                        </t>
+                                                    </td>
+                                                   <!--  <td>
+                                                        <span t-esc="o['arrival_flight']"></span>
+                                                    </td> -->
+                                                    <td style="width:10%">
+                                                        <span t-esc="o['departure_date']"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o['departure_flight']"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o['confirmation_no']"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o['room_qty']"></span>
+                                                    </td>
+                                                    <td>
+                                                        <t t-foreach="o['room_type']" t-as="room">
+                                                            <span t-esc="room" />
+                                                        </t>
+                                                    </td>
+                                                    <td>
+                                                        <t t-foreach="o['meal_plan']" t-as="meal">
+                                                            <span t-esc="meal" />
+                                                        </t>
+                                                    </td>
+                                                    <td>
+                                                        <t t-foreach="o['transfer_type']" t-as="trans">
+                                                            <span t-esc="trans" />
+                                                        </t>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o['special_remarks']"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o['applied_offer']"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o['fc_amount']" t-options='{"widget": "float","precision": 2}'></span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </t>
+                                    </table>
+                                </t>
+                                <br class="clear_float" />
+                                <t t-if="main_list">
+                                    <p class="sale_div">Arrival and Departure Date</p>
+                                    <p style="text-align: center;">
+                                        <b>
+                                            <span>From:</span>
+                                        </b>
+                                        <u>
+                                            <span t-esc="time.strftime('%d %b %Y',time.strptime(str(form),'%Y-%m-%d'))"></span>
+                                        </u>
+                                        <b>
+                                            <span>TO:</span>
+                                        </b>
+                                        <u>
+                                            <span t-esc="time.strftime('%d %b %Y',time.strptime(str(to),'%Y-%m-%d'))"></span>
+                                        </u>
+                                    </p>
+                                    <table class="display" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Guest Name</th>
+                                                <!-- <th>Branch</th> -->
+                                                <th>Reservations No</th>
+                                                <th>Contact Number</th>
+                                                <th>Arrival Date</th>
+                                                <th>Arrival Flight</th>
+                                                <th>Departure Date</th>
+                                                <th>Departure Flight</th>
+                                                <th>Confirmation Number </th>
+                                                <th>Room Quantity</th>
+                                                <th>Room Type</th>
+                                                <th>Meal Plan</th>
+                                                <th>Transfer Type</th>
+                                                <th>Special Remarks</th>
+                                                <th>Applied Offer</th>
+                                                <th>Net Amount FC</th>
+                                            </tr>
+                                        </thead>
+                                        <t t-foreach="sorted(main_list,key=lambda r:r['arrival_date'])" t-as="o">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <span t-esc="o['guest']"></span>
+                                                    </td>
+                                                    <td>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o['name']"></span>
+                                                    </td>
+                                                    <td>
+                                                       <t t-if="o['contract_no']">
+                                                            <span t-esc="o['contract_no']"></span>
+                                                        </t>
+                                                        <t t-if="o['phone_no']">
+                                                            <span t-esc="o['phone_no']"></span>
+                                                        </t>
+                                                    </td>
+                                                    <td style="width:10%">
+                                                        <span t-esc="o['arrival_date']"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o['arrival_flight']"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o['departure_date']"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o['departure_flight']"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o['confirmation_no']"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o['room_qty']"></span>
+                                                    </td>
+                                                    <td>
+                                                        <t t-foreach="o['room_type']" t-as="room">
+                                                            <span t-esc="room" />
+                                                        </t>
+                                                    </td>
+                                                    <td>
+                                                        <t t-foreach="o['meal_plan']" t-as="meal">
+                                                            <span t-esc="meal" />
+                                                        </t>
+                                                    </td>
+                                                    <td>
+                                                        <t t-foreach="o['transfer_type']" t-as="trans">
+                                                            <span t-esc="trans" />
+                                                        </t>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o['special_remarks']"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o['applied_offer']"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o['fc_amount']" t-options='{"widget": "float","precision": 2}'></span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </t>
+                                    </table>
+                                </t>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

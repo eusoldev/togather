@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_password_module,password.module,model_password_module,group_password_user_ext,1,1,1,1
+access_password_lines,password.lines,model_password_lines,group_password_user_ext,1,1,1,1
+
+access_password_module_c,password.confirmations,model_password_confirmations,group_password_user_ext,1,1,1,1

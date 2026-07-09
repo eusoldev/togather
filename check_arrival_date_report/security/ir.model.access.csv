@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+A_1,check_arrival_date_report,check_arrival_date_report.model_check_date_report,check_arrival_date_report.security_group_for_check_arrival_date_report,1,1,1,1

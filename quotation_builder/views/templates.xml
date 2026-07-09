@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="quotation_email_pro_clients" model="mail.template">
+            <field name="name">Quotation Builder Email Template</field>
+            <field name="model_id" ref="quotation_builder.model_quotation_builder" />
+            <field name="email_from"></field>
+            <field name="email_to">{{object.client_name.email}}</field>
+            <field name="subject">{{object.client_name.name}} (Ref {{object.sr_no or 'n/a'}})</field>
+            <field name="auto_delete" eval="False" />
+            <field name="body_html">
+                <![CDATA[
+                <style>
+                    .get_tds_p p:first-child{
+                    display:inline-block !important;
+                    }
+                </style>
+
+                    <table border="0" cellpadding="0" cellspacing="0" style="padding-top:16px;background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;">
+                            <tbody>
+                                <tr>
+                                    <td align="center">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="590" style="padding:24px;background-color: white; color: #454748; border-collapse:separate;">
+                                            <tbody>
+                                                <tr>
+                                                    <td align="center" style="min-width:590px;">
+                                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:white;padding: 0; border-collapse:separate;">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td valign="middle">
+                                                                        <span style="font-size:20px;font-weight: bold;">
+                                                                            Togather Tourism
+                                                                        </span>
+                                                                    </td>
+                                                                    <td valign="middle" align="right">
+                                                                        
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="2" style="text-align:center;">
+                                                                        <br/>
+                                                                        <br/>
+                                                                        <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin:4px 0px 0px 0px;">
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <t t-foreach="object.tree_link_id" t-as="row_h">
+                                                
+                                                <tr>
+                                                    <td style="min-width:590px;">
+                                                        <div style="font-size:14px;font-family:Arial,Helvetica,sans-serif; color:#515166; padding:0px">
+                                                            <br />
+                                                            Dear <t t-out="object.client_name.name or ''"></t> ,
+                                                            <br />
+                                                            <br />
+                                                            Greetings from <t t-out="row_h.resort_name.name or ''"></t>!
+                                                            <br />
+                                                            <br />
+                                                            We are pleased to offer below.
+                                                            <br />
+                                                            <br />
+                                                            <b> BELOW OFFERS ALSO INCLUDES FOLLOWING EXTRAS: </b>
+                                                            <br />
+                                                            Service charge by Hotel/Resorts, Government taxes
+                                                            <br />
+                                                            <b> On Arrival: </b> Meet & greet service, assistance with the luggage
+                                                            <br />
+                                                            <b> Return Transfers: </b>International Airport - Hotel/Resort - International Airport
+                                                            <br />
+                                                            <b> Meal Plan: </b>as specified in the quotation/package
+                                                            <br />
+                                                            <b> On Departure: </b>Meet & greet service, assistance with the luggage & Check-in assistance at Airport
+                                                            <br />
+                                                            <br />
+                                                            <h3 style="color:#d62d2d; font-size:1rem;">
+                                                                <b>
+                                                                    Below offers are valid only until 
+                                                                     <t t-if="object.offers_validity_date">
+                                                                             <t t-out="object.offers_validity_date or ''"></t>
+                                                                        </t>
+                                                                </b>
+                                                            </h3>
+                                                            <span style="color:purple">
+                                                                Villas are available at the moment but are SUBJECT TO AVAILABILITY AT THE TIME OF RESERVATIONS.
+                                                            </span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="min-width:590px;">
+                                                        <div style="font-size:14px;font-family:Arial,Helvetica,sans-serif; color:#515166; padding:10px 0px">
+                                                            <table style="width:600px; margin:0px auto; border:1px solid #e1e1e1">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td style="padding:10px 20px 10px 20px; background-color:#6F4E37;">
+                                                                            <span style="color:white;">
+                                                                                Quotation Number:
+                                                                            <t t-if="object.sr_no">
+                                                                                <t t-out="object.sr_no or ''"></t>
+                                                                            </t>
+                                                                            </span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="text-align:left; padding:15px 20px 10px 20px;">
+                                                                            <a style="color:black;" t-att-href="row_h.resort_map or ''">
+                                                                                <img t-att-src="row_h.image_url or ''" style="width:60%;" />
+                                                                                <t t-if="row_h.image_url">
+                                                                                    <t t-out="row_h.image_url"/>
+                                                                                </t>
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="padding:10px 20px 10px 20px">
+                                                                            <a style="color:black;" href="${row.resort_map}">
+                                                                                <h2 style="font-size:1.2rem;">
+                                                                                    <b>
+                                                                                        <t t-if="row_h.resort_name.name">
+                                                                                            <t t-out="row_h.resort_name.name or ''"></t>
+                                                                                        </t>
+                                                                                    </b>
+                                                                                </h2>
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td colspan="2" style="text-align:center;">
+                                                                            <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin:4px 0px 0px 0px;">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="padding:10px 20px 10px 50px"> Villa Type:  
+                                                                            <h3 style="width:100%; font-size:0.9rem; display:inline;">
+                                                                            <b>
+                                                                                <t t-if="ctx.get('villas')">
+                                                                                    <t t-out="ctx.get('villas') or ''"></t>
+                                                                                </t>
+                                                                            </b>
+                                                                            </h3>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td colspan="2" style="text-align:center;">
+                                                                            <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin:4px 0px 0px 0px;">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="padding:10px 20px 10px 50px">
+                                                                            Stay Period:
+
+                                                                            <t t-if="row_h.check_out">
+                                                                                <t t-out="row_h.check_out or ''"></t>
+                                                                            </t>
+                                                                            <t t-if="row_h.no_of_nights">
+                                                                                <t t-out="row_h.no_of_nights or ''"></t>
+                                                                            </t> 
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td colspan="2" style="text-align:center;">
+                                                                            <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin:4px 0px 0px 0px;">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="padding:10px 20px 10px 50px">
+                                                                            Meals Include:
+                                                                              <t t-if="ctx.get('meals')">
+                                                                                    <t t-out="ctx.get('meals') or ''"></t>
+                                                                                </t> 
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td colspan="2" style="text-align:center;">
+                                                                            <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin:4px 0px 0px 0px;">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="padding:10px 20px 10px 50px">
+                                                                            Transfer Included:
+                                                                                <t t-if="ctx.get('transfers')">
+                                                                                    <t t-out="ctx.get('transfers') or ''"></t>
+                                                                                </t> 
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td colspan="2" style="text-align:center;">
+                                                                            <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin:4px 0px 0px 0px;">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr style="display:flex; flex-wrap:wrap;">
+                                                                        <td style="padding:10px 10px 10px 50px">
+                                                                            Offers Applied :
+                                                                        </td>
+
+                                                                        <td style="width:58%; padding:10px 20px 10px 0px" class="get_tds_p">
+                                                                            <t t-if="row_h.offers_appiled">
+                                                                                <t t-out="row_h.offers_appiled or ''"></t>
+                                                                            </t>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td colspan="2" style="text-align:center;">
+                                                                            <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin:4px 0px 0px 0px;">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="padding:10px 20px 10px 50px">
+                                                                            Total Guests : 
+                                                                            <t t-if="row_h.no_of_guest">
+                                                                                <t t-out="row_h.no_of_guest or ''"></t>
+                                                                            </t>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                </t>
+                                                <tr>
+                                                    <td align="center" style="min-width:590px;padding: 0 8px 0 8px; font-size:11px;">
+                                                        <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 4px 0px;">
+                                                        <b>Togather Tourism</b><br>
+                                                        
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" style="min-width:590px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                  ]]>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="sequence_password_sale" model="ir.sequence">
+        <field name="name"> password Sequence</field>
+        <field name="code">password.module.sequence</field>
+        <field name="prefix">PWD-</field>
+        <field name="padding">4</field>
+    </record>
+    <record id="password_module_form_view" model="ir.ui.view">
+        <field name="name"> view.password.form</field>
+        <field name="model">password.module</field>
+        <field name="arch" type="xml">
+            <form string="Password Management Form" duplicate='0' delete="0">
+                <sheet>
+                    <div>
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="current_user" readonly='1' />
+                        </group>
+                        <group>
+                          
+                            <field name="create_date" readonly='1' />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Password">
+                            <field name="tree_link_id" >
+                        
+                                <list editable="bottom" nolabel="1" open="false">
+
+                                    <field name="password_id"  invisible="1"/>
+                                    <field name="name" required='1' />
+                                    <field name="account_id" required='1' />
+                                    <field name="norm_password" required='1'  />
+                                    <field name="link" required='0' widget="url" />
+
+                                </list>
+                                <form>
+                                    <group>
+                                        <group>
+                                            <field name="password_id"  invisible="1"/>
+                                            <field name="name" required='1' />
+                                            <field name="account_id" required='1' />
+                                        </group>
+                                        <group>
+                                            <field name="norm_password"   readonly="0"  />
+                                            <field name="link" required='0' widget="url" />
+                                        </group>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="password_module.tree">
+        <field name="name">password_module list</field>
+        <field name="model">password.module</field>
+        <field name="arch" type="xml">
+            <list delete="0"  export_xlsx="false" import="false">
+                <field name="name" />
+                <field name="current_user" />
+                <field name="create_date" />
+               
+            </list>
+        </field>
+    </record>
+    <record id="view_password_kanban" model="ir.ui.view">
+        <field name="name">password.module.kanban</field>
+        <field name="model">password.module</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="color" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_color_{{kanban_getcolor(record.color.raw_value)}}
+                                            oe_kanban_global_click oe_semantic_html_override
+                                            oe_kanban_card {{record.group_fancy==1 ? 'oe_kanban_card_fancy' : ''}}">
+                            <div class="oe_dropdown_kanban">
+                                <!-- dropdown menu -->
+                                <div class="oe_dropdown_toggle">
+                                    <!-- <i class="fa fa-bars fa-lg" title="Manage" aria-label="Manage"/> -->
+                                    <ul class="oe_dropdown_menu">
+                                        <li>
+                                            <a type="delete">Delete</a>
+                                        </li>
+                                        <li>
+                                            <ul class="oe_kanban_colorpicker" data-field="color" />
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="oe_clear"></div>
+                            </div>
+                            <div t-attf-class="oe_kanban_content">
+                                <b>Sequence:</b>
+                                <field name="name" />
+                                <br />
+                                <b>User:</b>
+                                <field name="current_user" />
+                                <br />
+                                
+                                <b>Creation Date:</b>
+                                <field name="create_date" />
+                                
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="password_module.action_window">
+        <field name="name">password_module window</field>
+        <field name="res_model">password.module</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="action_password_work" model="ir.actions.act_window">
+        <field name="name">Password Management</field>
+        <field name="res_model">password.module</field>
+        <field name="view_mode">list,form,kanban</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your First Record
+            </p>
+        </field>
+    </record>
+ 
+    <record id="action_menu" model="ir.actions.client">
+        <field name="name">Password Confirmations</field>
+        <field name="tag">client_action_tag_custom</field>
+    </record>
+
+
+    <menuitem action="action_menu" id="password_menu" name="Password Management" web_icon="password_module,static/description/icon.png" />
+    
+    <!-- <template id="assets_backend_password" name="Hr Dashboard assets inherit" inherit_id="web.assets_backend">
+        <xpath expr="//script[last()]" position="after">
+            <script type="text/javascript" src="/password_module/static/src/js/app.js" />
+            </xpath>
+    </template> -->
+
+
+</odoo>

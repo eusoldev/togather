@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>   
+
+        <template id="sub_agent_report">
+
+            <t t-call="web.html_container">
+                <t t-call="web.basic_layout">
+
+                    <t t-call="sub_agent_report.sub_agent_report_template">
+
+                        <div class="page">
+
+                            <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"/>
+                            <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"/>
+                            <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"/>
+                            <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"/>
+                            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"/>
+                            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"/>
+                            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"/>
+                            <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"/>
+                            <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"/>
+                            <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/>
+                            <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css"/>
+
+                            <script>
+                                $(document).ready(function() {
+                                   $('#example').DataTable( {
+                                     "paging":   false,
+                                     "ordering": false,
+                                        dom: 'Bfrtip',
+                                        buttons: [
+                                            'excel'
+                                        ]
+                                    });
+                                } );
+                            </script>
+                                        <!-- ,'pdf' -->
+
+                            <style type="text/css">
+                                @media (min-width: 992px)
+                                .container {
+                                    width: 100%;
+                                }
+
+                                @media (min-width: 768px)
+                                .container {
+                                    width: 100%;
+                                }
+                                .container {
+                                    width: 100%;
+                                }
+                                body {
+                                    margin: 0px !important;
+                                }
+                                body.o_in_iframe {
+                                    margin-top: 0px !important;
+                                }
+                                .header,
+                                .footer {
+                                    display: none !important;
+                                }
+                                .main_wraper {
+                                    
+                                    margin: 0px auto;
+                                }
+                                .p_div {
+                                    font-weight: bold;
+                                }
+                                .sale_div {
+                                    text-align: center;
+                                    font-weight: bold;
+                                    font-size: 25px;
+                                    margin-bottom: 0px;
+                                }
+                                table {
+                                    border-collapse: collapse;
+                                    border:1px solid black;
+                                    background:1px solid gray; 
+                                }
+                                th {
+                                    border-collapse: collapse;
+                                    border: 1px solid black;
+                                    text-align: center;
+                                    font-weight: bold;
+                                    padding: 10px;
+                                    font-size: 13px;
+                                    background: #eaded7 !important;
+                                    color: #3d3838;
+                                }
+                                .bg_col {
+                                    background: gainsboro;
+                                }
+                                td {
+                                    border-collapse: collapse;
+                                    border:1px solid black;
+                                    text-align: center;
+                                    padding: 10px;
+                                    font-size: 12px;
+                                }
+                                .right_td {
+                                    text-align: right;  
+                                    padding-right: 6px;
+                                }
+                                .main_box {
+                                    width: 100%;
+                                }
+                                .box_a {
+                                    width: 50%;
+                                    float: left;
+                                    display: inline-block;
+                                }
+                                .box_b {
+                                    float: left;
+                                    width: 50%;
+                                    display: inline-block;
+                                    margin-bottom: 10px;
+                                }
+                               
+                                h5 {
+                                    margin: 5px;
+                                    font-weight: 500;
+                                    margin-bottom: 10px;
+                                }
+                                .clearfloat {
+                                    clear: both;
+                                    float: none;
+                                    width: 100%;
+                                    height: 1px;
+                                    display: block;
+                                }
+                                .agent {
+                                    border-bottom: 1px solid;
+                                    display: inline-block;
+                                    width: auto;
+                                }
+
+                            </style>
+
+                            <div class="main_wraper">
+
+                                <!-- <div class="main_box">
+
+                                    <div class="box_a">
+                                        
+                                        <t t-foreach="company" t-as="e">
+
+                                            <h3><b>
+                                                <span t-esc="e.name"></span>
+                                            </b> </h3>
+                                            <h5>
+                                                <span t-esc="e.street"></span>
+                                            </h5>
+                                            <h5>
+                                                <span t-esc="e.street2"></span>
+                                                <span t-esc="e.city">,</span>
+                                                <span t-esc="e.country_id.name"></span>
+                                            </h5>
+                                            <h5>CR No:
+                                                <span t-esc="e.company_registry"></span>
+                                            </h5>
+                                            <h5>Ph:
+                                                <span t-esc="e.phone"></span>
+                                            </h5>
+                                            <h5>Email:
+                                                <span t-esc="e.email"></span>
+                                            </h5>
+                                            <h5>Vat:
+                                                <span t-esc="e.vat"></span>
+                                            </h5>
+
+                                        </t>
+
+                                    </div>
+
+                                    <div class="box_b">
+                                        
+                                        <img t-att-src="'data:image/png;base64,%s' % to_text(company.logo)"/>
+
+                                    </div>
+
+                                </div> -->
+                                <br class="clearfloat"/>
+                                <p class="sale_div">Sub Agent Report</p>
+                                <p style="text-align:center;margin-bottom: 0px;">
+                                    <b><span>Type:</span></b>
+                                    <span t-esc="payment_status_value"></span>
+                                </p>
+                                <p style="text-align: center;">
+                                    <b>
+                                        <span>From:</span>
+                                    </b>
+                                    <u>
+                                        <span t-esc="time.strftime('%d %b %Y',time.strptime(str(form),'%Y-%m-%d'))"></span>
+                                    </u>
+                                    <b>
+                                        <span>TO:</span>
+                                    </b>
+                                    <u>
+                                        <span t-esc="time.strftime('%d %b %Y',time.strptime(str(to),'%Y-%m-%d'))"></span>
+                                    </u>
+                                </p>
+                                <t t-foreach="agent_main_list" t-as="a">
+                                    <p>
+                                        <b><span class="solid">Sub Agent:</span></b>
+                                        <span class="agent" t-esc="a['agent']"></span>
+                                    </p>
+                                    <!-- <table id="example" class="display" style="width:100%"> -->
+                                    <table class="display" style="width:100%">
+                                        
+                                        <thead>
+                                            <tr>
+                                                <th>Invoice No</th>
+                                                <th>Branch</th>
+                                                <th>Invoice Date</th>
+                                                <th>Hotel(s)</th>
+                                                <th>Ref/Cust Name</th>
+                                                <th>Package No</th>
+                                                <th>Arrival Date </th>
+                                                <th>Departure Date </th>
+                                                <th>Amount FC</th>
+                                                <th>Total Amount</th>
+                                                <t t-set="totalpkr" t-value="0.0"/>
+                                                <th>Amount Due</th>
+                                                <t t-set="totalamount" t-value="0.0"/>
+                                                <th>Invoice Status</th>
+                                                <th>Service Type</th>
+                                                <th>Route</th>
+                                            </tr>
+                                        </thead>
+                                        <t t-foreach="a['main_list']" t-as="o">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <span t-esc="o['number']"></span>
+                                                    </td>
+                                                     <td>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o['inv_date']"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o['hotels_name']"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o['ref']"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o['package_no']"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o['arrival']"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o['departure']"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o['forgen']"></span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="'{0:,.2f}'.format(float(o['tot_amt']))"></span>
+                                                        <t t-set="totalpkr" t-value="totalpkr + o['tot_amt']"/>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="'{0:,.2f}'.format(float(o['amount_due']))"></span>
+                                                        <t t-set="totalamount" t-value="totalamount + o['amount_due']"/>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="o['status']"></span>
+                                                    </td>
+                                                      <td>
+                                                        <span t-esc="o['service']"></span>
+                                                    </td>
+
+                                                    <td>
+                                                        <span t-esc="o['service_route']"></span>
+                                                    </td>
+
+                                                </tr>
+
+                                            </tbody>
+                                        </t>
+                                        <tr>
+                                            <td style="font-weight:bold; border-left:none"  colspan="9">Grand Total</td>
+                                            <td style="font-weight:bold;width:120px;">
+                                                <span t-esc="'{0:,.2f}'.format(float(totalpkr))"></span> 
+                                                <span t-esc="a['currency']" style="font-family: 'sar-symbol', sans-serif !important;"/>
+                                            </td>
+                                            <td style="font-weight:bold;width:120px;">
+                                                <span t-esc="'{0:,.2f}'.format(float(totalamount))"></span> 
+                                                <span t-esc="a['currency']" style="font-family: 'sar-symbol', sans-serif !important;"/>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+            
+                                        </tr>
+                                    </table><br/><br/><br/>
+                                </t>
+                            </div>
+
+                        </div>
+                    </t>
+                    
+                </t>
+            </t>
+
+        </template>
+
+    </data>
+
+</odoo>

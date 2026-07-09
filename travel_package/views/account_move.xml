@@ -1,0 +1,205 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <!-- <record id="view_account_account_form_ext" model="ir.ui.view">
+            <field name="name">view_account_account_form_ext</field>
+            <field name="model">account.account</field>
+            <field name="inherit_id" ref="account.view_account_form" />
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='deprecated']" position="after">
+                    <field name="sale" />
+                    <field name="purchase" />
+                </xpath>
+            </field>
+        </record> -->
+        <record id="invoice_tree_ext" model="ir.ui.view">
+            <field name="name">invoice_tree_ext</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_invoice_tree" />
+            <field name="type">list</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='invoice_partner_display_name']" position="after">
+                    <field name='hotel_ids' widget='many2many_tags' />
+                    <field name='financial_term' />
+                    <field name='customer_id' invisible="context.get('default_move_type') not in ('in_invoice', 'in_refund','in_receipt')" />
+                    <field name='amnt_fc' invisible="context.get('default_move_type') not in ('in_invoice', 'in_refund','in_receipt')" sum="Amount FC" />
+                </xpath>
+                <xpath expr="//field[@name='invoice_date_due']" position="after">
+                    <field name='arrival_date' />
+                    <field name='departure_date' />
+                </xpath>
+                <xpath expr="//field[@name='status_in_payment']" position="replace">
+                     <field name="status_in_payment"
+                           string="Status"
+                           widget="badge"
+                           decoration-info="state == 'draft'"
+                           decoration-danger="state == 'cancel'"
+                           decoration-muted="payment_state == 'not_paid'"
+                           decoration-warning="payment_state in ('partial', 'in_payment')"
+                           decoration-success="payment_state in ('paid', 'reversed')"
+                           invisible="payment_state == 'invoicing_legacy' or move_type == 'entry'"
+                           optional="show"
+                    />
+                </xpath>
+                
+            </field>
+        </record>
+        
+        <record id="invoice_form_ext" model="ir.ui.view">
+            <field name="name">invoice_form_ext</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form" />
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='invoice_date_due']" position="after">
+                    <field name='type_of_invoice' />
+                    
+                </xpath>
+                <xpath expr="//field[@name='invoice_date_due']" position="after">
+                    <field name='hijri_date' invisible="0" readonly="1" />
+                </xpath>
+                <xpath expr="//div[@class='oe_button_box']" position="inside">
+                    <button name="action_open_reservation" type="object" string="Reservation" class="btn-primary" icon="fa-shopping-cart" />
+                </xpath>
+                <xpath expr="//label[@for='invoice_payment_term_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//button[@name='preview_invoice']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='invoice_payment_term_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='invoice_date_due']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//button[@name='button_draft']" position="after">
+                    <button name='invoices' nolabel="1" type="object" string="Invoice/Bill" />
+                    <!-- <label for="invoices" string="Bill"/> -->
+                </xpath>
+                <xpath expr="//field[@name='invoice_date']" position="after">
+                    <field name='payment_term' readonly="state != 'draft'" />
+                    <field name='payment_date_custom' invisible="move_type=='entry'" readonly="state != 'draft'" required="move_type in ('in_refund','in_invoice','out_invoice','out_refund')" />
+                    <field name='arrival_date' invisible="move_type=='entry'" readonly="state != 'draft'" required="0" />
+                    <field name='departure_date' invisible="move_type=='entry'" readonly="state != 'draft'" required="0" />
+                    <field name='partner_type' invisible="1" />
+                    <field name='financial_term' />
+                    <field name="stamp" invisible="0" />
+                </xpath>
+                <xpath expr="//field[@name='ref']" position="after">
+                    <field name="customer_id" readonly="1" invisible="move_type in ('entry','out_invoice')" />
+                    <field name="partner_address" readonly="1" invisible="move_type=='entry'" />
+                    <field name="add_bank" invisible="move_type=='entry'" />
+                    <field name="bank_list" widget="many2many_tags" invisible="1" />
+                    <field name="lang" readonly="0" invisible="move_type=='entry'" />
+                    <field name="amnt_fc" readonly="1" invisible="move_type in ('entry','out_invoice','out_refund')" force_save="1" />
+                    <field name="foreign_currency" readonly="state !='draft'" invisible="move_type =='entry'" />
+                    <field name="create_date" readonly="1" />
+                    <field name="hotel_ids" widget='many2many_tags' readonly="1" invisible="move_type=='entry'" />
+                </xpath>
+                <xpath expr="//page//field[@name='invoice_line_ids']//list//field[@name='product_id']" position="before">
+                    <field name="airline" string="airline Name" column_invisible="1" force_save="1" />
+                    <field name="airline_pnr" string="airline_pnr Name" column_invisible="1" force_save="1" />
+                    <field name="room_type" string="room_type Name" widget="many2many_tags" column_invisible="1" force_save="1" />
+                    <field name="e_ticket" string="e_ticket Name" column_invisible="1" force_save="1" />
+                    <field name="e_ticket_m2m" string="e_ticket_m2m Name" widget="many2many_tags" column_invisible="1" force_save="1" />
+                </xpath>
+
+                <xpath expr="//field[@name='invoice_line_ids']/list/field[@name='quantity']" position="before">
+                    <field name='date_from' />
+                    <field name='date_to' />
+                    <field name='package_line' column_invisible="1" />
+                </xpath>
+                <xpath expr="//field[@name='invoice_line_ids']/list/field[@name='quantity']" position="after">
+                    <field name="amnt_fc" column_invisible="parent.move_type not in ('out_invoice','out_refund')" sum='Total' readonly="1" />
+                    <field name="dummy_compute" column_invisible="1" />
+                    <field name="currency_fc" invisible="0" />
+                </xpath>
+                <xpath expr="//field[@name='invoice_line_ids']/list/field[@name='price_subtotal']" position="attributes">
+                    <attribute name="sum">Total</attribute>
+                </xpath>
+                <xpath expr="//field[@name='invoice_line_ids']/list/field[@name='tax_ids']" position="after">
+                    <field name="price_unit_ecube" column_invisible="parent.move_type=='in_invoice' or parent.move_type=='in_refund'" />
+                </xpath>
+                <xpath expr="/form/sheet/notebook/page/field[@name='invoice_line_ids']/list/field[@name='price_unit']" position="attributes">
+                    <attribute name='column_invisible'>parent.move_type =='out_refund' or parent.move_type =='out_invoice'</attribute>
+                </xpath>
+                <xpath expr="//field[@name='financial_term']" position="after">
+                    <field name="package_no" readonly="1" invisible="move_type=='entry'" />
+                    <field name="journal_entry" readonly="1" invisible="journal_entry ==False" />
+                </xpath>
+                
+            </field>
+        </record>
+        
+        
+        <record id="view_account_journal_form_ext" model="ir.ui.view">
+            <field name="name">view_account_journal_form_ext</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.view_account_journal_form" />
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='type']" position="after">
+                    <field name="bank_charge" invisible="type !='bank'" />
+                    <field name="vat_check" />
+                    <field name="vat" placeholder="Enter Vat" invisible="vat_check !=True" required="vat_check == True" />
+                </xpath>
+                <xpath expr="//page[1]" position="before">
+                    <page name="bank_account" string="Bank Account" invisible="bank_charge ==False or type !='bank'">
+                        <group>
+                            <group>
+                                <field name="account_id" />
+                                <field name="bank_charge_amt" placeholder="Enter %" class="oe_inline" />
+                                <field name="bank_charge_amt1" placeholder="Enter amount" class="oe_inline" />
+                                <field name="company_partner_id" invisible="1" />
+                                <field name="bank_id" />
+                            </group>
+                            <group>
+                                <field name="bank_account_id" context="{'default_partner_id': company_partner_id, 'form_view_ref': 'account.view_company_partner_bank_form'}" string="Partner Account" />
+                                <field name="bank_statements_source" widget="radio" required="type == 'bank'" />
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+        
+        
+        <record id="account_move_search_view_ext" model="ir.ui.view">
+            <field name="name">account.move.search.view.ext</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_account_invoice_filter" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="invoice_origin" string="Package" />
+                    <field name="customer_id" />
+                    <field name="partner_id" />
+                </xpath>
+                <xpath expr="//filter[@name='due_date']" position="after">
+                    <filter string="Partner" name="partner_id" context="{'group_by': 'partner_id'}" />
+                    <filter string="Package" name="invoice_origin" context="{'group_by': 'invoice_origin'}" />
+                    <filter string="Customer Name" name="customer_id" context="{'group_by': 'customer_id'}" />
+                    <filter string="Financial Term" name="financial_term" context="{'group_by': 'financial_term'}" />
+                    <filter name="arrival_date" string="Arrival Date" date="arrival_date" />
+                    <filter name="departure_date" string="Departure Date" date="departure_date" />
+                </xpath>
+                <xpath expr="//filter[@name='duedate']" position="after">
+                    <filter string="Arrival Date" name="arrivaldate" context="{'group_by': 'arrival_date'}" />
+                    <filter string="Departure Date" name="departuredate" context="{'group_by': 'departure_date'}" />
+                </xpath>
+            </field>
+        </record>
+
+        <record id="account_tax_form_ext" model="ir.ui.view">
+            <field name="name">account_tax_form_ext</field>
+            <field name="model">account.tax</field>
+            <field name="inherit_id" ref="account.view_tax_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='type_tax_use']" position="after">
+                    <field name='service_tax_type' required="1" />
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
