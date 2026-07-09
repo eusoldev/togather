@@ -285,8 +285,8 @@
                     </div>
                     <group string="Accounting Entries" name="accounting_entries" groups="account.group_account_user">
                         <field name="currency_id" invisible="1" />
-                        <field name="property_account_receivable_id" />
-                        <field name="property_account_payable_id" />
+                        <!-- <field name="property_account_receivable_id" /> -->
+                        <!-- <field name="property_account_payable_id" /> -->
                     </group>
                 </xpath>
             </field>
