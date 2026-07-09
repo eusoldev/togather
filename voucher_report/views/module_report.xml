@@ -140,7 +140,7 @@
                                 text-align: left;
                                 font-weight: bold;
                                 border: 1px solid black;
-                                background: #eaded7;
+                                background: #DAD7DD;
                             }
 
                             td {
@@ -160,7 +160,7 @@
                             }
 
                             .head {
-                                background-color: #927f73;
+                                background-color: #7F51A8;
                                 margin: 4px;
                                 font-size: 18px;
                                 padding: 10px;
@@ -190,7 +190,7 @@
                                 line-height: 1rem !important;
                             }
                             a {
-                                color: #927f73 !important;
+                                color: #7F51A8 !important;
                                 text-decoration: none !important;
                                 background-color: transparent !important;
                                 font-weight: bold !important;
@@ -207,20 +207,20 @@
                                                     <img style="float:left;" t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)"/>
                                                 </div>
                                                 <div class="right_div" style="float:right; width:35%; margin:0px;text-align:start;">
-                                                    <p style="font-weight: bold;font-size: 15px;color:#927f73;">
+                                                    <p style="font-weight: bold;font-size: 15px;color:#7F51A8;">
                                                         <!-- <span class="liquid" t-esc="c.name"></span> -->
                                                         <span>Contact Us:</span>
                                                     </p>
                                                     
-                                                    <p style="margin-top:15px;color:#927f73;">
+                                                    <p style="margin-top:15px;color:#7F51A8;">
                                                         <!-- <span class="solid">Phone No:</span> -->
                                                         <span class="liquid" t-esc="c.phone"></span>
                                                     </p>
-                                                    <p style="margin-top:15px;color:#927f73;">
+                                                    <p style="margin-top:15px;color:#7F51A8;">
                                                         <span class="solid">Email:</span>
                                                         <span class="liquid" t-esc="c.email"></span>
                                                     </p>
-                                                    <p style="margin-top:15px;color:#927f73;">
+                                                    <p style="margin-top:15px;color:#7F51A8;">
                                                         <!-- <span class="solid">Phone No:</span> -->
                                                         <span class="solid" style="font-weight:bold;">Offices Address:</span>
                                                         <span class="liquid">Riyadh | Jeddah | Dubai</span>
@@ -229,33 +229,33 @@
                                                     <p style="margin:0px;">
                                                         <span class="solid">
                                                             <a t-att-href="c.social_instagram" style="color:white">
-                                                                <i class="fab fa-instagram" style="color:#927f73; font-size:30px; margin-right:12px;"></i>
+                                                                <i class="fab fa-instagram" style="color:#7F51A8; font-size:30px; margin-right:12px;"></i>
                                                             </a>
                                                         </span>
                                                         <!-- <span class="solid">
                                                             <a href="https://www.instagram.com/rawnaq_tourism?igshid=OGQ5ZDc2ODk2ZA==" style="color:white">
-                                                                <i class="fab fa-instagram" style="color:#927f73; font-size:30px; margin-right:12px;"></i>
+                                                                <i class="fab fa-instagram" style="color:#7F51A8; font-size:30px; margin-right:12px;"></i>
                                                             </a>
                                                         </span> -->
                                                         <span class="solid">
                                                             <a t-att-href="c.social_facebook" style="color:white">
-                                                                <i class="fab fa-facebook" style="color:#927f73; font-size:30px;margin-right:12px;"></i>
+                                                                <i class="fab fa-facebook" style="color:#7F51A8; font-size:30px;margin-right:12px;"></i>
                                                             </a>
                                                         </span>
                                                         <span class="solid">
                                                             <a t-att-href="c.social_youtube" style="color:white">
-                                                                <i class="fab fa-snapchat-square" style="color:#927f73; font-size:30px; margin-right:12px;"></i>
+                                                                <i class="fab fa-snapchat-square" style="color:#7F51A8; font-size:30px; margin-right:12px;"></i>
                                                             </a>
                                                         </span>
                                                         <span class="solid">
                                                             <a t-att-href="c.social_linkedin" style="color:white">
-                                                                <i class="fab fa-linkedin" style="color:#927f73; font-size:30px; margin-right:12px;"></i>
+                                                                <i class="fab fa-linkedin" style="color:#7F51A8; font-size:30px; margin-right:12px;"></i>
                                                             </a>
                                                         </span>
                                                         <span class="solid">
                                                             <a t-att-href="c.social_twitter" style="color:white">
-                                                                <!-- <i class="fab fa-twitter-square" style="color:#927f73; font-size:30px;"></i> -->
-                                                                <img src="/voucher_report/static/src/img/twitter.png" style="width: 5.5%;color: #927f73;margin-top: -15px;" />
+                                                                <!-- <i class="fab fa-twitter-square" style="color:#7F51A8; font-size:30px;"></i> -->
+                                                                <img src="/voucher_report/static/src/img/twitter.png" style="width: 5.5%;color: #7F51A8;margin-top: -15px;" />
                                                             </a>
                                                         </span>
                                                     </p>
@@ -276,7 +276,7 @@
                                
                                 <table width="100%">
                                     <tr>
-                                        <th colspan="50" class="th_head" style="background-color: #927f73;text-align: center;font-size: 20px;color:white">
+                                        <th colspan="50" class="th_head" style="background-color: #7F51A8;text-align: center;font-size: 20px;color:white">
                                             <span t-if="o.quote_builder == False">Booking Information</span>
                                             <span t-if="o.quote_builder == True">Quotation Information</span>
                                         </th>

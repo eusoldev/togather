@@ -51,7 +51,7 @@
                                                 
                                                 <tr>
                                                     <td style="min-width:590px;">
-                                                        <div style="font-size:14px;font-family:Arial,Helvetica,sans-serif; color:#515166; padding:0px">
+                                                        <div style="font-size:14px;font-family:Arial,Helvetica,sans-serif; color:#7F51A8; padding:0px">
                                                             <br />
                                                             Dear <t t-out="object.client_name.name or ''"></t> ,
                                                             <br />
@@ -91,11 +91,11 @@
                                                 </tr>
                                                 <tr>
                                                     <td style="min-width:590px;">
-                                                        <div style="font-size:14px;font-family:Arial,Helvetica,sans-serif; color:#515166; padding:10px 0px">
-                                                            <table style="width:600px; margin:0px auto; border:1px solid #e1e1e1">
+                                                        <div style="font-size:14px;font-family:Arial,Helvetica,sans-serif; color:#7F51A8; padding:10px 0px">
+                                                            <table style="width:600px; margin:0px auto; border:1px solid #DAD7DD">
                                                                 <tbody>
                                                                     <tr>
-                                                                        <td style="padding:10px 20px 10px 20px; background-color:#6F4E37;">
+                                                                        <td style="padding:10px 20px 10px 20px; background-color:#7F51A8;">
                                                                             <span style="color:white;">
                                                                                 Quotation Number:
                                                                             <t t-if="object.sr_no">

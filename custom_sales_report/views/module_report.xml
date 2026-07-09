@@ -56,7 +56,7 @@
                                 font-weight: bold;
                                 padding: 10px;
                                 font-size: 13px;
-                                background: #eaded7 !important;
+                                background: #DAD7DD !important;
                                 color: #3d3838;
                             }
 
@@ -351,7 +351,7 @@
                                                         </tr>
                                                     </tbody>
                                                 </t>
-                                                <!-- <tr style="background-color:#eaded7 !important;">
+                                                <!-- <tr style="background-color:#DAD7DD !important;">
                                                     <td style="font-weight:bold; border-left:none;" colspan="5"> Total</td>
                                                     <td style="font-weight:bold; border-left:none;" t-if="a['type'] == 'Hotel'"></td>
                                                     <td style="font-weight:bold; border-left:none;" t-if="a['type'] == 'Hotel'"></td>
@@ -378,7 +378,7 @@
                                                     </td>
                                                 </tr> -->
                                                 <!-- Total row for services other than Flight -->
-                                                <tr t-if="a['type'] != 'Flight'" style="background-color:#eaded7 !important;">
+                                                <tr t-if="a['type'] != 'Flight'" style="background-color:#DAD7DD !important;">
                                                     <td style="font-weight:bold; border-left:none;" colspan="4"> Total</td>
                                                     <td style="font-weight:bold; border-left:none;" t-if="a['type'] == 'Hotel'"></td>
                                                     <td style="font-weight:bold; border-left:none;" t-if="a['type'] == 'Hotel'"></td>
@@ -405,7 +405,7 @@
                                                     </td>
                                                 </tr>
                                                 <!-- Total row for Flight only -->
-                                                <tr t-if="a['type'] == 'Flight'" style="background-color:#eaded7 !important;">
+                                                <tr t-if="a['type'] == 'Flight'" style="background-color:#DAD7DD !important;">
                                                     <td style="font-weight:bold; border-left:none;" colspan="4">Total</td>
                                                     <td style="font-weight:bold; border-left:none;"></td>
                                                     <td style="font-weight:bold; border-left:none;"></td>
@@ -483,7 +483,7 @@
                                                                 <span t-esc="'{0:,}'.format(int(o['total']))"></span>
                                                                 <t t-set="totalamount" t-value="totalamount + o['total']" />
                                                             </td> -->
-                                                <!-- <tr style="background-color:#eaded7 !important;">
+                                                <!-- <tr style="background-color:#DAD7DD !important;">
                                                     <td style="font-weight:bold; border-left:none;" colspan="9"> Total</td>
                                                     <td style="font-weight:bold">
                                                         <span t-esc="'{0:,}'.format(int(totalnight))"></span>

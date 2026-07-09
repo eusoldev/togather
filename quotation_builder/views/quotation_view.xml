@@ -18,7 +18,7 @@
             <style>
             .slick-next:before,
             .slick-prev:before {
-                color: #907e73fe;
+                color: #7F51A8;
             }
 
             body,
@@ -766,7 +766,7 @@
             .component-trip-day-overview .si-day-title {
                 position: relative;
                 width: 100%;
-                background-color: #907e73fe;
+                background-color: #7F51A8;
                 top: 0;
                 padding: 1rem 1rem 1rem 3.75rem;
                 z-index: 30;
@@ -1606,7 +1606,7 @@
             }
 
             .bokking {
-                background-color: #eaded7;
+                background-color: #DAD7DD;
                 background-image: url("https://www.transparenttextures.com/patterns/black-thread-light.png");
             }
 
@@ -1711,7 +1711,7 @@
                             <div class="col-2-sidebar col-2 z-3 position-fixed mt-3" style="overflow-y:auto;max-height: 90vh; min-height: 92vh;position:fixed;overflow-x:hidden;">
                                 <div class="list-group" id="list-tab" role="tablist" style="position:absolute;width:96%;display:flex;max-height:90vh;min-height:60vh;">
                                     <t t-foreach="grouped_records" t-as="date_key">
-                                        <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" t-attf-href="##{date_key}" role="tab" aria-controls="home" style="background-color: #907e73fe;    text-shadow: 0px 0px 1px white; min-height:60px;display:flex;text-align:centre;color:white;">
+                                        <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" t-attf-href="##{date_key}" role="tab" aria-controls="home" style="background-color: #7F51A8;    text-shadow: 0px 0px 1px white; min-height:60px;display:flex;text-align:centre;color:white;">
                                             <span style="font-size:large;margin-left: 20px;margin-top:13px;" class="date_key">
                                                 <t t-esc="date_key.strftime('%A, %b %d')" />
                                             </span>

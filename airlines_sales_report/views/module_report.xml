@@ -59,7 +59,7 @@
                                 font-weight: bold;
                                 padding:7px;
                                 font-size:10px;
-                                background: #eaded7 !important;
+                                background: #DAD7DD !important;
                                 color: #3d3838;
                             }
 
@@ -283,7 +283,7 @@
                                                 </tr>
                                             </tbody>
                                         </t>
-                                        <tr style="background-color:#eaded7 !important;">
+                                        <tr style="background-color:#DAD7DD !important;">
                                             <td style="font-weight:bold; border-left:none;" colspan="11"> Total</td>
                                             <td style="font-weight:bold">
                                                 <span t-esc="'{0:,}'.format(int(totalguest))"></span>

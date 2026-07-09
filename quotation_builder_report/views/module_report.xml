@@ -165,7 +165,7 @@
 
                                 padding: 10px;
                                 font-size: 13px;
-                                background: #eaded7;
+                                background: #DAD7DD;
 
                             }
 
@@ -237,7 +237,7 @@
                             }
 
                             .head {
-                                background-color: #eaded7;
+                                background-color: #DAD7DD;
                                 margin: 4px;
                                 font-size: 18px;
                                 padding: 10px;
@@ -384,21 +384,21 @@
                                 <div class="main_div">
                                     <table width="40%" class="table_1">
                                         <tr>
-                                            <th style="width:37%; background:#eaded7;">Client Name:
+                                            <th style="width:37%; background:#DAD7DD;">Client Name:
                                             </th>
                                             <th>
                                                 <span class="agent_1" t-esc="o.client_name.name"></span>
                                             </th>
                                         </tr>
                                         <tr>
-                                            <th style="width:37%; background:#eaded7;">Date:
+                                            <th style="width:37%; background:#DAD7DD;">Date:
                                             </th>
                                             <th>
                                                 <span class="agent_1" t-esc="creation_date" />
                                             </th>
                                         </tr>
                                         <tr>
-                                            <th style="width:37%; background:#eaded7;">Subject:
+                                            <th style="width:37%; background:#DAD7DD;">Subject:
                                             </th>
                                             <th>
                                                 <span class="agent_1" t-esc="o.subject"></span>
@@ -532,7 +532,7 @@
                                 </t>
                                 <br />
                                 <div class="foot_fix">
-                                    <p style="border-top: 5px solid #eaded7;"></p>
+                                    <p style="border-top: 5px solid #DAD7DD;"></p>
                                     <!-- <div class="main_div">
                                         <div class="rawnaq_insta">
                                             <a href="https://www.instagram.com/rawnaq_tourism/">
@@ -734,7 +734,7 @@
 
                             padding: 10px;
                             font-size: 13px;
-                            background: #eaded7;
+                            background: #DAD7DD;
 
                         }
 
@@ -808,7 +808,7 @@
                         }
 
                         .head {
-                            background-color: #eaded7;
+                            background-color: #DAD7DD;
                             margin: 4px;
                             font-size: 18px;
                             padding: 10px;
@@ -972,7 +972,7 @@
                                         <th>
                                             <span class="agent_1" t-esc="o.client_name.name"></span>
                                         </th>
-                                        <th style="width:37%; background:#eaded7;">
+                                        <th style="width:37%; background:#DAD7DD;">
                                             : اسم العميل
                                         </th>
                                     </tr>
@@ -980,7 +980,7 @@
                                         <th>
                                             <span class="agent_1" t-esc="creation_date" />
                                         </th>
-                                        <th style="width:37%; background:#eaded7;">
+                                        <th style="width:37%; background:#DAD7DD;">
                                             : تاريخ
                                         </th>
                                     </tr>
@@ -988,7 +988,7 @@
                                         <th>
                                             <span class="agent_1" t-esc="o.subject"></span>
                                         </th>
-                                        <th style="width:37%; background:#eaded7;">
+                                        <th style="width:37%; background:#DAD7DD;">
                                             :الموضوع
                                         </th>
                                     </tr>
@@ -1226,7 +1226,7 @@
                             </t>
                             <br />
                             <div class="foot_fix">
-                                <p style="border-top: 5px solid #eaded7;"></p>
+                                <p style="border-top: 5px solid #DAD7DD;"></p>
                                 <!-- <div class="main_div">
                                     <div class="rawnaq_insta">
                                         <a href="https://www.instagram.com/rawnaq_tourism/">
@@ -1339,7 +1339,7 @@
                                 <div style="page-break-after: always !important; page-break-before: always !important;" />
                             </t>
                             <div>
-                                <div style="font-size:14px;font-family:Arial,Helvetica,sans-serif; color:#515166; padding:0px">
+                                <div style="font-size:14px;font-family:Arial,Helvetica,sans-serif; color:#7F51A8; padding:0px">
                                     <br />
                                     Dear <t t-esc="row.tree_link.client_name.name"></t>
                                     <br />
@@ -1379,11 +1379,11 @@
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <div style="font-size:14px;font-family:Arial,Helvetica,sans-serif; color:#515166; padding:10px 0px">
-                                                    <table style="width:100%; margin:0px auto; border:1px solid #e1e1e1">
+                                                <div style="font-size:14px;font-family:Arial,Helvetica,sans-serif; color:#7F51A8; padding:10px 0px">
+                                                    <table style="width:100%; margin:0px auto; border:1px solid #DAD7DD">
                                                         <tbody>
                                                             <tr>
-                                                                <td style="padding:10px 20px 10px 20px; background-color:#6F4E37;">
+                                                                <td style="padding:10px 20px 10px 20px; background-color:#7F51A8;">
                                                                     <span style="color:white;">
                                                                         Quotation Number: [<t t-esc="row.tree_link.sr_no"></t>]
                                                                     </span>

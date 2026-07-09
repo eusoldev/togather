@@ -129,7 +129,7 @@
                             .agent_div {
                                 float: right;
                                 width: 66%;
-                                border-bottom: 1px solid #927f73;
+                                border-bottom: 1px solid #7F51A8;
                                 min-height:15px;
                             }
 
@@ -151,7 +151,7 @@
                                 text-align: center;
                                 font-size:20px;
                                 font-weight: bold;
-                                color: #927f73;
+                                color: #7F51A8;
 
 
                             }
@@ -177,7 +177,7 @@
                                 text-align: left;
                                 font-weight: bold;
                                 border: 1px solid black;
-                                background: #927f73;
+                                background: #7F51A8;
                                 color:white;
                                 vertical-align: inherit;
                             }
@@ -262,14 +262,14 @@
                                             <div class="left_div">
                                                 <p style="margin-bottom:0px;">
                                                     <a t-att-href="c.social_instagram" style="color:white">
-                                                        <i class="fab fa-instagram" style="color:#927f73; font-size:30px; margin-right:12px; "></i>
+                                                        <i class="fab fa-instagram" style="color:#7F51A8; font-size:30px; margin-right:12px; "></i>
                                                     </a>
                                                     <span> Togather_Tourism</span>
                                                 </p>
                                                 <p>
                                                     <span>
                                                          <a t-att-href="c.social_instagram" style="color:white">
-                                                        <i class="fab fa-instagram" style="color:#927f73; font-size:30px; margin-right:12px; "></i>
+                                                        <i class="fab fa-instagram" style="color:#7F51A8; font-size:30px; margin-right:12px; "></i>
                                                     </a>
                                                     </span>
                                                     <span> Togather_Concierge</span>
@@ -277,8 +277,8 @@
                                                 <p style="margin-top:0;">
                                                     <span class="solid">
                                                             <a t-att-href="c.social_twitter" style="color:white">
-                                                                <!-- <i class="fab fa-twitter-square" style="color:#927f73; font-size:30px;"></i> -->
-                                                                <img src="/voucher_report/static/src/img/twitter.png" style="width: 5.1%;color: #927f73;margin-top: -15px; " />
+                                                                <!-- <i class="fab fa-twitter-square" style="color:#7F51A8; font-size:30px;"></i> -->
+                                                                <img src="/voucher_report/static/src/img/twitter.png" style="width: 5.1%;color: #7F51A8;margin-top: -15px; " />
                                                             </a>
                                                         </span>
                                                     <span style="margin-left:13px">Togather_Maldives</span>
@@ -286,7 +286,7 @@
                                                 <p style="margin-top:-10px;">
                                                     <span>
                                                         <a t-att-href="c.social_youtube" style="color:white">
-                                                            <i class="fab fa-snapchat-square" style="color:#927f73; font-size:30px; margin-right:12px;"></i>
+                                                            <i class="fab fa-snapchat-square" style="color:#7F51A8; font-size:30px; margin-right:12px;"></i>
                                                         </a>
                                                     </span>
                                                     <span> Togather.Maldives</span>
@@ -294,7 +294,7 @@
                                                 <p style="margin-top:-15px;">
                                                      <span class="solid">
                                                             <a t-att-href="c.social_linkedin" style="color:white">
-                                                                <i class="fab fa-linkedin" style="color:#927f73; font-size:30px; margin-right:12px;"></i>
+                                                                <i class="fab fa-linkedin" style="color:#7F51A8; font-size:30px; margin-right:12px;"></i>
                                                             </a>
                                                         </span>
                                                     <span>Togather Tourism</span>
@@ -302,7 +302,7 @@
                                                 <p style="margin-top:-15px;">
                                                     <span class="solid">
                                                             <a t-att-href="c.social_facebook" style="color:white">
-                                                                <i class="fab fa-facebook" style="color:#927f73; font-size:30px;margin-right:12px"></i>
+                                                                <i class="fab fa-facebook" style="color:#7F51A8; font-size:30px;margin-right:12px"></i>
                                                             </a>
                                                         </span>
                                                     <span>Togather Tourism</span>
@@ -338,7 +338,7 @@
                                 <br class="clear_float" />
                                 <br class="clear_float" />
                                 <div class="main_div">
-                                    <h2 style="margin-left:20px;font-size:30px;color: white;background-color:#927f73">Booking Information</h2>
+                                    <h2 style="margin-left:20px;font-size:30px;color: white;background-color:#7F51A8">Booking Information</h2>
                                     <br class="clear_float" />
                                     <br class="clear_float" />
                                     <div class="left_div_4">
@@ -579,7 +579,7 @@
                                 <br class="clear_float" />
                                 <t t-if="o.hotels_cancel_policy != '&lt;p&gt;&lt;br&gt;&lt;/p&gt;'">
                                     <div>
-                                        <p style="margin-left:20px;font-size:30px;color: #927f73">Terms &amp; Conditions</p>
+                                        <p style="margin-left:20px;font-size:30px;color: #7F51A8">Terms &amp; Conditions</p>
                                         <div class="all_daata" style="margin-left:30px">
                                             <p>
                                                 <span t-raw="o.hotels_cancel_policy"></span>

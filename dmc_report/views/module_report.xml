@@ -86,7 +86,7 @@
                                 font-weight: bold;
                                 padding: 10px;
                                 font-size: 13px;
-                                background: #eaded7 !important;
+                                background: #DAD7DD !important;
                                 color: #3d3838;
                             }
 

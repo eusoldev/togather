@@ -44,7 +44,7 @@ class Inheirt_surveeys(models.Model):
 						<br />
 
 						<div style="margin: 16px 0px 16px 0px;">
-							<a href="{{x.public_url}}" style="color:#fff !important; background-color: #eaded7; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;">
+							<a href="{{x.public_url}}" style="color:#fff !important; background-color: #DAD7DD; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;">
 								Start Survey
 							</a>
 						</div>

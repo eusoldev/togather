@@ -1310,7 +1310,7 @@ class hotel_production_report_xlsx(models.AbstractModel):
                 'font_size': 10,
                 'underline': True,
                 'bold': True,
-                'fg_color': '#eaded7',
+                'fg_color': '#DAD7DD',
                 'text_wrap': True
             })
 
@@ -1318,7 +1318,7 @@ class hotel_production_report_xlsx(models.AbstractModel):
                 'align': 'center',
                 'font_size': 10,
                 'bold': True,
-                'fg_color': '#eaded7',
+                'fg_color': '#DAD7DD',
                 'text_wrap': True,
                 'num_format': '#,##0.00'
             })
@@ -1415,9 +1415,9 @@ class hotel_production_report_xlsx(models.AbstractModel):
             worksheet_hotel_report.write(hotel_row,1, x['hotel'],headibng_format)
             # worksheet_hotel_report.write(hotel_row,2, x['destination'],headibng_format)
             worksheet_hotel_report.set_row(4, 40)
-            detailed_formate = workbook.add_format({'align': 'centre', 'font_size': 12,'underline': True,'bold': True, 'fg_color': '#eaded7', 'text_wrap': True,'num_format': '#,##0.00'})
+            detailed_formate = workbook.add_format({'align': 'centre', 'font_size': 12,'underline': True,'bold': True, 'fg_color': '#DAD7DD', 'text_wrap': True,'num_format': '#,##0.00'})
 
-            total_formate = workbook.add_format({'align': 'centre', 'font_size': 12,'bold': True, 'fg_color': '#eaded7', 'text_wrap': True,'num_format': '#,##0.00'})
+            total_formate = workbook.add_format({'align': 'centre', 'font_size': 12,'bold': True, 'fg_color': '#DAD7DD', 'text_wrap': True,'num_format': '#,##0.00'})
             worksheet_hotel_report.set_column(4, 40)
             worksheet_hotel_report.write(row, 0, 'Invoice No', detailed_formate)
             worksheet_hotel_report.write(row, 1, 'Branch', detailed_formate)

@@ -362,7 +362,7 @@ class custom_sales_report_xlsx(models.AbstractModel):
 				heading_row += 1
 				employee_sales.merge_range(heading_row, 1,heading_row, 14, data['type'], cell_format)
 
-				table_head = workbook.add_format({'align': 'centre', 'font_size': 10,'bold': True, 'fg_color': '#eaded7', 'text_wrap': True,'border':1})
+				table_head = workbook.add_format({'align': 'centre', 'font_size': 10,'bold': True, 'fg_color': '#DAD7DD', 'text_wrap': True,'border':1})
 
 				employee_sales.set_column(0, 0, 15)
 				heading_row += 2

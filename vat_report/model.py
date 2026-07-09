@@ -226,7 +226,7 @@ class vat_report_xlsx(models.AbstractModel):
 		worksheet_summery.write(10, 2, 'VAT Report or P&L', cell_format)
 
 		cell_format = workbook.add_format({'align': 'centre', 'font_size': 10,
-										   'underline': True, 'bold': True, 'fg_color': '#eaded7',
+										   'underline': True, 'bold': True, 'fg_color': '#DAD7DD',
 										   'text_wrap': True})
 		worksheet_summery.set_row(12, 40)
 		worksheet_summery.write(12, 0, 'Sale', cell_format)
@@ -268,7 +268,7 @@ class vat_report_xlsx(models.AbstractModel):
 
 		worksheet_sale.set_row(0, 40)
 		sale_format = workbook.add_format({'align': 'centre', 'font_size': 10,'underline': True,
-										   'bold': True, 'fg_color': '#eaded7', 'text_wrap': True})
+										   'bold': True, 'fg_color': '#DAD7DD', 'text_wrap': True})
 		worksheet_sale.set_column(0, 0, 15)
 		worksheet_sale.write(0, 0, 'Invoice No	', sale_format)
 		worksheet_sale.set_column(1, 1, 15)
@@ -309,7 +309,7 @@ class vat_report_xlsx(models.AbstractModel):
 		######################################################################
 		worksheet_cost_of_goods_sold.set_row(0, 40)
 		sale_format = workbook.add_format({'align': 'centre', 'font_size': 10,'underline': True,
-										   'bold': True, 'fg_color': '#eaded7', 'text_wrap': True})
+										   'bold': True, 'fg_color': '#DAD7DD', 'text_wrap': True})
 		worksheet_cost_of_goods_sold.set_column(0, 0, 15)
 		worksheet_cost_of_goods_sold.write(0, 0, 'Bill No', sale_format)
 		worksheet_cost_of_goods_sold.set_column(1, 1, 15)
@@ -351,7 +351,7 @@ class vat_report_xlsx(models.AbstractModel):
 
 		worksheet_expense.set_row(0, 40)
 		expense_fromat = workbook.add_format({'align': 'centre', 'font_size': 10,'underline': True,
-										   'bold': True, 'fg_color': '#eaded7', 'text_wrap': True})
+										   'bold': True, 'fg_color': '#DAD7DD', 'text_wrap': True})
 		worksheet_expense.set_column(0, 0, 15)
 		worksheet_expense.write(0, 0, 'Bill No', expense_fromat)
 		worksheet_expense.set_column(1, 1, 15)

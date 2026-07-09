@@ -223,7 +223,7 @@ class sub_client_report_excel(models.AbstractModel):
 				worksheet_agent_report.set_row(4, 40)
 				worksheet_agent_report.write(hotel_row,1, x['agent'],headibng_format)
 				worksheet_agent_report.set_row(4, 40)
-				detailed_formate = workbook.add_format({'align': 'centre', 'font_size': 12,'underline': True,'bold': True, 'fg_color': '#eaded7', 'text_wrap': True})
+				detailed_formate = workbook.add_format({'align': 'centre', 'font_size': 12,'underline': True,'bold': True, 'fg_color': '#DAD7DD', 'text_wrap': True})
 				worksheet_agent_report.set_column(4, 40)
 				worksheet_agent_report.set_column(0, 0,20)
 				worksheet_agent_report.write(row, 0, 'Invoice No', detailed_formate)

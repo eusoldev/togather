@@ -28,7 +28,7 @@
                 .custom_div_info h5,
                 .watermark {
                     transition: .3s all ease-in;
-                    color: #eaded7;
+                    color: #DAD7DD;
                     text-decoration: none;
                 }
 
@@ -42,16 +42,16 @@
 
                 .col-sm-2 strong,
                 .heading {
-                    color: #eaded7;
+                    color: #DAD7DD;
                 }
 
                 .table_custom thead th {
-                    color: #eaded7;
+                    color: #DAD7DD;
                 }
 
                 .hotelss strong {
 
-                    color: #eaded7;
+                    color: #DAD7DD;
                 }
 
                 .hotelss {
@@ -607,7 +607,7 @@
                 .custom_div_info h5,
                 .watermark {
                     transition: .3s all ease-in;
-                    color: #eaded7;
+                    color: #DAD7DD;
                     text-decoration: none;
                 }
 
@@ -621,16 +621,16 @@
 
                 .col-sm-2 strong,
                 .heading {
-                    color: #eaded7;
+                    color: #DAD7DD;
                 }
 
                 .table_custom thead th {
-                    color: #eaded7;
+                    color: #DAD7DD;
                 }
 
                 .hotelss strong {
 
-                    color: #eaded7;
+                    color: #DAD7DD;
                 }
 
                 .hotelss {
@@ -1153,7 +1153,7 @@
                 .custom_div_info h5,
                 .watermark {
                     transition: .3s all ease-in;
-                    color: #eaded7;
+                    color: #DAD7DD;
                     text-decoration: none;
                 }
 
@@ -1167,16 +1167,16 @@
 
                 .col-sm-2 strong,
                 .heading {
-                    color: #eaded7;
+                    color: #DAD7DD;
                 }
 
                 .table_custom thead th {
-                    color: #eaded7;
+                    color: #DAD7DD;
                 }
 
                 .hotelss strong {
 
-                    color: #eaded7;
+                    color: #DAD7DD;
                 }
 
                 .hotelss {
@@ -1677,7 +1677,7 @@
                 }
 
                 .custom_revoew {
-                    color: #eaded7 !important;
+                    color: #DAD7DD !important;
                 }
                 </style>
                 <div class="wrap">
@@ -1755,7 +1755,7 @@
                 .custom_div_info h5,
                 .watermark {
                     transition: .3s all ease-in;
-                    color: #eaded7;
+                    color: #DAD7DD;
                     text-decoration: none;
                 }
 
@@ -1769,16 +1769,16 @@
 
                 .col-sm-2 strong,
                 .heading {
-                    color: #eaded7;
+                    color: #DAD7DD;
                 }
 
                 .table_custom thead th {
-                    color: #eaded7;
+                    color: #DAD7DD;
                 }
 
                 .hotelss strong {
 
-                    color: #eaded7;
+                    color: #DAD7DD;
                 }
 
                 .hotelss {
@@ -2279,7 +2279,7 @@
                 }
 
                 .custom_revoew {
-                    color: #eaded7 !important;
+                    color: #DAD7DD !important;
                 }
                 </style>
                 <div class="wrap">

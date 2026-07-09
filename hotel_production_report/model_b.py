@@ -1405,14 +1405,14 @@ class hotel_production_report_xlsx(models.AbstractModel):
 			worksheet_hotel_summery.merge_range(12, 1,12, 4, date,date_format)
 
 			cell_format = workbook.add_format({'align': 'centre', 'font_size': 10,
-											   'underline': True, 'bold': True, 'fg_color': '#eaded7',
+											   'underline': True, 'bold': True, 'fg_color': '#DAD7DD',
 											   'text_wrap': True})
 
 			merge_format = workbook.add_format({
 				'bold': 1,
 				'align': 'left',
 				'valign': 'vcenter',
-				'fg_color': '#eaded7'
+				'fg_color': '#DAD7DD'
 			})
 
 			worksheet_hotel_summery.set_row(14, 40)
@@ -1484,7 +1484,7 @@ class hotel_production_report_xlsx(models.AbstractModel):
 			worksheet_hotel_report.write(hotel_row,1, x['hotel'],headibng_format)
 			# worksheet_hotel_report.write(hotel_row,2, x['destination'],headibng_format)
 			worksheet_hotel_report.set_row(4, 40)
-			detailed_formate = workbook.add_format({'align': 'centre', 'font_size': 12,'underline': True,'bold': True, 'fg_color': '#eaded7', 'text_wrap': True})
+			detailed_formate = workbook.add_format({'align': 'centre', 'font_size': 12,'underline': True,'bold': True, 'fg_color': '#DAD7DD', 'text_wrap': True})
 			worksheet_hotel_report.set_column(4, 40)
 			worksheet_hotel_report.write(row, 0, 'Invoice No', detailed_formate)
 			worksheet_hotel_report.write(row, 1, 'Branch', detailed_formate)

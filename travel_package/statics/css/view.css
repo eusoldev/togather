@@ -1,15 +1,15 @@
 .o_main_navbar {
-    border-bottom: 1px solid #927f73fe !important;
-    background-color: #927f73fe !important;
+    border-bottom: 1px solid #7F51A8fe !important;
+    background-color: #7F51A8fe !important;
 }
 .btn-primary {
     color: #FFFFFF;
-    background-color: #927f73fe !important;
-    border-color: #927f73fe !important;
+    background-color: #7F51A8fe !important;
+    border-color: #7F51A8fe !important;
 }
 
 .btn-primary:focus, .btn-primary.focus {
-    box-shadow: 0 0 0 0.2rem #eaded7fe;
+    box-shadow: 0 0 0 0.2rem #DAD7DDfe;
 }
 
 a {
@@ -18,7 +18,7 @@ a {
     background-color: transparent;
 }
 a:hover {
-    color: #927f73fe !important;
+    color: #7F51A8fe !important;
     text-decoration: none;
     background-color: transparent;
 }
@@ -44,10 +44,10 @@ a:hover {
     color: #07070a !important;
 }
 .o_form_view .o_horizontal_separator {
-    color: #927f73fe !important;
+    color: #7F51A8fe !important;
 }
 .o_form_view .o_form_uri > span:first-child {
-    color: #927f73fe !important;
+    color: #7F51A8fe !important;
 }
 .o_form_view .o_form_uri > span:hover {
     color: black !important;

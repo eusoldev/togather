@@ -145,7 +145,7 @@ class vat_detailed_xlsx(models.AbstractModel):
 				employee_commission.set_row(10, 25)
 
 				employee_commission.set_row(4, 40)
-				detailed_formate = workbook.add_format({'align': 'centre', 'font_size': 12,'underline': True,'bold': True, 'fg_color': '#eaded7', 'text_wrap': True})
+				detailed_formate = workbook.add_format({'align': 'centre', 'font_size': 12,'underline': True,'bold': True, 'fg_color': '#DAD7DD', 'text_wrap': True})
 				employee_commission.set_column(4, 40)
 				employee_commission.write(10, 1, 'Voucher No', detailed_formate)
 

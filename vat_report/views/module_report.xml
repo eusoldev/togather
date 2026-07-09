@@ -84,7 +84,7 @@
                                     font-weight: bold;
                                     padding: 10px;
                                     font-size: 15px;
-                                    background: #eaded7 !important;
+                                    background: #DAD7DD !important;
                                     color: #3d3838;
                                 }
                                 .bg_col {
