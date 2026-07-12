@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="payment_refund_wizard_view_form_inherit_myfatoorah" model="ir.ui.view">
+        <field name="name">payment.refund.wizard.form.inherit.myfatoorah</field>
+        <field name="model">payment.refund.wizard</field>
+        <field name="inherit_id" ref="account_payment.payment_refund_wizard_view_form"/>
+        <field name="arch" type="xml">
+            <field name="has_pending_refund" position="after">
+                <field name="is_myfatoorah_refund" invisible="1"/>
+                <field name="myfatoorah_require_otp" invisible="1"/>
+                <field name="myfatoorah_otp_sent" invisible="1"/>
+                <field name="myfatoorah_otp_code" invisible="1"/>
+                <field name="myfatoorah_otp_expires_at" invisible="1"/>
+            </field>
+            <group position="inside">
+                <group invisible="not is_myfatoorah_refund or not myfatoorah_require_otp">
+                    <separator string="Refund OTP Approval"/>
+                    <field name="myfatoorah_otp_sent_to" readonly="1" invisible="not myfatoorah_otp_sent"/>
+                    <field name="myfatoorah_otp_input"/>
+                </group>
+            </group>
+            <field name="amount_to_refund" position="after">
+                <field name="myfatoorah_remaining_refundable_amount"
+                       readonly="1"
+                       invisible="not is_myfatoorah_refund"/>
+                <field name="myfatoorah_refund_comment"
+                       invisible="not is_myfatoorah_refund"/>
+                <field name="myfatoorah_refund_external_identifier"
+                       invisible="not is_myfatoorah_refund"/>
+                <field name="myfatoorah_amount_deducted_from_supplier"
+                       invisible="not is_myfatoorah_refund"/>
+            </field>
+            <footer position="inside">
+                <button name="action_request_myfatoorah_refund_otp"
+                        type="object"
+                        string="Request OTP"
+                        class="btn-secondary"
+                        invisible="not is_myfatoorah_refund or not myfatoorah_require_otp"/>
+            </footer>
+        </field>
+    </record>
+</odoo>

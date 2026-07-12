@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="payment_transaction_form" model="ir.ui.view">
+        <field name="name">payment.transaction.form.inherit.myfatoorah.payment.gateway</field>
+        <field name="model">payment.transaction</field>
+        <field name="inherit_id" ref="payment.payment_transaction_form"/>
+        <field name="arch" type="xml">
+            <header position="inside">
+                <button name="action_open_myfatoorah_refund_wizard"
+                        type="object"
+                        string="Refund"
+                        class="btn-secondary"
+                        groups="myfatoorah_payment_gateway.group_myfatoorah_refund_manager"
+                        invisible="provider_code != 'myfatoorah' or operation == 'refund' or state != 'done' or not payment_id or not myfatoorah_refund_enabled"/>
+                <button name="action_sync_myfatoorah_refund_status"
+                        type="object"
+                        string="Sync Refund Status"
+                        class="btn-secondary"
+                        groups="myfatoorah_payment_gateway.group_myfatoorah_refund_manager"
+                        invisible="provider_code != 'myfatoorah' or operation != 'refund' or not myfatoorah_refund_reference"/>
+            </header>
+            <group name="transaction_details" position="inside">
+                <field name="payment_id" invisible="1"/>
+                <field name="myfatoorah_refund_enabled" invisible="1"/>
+                <field name="myfatoorah_invoice_url" invisible="provider_code != 'myfatoorah' or not myfatoorah_invoice_url" widget="url"/>
+                <field name="myfatoorah_invoice_id" invisible="provider_code != 'myfatoorah' or not myfatoorah_invoice_id"/>
+                <field name="myfatoorah_link_description" invisible="provider_code != 'myfatoorah' or not myfatoorah_link_description"/>
+                <field name="myfatoorah_refund_id" invisible="provider_code != 'myfatoorah' or operation != 'refund' or not myfatoorah_refund_id"/>
+                <field name="myfatoorah_refund_reference" invisible="provider_code != 'myfatoorah' or operation != 'refund' or not myfatoorah_refund_reference"/>
+                <field name="myfatoorah_refund_external_identifier" invisible="provider_code != 'myfatoorah' or operation != 'refund' or not myfatoorah_refund_external_identifier"/>
+                <field name="myfatoorah_refund_comment" invisible="provider_code != 'myfatoorah' or operation != 'refund' or not myfatoorah_refund_comment"/>
+                <field name="myfatoorah_refund_amount_deducted_from_supplier" invisible="provider_code != 'myfatoorah' or operation != 'refund'"/>
+            </group>
+            <xpath expr="//group[field[@name='state_message']]" position="after">
+                <group invisible="provider_code != 'myfatoorah'">
+                    <separator string="MyFatoorah API Data"/>
+                    <field name="myfatoorah_send_payment_payload" nolabel="1" widget="text"/>
+                    <field name="myfatoorah_send_payment_response" nolabel="1" widget="text"/>
+                    <field name="myfatoorah_status_response" nolabel="1" widget="text"/>
+                    <field name="myfatoorah_refund_payload" nolabel="1" widget="text" invisible="operation != 'refund' and not myfatoorah_refund_payload"/>
+                    <field name="myfatoorah_refund_response" nolabel="1" widget="text" invisible="operation != 'refund' and not myfatoorah_refund_response"/>
+                    <field name="myfatoorah_refund_status_response" nolabel="1" widget="text" invisible="operation != 'refund' and not myfatoorah_refund_status_response"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>
