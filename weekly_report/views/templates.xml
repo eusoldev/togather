@@ -66,7 +66,7 @@
                     }
                     </style>
                     <t t-foreach="company" t-as="c">
-                        <t t-set="report_company" t-value="c" />
+                        <t t-set="report_company" t-value="c.company_id if c._name == 'base.document.layout' else c" />
                         <div class="voucher-company-header">
                             <div class="voucher-company-info">
                                 <p class="voucher-company-name">
