@@ -4,7 +4,7 @@
         <record id="new_package_hotels_email_template_without_welcome_letter" model="mail.template">
             <field name="name">New Package Hotels E-mail Template Without Welcome Letter</field>
             <field name="model_id" ref="travel_package.model_all_services" />
-            <field name="email_from"></field>
+            <field name="email_from">info@togathertravel.com</field>
             <field name="email_to">{{object.supplier.email}}</field>
             <field name="auto_delete" eval="False" />
             <field name="subject">{{object.hotel_id.name}} (Ref {{object.hotel_return.name or 'n/a'}})</field>
@@ -24,7 +24,7 @@
                                         <tbody>
                                             <tr>
                                                 <td valign="middle">
-                                                    <span style="font-size:20px;font-weight:bold;">Togather Tourism</span>
+                                                    <span style="font-size:20px;font-weight:bold;">Togather Travel</span>
                                                 </td>
                                                 
                                             </tr>
@@ -61,7 +61,7 @@
                                                     <tr>
                                                         <td style="padding:10px 20px;background-color:#DAD7DD;" colspan="3">
                                                             <span style="color:black;font-weight:bold;">
-                                                                Togather TOURISM
+                                                                Togather Travel
                                                                 <span style="text-align:center;margin-left:100px;"><t t-out="row_h.hotel_return.name or ''"/></span>
                                                             </span>
                                                         </td>
@@ -367,7 +367,7 @@
         <record id="new_package_hotels_email_template" model="mail.template">
             <field name="name">New Package Hotels E-mail Template</field>
             <field name="model_id" ref="travel_package.model_all_services" />
-            <field name="email_from"></field>
+            <field name="email_from">info@togathertravel.com</field>
             <field name="email_to">{{object.supplier.email}}</field>
             <field name="auto_delete" eval="False" />
             <field name="subject">{{object.hotel_id.name}} (Ref {{object.hotel_return.name or 'n/a'}})</field>
@@ -389,7 +389,7 @@
                                         <tbody>
                                             <tr>
                                                 <td valign="middle">
-                                                    <span style="font-size:20px;font-weight:bold;">Togather Tourism</span>
+                                                    <span style="font-size:20px;font-weight:bold;">Togather Travel</span>
                                                 </td>
                                                 
                                             </tr>
@@ -429,7 +429,7 @@
                                                     <tr>
                                                         <td style="padding:10px 20px;background-color:#DAD7DD;" colspan="3">
                                                             <span style="color:black;font-weight:bold;">
-                                                                Togather TOURISM
+                                                                Togather Travel
                                                                 <span style="text-align:center;margin-left:100px;"><t t-out="row_h.hotel_return.name or ''"/></span>
                                                             </span>
                                                         </td>
@@ -587,9 +587,9 @@
         <record id="contacts_email_template" model="mail.template">
             <field name="name">Contacts E-mail Template</field>
             <field name="model_id" ref="travel_package.model_res_partner" />
-            <field name="email_from"></field>
+            <field name="email_from">info@togathertravel.com</field>
             <field name="email_to">{{object.email}}</field>
-            <field name="subject">Togather Tourism</field>
+            <field name="subject">Togather Travel</field>
             <field name="body_html">
                 <![CDATA[
 <div>
@@ -600,7 +600,7 @@
                     <table border="0" cellpadding="0" cellspacing="0" width="590" style="border-collapse:separate;min-width:590px;padding:0 8px;">
                         <tbody>
                             <tr>
-                                <td valign="middle"><span style="font-size:20px;font-weight:bold;">Togather Tourism</span></td>
+                                <td valign="middle"><span style="font-size:20px;font-weight:bold;">Togather Travel</span></td>
                                 <td valign="middle" style="text-align:right;"></td>
                             </tr>
                             <tr>
@@ -666,7 +666,7 @@
         <record id="package_transportation_email_template_without_welcome_letter" model="mail.template">
             <field name="name">Package Transfers E-mail Template Without Welcome Letter</field>
             <field name="model_id" ref="travel_package.model_all_services" />
-            <field name="email_from"></field>
+            <field name="email_from">info@togathertravel.com</field>
             <field name="email_to">{{object.supplier.email}}</field>
             <field name="subject">{{object.product_id.name}} (Ref {{object.transportation_return.name or 'n/a'}})</field>
             <field name="body_html">
@@ -684,7 +684,7 @@
                                         <tbody>
                                             <tr>
                                                 <td valign="middle">
-                                                    <span style="font-size:20px;font-weight:bold;">Togather Tourism</span>
+                                                    <span style="font-size:20px;font-weight:bold;">Togather Travel</span>
                                                 </td>
                                                 
                                             </tr>
@@ -725,7 +725,7 @@
                                                     <tr>
                                                         <td style="padding:10px 20px;background-color:#DAD7DD;" colspan="3">
                                                             <span style="color:black;font-weight:bold;">
-                                                                Togather TOURISM
+                                                                Togather Travel
                                                                 <span style="text-align:center;margin-left:100px;"><t t-out="row_h.transportation_return.name or ''"/></span>
                                                             </span>
                                                         </td>
@@ -877,7 +877,7 @@
             <field name="name">Package Transfers E-mail Template</field>
             <field name="model_id" ref="travel_package.model_all_services" />
             <!-- <field name="id">id</field> -->
-            <field name="email_from"></field>
+            <field name="email_from">info@togathertravel.com</field>
             <field name="email_to">{{object.supplier.email}}</field>
             <field name="subject">{{object.product_id.name}} (Ref {{object.transportation_return.name or 'n/a'}})</field>
             <field name="body_html">
@@ -895,7 +895,7 @@
                                     <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:white;border-collapse:separate;">
                                         <tbody>
                                             <tr>
-                                                <td valign="middle"><span style="font-size:20px;font-weight:bold;">Togather Tourism</span></td>
+                                                <td valign="middle"><span style="font-size:20px;font-weight:bold;">Togather Travel</span></td>
                                                
                                             </tr>
                                             <tr>
@@ -922,7 +922,7 @@
                                         <table style="width:600px;margin:0 auto;border:1px solid #DAD7DD;">
                                             <tbody>
                                                 <tr>
-                                                    <td colspan="3" style="padding:10px 20px;background-color:#DAD7DD;color:black;font-weight:bold;">Togather TOURISM <span style="float:right;">
+                                                    <td colspan="3" style="padding:10px 20px;background-color:#DAD7DD;color:black;font-weight:bold;">Togather Travel <span style="float:right;">
                                                             <t t-out="row_h.transportation_return.name or ''" /></span></td>
                                                 </tr>
                                                 <tr>
@@ -1147,7 +1147,7 @@
                 <record id="package_tours_email_template_without_welcome_letter" model="mail.template">
             <field name="name">Package Tour E-mail Template Without Welcome Letter</field>
             <field name="model_id" ref="travel_package.model_all_services" />
-            <field name="email_from"></field>
+            <field name="email_from">info@togathertravel.com</field>
             <field name="email_to">{{object.supplier.email}}</field>
             <field name="subject">{{object.product_id.name}} (Ref {{object.tours_return.name or 'n/a'}})</field>
             <field name="body_html">
@@ -1167,7 +1167,7 @@
                                         <tbody>
                                             <tr>
                                                 <td valign="middle">
-                                                    <span style="font-size:20px;font-weight:bold;">Togather Tourism</span>
+                                                    <span style="font-size:20px;font-weight:bold;">Togather Travel</span>
                                                 </td>
                                                 
                                             </tr>
@@ -1204,7 +1204,7 @@
                                                     <tr>
                                                         <td style="padding:10px 20px;background-color:#DAD7DD;" colspan="3">
                                                             <span style="color:black;font-weight:bold;">
-                                                                Togather TOURISM
+                                                                Togather Travel
                                                                 <span style="text-align:center;margin-left:100px;"><t t-out="row_h.tours_return.name or ''"/></span>
                                                             </span>
                                                         </td>
@@ -1310,7 +1310,7 @@
                 <record id="package_tour_email_template" model="mail.template">
             <field name="name">Package Tour E-mail Template</field>
             <field name="model_id" ref="travel_package.model_all_services" />
-            <field name="email_from"></field>
+            <field name="email_from">info@togathertravel.com</field>
             <field name="email_to">{{object.supplier.email}}</field>
             <field name="subject">{{object.product_id.name}} (Ref {{object.tours_return.name or 'n/a'}})</field>
             <field name="body_html">
@@ -1330,7 +1330,7 @@
                                         <tbody>
                                             <tr>
                                                 <td valign="middle">
-                                                    <span style="font-size:20px;font-weight:bold;">Togather Tourism</span>
+                                                    <span style="font-size:20px;font-weight:bold;">Togather Travel</span>
                                                 </td>
                                                 
                                             </tr>
@@ -1367,7 +1367,7 @@
                                                     <tr>
                                                         <td style="padding:10px 20px;background-color:#DAD7DD;" colspan="3">
                                                             <span style="color:black;font-weight:bold;">
-                                                                Togather TOURISM
+                                                                Togather Travel
                                                                 <span style="text-align:center;margin-left:100px;"><t t-out="row_h.tours_return.name or ''"/></span>
                                                             </span>
                                                         </td>
@@ -1468,7 +1468,7 @@
                 <record id="package_ready_package_email_template" model="mail.template">
             <field name="name">Package Ready Package E-mail Template</field>
             <field name="model_id" ref="travel_package.model_all_services" />
-            <field name="email_from"></field>
+            <field name="email_from">info@togathertravel.com</field>
             <field name="email_to">{{object.supplier.email}}</field>
             <field name="subject">{{object.supplier.name}} (Ref {{object.package_return.name or 'n/a'}})</field>
             <field name="body_html">
@@ -1488,7 +1488,7 @@
                                         <tbody>
                                             <tr>
                                                 <td valign="middle">
-                                                    <span style="font-size:20px;font-weight:bold;">Togather Tourism</span>
+                                                    <span style="font-size:20px;font-weight:bold;">Togather Travel</span>
                                                 </td>
                                                 
                                             </tr>
@@ -1525,7 +1525,7 @@
                                                     <tr>
                                                         <td style="padding:10px 20px;background-color:#DAD7DD;" colspan="3">
                                                             <span style="color:black;font-weight:bold;">
-                                                                Togather TOURISM
+                                                                Togather Travel
                                                                 <span style="text-align:center;margin-left:100px;"><t t-out="row_h.package_return.name or ''"/></span>
                                                             </span>
                                                         </td>
@@ -1617,7 +1617,7 @@
             <field name="name">Package Ready Package E-mail Template Without Welcome Letter</field>
             <field name="model_id" ref="travel_package.model_all_services" />
             <!-- <field name="id">id</field> -->
-            <field name="email_from"></field>
+            <field name="email_from">info@togathertravel.com</field>
             <field name="email_to">{{object.supplier.email}</field>
             <field name="subject">{{object.product_id.name}} (Ref {{object.package_return.name or 'n/a'}})</field>
             <field name="body_html">
@@ -1637,7 +1637,7 @@
                                         <tbody>
                                             <tr>
                                                 <td valign="middle">
-                                                    <span style="font-size:20px;font-weight:bold;">Togather Tourism</span>
+                                                    <span style="font-size:20px;font-weight:bold;">Togather Travel</span>
                                                 </td>
                                                 
                                             </tr>
@@ -1674,7 +1674,7 @@
                                                     <tr>
                                                         <td style="padding:10px 20px;background-color:#DAD7DD;" colspan="3">
                                                             <span style="color:black;font-weight:bold;">
-                                                                Togather TOURISM
+                                                                Togather Travel
                                                                 <span style="text-align:center;margin-left:100px;"><t t-out="row_h.package_return.name or ''"/></span>
                                                             </span>
                                                         </td>
@@ -1765,7 +1765,7 @@
         <record id="private_jet_email_template" model="mail.template">
             <field name="name">Private Jet E-mail Template</field>
             <field name="model_id" ref="travel_package.model_all_services" />
-            <field name="email_from"></field>
+            <field name="email_from">info@togathertravel.com</field>
             <field name="email_to">{{object.supplier.email}}</field>
             <field name="subject">{{object.supplier.name}} (Ref {{object.privatejet_return.name or 'n/a'}})</field>
             <field name="body_html">
@@ -1785,7 +1785,7 @@
                                         <tbody>
                                             <tr>
                                                 <td valign="middle">
-                                                    <span style="font-size:20px;font-weight:bold;">Togather Tourism</span>
+                                                    <span style="font-size:20px;font-weight:bold;">Togather Travel</span>
                                                 </td>
                                                 
                                             </tr>
@@ -1822,7 +1822,7 @@
                                                     <tr>
                                                         <td style="padding:10px 20px;background-color:#DAD7DD;" colspan="3">
                                                             <span style="color:black;font-weight:bold;">
-                                                                Togather TOURISM
+                                                                Togather Travel
                                                                 <span style="text-align:center;margin-left:100px;"><t t-out="row_h.privatejet_return.name or ''"/></span>
                                                             </span>
                                                         </td>
@@ -1919,7 +1919,7 @@
         <record id="private_jet_email_template_without_welcome_letter" model="mail.template">
             <field name="name">Private Jet E-mail Template Without Welcome Letter</field>
             <field name="model_id" ref="travel_package.model_all_services" />
-            <field name="email_from"></field>
+            <field name="email_from">info@togathertravel.com</field>
             <field name="email_to">{{object.supplier.email}}</field>
             <field name="subject">{{object.product_id.name}} (Ref {{object.privatejet_return.name or 'n/a'}})</field>
             <field name="body_html">
@@ -1939,7 +1939,7 @@
                                         <tbody>
                                             <tr>
                                                 <td valign="middle">
-                                                    <span style="font-size:20px;font-weight:bold;">Togather Tourism</span>
+                                                    <span style="font-size:20px;font-weight:bold;">Togather Travel</span>
                                                 </td>
                                                 
                                             </tr>
@@ -1976,7 +1976,7 @@
                                                     <tr>
                                                         <td style="padding:10px 20px;background-color:#DAD7DD;" colspan="3">
                                                             <span style="color:black;font-weight:bold;">
-                                                                Togather TOURISM
+                                                                Togather Travel
                                                                 <span style="text-align:center;margin-left:100px;"><t t-out="row_h.privatejet_return.name or ''"/></span>
                                                             </span>
                                                         </td>
@@ -2073,7 +2073,7 @@
         <record id="yacht_email_template" model="mail.template">
             <field name="name">Yacht E-mail Template</field>
             <field name="model_id" ref="travel_package.model_all_services" />
-            <field name="email_from"></field>
+            <field name="email_from">info@togathertravel.com</field>
             <field name="email_to">{{object.supplier.email}}</field>
             <field name="subject">{{object.supplier.name}} (Ref {{object.yacht_return.name or 'n/a'}})</field>
             <field name="body_html">
@@ -2093,7 +2093,7 @@
                                         <tbody>
                                             <tr>
                                                 <td valign="middle">
-                                                    <span style="font-size:20px;font-weight:bold;">Togather Tourism</span>
+                                                    <span style="font-size:20px;font-weight:bold;">Togather Travel</span>
                                                 </td>
                                                 
                                             </tr>
@@ -2130,7 +2130,7 @@
                                                     <tr>
                                                         <td style="padding:10px 20px;background-color:#DAD7DD;" colspan="3">
                                                             <span style="color:black;font-weight:bold;">
-                                                                Togather TOURISM
+                                                                Togather Travel
                                                                 <span style="text-align:center;margin-left:100px;"><t t-out="row_h.yacht_return.name or ''"/></span>
                                                             </span>
                                                         </td>
@@ -2239,7 +2239,7 @@
         <record id="yacht_email_template_without_welcome_letter" model="mail.template">
             <field name="name">Yacht E-mail Template Without Welcome Letter</field>
             <field name="model_id" ref="travel_package.model_all_services" />
-            <field name="email_from"></field>
+            <field name="email_from">info@togathertravel.com</field>
             <field name="email_to">{{object.supplier.email}}</field>
             <field name="subject">{{object.product_id.name}} (Ref {{object.yacht_return.name or 'n/a'}})</field>
             <field name="body_html">
@@ -2259,7 +2259,7 @@
                                         <tbody>
                                             <tr>
                                                 <td valign="middle">
-                                                    <span style="font-size:20px;font-weight:bold;">Togather Tourism</span>
+                                                    <span style="font-size:20px;font-weight:bold;">Togather Travel</span>
                                                 </td>
                                                 
                                             </tr>
@@ -2296,7 +2296,7 @@
                                                     <tr>
                                                         <td style="padding:10px 20px;background-color:#DAD7DD;" colspan="3">
                                                             <span style="color:black;font-weight:bold;">
-                                                                Togather TOURISM
+                                                                Togather Travel
                                                                 <span style="text-align:center;margin-left:100px;"><t t-out="row_h.yacht_return.name or ''"/></span>
                                                             </span>
                                                         </td>
@@ -2406,7 +2406,7 @@
             <field name="name">Cruises E-mail Template</field>
             <field name="model_id" ref="travel_package.model_all_services" />
             <!-- <field name="id">id</field> -->
-            <field name="email_from"></field>
+            <field name="email_from">info@togathertravel.com</field>
             <field name="email_to">{{object.supplier.email}</field>
             <field name="subject">{{object.supplier.name}} (Ref {{object.cruises_return.name or 'n/a'}})</field>
             <field name="body_html">
@@ -2426,7 +2426,7 @@
                                         <tbody>
                                             <tr>
                                                 <td valign="middle">
-                                                    <span style="font-size:20px;font-weight:bold;">Togather Tourism</span>
+                                                    <span style="font-size:20px;font-weight:bold;">Togather Travel</span>
                                                 </td>
                                                 
                                             </tr>
@@ -2463,7 +2463,7 @@
                                                     <tr>
                                                         <td style="padding:10px 20px;background-color:#DAD7DD;" colspan="3">
                                                             <span style="color:black;font-weight:bold;">
-                                                                Togather TOURISM
+                                                                Togather Travel
                                                                 <span style="text-align:center;margin-left:100px;"><t t-out="row_h.cruises_return.name or ''"/></span>
                                                             </span>
                                                         </td>
@@ -2572,7 +2572,7 @@
         <record id="cruises_email_template_without_welcome_letter" model="mail.template">
             <field name="name">Cruises E-mail Template Without Welcome Letter</field>
             <field name="model_id" ref="travel_package.model_all_services" />
-            <field name="email_from"></field>
+            <field name="email_from">info@togathertravel.com</field>
             <field name="email_to">{{object.supplier.email}}</field>
             <field name="subject">{{object.product_id.name}} (Ref {{object.cruises_return.name or 'n/a'}})</field>
             <field name="body_html">
@@ -2592,7 +2592,7 @@
                                         <tbody>
                                             <tr>
                                                 <td valign="middle">
-                                                    <span style="font-size:20px;font-weight:bold;">Togather Tourism</span>
+                                                    <span style="font-size:20px;font-weight:bold;">Togather Travel</span>
                                                 </td>
                                                 
                                             </tr>
@@ -2629,7 +2629,7 @@
                                                     <tr>
                                                         <td style="padding:10px 20px;background-color:#DAD7DD;" colspan="3">
                                                             <span style="color:black;font-weight:bold;">
-                                                                Togather TOURISM
+                                                                Togather Travel
                                                                 <span style="text-align:center;margin-left:100px;"><t t-out="row_h.cruises_return.name or ''"/></span>
                                                             </span>
                                                         </td>
@@ -2738,7 +2738,7 @@
         <record id="other_services_email_template" model="mail.template">
             <field name="name">other services E-mail Template</field>
             <field name="model_id" ref="travel_package.model_all_services" />
-            <field name="email_from"></field>
+            <field name="email_from">info@togathertravel.com</field>
             <field name="email_to">{{object.supplier.email}</field>
             <field name="subject">{{object.supplier.name}} (Ref {{object.otherservices_return.name or 'n/a'}})</field>
             <field name="body_html">
@@ -2758,7 +2758,7 @@
                                         <tbody>
                                             <tr>
                                                 <td valign="middle">
-                                                    <span style="font-size:20px;font-weight:bold;">Togather Tourism</span>
+                                                    <span style="font-size:20px;font-weight:bold;">Togather Travel</span>
                                                 </td>
                                                 
                                             </tr>
@@ -2795,7 +2795,7 @@
                                                     <tr>
                                                         <td style="padding:10px 20px;background-color:#DAD7DD;" colspan="3">
                                                             <span style="color:black;font-weight:bold;">
-                                                                Togather TOURISM
+                                                                Togather Travel
                                                                 <span style="text-align:center;margin-left:100px;"><t t-out="row_h.otherservices_return.name or ''"/></span>
                                                             </span>
                                                         </td>
@@ -2874,7 +2874,7 @@
         <record id="other_services_email_template_without_welcome_letter" model="mail.template">
             <field name="name">Other Services E-mail Template Without Welcome Letter</field>
             <field name="model_id" ref="travel_package.model_all_services" />
-            <field name="email_from"></field>
+            <field name="email_from">info@togathertravel.com</field>
             <field name="email_to">{{object.supplier.email}}</field>
             <field name="subject">{{object.supplier.name}} (Ref {{object.otherservices_return.name or 'n/a'}})</field>
             <field name="body_html">
@@ -2894,7 +2894,7 @@
                                         <tbody>
                                             <tr>
                                                 <td valign="middle">
-                                                    <span style="font-size:20px;font-weight:bold;">Togather Tourism</span>
+                                                    <span style="font-size:20px;font-weight:bold;">Togather Travel</span>
                                                 </td>
                                                 
                                             </tr>
@@ -2931,7 +2931,7 @@
                                                     <tr>
                                                         <td style="padding:10px 20px;background-color:#DAD7DD;" colspan="3">
                                                             <span style="color:black;font-weight:bold;">
-                                                                Togather TOURISM
+                                                                Togather Travel
                                                                 <span style="text-align:center;margin-left:100px;"><t t-out="row_h.otherservices_return.name or ''"/></span>
                                                             </span>
                                                         </td>
@@ -3010,7 +3010,7 @@
         <record id="package_visa_email_template_without_welcome_letter" model="mail.template">
             <field name="name">Package Visa E-mail Template Without Welcome Letter</field>
             <field name="model_id" ref="travel_package.model_all_services" />
-            <field name="email_from"></field>
+            <field name="email_from">info@togathertravel.com</field>
             <field name="email_to">{{object.supplier.email}}</field>
             <field name="subject">{{object.product_id.name}} (Ref {{object.visa_return.name or 'n/a'}})</field>
             <field name="body_html">
@@ -3030,7 +3030,7 @@
                                         <tbody>
                                             <tr>
                                                 <td valign="middle">
-                                                    <span style="font-size:20px;font-weight:bold;">Togather Tourism</span>
+                                                    <span style="font-size:20px;font-weight:bold;">Togather Travel</span>
                                                 </td>
                                                 
                                             </tr>
@@ -3067,7 +3067,7 @@
                                                     <tr>
                                                         <td style="padding:10px 20px;background-color:#DAD7DD;" colspan="3">
                                                             <span style="color:black;font-weight:bold;">
-                                                                Togather TOURISM
+                                                                Togather Travel
                                                                 <span style="text-align:center;margin-left:100px;"><t t-out="row_h.visa_return.name or ''"/></span>
                                                             </span>
                                                         </td>
@@ -3146,7 +3146,7 @@
         <record id="package_visa_email_template" model="mail.template">
             <field name="name">Package Visa E-mail Template</field>
             <field name="model_id" ref="travel_package.model_all_services" />
-            <field name="email_from"></field>
+            <field name="email_from">info@togathertravel.com</field>
             <field name="email_to">{{object.supplier.email}}</field>
             <field name="subject">{{object.product_id.name}} (Ref {{object.visa_return.name or 'n/a'}})</field>
             <field name="body_html">
@@ -3166,7 +3166,7 @@
                                         <tbody>
                                             <tr>
                                                 <td valign="middle">
-                                                    <span style="font-size:20px;font-weight:bold;">Togather Tourism</span>
+                                                    <span style="font-size:20px;font-weight:bold;">Togather Travel</span>
                                                 </td>
                                                 
                                             </tr>
@@ -3203,7 +3203,7 @@
                                                     <tr>
                                                         <td style="padding:10px 20px;background-color:#DAD7DD;" colspan="3">
                                                             <span style="color:black;font-weight:bold;">
-                                                                Togather TOURISM
+                                                                Togather Travel
                                                                 <span style="text-align:center;margin-left:100px;"><t t-out="row_h.visa_return.name or ''"/></span>
                                                             </span>
                                                         </td>

@@ -1136,7 +1136,7 @@
             <field name="state">code</field>
             <field name="code">model.send_notification()</field>
         </record>
-        <record model="ir.cron" id="send_thankyou_sms_cron_job">
+       <!--  <record model="ir.cron" id="send_thankyou_sms_cron_job">
             <field name="name">Automatic Send SMS Of Thank You</field>
             <field name="model_id" ref="model_reservation_order" />
             <field name="active">True</field>
@@ -1144,7 +1144,7 @@
             <field name="interval_type">days</field>
             <field name="state">code</field>
             <field name="code">model.send_thankyou_sms()</field>
-        </record>
+        </record> -->
         <record id="travel_package_auto_sequence" model="ir.sequence">
             <field name="name">travel_package_auto_sequence</field>
             <field name="code">tp.auto.sequence</field>

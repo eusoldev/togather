@@ -33,6 +33,9 @@ from datetime import date, timedelta
 import datetime
 from dateutil.relativedelta import *
 import math
+import json
+import urllib.parse
+import urllib.request
 from PIL import Image, ImageDraw
 
 
@@ -47,7 +50,8 @@ class airlines_sales_report(models.AbstractModel):
         record_wizard = self.env['air.sales.report'].browse(self.env.context.get('active_ids'))
         form = record_wizard.form
         to = record_wizard.to
-        company = record_wizard.company_id
+        company = record_wizard.company_id or self.env.company
+        
         is_com = record_wizard.is_com
         partner_id = record_wizard.partner_id
 

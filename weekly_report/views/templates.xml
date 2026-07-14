@@ -1,24 +1,150 @@
 <odoo>
     <data>
-<!--
-        <template id="listing">
-          <ul>
-            <li t-foreach="objects" t-as="object">
-              <a t-attf-href="#{ root }/objects/#{ object.id }">
-                <t t-esc="object.display_name"/>
-              </a>
-            </li>
-          </ul>
+        <template id="custom_external_layout_wave_header" inherit_id="web.external_layout_wave">
+            <xpath expr="//div[contains(@t-attf-class, 'header o_company_')]" position="replace">
+                <t t-set="header_shape_height" t-value="'190'" />
+                <div t-attf-class="header o_company_#{company.id}_layout {{report_type != 'pdf' and 'h-0'}}">
+                    <style>
+                    .voucher-company-header {
+                        width: 100%;
+                        min-height: 170px;
+                        padding: 28px 18px 18px 18px;
+                        border-bottom: 3px solid #d5dde7;
+                        box-sizing: border-box;
+                    }
+
+                    .voucher-company-info {
+                        float: left;
+                        width: 36%;
+                        color: #000;
+                        font-size: 12px;
+                        line-height: 1.35;
+                    }
+
+                    .voucher-company-info p,
+                    .voucher-company-info-ar p {
+                        margin: 0 !important;
+                        padding: 0 !important;
+                        font-size: 12px !important;
+                    }
+
+                    .voucher-company-info p.voucher-company-name,
+                    .voucher-company-info-ar p.voucher-company-name-ar {
+                        font-size: 20px !important;
+                        font-weight: 700;
+                        line-height: 1.2;
+                    }
+
+                    .voucher-logo-wrap {
+                        float: left;
+                        width: 28%;
+                        text-align: center;
+                        padding-top: 45px;
+                    }
+
+                    .voucher-logo-wrap img {
+                        max-width: 145px;
+                        max-height: 65px;
+                    }
+
+                    .voucher-company-info-ar {
+                        float: right;
+                        width: 36%;
+                        color: #000;
+                        direction: rtl;
+                        text-align: right;
+                        font-size: 12px;
+                        line-height: 1.35;
+                    }
+
+                    .clear_float {
+                        clear: both;
+                        float: none;
+                        height: 0;
+                        width: 0;
+                        display: block;
+                    }
+                    </style>
+                    <t t-foreach="company" t-as="c">
+                        <t t-set="report_company" t-value="c" />
+                        <div class="voucher-company-header">
+                            <div class="voucher-company-info">
+                                <p class="voucher-company-name">
+                                    <span t-esc="report_company.name" />
+                                </p>
+                                <p>
+                                    <span t-if="report_company.street" t-esc="report_company.street" />
+                                    <span t-if="report_company.street and (report_company.city or report_company.country_id)">, </span>
+                                    <span t-if="report_company.city" t-esc="report_company.city" />
+                                    <span t-if="report_company.city and report_company.country_id">, </span>
+                                    <span t-if="report_company.country_id" t-esc="report_company.country_id.name" />
+                                </p>
+                                <p t-if="report_company.email">
+                                    <span t-esc="report_company.email" />
+                                </p>
+                                <p t-if="report_company.phone">
+                                    <span t-esc="report_company.phone" />
+                                </p>
+                                <p t-if="report_company.vat">
+                                    <span t-esc="report_company.vat" />
+                                </p>
+                                <p t-if="report_company.custom_cr_number">
+                                    <span>CR Number </span>
+                                    <span t-esc="report_company.custom_cr_number" />
+                                </p>
+                            </div>
+                            <div class="voucher-logo-wrap">
+                                <img t-if="report_company.logo" t-att-src="image_data_uri(report_company.logo)" />
+                            </div>
+                            <div class="voucher-company-info-ar">
+                                <p class="voucher-company-name-ar">
+                                    <span t-esc="report_company.arabic_contact" />
+                                </p>
+                                <p>
+                                    <t t-if="report_company.arabic_street">
+                                        <span t-esc="report_company.arabic_street" />
+                                    </t>
+                                    <t t-if="report_company.arabic_street2">
+                                        <t t-if="report_company.arabic_street">, </t>
+                                        <span t-esc="report_company.arabic_street2" />
+                                    </t>
+                                    <t t-if="report_company.arabic_city">
+                                        <t t-if="report_company.arabic_street or report_company.arabic_street2">, </t>
+                                        <span t-esc="report_company.arabic_city" />
+                                    </t>
+                                    <t t-if="report_company.arabic_country">
+                                        <t t-if="report_company.arabic_street or report_company.arabic_street2 or report_company.arabic_city">, </t>
+                                        <span t-esc="report_company.arabic_country" />
+                                    </t>
+                                    <t t-if="report_company.arabic_state">
+                                        <t t-if="report_company.arabic_street or report_company.arabic_street2 or report_company.arabic_city">, </t>
+                                        <span t-esc="report_company.arabic_state" />
+                                    </t>
+                                </p>
+                                <p t-if="report_company.email">
+                                    <span t-esc="report_company.email" />
+                                </p>
+                                <p t-if="report_company.phone">
+                                    <span t-esc="report_company.phone" />
+                                </p>
+                                <p t-if="report_company.arabic_vat">
+                                    <span t-esc="report_company.arabic_vat" />
+                                </p>
+                                <p t-if="report_company.arabic_cr_number">
+                                    <span t-esc="report_company.arabic_cr_number"/>
+                                </p>
+                            </div>
+                            <br class="clear_float" />
+                        </div>
+                    </t>
+                </div>
+            </xpath>
         </template>
-        <template id="object">
-          <h1><t t-esc="object.display_name"/></h1>
-          <dl>
-            <t t-foreach="object._fields" t-as="field">
-              <dt><t t-esc="field"/></dt>
-              <dd><t t-esc="object[field]"/></dd>
-            </t>
-          </dl>
-        </template>
--->
+
+       <!--  <template id="custom_report_invoice_document_layout" inherit_id="account.report_invoice_document">
+            <xpath expr="//t[@t-call='web.external_layout']" position="attributes">
+                <attribute name="t-call">web.external_layout_wave</attribute>
+            </xpath>
+        </template> -->
     </data>
 </odoo>

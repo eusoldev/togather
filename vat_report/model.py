@@ -31,6 +31,9 @@ from datetime import date, timedelta
 import datetime
 from dateutil.relativedelta import *
 import math
+import json
+import urllib.parse
+import urllib.request
 from PIL import Image, ImageDraw
 import xlsxwriter
 
@@ -45,9 +48,7 @@ class vat_report(models.AbstractModel):
 
 		form = record_wizard.form
 		to = record_wizard.to
-		company = record_wizard.company_id
-
-
+		company = record_wizard.company_id or self.env.company
 		sale_pur_record = self.env['account.move'].search([('date','>=',form),('date','<=',to),('state','=','posted')])
 		tax = self.env['account.tax'].search([('type_tax_use','=','sale')],limit=1)
 		# expense_account = self.env['account.account'].search([('user_type_id.name','=','Expenses')],limit=1)

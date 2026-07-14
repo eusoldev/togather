@@ -239,7 +239,7 @@ class weekly_report(models.Model):
                         <br/>
                         <b>Regards:</b>
                         <br/>
-                        Togather Tourism
+                        Togather Travel
                         <br/>
 
                         <br/>
@@ -411,3 +411,12 @@ class res_com_custom_ext(models.Model):
     _inherit = 'res.company'
 
     custom_cr_number = fields.Char(string="CR Number")
+    arabic_contact = fields.Char(string="Name")
+    arabic_street = fields.Char(string="Address")
+    arabic_street2 = fields.Char(string="Street 2")
+    arabic_city = fields.Char(string="City")
+    arabic_state = fields.Char(string="State")
+    # arabic_zip = fields.Char(string="ZIP")
+    arabic_country = fields.Char(string="Country")
+    arabic_vat = fields.Char(string="Vat ID")
+    arabic_cr_number = fields.Char(string="CR Number")

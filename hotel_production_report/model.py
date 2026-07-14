@@ -9,6 +9,9 @@ from datetime import date, timedelta
 import datetime
 from dateutil.relativedelta import *
 import math
+import json
+import urllib.parse
+import urllib.request
 from PIL import Image, ImageDraw
 
 
@@ -26,7 +29,7 @@ class hotel_production_report(models.AbstractModel):
         to = record_wizard.to
         typee = record_wizard.typee
         partner_id = record_wizard.partner_id
-        company = record_wizard.company_id
+        company = record_wizard.company_id or self.env.company
         report_type = record_wizard.report_type
         country_id = record_wizard.country_id
         booking_type = record_wizard.booking_type
@@ -52,9 +55,6 @@ class hotel_production_report(models.AbstractModel):
                 for x in country_id:
 
                     partner.append(x)
-                    print("1111111111111111111111111")
-                    print(partner)
-                    print("1111111111111111111111111")
         all_part_selected = []
         all_part_selected_2 = []
         
@@ -682,9 +682,6 @@ class hotel_production_report_xlsx(models.AbstractModel):
                 for x in country_id:
 
                     partner.append(x)
-                    print("1111111111111111111111111")
-                    print(partner)
-                    print("1111111111111111111111111")
         all_part_selected = []
         all_part_selected_2 = []
         
@@ -1398,9 +1395,6 @@ class hotel_production_report_xlsx(models.AbstractModel):
                 count += 1  # Increment count for duplicate hotel names
                 Hotel_name = f" {count}-{x['hotel']}"  # Create a unique name
 
-            # print("_RRG__")
-            # print(Hotel_name)
-            # print("_RRG__")
             
             # Add the worksheet with the unique hotel name
             worksheet_hotel_report = workbook.add_worksheet(Hotel_name)
@@ -1477,7 +1471,6 @@ class hotel_production_report_xlsx(models.AbstractModel):
                     # customer_name_custom = data_customers +'\n'+ customer_name_custom
                     customer_name_custom += data_customers
                 line += 1
-                # print(row)                    
                 # creation_date = datetime.datetime.strftime(data['creation_date'], "%Y-%m-%d")
                 worksheet_hotel_report.write(line, 0, data['Invoice_no'])
                 worksheet_hotel_report.write(line, 2, data['rq_number'])

@@ -33,6 +33,9 @@ from datetime import date, timedelta
 import datetime
 from dateutil.relativedelta import *
 import math
+import json
+import urllib.parse
+import urllib.request
 from PIL import Image, ImageDraw
 import xlsxwriter
 
@@ -47,11 +50,11 @@ class check_arrival_date_report(models.AbstractModel):
 	def _get_report_values(self, docids, data=None):
 		
 		record_wizard = self.env['check.date.report'].browse(self.env.context.get('active_ids'))
-		company = self.env['res.company'].search([], limit=1)
+		company = record_wizard.company_id or self.env.company
+		
 
 		form = record_wizard.form
 		to = record_wizard.to
-		company = record_wizard.company_id
 
 		record = self.env['all.services'].search([('hotel_return.arrival_date','>=',form),('hotel_return.departure_date','<=',to),('hotel_return.stages','=','validate')])
 

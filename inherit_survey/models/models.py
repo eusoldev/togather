@@ -36,7 +36,7 @@ class Inheirt_surveeys(models.Model):
 					<p style="margin: 0px; padding: 0px; font-size: 13px;">
 						<b>
 						Dear {{y.name}}!</b><br /><br />
-						Thank you for choosing Togather Tourism, <br />
+						Thank you for choosing Togather Travel, <br />
 
 						We craft Unlimited luxury for Mind, Body and Soul.   <br />  
 
@@ -135,6 +135,6 @@ class SurveyInvite_inheritt(models.TransientModel):
 	@api.model
 	def _get_default_from(self):
 		if self.env.user.email:
-			return 'reservations@rawnaqtourism.com'
+			return 'info@togathertravel.com'
 		raise UserError(_("Unable to post message, please configure the sender's email address."))
 	email_from = fields.Char('From', default=_get_default_from, help="Email address of the sender.")

@@ -387,7 +387,7 @@ class sale_order_customized(models.Model):
                         <br/>
                         <b>Regards:</b>
                         <br/>
-                        Togather Tourism
+                        Togather Travel
                         <br/>
                         <br/>
                         <div class="custom_footer" style="width:100%;">
@@ -477,7 +477,7 @@ class sale_order_customized(models.Model):
                         <br/>
                         <b>Regards:</b>
                         <br/>
-                        Togather Tourism
+                        Togather Travel
                         <br/>
                         <br/>
                         <div class="custom_footer" style="width:100%;">
@@ -1269,18 +1269,18 @@ class sale_order_customized(models.Model):
         # move.get_address()
 
 
-    def prepare_bill(self,vendor):
-        invoice_vals = {
-            'invoice_date':self.date_order,
-            'move_type': 'in_invoice',
-            'partner_id': vendor,
-            'invoice_origin': self.name,
-            # 'currency_id' :False,
-            'ref':'('+self.partner_id.name+')'+self.name,
-            'invoice_line_ids': [],
-        }
+    # def prepare_bill(self,vendor):
+    #     invoice_vals = {
+    #         'invoice_date':self.date_order,
+    #         'move_type': 'in_invoice',
+    #         'partner_id': vendor,
+    #         'invoice_origin': self.name,
+    #         # 'currency_id' :False,
+    #         'ref':'('+self.partner_id.name+')'+self.name,
+    #         'invoice_line_ids': [],
+    #     }
 
-        return invoice_vals
+    #     return invoice_vals
 
 
 
@@ -3199,95 +3199,3 @@ class CustomSms(models.Model):
                         temp_str = temp_str+x.mobile+","
             self.send_to = temp_str
 
-    # def send_sms(self):
-    #     if self.sms_send_type == 'later':
-    #         temp = str(self.sms_send_time)
-    #         temp2 = dt.datetime.strptime(temp, '%Y-%m-%d %H:%M:%S')
-    #         temp3 = str(temp2 + relativedelta(hours=5))
-    #         year = temp3[0:4]
-    #         month = temp3[5:7]
-    #         day = temp3[8:10]
-    #         hour = temp3[11:13]
-    #         mint = temp3[14:16]
-    #         sec = temp3[17:19]
-
-    #         time_to_send_sms = year+"-"+month+"-"+day+" "+hour+":"+mint+":"+sec
-    #     else:
-    #         time_to_send_sms = ""
-
-    #     values = """
-    #     {
-    #     "userName": "rawnaqtourism",
-    #     "numbers": "%s",
-    #     "userSender": "RAWNAQ",
-    #     "apiKey": "61f0216ff366d565a4fd46f01aeb53a7",
-    #     "msg": "%s",
-    #     "timeToSend": "%s",
-    #     "exactTime": "%s"
-    #     } """ % (self.send_to, self.sms_text, self.sms_send_type, time_to_send_sms)
-    #     response = requests.post('https://www.msegat.com/gw/sendsms.php', data=values.encode('utf-8'))
-    #     resp = response.json()
-    #     code = resp['code']
-
-    #     if response.status_code == 200:
-    #         if resp['code'] == '1':
-    #             return {'warning':{'title':'SMS','message':"SMS sent successfully."}}
-    #         else:
-    #             error_msg_dict = {
-    #             'M0000': 'Success',
-    #             'M0001' : 'Variables missing',
-    #             'M0002' : 'Invalid login info',
-    #             'M0022' : 'Exceed number of senders allowed',
-    #             'M0023' : 'Sender Name is active or under activation or refused',
-    #             'M0024' : 'Sender Name should be in English or number',
-    #             'M0025' : 'Invalid Sender Name Length',
-    #             'M0026' : 'Sender Name is already activated or not found',
-    #             'M0027' : 'Activation Code is not Correct',
-    #             '1010' : 'Variables missing',
-    #             '1020' : 'Invalid login info',
-    #             '1050' : 'MSG body is empty',
-    #             '1060' : 'Balance is not enough',
-    #             '1061' : 'MSG duplicated',
-    #             '1110' : 'Sender name is missing or incorrect',
-    #             '1120' : 'Mobile numbers is not correct',
-    #             '1140' : 'MSG length is too long',
-    #             'M0029' : 'Invalid Sender Name - Sender Name should contain only letters, numbers and the maximum length should be 11 characters',
-    #             'M0030' : 'Sender Name should ended with AD',
-    #             'M0031' : 'Maximum allowed size of uploaded file is 5 MB',
-    #             'M0032' : 'Only pdf,png,jpg and jpeg files are allowed!',
-    #             'M0033' : 'Sender Type should be normal or whitelist only',
-    #             'M0034' : 'Please Use POST Method',
-    #             }
-
-    #             raise ValidationError("SMS sending failed. "+ error_msg_dict[code])
-
-
-
-
-
-
-    
-    
-
-
-
-
-# class HrPayslipExt(models.Model):
-#     _inherit = 'hr.payslip'
-
-#     total_salary = fields.Float()
-#     total_pay = fields.Float(string="Salaries",compute='_def_get_total',
-#                                  help="salary = wage + travel allowance" )
-
-#     @api.depends('contract_id', 'employee_id', 'number')
-#     def _def_get_total(self):
-
-#         for line in self:
-#             line.total_pay = line.contract_id.wage + line.contract_id.travel_allowance
-
-
-# class HrPayslipExtRun(models.Model):
-#     _inherit = 'hr.payslip.run'
-
-#     def draft_payslip_run(self):
-#         pass

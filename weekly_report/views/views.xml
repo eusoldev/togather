@@ -187,6 +187,23 @@
 
                         <field name="custom_cr_number"></field>
                     </xpath>
+                    <xpath expr="//notebook" position="inside">
+                        <page string="Arabic Details" name="arabic_details">
+                            <group>
+                                <group>
+                                    <field name="arabic_contact"/>
+                                    <field name="arabic_street"/>
+                                    <field name="arabic_street2" placeholder="Street 2..."/>
+                                    <field name="arabic_city" placeholder="City"/>
+                                    <field name="arabic_state" placeholder="State"/>
+                                    <!-- <field name="arabic_zip" placeholder="ZIP"/> -->
+                                    <field name="arabic_country"/>
+                                    <field name="arabic_vat"/>
+                                    <field name="arabic_cr_number"/>
+                                </group>
+                            </group>
+                        </page>
+                    </xpath>
                 </field>
             </record>
 

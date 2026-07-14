@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-
         <record id="paperformat_dmc_report" model="report.paperformat">
             <field name="name">Page For DMC Report</field>
             <field name="default" eval="True" />
@@ -15,9 +14,6 @@
             <field name="header_spacing">10</field>
             <field name="dpi">90</field>
         </record>
-
-
-
         <record id="report_dmc_report" model="ir.actions.report">
             <field name="name">DMC Report</field>
             <field name="model">dmc.report</field>
@@ -25,12 +21,11 @@
             <field name="report_name">dmc_report.dmc_report</field>
             <field name="report_file">dmc_report.dmc_report</field>
             <field name="print_report_name">DMC Report</field>
-            <field name="attachment"/>
-            <field name="binding_model_id" ref="dmc_report.model_dmc_report"/>
+            <field name="attachment" />
+            <field name="binding_model_id" ref="dmc_report.model_dmc_report" />
             <field name="binding_type">report</field>
             <field name="paperformat_id" ref="paperformat_dmc_report" />
         </record>
-
         <record id="report_for_dmc_report_xlsx" model="ir.actions.report">
             <field name="name">Airline Report</field>
             <field name="model">dmc.report</field>
@@ -38,59 +33,106 @@
             <field name="report_name">dmc_report.dmc_report_xlsx</field>
             <field name="report_file">dmc_report.dmc_report_xlsx</field>
             <field name="print_report_name">Check Arrival Report</field>
-            <field name="attachment"/>
-            <field name="binding_model_id" ref="dmc_report.model_dmc_report"/>
+            <field name="attachment" />
+            <field name="binding_model_id" ref="dmc_report.model_dmc_report" />
         </record>
-            
         <record id="dmc_report_wizard" model="ir.ui.view">
             <field name="name">hotel_production_report_records_wizard</field>
             <field name="model">dmc.report</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <form string="Report">
-                        
                     <group name="group_top">
                         <group name="group_left">
-                            <field name="date_range"/>
-                            <field name="form"/>
-                            <field name="report_type"/>
-                            <field name="company_id" invisible="1"/>
+                            <field name="date_range" />
+                            <field name="form" />
+                            <field name="report_type" />
+                            <field name="company_id" invisible="1" />
                             <field name="booking_type" />
                         </group>
-
                         <group name="group_right">
-                            <field name="print_excel"/>
-                            <field name="to"/>
-                            <field name="typee"/>
-                            <field name="partner_id" invisible = "report_type =='destination' or typee=='all'" required="report_type in ('vendor','hotel') or typee=='specific'" widget="many2many_tags" domain="[('hotel_supplier','=',True)]" options="{'no_open':True,'no_create': True}" />
-
-                            <field name="country_id" invisible = "report_type in ['vendor','hotel'] or typee=='all'" required="report_type=='destination' or typee=='specific'" widget="many2many_tags" options="{'no_open':True,'no_create': True}" />
+                            <field name="print_excel" />
+                            <field name="to" />
+                            <field name="typee" />
+                            <field name="partner_id" invisible="report_type =='destination' or typee=='all'" required="report_type in ('vendor','hotel') or typee=='specific'" widget="many2many_tags" domain="[('hotel_supplier','=',True)]" options="{'no_open':True,'no_create': True}" />
+                            <field name="country_id" invisible="report_type in ['vendor','hotel'] or typee=='all'" required="report_type=='destination' or typee=='specific'" widget="many2many_tags" options="{'no_open':True,'no_create': True}" />
                         </group>
-
                     </group>
-                    
-                        <footer style="height: 30px !important; border: none !important;">
-                            <button name="generate_report" type="object" string="Print" class = "oe_highlight" />
-                        </footer>
-
+                    <footer style="height: 30px !important; border: none !important;">
+                        <button name="generate_report" type="object" string="Print" class="oe_highlight" />
+                    </footer>
                 </form>
             </field>
         </record>
-
         <record id="dmc_report_menu_action" model="ir.actions.act_window">
             <field name="name">DMC Report</field>
             <field name="res_model">dmc.report</field>
             <!-- <field name="view_type">form</field> -->
             <field name="view_mode">list,form</field>
-            <field name="view_id" ref="dmc_report_wizard"/>
+            <field name="view_id" ref="dmc_report_wizard" />
             <field name="target">new</field>
         </record>
-
-        <menuitem id="dmc_report_menu_item" name="DMC Report" action="dmc_report_menu_action" parent="account.menu_finance_reports" groups="dmc_report.security_group_for_dmc_report"/>
-
-          <template id="dmc_report_template">
+        <menuitem id="dmc_report_menu_item" name="DMC Report" action="dmc_report_menu_action" parent="account.menu_finance_reports" groups="dmc_report.security_group_for_dmc_report" />
+        <template id="dmc_report_template">
             <style type="text/css">
-            
+            .voucher-company-header {
+                width: 100%;
+                min-height: 170px;
+                padding: 28px 18px 18px 18px;
+                border-bottom: 3px solid #d5dde7;
+                box-sizing: border-box;
+            }
+
+            .voucher-company-info {
+                float: left;
+                width: 36%;
+                color: #000;
+                font-size: 15px;
+                line-height: 1.35;
+            }
+
+            .voucher-company-info p,
+            .voucher-company-info-ar p {
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .voucher-company-name,
+            .voucher-company-name-ar {
+                font-size: 24px;
+                font-weight: 700;
+                line-height: 1.2;
+            }
+
+            .voucher-logo-wrap {
+                float: left;
+                width: 28%;
+                text-align: center;
+                padding-top: 45px;
+            }
+
+            .voucher-logo-wrap img {
+                max-width: 145px;
+                max-height: 65px;
+            }
+
+            .voucher-company-info-ar {
+                float: right;
+                width: 36%;
+                color: #000;
+                direction: rtl;
+                text-align: right;
+                font-size: 15px;
+                line-height: 1.35;
+            }
+
+            .clear_float {
+                clear: both;
+                float: none;
+                height: 0;
+                width: 0;
+                display: block;
+            }
             </style>
             <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
             <t t-if="not o" t-set="o" t-value="doc" />
@@ -109,70 +151,83 @@
                 <div class="float-right">
                     <h3 class="mt0 text-right" t-field="company.report_header" />
                 </div>
-                <div class="main_div" style="width:100%;">
-                    <div class="left_div" style="float:left; width:39%;margin-left:20px;height:0px">
-                        <t t-tif="company.logo">
-                            
-                            <img style="float:left;width:50%; margin-top:10px;height:100px; margin-left:10px" t-if="company.logo" t-att-src="image_data_uri(company.logo)"/>
-                        </t>
-                    </div>
-                    <div class="right_div" style="float:right; width:27%; margin:0px;text-align:start;">
-                        <p style="font-weight: bold;font-size: 18px;color:#7F51A8;">
-                            <span>Contact Us:</span>
-                        </p>
-                      
-                        <p style="margin:0px;;color:#7F51A8;font-size:18px">
-                            <!-- <span class="solid">Phone No:</span> -->
-                            <span class="liquid" t-esc="company.phone"></span>
-                        </p>
-                        <p style="margin:0px;;color:#7F51A8;font-size:18px">
-                            <span class="solid">Email:</span>
-                            <span class="liquid" t-esc="company.email"></span>
-                        </p>
-                        <p style="margin:0px;;color:#7F51A8;font-size:18px">
-                            <span class="solid" style="font-weight:bold;font-size:18px">Offices Address:</span>
-                            <span class="liquid">Riyadh | Jeddah | Dubai</span>
-                        </p>
-                        <br />
-                        <p style="margin:0px;">
-
-                           <!--  <span class="solid">
-                                <a href="https://www.instagram.com/rawnaq_tourism?igshid=OGQ5ZDc2ODk2ZA==" style="color:white">
-                                    <i class="fab fa-instagram" style="color:#7F51A8; font-size:30px; margin-right:12px;"></i>
-                                </a>
-                            </span> -->
-                            <span class="solid">
-                                <a t-att-href="company.social_instagram" style="color:white">
-                                    <i class="fab fa-instagram" style="color:#7F51A8; font-size:30px; margin-right:12px;"></i>
-                                </a>
-                            </span>
-                            <span class="solid">
-                                <a t-att-href="company.social_facebook" style="color:white">
-                                    <i class="fab fa-facebook" style="color:#7F51A8; font-size:30px;margin-right:12px;"></i>
-                                </a>
-                            </span>
-                            <span class="solid">
-                                <a t-att-href="company.social_youtube" style="color:white">
-                                    <i class="fab fa-snapchat-square" style="color:#7F51A8; font-size:30px; margin-right:12px;"></i>
-                                </a>
-                            </span>
-                            <span class="solid">
-                                <a t-att-href="company.social_linkedin" style="color:white">
-                                    <i class="fab fa-linkedin" style="color:#7F51A8; font-size:30px; margin-right:12px;"></i>
-                                </a>
-                            </span>
-                            <span class="solid">
-                                <a t-att-href="company.social_twitter" t-if="company.social_twitter" style="color:white">
-                                    <!-- <i class="fab fa-twitter-square" style="color:#7F51A8; font-size:30px;"></i> -->
-                                    <img src="/voucher_report/static/src/img/twitter.png" style="width:7%;color: #7F51A8;margin-top: -15px;" />
-                                </a>
-                            </span>
-                        </p>
-                    </div>
+                <div>
+                    <t t-foreach="company" t-as="c">
+                        <t t-set="report_company" t-value="c" />
+                        <div class="voucher-company-header">
+                            <div class="voucher-company-info">
+                                <p class="voucher-company-name">
+                                    <span t-esc="report_company.name" />
+                                </p>
+                                <p>
+                                    <span t-if="report_company.street" t-esc="report_company.street" />
+                                    <span t-if="report_company.street and (report_company.city or report_company.country_id)">, </span>
+                                    <span t-if="report_company.city" t-esc="report_company.city" />
+                                    <span t-if="report_company.city and report_company.country_id">, </span>
+                                    <span t-if="report_company.country_id" t-esc="report_company.country_id.name" />
+                                </p>
+                                <p t-if="report_company.email">
+                                    <span t-esc="report_company.email" />
+                                </p>
+                                <p t-if="report_company.phone">
+                                    <span t-esc="report_company.phone" />
+                                </p>
+                                <p t-if="report_company.vat">
+                                    <span t-esc="report_company.vat" />
+                                </p>
+                                <p t-if="report_company.custom_cr_number">
+                                    <span>CR Number </span>
+                                    <span t-esc="report_company.custom_cr_number" />
+                                </p>
+                            </div>
+                            <div class="voucher-logo-wrap">
+                                <img t-if="report_company.logo" t-att-src="image_data_uri(report_company.logo)" />
+                            </div>
+                            <div class="voucher-company-info-ar">
+                                <p class="voucher-company-name-ar">
+                                    <span t-esc="report_company.arabic_contact" />
+                                </p>
+                                <p>
+                                    <t t-if="report_company.arabic_street">
+                                        <span t-esc="report_company.arabic_street" />
+                                    </t>
+                                    <t t-if="report_company.arabic_street2">
+                                        <t t-if="report_company.arabic_street">, </t>
+                                        <span t-esc="report_company.arabic_street2" />
+                                    </t>
+                                    <t t-if="report_company.arabic_city">
+                                        <t t-if="report_company.arabic_street or report_company.arabic_street2">, </t>
+                                        <span t-esc="report_company.arabic_city" />
+                                    </t>
+                                    <t t-if="report_company.arabic_country">
+                                        <t t-if="report_company.arabic_street or report_company.arabic_street2 or report_company.arabic_city">, </t>
+                                        <span t-esc="report_company.arabic_country" />
+                                    </t>
+                                    <t t-if="report_company.arabic_state">
+                                        <t t-if="report_company.arabic_street or report_company.arabic_street2 or report_company.arabic_city">, </t>
+                                        <span t-esc="report_company.arabic_state" />
+                                    </t>
+                                </p>
+                                <p t-if="report_company.email">
+                                    <span t-esc="report_company.email" />
+                                </p>
+                                <p t-if="report_company.phone">
+                                    <span t-esc="report_company.phone" />
+                                </p>
+                                <p t-if="report_company.vat">
+                                    <span t-esc="report_company.vat" />
+                                </p>
+                                <p t-if="report_company.arabic_cr_number">
+                                    <span t-esc="report_company.arabic_cr_number"></span>
+                                    <span t-esc="report_company.custom_cr_number" />
+                                </p>
+                            </div>
+                            <br class="clear_float" />
+                        </div>
+                    </t>
                 </div>
             </div>
             <t t-raw="0" />
         </template>
-        
     </data>
 </odoo>

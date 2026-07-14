@@ -189,6 +189,53 @@
                                 margin: 0 !important;
                                 line-height: 1rem !important;
                             }
+                            .voucher-company-header {
+                                width: 100%;
+                                padding: 28px 18px 75px 18px;
+                                border-bottom: 3px solid #d5dde7;
+                                box-sizing: border-box;
+                            }
+                            .voucher-company-info {
+                                float: left;
+                                width: 36%;
+                                color: #000;
+                                font-size: 15px;
+                                line-height: 1.35;
+                            }
+                            .voucher-company-info p,
+                            .voucher-company-info-ar p {
+                                margin: 0 !important;
+                                padding: 0 !important;
+                            }
+                            .voucher-company-name {
+                                font-size: 24px;
+                                font-weight: 700;
+                                line-height: 1.2;
+                            }
+                            .voucher-logo-wrap {
+                                float: left;
+                                width: 28%;
+                                text-align: center;
+                                padding-top: 60px;
+                            }
+                            .voucher-logo-wrap img {
+                                max-width: 145px;
+                                max-height: 65px;
+                            }
+                            .voucher-company-info-ar {
+                                float: right;
+                                width: 36%;
+                                color: #000;
+                                direction: rtl;
+                                text-align: right;
+                                font-size: 15px;
+                                line-height: 1.35;
+                            }
+                            .voucher-company-name-ar {
+                                font-size: 24px;
+                                font-weight: 700;
+                                line-height: 1.2;
+                            }
                             a {
                                 color: #7F51A8 !important;
                                 text-decoration: none !important;
@@ -201,65 +248,79 @@
                                 <div>
                                     <div>
                                         <t t-foreach="company" t-as="c">
-                                            <div class="main_div" style="width:100%;">
-                                                <div class="left_div" style="float:left; width:39%;margin-left:17px;">
-                                                    
-                                                    <img style="float:left;" t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)"/>
-                                                </div>
-                                                <div class="right_div" style="float:right; width:35%; margin:0px;text-align:start;">
-                                                    <p style="font-weight: bold;font-size: 15px;color:#7F51A8;">
-                                                        <!-- <span class="liquid" t-esc="c.name"></span> -->
-                                                        <span>Contact Us:</span>
+                                            <t t-set="report_company" t-value="o.company_id or c"/>
+                                            <div class="voucher-company-header">
+                                                <div class="voucher-company-info">
+                                                    <p class="voucher-company-name">
+                                                        <span t-esc="report_company.name"/>
                                                     </p>
-                                                    
-                                                    <p style="margin-top:15px;color:#7F51A8;">
-                                                        <!-- <span class="solid">Phone No:</span> -->
-                                                        <span class="liquid" t-esc="c.phone"></span>
+                                                    <p>
+                                                        <span t-if="report_company.street" t-esc="report_company.street"/>
+                                                        <span t-if="report_company.street and (report_company.city or report_company.country_id)">, </span>
+                                                        <span t-if="report_company.city" t-esc="report_company.city"/>
+                                                        <span t-if="report_company.city and report_company.country_id">, </span>
+                                                        <span t-if="report_company.country_id" t-esc="report_company.country_id.name"/>
                                                     </p>
-                                                    <p style="margin-top:15px;color:#7F51A8;">
-                                                        <span class="solid">Email:</span>
-                                                        <span class="liquid" t-esc="c.email"></span>
+                                                    <p t-if="report_company.email">
+                                                        <span t-esc="report_company.email"/>
                                                     </p>
-                                                    <p style="margin-top:15px;color:#7F51A8;">
-                                                        <!-- <span class="solid">Phone No:</span> -->
-                                                        <span class="solid" style="font-weight:bold;">Offices Address:</span>
-                                                        <span class="liquid">Riyadh | Jeddah | Dubai</span>
+                                                    <p t-if="report_company.phone">
+                                                        <span t-esc="report_company.phone"/>
                                                     </p>
-                                                    <br />
-                                                    <p style="margin:0px;">
-                                                        <span class="solid">
-                                                            <a t-att-href="c.social_instagram" style="color:white">
-                                                                <i class="fab fa-instagram" style="color:#7F51A8; font-size:30px; margin-right:12px;"></i>
-                                                            </a>
-                                                        </span>
-                                                        <!-- <span class="solid">
-                                                            <a href="https://www.instagram.com/rawnaq_tourism?igshid=OGQ5ZDc2ODk2ZA==" style="color:white">
-                                                                <i class="fab fa-instagram" style="color:#7F51A8; font-size:30px; margin-right:12px;"></i>
-                                                            </a>
-                                                        </span> -->
-                                                        <span class="solid">
-                                                            <a t-att-href="c.social_facebook" style="color:white">
-                                                                <i class="fab fa-facebook" style="color:#7F51A8; font-size:30px;margin-right:12px;"></i>
-                                                            </a>
-                                                        </span>
-                                                        <span class="solid">
-                                                            <a t-att-href="c.social_youtube" style="color:white">
-                                                                <i class="fab fa-snapchat-square" style="color:#7F51A8; font-size:30px; margin-right:12px;"></i>
-                                                            </a>
-                                                        </span>
-                                                        <span class="solid">
-                                                            <a t-att-href="c.social_linkedin" style="color:white">
-                                                                <i class="fab fa-linkedin" style="color:#7F51A8; font-size:30px; margin-right:12px;"></i>
-                                                            </a>
-                                                        </span>
-                                                        <span class="solid">
-                                                            <a t-att-href="c.social_twitter" t-if="company.social_twitter" style="color:white">
-                                                                <!-- <i class="fab fa-twitter-square" style="color:#7F51A8; font-size:30px;"></i> -->
-                                                                <img src="/voucher_report/static/src/img/twitter.png" style="width: 7%;color: #7F51A8;margin-top: -15px;" />
-                                                            </a>
-                                                        </span>
+                                                    <p t-if="report_company.vat">
+                                                        <span t-esc="report_company.vat"/>
+                                                    </p>
+                                                    <p t-if="report_company.custom_cr_number">
+                                                        <span>CR Number </span>
+                                                        <span t-esc="report_company.custom_cr_number"/>
                                                     </p>
                                                 </div>
+                                                <div class="voucher-logo-wrap">
+                                                    <img t-if="report_company.logo" t-att-src="image_data_uri(report_company.logo)"/>
+                                                </div>
+                                                <div class="voucher-company-info-ar">
+                                                    <p class="voucher-company-name-ar">
+                                                        <span t-esc="report_company.arabic_contact"/>
+                                                    </p>
+                                                    <p>
+                                                        <t t-if="report_company.arabic_street">
+                                                            <span t-esc="report_company.arabic_street"/>
+                                                        </t>
+
+                                                        <t t-if="report_company.arabic_street2">
+                                                            <t t-if="report_company.arabic_street">, </t>
+                                                            <span t-esc="report_company.arabic_street2"/>
+                                                        </t>
+
+                                                        <t t-if="report_company.arabic_city">
+                                                            <t t-if="report_company.arabic_street or report_company.arabic_street2">, </t>
+                                                            <span t-esc="report_company.arabic_city"/>
+                                                        </t>
+
+                                                        <t t-if="report_company.arabic_country">
+                                                            <t t-if="report_company.arabic_street or report_company.arabic_street2 or report_company.arabic_city">, </t>
+                                                            <span t-esc="report_company.arabic_country"/>
+                                                        </t>
+                                                        <t t-if="report_company.arabic_state">
+                                                            <t t-if="report_company.arabic_street or report_company.arabic_street2 or report_company.arabic_city">, </t>
+                                                            <span t-esc="report_company.arabic_state"/>
+                                                        </t>
+                                                    </p>
+                                                    <p t-if="report_company.email">
+                                                        <span t-esc="report_company.email"/>
+                                                    </p>
+                                                    <p t-if="report_company.phone">
+                                                        <span t-esc="report_company.phone"/>
+                                                    </p>
+                                                    <p t-if="report_company.vat">
+                                                        <span t-esc="report_company.vat"/>
+                                                    </p>
+                                                    <p t-if="report_company.arabic_cr_number">
+                                                        <span t-esc="report_company.arabic_cr_number"></span>
+                                                        <span t-esc="report_company.custom_cr_number"/>
+                                                    </p>
+                                                </div>
+                                                <br class="clear_float" />
                                             </div>
                                         </t>
                                     </div>

@@ -32,6 +32,9 @@ import calendar
 from datetime import time
 from dateutil.relativedelta import relativedelta
 import datetime as dt
+import json
+import urllib.parse
+import urllib.request
 
 
 
@@ -43,8 +46,8 @@ class voucher_report(models.AbstractModel):
     def _get_report_values(self, docids, data=None):
         record = self.env['reservation.order'].browse(docids)
 
-        company = self.env['res.company'].search([('id','=',1)])
-        # company = self.env.company.id
+        company = record[:1].company_id or self.env.company
+
         def get_url(hotel_id):
             url = "http://maps.google.com/maps?oi=map&q="
             if hotel_id:
@@ -107,6 +110,7 @@ class voucher_report(models.AbstractModel):
             'docs': record,
             'getRoomTypes': getRoomTypes,
             'company': company,
+            # 'translate_to_ar': translate_to_ar,
             'customer_m2m': customer_m2m,
             'get_url': get_url,
         }

@@ -31,6 +31,9 @@ from datetime import date, timedelta
 import datetime
 from dateutil.relativedelta import *
 import math
+import json
+import urllib.parse
+import urllib.request
 from PIL import Image, ImageDraw
 import xlsxwriter
 
@@ -48,7 +51,7 @@ class dmc_report(models.AbstractModel):
 		to = record_wizard.to
 		typee = record_wizard.typee
 		partner_id = record_wizard.partner_id
-		company = record_wizard.company_id
+		company = record_wizard.company_id or self.env.company
 		report_type = record_wizard.report_type
 		country_id = record_wizard.country_id
 		booking_type = record_wizard.booking_type

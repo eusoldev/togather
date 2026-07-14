@@ -92,7 +92,7 @@ class reservation_link(models.Model):
 						<br/>
 						<b>Regards:</b>
 						<br/>
-						Togather Tourism
+						Togather Travel
 						<br/>
 
 						<br/>

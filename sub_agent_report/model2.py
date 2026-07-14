@@ -31,6 +31,9 @@ from datetime import date, timedelta
 import datetime
 from dateutil.relativedelta import *
 import math
+import json
+import urllib.parse
+import urllib.request
 from PIL import Image, ImageDraw
 
 import xlsxwriter
@@ -54,7 +57,40 @@ class sub_client_report(models.AbstractModel):
 		typee = record_wizard.typee
 		partner_id = record_wizard.partner_id
 		payment_status = record_wizard.payment_status
-		company = record_wizard.company_id
+		company = record_wizard.company_id or self.env.company
+		translation_cache = {}
+		brand_translation_map = {
+			'togather travel': 'مؤسسة معا للسفر والسياحة',
+		}
+
+		def translate_to_ar(value):
+			if not value:
+				return ''
+			value = str(value).strip()
+			if not value:
+				return ''
+			mapped_value = brand_translation_map.get(value.lower())
+			if mapped_value:
+				return mapped_value
+			if value in translation_cache:
+				return translation_cache[value]
+			try:
+				params = urllib.parse.urlencode({
+					'client': 'gtx',
+					'sl': 'auto',
+					'tl': 'ar',
+					'dt': 't',
+					'q': value,
+				})
+				url = 'https://translate.googleapis.com/translate_a/single?' + params
+				with urllib.request.urlopen(url, timeout=5) as response:
+					payload = json.loads(response.read().decode('utf-8'))
+				translated = ''.join(part[0] for part in payload[0] if part and part[0])
+				translation_cache[value] = translated or value
+			except Exception:
+				translation_cache[value] = value
+			return translation_cache[value]
+
 
 		if typee == 'all':
 			partner = self.env['res.partner'].search([('travel_agency','=',False)])
@@ -122,6 +158,7 @@ class sub_client_report(models.AbstractModel):
 			'form': form,
 			'to': to,
 			'company': company,
+			'translate_to_ar': translate_to_ar,
 			'agent_main_list': agent_main_list,
 			'payment_status_value': payment_status_value,
 			# 'agent_main_list_b2c': agent_main_list_b2c,

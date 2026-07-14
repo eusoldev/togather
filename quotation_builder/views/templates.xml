@@ -4,7 +4,7 @@
         <record id="quotation_email_pro_clients" model="mail.template">
             <field name="name">Quotation Builder Email Template</field>
             <field name="model_id" ref="quotation_builder.model_quotation_builder" />
-            <field name="email_from"></field>
+            <field name="email_from">info@togathertravel.com</field>
             <field name="email_to">{{object.client_name.email}}</field>
             <field name="subject">{{object.client_name.name}} (Ref {{object.sr_no or 'n/a'}})</field>
             <field name="auto_delete" eval="False" />
@@ -29,7 +29,7 @@
                                                                 <tr>
                                                                     <td valign="middle">
                                                                         <span style="font-size:20px;font-weight: bold;">
-                                                                            Togather Tourism
+                                                                            Togather Travel
                                                                         </span>
                                                                     </td>
                                                                     <td valign="middle" align="right">
@@ -224,7 +224,7 @@
                                                 <tr>
                                                     <td align="center" style="min-width:590px;padding: 0 8px 0 8px; font-size:11px;">
                                                         <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 4px 0px;">
-                                                        <b>Togather Tourism</b><br>
+                                                        <b>Togather Travel</b><br>
                                                         
                                                     </td>
                                                 </tr>
