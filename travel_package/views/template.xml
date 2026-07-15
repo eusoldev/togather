@@ -193,7 +193,7 @@
                                 <field name="package" readonly="stages in ('validate','cancel')" invisible="1" />
                                 <field name="active" invisible="1" />
                                 <field name="quote_builder" invisible="1" />
-                                <field name="partner_id" string="Customer Name" widget="res_partner_many2one" context="{'res_partner_search_mode': 'customer', 'show_address': 1, 'show_vat': True, 'default_b2c_customer':True}" options='{"always_reload": True}' required="1" domain="[('b2c_customer', '=', 'true')]" readonly="stages in ('validate','cancel')" />
+                                <field name="partner_id" string="Customer Name" widget="res_partner_many2one" context="{'res_partner_search_mode': 'customer', 'show_address': 1, 'show_vat': True, 'default_b2c_customer':True}" options='{"always_reload": True,}' required="1" domain="[('b2c_customer', '=', 'true')]" readonly="stages in ('validate','cancel')" />
                                 <field name="reservation_type" force_save="1" readonly="stages in ('validate','cancel')" />
                                 <field name="job_of_company" readonly='1' force_save="1" invisible="1" />
                                 <field name="partner_id_mtom" invisible='1' widget="many2many_tags" readonly="stages in ('validate','cancel')" />
@@ -202,7 +202,7 @@
                                 <field name="price_list" invisible="1" readonly="stages in ('validate','cancel')" />
                                 <field name="arrival_date" required="1" readonly="stages in ('validate','cancel')" />
                                 <field name="departure_date" required="1" readonly="stages in ('validate','cancel')" />
-                                <field name="agent" readonly="stages in ('validate','cancel')" />
+                                <field name="agent" readonly="stages in ('validate','cancel')" options="{'no_create_edit': True, 'no_open': True}"/>
                                 <field name="get_term_conditions" readonly="stages in ('validate','cancel')" />
                                 <field name="summary" readonly="stages in ('validate','cancel')" />
                                 <field name="x_flight_detail" />

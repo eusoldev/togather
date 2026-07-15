@@ -123,7 +123,7 @@ class sale_order_customized(models.Model):
     quote_builder = fields.Boolean("Is Quote")
     stages = fields.Selection([
         ('draft', 'Draft'),
-        ('validate', 'Confirmed'),
+        ('validate', 'Confirm'),
         ('cancel', 'Canceled'),
     ],default='draft', tracking=True,copy=False)
     reservation_type = fields.Selection([
@@ -2965,30 +2965,36 @@ class SubCustomer(models.Model):
     nationality_of_client = fields.Many2one('res.country',string="Nationality")
     customer_return = fields.Many2one('res.partner')
 
+    def _get_customer_sync_vals(self):
+        self.ensure_one()
+        vals = {
+            'dob': self.dob,
+            'passport_no': self.passport_no,
+            'national_id': self.national_id,
+            'nationality_of_client': self.nationality_of_client.id,
+            'category': self.category,
+        }
+        if 'title_id' in self.customer_name._fields:
+            vals['title_id'] = self.title.id
+        elif 'title' in self.customer_name._fields:
+            vals['title'] = self.title.id
+        return vals
+
+    def _sync_customer_details(self):
+        for rec in self:
+            if rec.customer_name:
+                rec.customer_name.write(rec._get_customer_sync_vals())
+
     @api.model
     def create(self, vals):
         new_rec = super(SubCustomer, self).create(vals)
-        new_rec.customer_name.write({
-            'dob':new_rec.dob,
-            'passport_no':new_rec.passport_no,
-            'title':new_rec.title.id,
-            'national_id':new_rec.national_id,
-            'nationality_of_client':new_rec.nationality_of_client.id,
-            'category':new_rec.category,
-            })
+        new_rec._sync_customer_details()
         return new_rec
 
 
     def write(self, vals):
         rec = super(SubCustomer, self).write(vals)
-        self.customer_name.write({
-            'dob':self.dob,
-            'passport_no':self.passport_no,
-            # 'title':self.title.id,
-            'national_id':self.national_id,
-            'nationality_of_client':self.nationality_of_client.id,
-            'category':self.category,
-            })
+        self._sync_customer_details()
         return rec
 
     @api.onchange('customer_name')

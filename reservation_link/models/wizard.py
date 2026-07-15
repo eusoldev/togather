@@ -15,6 +15,7 @@ import qrcode
 from io import BytesIO
 import codecs
 import uuid
+from markupsafe import escape
 
 class reservation_link(models.Model):
 	_name = 'reservation.link.model'
@@ -26,9 +27,12 @@ class reservation_link(models.Model):
 
 	def send_reservation_email_to_customer(self,**opt):
 		sale_getting = self.env['reservation.order'].sudo().search([('id','=',self.resvartion_link_id)])
-		current_user= self.env.user.name
-		current_links= self.reservation_link
-		body = "Reservation Link Has Been Created By {0} \n <ul><li></li>{1}</ul>".format(str(current_user), str(current_links))
+		current_user = escape(self.env.user.name or '')
+		current_links = escape(self.reservation_link or '')
+		body = (
+			"<p>Reservation Link Has Been Created By %s</p>"
+			'<p><a href="%s" target="_blank" rel="noopener noreferrer">%s</a></p>'
+		) % (current_user, current_links, current_links)
 		if sale_getting:
 
 			sale_getting.message_post(body=body,subject="Pressing Reservation Link Button")

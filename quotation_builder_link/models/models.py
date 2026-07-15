@@ -29,7 +29,7 @@ class reservation_link(models.Model):
 
 	def get_reservation_link_url(self, suffix=None, report_type=None, download=None, query_string=None, anchor=None):
 
-		url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')+'/reservation_link_web_view_ext/' + '%s'%str(self.id)  +'%s?access_token=%s%s%s%s%s' % (
+		url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')+'/quotation_builder_link_web_view/' + '%s'%str(self.id)  +'%s?access_token=%s%s%s%s%s' % (
 			suffix if suffix else '',
 			self._portal_ensure_token_reservation_link(),
 			'&report_type=%s' % report_type if report_type else '',
@@ -53,10 +53,10 @@ class reservation_link(models.Model):
 		else:
 			raise ValidationError('This Partner Has No Email, Please Add The Email First!')
 		return {
-		'res_model': 'reservation.link.model',
+		'res_model': 'quotation.builder.link',
 		'type': 'ir.actions.act_window',
 		'view_mode': 'form',
-		'name':'Togather Reservation Link',
+		'name':'Quotation Builder Link',
 		'view_type': 'form',
 		'target': 'new',
 		'context': dict(

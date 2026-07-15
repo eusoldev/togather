@@ -4,12 +4,12 @@
             <field name="name">quotation_builder_link_ext</field>
             <field name="model">quotation.builder.link</field>
             <field name="arch" type="xml">
-                <form string="Reservation Link">
+                <form string="Quotation Builder Link">
                     <group>
                         <field name="reservation_link_ref" required="0" readonly="1" />
                         <field name="resvartion_link_id" required="0" readonly="1" />
                         <field name="reservation_link_email" required="1" readonly="0" />
-                        <field name="reservation_link" required="0" readonly="1" widget="CopyClipboardChar"/>
+                        <field name="reservation_link" required="0" readonly="1" widget="CopyClipboardChar" options="{'string': 'Copy Link'}"/>
                         
                     </group>
                     <footer>
