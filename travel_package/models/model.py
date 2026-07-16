@@ -1156,6 +1156,7 @@ class sale_order_customized(models.Model):
             ref = self.partner_id.name
 
         grouped_lines = {}
+        customer_invoice = []
         # this is new code for show service type in line section
         for line in self.itinarnay_package:
             price = line.price
@@ -1170,16 +1171,28 @@ class sale_order_customized(models.Model):
                 total = (line.price) + line.commission
                 qty = 1
 
-            account_id = self.env['account.account'].search([('sale', '=', True)], limit=1)
+            account_id = line.product_id.property_account_income_id or line.product_id.categ_id.property_account_income_categ_id
+            if account_id and account_id.account_type in ('asset_receivable', 'liability_payable'):
+                account_id = False
 
             if not account_id:
-                raise ValidationError("Please Select Sale Account")
+                company = self.company_id or self.env.company
+                account_id = company.income_account_id
 
-            if line.product_id:
-                if line.product_id.property_account_income_id:
-                    account_id = line.product_id.property_account_income_id
-                else:
-                    raise ValidationError(f"Product: {line.product_id.name} doesn't have an Income Account")
+            if not account_id:
+                account_id = self.env['account.account'].search([
+                    ('sale', '=', True),
+                    ('account_type', 'in', ['income', 'income_other']),
+                ], limit=1)
+
+            if not account_id:
+                account_id = self.env['account.account'].search([
+                    ('account_type', 'in', ['income', 'income_other']),
+                ], limit=1)
+
+            if not account_id:
+                product_name = line.product_id.display_name or line.description or 'Service line'
+                raise ValidationError(f"Please configure an Income Account for {product_name}.")
 
             tax_ids = []
             taxes = self.env['account.tax'].search([('service_tax_type', '=', line.service_tax_type),('type_tax_use', '=', 'sale'),('active', '=', True)])
@@ -1190,9 +1203,10 @@ class sale_order_customized(models.Model):
             if invoice_type == 'out_refund':
                 price_unit = -price_unit
 
-            if line.service_type not in grouped_lines:
-                grouped_lines[line.service_type] = []
-            grouped_lines[line.service_type].append((0, 0, {
+            # if line.service_type not in grouped_lines:
+            #     grouped_lines[line.service_type] = []
+            customer_invoice.append((0, 0, {
+                # 'display_type': 'product',
                 'name': f"{line.description}, {self.name}",
                 'quantity': 1,
                 'airline': line.airline.id or False,
@@ -1214,16 +1228,16 @@ class sale_order_customized(models.Model):
                 'tax_ids': [(6, 0, tax_ids)],
             }))
 
-        line_ids = []
-        for service_type, lines in grouped_lines.items():
-            # Pehle Section Line add karain
-            line_ids.append((0, 0, {
-                'display_type': 'line_section',
-                'account_id': False,
-                'name': dict(self.itinarnay_package._fields['service_type'].selection).get(service_type, 'Other'),
-            }))
+        # line_ids = []
+        # for service_type, lines in grouped_lines.items():
+        #     # Pehle Section Line add karain
+        #     line_ids.append((0, 0, {
+        #         'display_type': 'line_section',
+        #         'account_id': False,
+        #         'name': dict(self.itinarnay_package._fields['service_type'].selection).get(service_type, 'Other'),
+        #     }))
             
-            line_ids.extend(lines)
+        #     line_ids.extend(lines)
 
         
 
@@ -1243,6 +1257,9 @@ class sale_order_customized(models.Model):
         else:
             due_date = today
 
+        if not customer_invoice:
+            raise ValidationError("No summary/service lines found to create invoice.")
+
         invoice_vals = {
             # 'invoice_date': datetime.today(),
             'invoice_date': self.arrival_date,
@@ -1252,20 +1269,20 @@ class sale_order_customized(models.Model):
             # 'invoice_payment_term_id': self.payment_term_id.id or False,
             'journal_id':journal_id.id,
             'payment_term': self.payment_term,
-            'payment_date_custom': self.payment_date_custom,
+            'payment_date_custom': due_date,
+            'invoice_date_due': due_date,
             'arrival_date': self.arrival_date,
             'departure_date': self.departure_date,
-            'payment_date_custom': due_date,
             'package_no': self.name,
             'ref': ref,
             'commissioned': self.commissioned,
             'invoice_origin': self.name,
             # 'account_id':account_id.id,
-            'invoice_line_ids': line_ids,
+            'invoice_line_ids': customer_invoice,
         }
         # sudo ssh root@5.189.175.68
         
-        move = self.env['account.move'].with_context(default_type=invoice_type).create(invoice_vals)
+        move = self.env['account.move'].with_context(default_move_type=invoice_type).create(invoice_vals)
         # move.get_address()
 
 
@@ -2032,12 +2049,7 @@ class all_services(models.Model):
         # for j in uniq_vendors:
 
         service_lines = self.env['all.services'].search([('supplier','=',self.supplier.id),('itinarnay_return','=',self.itinarnay_return.id)])
-        account_id = self.env['account.account'].search([('purchase','=',True)], limit=1)
-        if not account_id:
-            raise ValidationError("Please Select Purchase Account")
-            
-            
-
+        company = self.itinarnay_return.company_id or self.env.company
 
         line_ids = []
         for line in service_lines:
@@ -2061,11 +2073,27 @@ class all_services(models.Model):
                 product = line.product_id.id
 
 
-            if line.product_id:
-                if line.product_id.property_account_income_id:
-                    account_id = line.product_id.property_account_expense_id
-                else:
-                    raise ValidationError("Product: "+line.product_id.name+" don't have Expense Account")
+            account_id = line.product_id.property_account_expense_id or line.product_id.categ_id.property_account_expense_categ_id
+            if account_id and account_id.account_type in ('asset_receivable', 'liability_payable'):
+                account_id = False
+
+            if not account_id:
+                account_id = company.expense_account_id
+
+            if not account_id:
+                account_id = self.env['account.account'].search([
+                    ('purchase', '=', True),
+                    ('account_type', 'in', ['expense', 'expense_direct_cost']),
+                ], limit=1)
+
+            if not account_id:
+                account_id = self.env['account.account'].search([
+                    ('account_type', 'in', ['expense', 'expense_direct_cost']),
+                ], limit=1)
+
+            if not account_id:
+                product_name = line.product_id.display_name or line.description or 'Service line'
+                raise ValidationError(f"Please configure an Expense Account for {product_name}.")
 
             if invoice_type == 'in_refund':
                 price = -price
@@ -2150,7 +2178,7 @@ class all_services(models.Model):
                     'journal_id': journal_id.id,
                     'invoice_line_ids': line_ids,
                 }
-        move = self.env['account.move'].with_context(default_type=invoice_type).create(invoice_vals)
+        move = self.env['account.move'].with_context(default_move_type=invoice_type).create(invoice_vals)
 
 
         for line in service_lines:

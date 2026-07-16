@@ -24,7 +24,6 @@
                                 <field name="client_name"  readonly="state =='validate'" domain="[('b2c_customer', '=', 'true')]" required="1" />
                                 <field name="subject" readonly="state =='validate'" required="1" />
                                 <field name="date_to" readonly="state =='validate'" />
-                                <field name="date_from" readonly="state =='validate'" required="1" />
                                 <field name="create_uid" readonly="state =='validate'" invisible="1" />
                                 <field name='creation_date'  required="1" readonly="1" />
                                 <field name='cancellation_days' readonly="state =='validate'" required="1" />
@@ -34,6 +33,7 @@
                             <group>
                                 <field name="reference" readonly="state =='validate'" required="1" />
                                 <field name="destination" widget='many2many_tags' readonly="state =='validate'" options="{'no_open':True,'no_create': True}" required="1" />
+                                <field name="date_from" readonly="state =='validate'" required="1" />
                                 <field name="maldives_website_link" />
                                 <field name="number_of_guests" readonly="state =='validate'" />
                                 <field name="total_in_report" />
@@ -79,7 +79,7 @@
                                                 <field name="number_of_rooms" required="service_type=='hotel'" />
                                               
                                                 <field name="inclusion" options="{'no_open':True}" invisible='1' />
-                                                <field name="offers_appiled" widget="html" />
+                                                <field name="offers_appiled" />
                                                 <field name="pictures" widget="many2many_binary" />
                                             </group>
                                             <group>
@@ -91,7 +91,7 @@
                                                 <field name="rate_hotel" options="{'no_open':True,'no_create': True}" invisible='0' />
                                                 <field name="total" for_save="1" invisible='0' />
                                                 
-                                                <field name="tree_canelattions" widget="html" />
+                                                <field name="tree_canelattions" />
                                             </group>
                                         </group>
                                         <group invisible="service_type !='flight'" >
@@ -108,17 +108,17 @@
                                                 <field name="arrival" />
                                                 <field name="booking_date" />
                                                 <field name="description" />
-                                                <field name="offers_appiled" widget="html" />
+                                                <field name="offers_appiled" />
                                             </group>
                                             <group>
                                                 <field name="airline_pnr" invisible="1" />
                                                
-                                                <field name="no_of_guest" invisible='0' />
+                                                <field name="no_of_guest" invisible='0' string="No. of Passengers"/>
                                                 <field name="rate_hotel" options="{'no_open':True,'no_create': True}" invisible='0' />
                                                 <field name="total" readonly='0' force_save='1' sum='Total' invisible='0' />
                                                 <field name="itinarnay_return" invisible='1' />
                                                 <field name="flights_return" invisible='1' />
-                                                <field name="tree_canelattions" widget="html" />
+                                                <field name="tree_canelattions" />
                                             </group>
                                             <group>
                                                 <field name="pictures" widget="many2many_binary" />
@@ -140,7 +140,7 @@
                                                 <field name="transfer_type" options="{'no_open':True}" />
                                                 <field name="vehicle_type" options="{'no_open':True}" />
                                                 <field name="description" />
-                                                <field name="offers_appiled" widget="html" />
+                                                <field name="offers_appiled" />
                                             </group>
                                             <group>
                                                 <field name="wait_time_policy" options="{'no_open':True}" />
@@ -154,7 +154,7 @@
                                                 <field name="price" invisible='1' />
                                                 <field name="commission_percentage" invisible='1' />
                                                 <field name="commission" readonly='1' force_save='1' invisible='1' />
-                                                <field name="tree_canelattions" widget="html" />
+                                                <field name="tree_canelattions" />
                                             </group>
                                             <group>
                                                 <field name="pictures" widget="many2many_binary" />
@@ -175,7 +175,7 @@
                                                 <field name="guided_or_not" />
                                                 <field name="days_valid" invisible='1' options="{
                                                     'no_open':True}" />
-                                                <field name="offers_appiled" widget="html" />
+                                                <field name="offers_appiled" />
                                             </group>
                                             <group>
                                                 <field name="ticket_day" options="{'no_open':True}" required="service_type =='tour'"/>
@@ -186,7 +186,7 @@
                                                 <field name="commission" readonly='1' force_save='1' invisible='1' />
                                                 <field name="rate_hotel" options="{'no_open':True,'no_create': True}" invisible='0' />
                                                 <field name="total" readonly='0' force_save='1' invisible='0' />
-                                                <field name="tree_canelattions" widget="html" />
+                                                <field name="tree_canelattions" />
                                             </group>
                                             <group>
                                                 <field name="pictures" widget="many2many_binary" />
@@ -205,7 +205,7 @@
                                                 <field name="customer" required='0' domain="[('id','in',partner_id_mtom_parent)]" options="{'no_create': True}" invisible="1" />
                                                 <field name="confirmation_no" />
                                                 <field name="description" />
-                                                <field name="offers_appiled" widget="html" />
+                                                <field name="offers_appiled" />
                                             </group>
                                             <group>
                                                 <field name="visa_status" />
@@ -216,7 +216,7 @@
                                                 <field name="commission" readonly='1' force_save='1' invisible='1' />
                                                 <field name="rate_hotel" options="{'no_open':True,'no_create': True}" invisible='0' />
                                                 <field name="total" readonly='0' force_save='1' sum='Total' invisible='0' />
-                                                <field name="tree_canelattions" widget="html" />
+                                                <field name="tree_canelattions" />
                                             </group>
                                             <group>
                                                 <field name="pictures" widget="many2many_binary" />
@@ -238,7 +238,7 @@
                                                 <field name="meal_plan" options="{'no_open':True}" />
                                                 <field name="transfer_mode" />
                                                 <field name="description" />
-                                                <field name="offers_appiled" widget="html" />
+                                                <field name="offers_appiled" />
                                             </group>
                                             <group>
                                                 <field name="no_of_person" string="Guest No" invisible='1' />
@@ -250,7 +250,7 @@
                                                 <field name="commission" readonly='1' force_save='1' invisible='1' />
                                                 <field name="rate_hotel" options="{'no_open':True,'no_create': True}" invisible='0' />
                                                 <field name="total" readonly='0' force_save='1' sum='Total' invisible='0' />
-                                                <field name="tree_canelattions" widget="html" />
+                                                <field name="tree_canelattions" />
                                             </group>
                                             <group>
                                                 <field name="pictures" widget="many2many_binary" />
@@ -270,7 +270,7 @@
                                                 <field name="departures" />
                                                 <field name="arrival" />
                                                 <field name="description" />
-                                                <field name="offers_appiled" widget="html" />
+                                                <field name="offers_appiled" />
                                             </group>
                                             <group>
                                                 <field name="bag" />
@@ -280,7 +280,7 @@
                                                
                                                 <field name="rate_hotel" options="{'no_open':True,'no_create': True}" invisible='0' />
                                                 <field name="total" readonly='0' force_save='1' sum='Total' invisible='0' />
-                                                <field name="tree_canelattions" widget="html" />
+                                                <field name="tree_canelattions" />
                                             </group>
                                             <group>
                                                 <field name="pictures" widget="many2many_binary" />
@@ -304,14 +304,14 @@
                                                 <field name="arrival_place" />
                                                 <field name="date_from" />
                                                 <field name="date_to" />
-                                                <field name="offers_appiled" widget="html" />
+                                                <field name="offers_appiled" />
                                             </group>
                                             <group>
                                                 <field name="no_of_person" invisible="1" />
                                                 
                                                 <field name="rate_hotel" options="{'no_open':True,'no_create': True}" invisible='0' />
                                                 <field name="total" readonly='0' force_save='1' sum='Total' invisible='0' />
-                                                <field name="tree_canelattions" widget="html" />
+                                                <field name="tree_canelattions" />
                                             </group>
                                             <group>
                                                 <field name="pictures" widget="many2many_binary" />
@@ -336,14 +336,14 @@
                                                 <field name="arrival_place" />
                                                 <field name="date_from" />
                                                 <field name="date_to" />
-                                                <field name="offers_appiled" widget="html" />
+                                                <field name="offers_appiled" />
                                             </group>
                                             <group>
                                                 <field name="no_of_person" invisible="1" />
                                               
                                                 <field name="rate_hotel" options="{'no_open':True,'no_create': True}" invisible='0' />
                                                 <field name="total" readonly='0' force_save='1' sum='Total' invisible='0' />
-                                                <field name="tree_canelattions" widget="html" />
+                                                <field name="tree_canelattions" />
                                             </group>
                                             <group>
                                                 <field name="pictures" widget="many2many_binary" />
@@ -363,14 +363,14 @@
                                                 <field name="date_to" />
                                                 <field name="booking_date" />
                                                 <field name="cancellation_days" invisible="1" />
-                                                <field name="offers_appiled" widget="html" />
+                                                <field name="offers_appiled" />
                                             </group>
                                             <group>
                                                 <field name="no_of_person" invisible="1" />
                                                
                                                 <field name="rate_hotel" options="{'no_open':True,'no_create': True}" invisible='0' />
                                                 <field name="total" readonly='0' force_save='1' sum='Total' invisible='0' />
-                                                <field name="tree_canelattions" widget="html" />
+                                                <field name="tree_canelattions" />
                                             </group>
                                             <group>
                                                 <field name="pictures" widget="many2many_binary" />
@@ -383,18 +383,18 @@
                        
                         <group>
                             <group>
-                                <field name="cancel_new_eng" widget="html" />
+                                <field name="cancel_new_eng" />
                             </group>
                             <group>
-                                <field name="cancel_new_ar" widget="html" />
+                                <field name="cancel_new_ar" />
                             </group>
                         </group>
                         <group>
                             <group>
-                                <field name="terms_conditions_eng" widget="html" />
+                                <field name="terms_conditions_eng" />
                             </group>
                             <group>
-                                <field name="terms_conditions_ar" widget="html" />
+                                <field name="terms_conditions_ar" />
                             </group>
                         </group>
                     </sheet>

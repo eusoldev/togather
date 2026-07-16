@@ -15,7 +15,7 @@ import qrcode
 from io import BytesIO
 import codecs
 import uuid
-from markupsafe import escape
+from markupsafe import Markup, escape
 
 class reservation_link(models.Model):
 	_name = 'reservation.link.model'
@@ -29,9 +29,9 @@ class reservation_link(models.Model):
 		sale_getting = self.env['reservation.order'].sudo().search([('id','=',self.resvartion_link_id)])
 		current_user = escape(self.env.user.name or '')
 		current_links = escape(self.reservation_link or '')
-		body = (
-			"<p>Reservation Link Has Been Created By %s</p>"
-			'<p><a href="%s" target="_blank" rel="noopener noreferrer">%s</a></p>'
+		body = Markup(
+			'Reservation Link Has Been Created By %s<br/>'
+			'<a href="%s" target="_blank" rel="noopener noreferrer">%s</a>'
 		) % (current_user, current_links, current_links)
 		if sale_getting:
 

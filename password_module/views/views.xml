@@ -32,7 +32,7 @@
                         
                                 <list editable="bottom" nolabel="1" open="false">
 
-                                    <field name="password_id"  invisible="1"/>
+                                    <field name="password_id"  column_invisible="1"/>
                                     <field name="name" required='1' />
                                     <field name="account_id" required='1' />
                                     <field name="norm_password" required='1'  />
@@ -42,7 +42,7 @@
                                 <form>
                                     <group>
                                         <group>
-                                            <field name="password_id"  invisible="1"/>
+                                            <field name="password_id"  column_invisible="1"/>
                                             <field name="name" required='1' />
                                             <field name="account_id" required='1' />
                                         </group>
@@ -79,10 +79,8 @@
             <kanban>
                 <field name="color" />
                 <templates>
-                    <t t-name="kanban-box">
-                        <div t-attf-class="oe_kanban_color_{{kanban_getcolor(record.color.raw_value)}}
-                                            oe_kanban_global_click oe_semantic_html_override
-                                            oe_kanban_card {{record.group_fancy==1 ? 'oe_kanban_card_fancy' : ''}}">
+                    <t  t-name="card">
+                        <div >
                             <div class="oe_dropdown_kanban">
                                 <!-- dropdown menu -->
                                 <div class="oe_dropdown_toggle">
@@ -91,9 +89,9 @@
                                         <li>
                                             <a type="delete">Delete</a>
                                         </li>
-                                        <li>
+                                       <!--  <li>
                                             <ul class="oe_kanban_colorpicker" data-field="color" />
-                                        </li>
+                                        </li> -->
                                     </ul>
                                 </div>
                                 <div class="oe_clear"></div>

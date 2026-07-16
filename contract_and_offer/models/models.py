@@ -58,6 +58,7 @@ class ContractnOffer(models.Model):
 
 class ContractOfferTree(models.Model):
     _name = 'contract.offer.tree'
+    _rec_name = 'Validity_from'
     _description = 'contract Offer tree'
 
     # contract = fields.Binary(string="Contract")
@@ -123,6 +124,7 @@ class ContractOfferTree(models.Model):
 
 class ContractTree(models.Model):
     _name = 'contract.tree'
+    _rec_name = 'Validity_from'
     _description = 'contract Tree'
 
 
@@ -201,7 +203,7 @@ class ContractTree(models.Model):
 class ContractTreeOffer(models.Model):
     _name = 'contract.tree.offer'
     _description = 'contract Offer tree'
-
+    _rec_name = 'Validity_from'
 
     # contract = fields.Binary(string="Offer")
     contract = fields.Binary(string="Offer", attachment=True)
@@ -276,6 +278,7 @@ class ContractTreeOffer(models.Model):
 
 class ContractTreeOthers(models.Model):
     _name = 'contract.tree.others'
+    _rec_name = 'Validity_from'
     _description = 'contract Offer Other'
 
 
@@ -358,7 +361,7 @@ class ContractTreeOthers(models.Model):
 class Hotel_NameForm(models.Model):
     _name = 'hotel.form'
     _description = 'Hotel Form'
-
+    _rec_name = 'name'
     _order = 'name'
     name = fields.Char(string="Name")
 

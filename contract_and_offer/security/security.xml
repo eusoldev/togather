@@ -11,6 +11,7 @@
         </record>
         <record id="new_hotel_type_cnofr_security" model="res.groups">
             <field name="name">Add New Hotel Types</field>
+            <field name="user_ids" eval="[Command.link(ref('base.user_admin'))]"/>
         </record>
     </data>
 </odoo>

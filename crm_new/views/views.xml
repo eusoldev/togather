@@ -109,9 +109,9 @@
                                 <field name="total_guest" string="Total Guests" readonly="1" class="fw-bold" />
                                 <label for="trip_date_from" string="Trip Dates" />
                                 <div class="o_row">
-                                    <field name="trip_date_from" placeholder="Start Date" class="oe_inline" />
+                                    <field name="trip_date_from" placeholder="Start Date" class="oe_inline"  required="1"/>
                                     <span class="mx-2"> to </span>
-                                    <field name="trip_date_to" placeholder="End Date" class="oe_inline" />
+                                    <field name="trip_date_to" placeholder="End Date" class="oe_inline" required="1"/>
                                 </div>
                             </group>
                             <group string="Financial Overview">

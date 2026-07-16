@@ -317,7 +317,7 @@
                                     <form>
                                         <group>
                                             <group>
-                                                <field name="airline" string="Airline Name" />
+                                                <field name="airline" string="Airline Name" options="{'no_create_edit': True, 'no_open': True}"/>
                                                 <field name="product_id" required='0' options="{'no_open':True,'no_create': True}" domain="[('prod_serv_typecategory','=','flight')]" />
                                                 <field name="supplier" domain="['|',('airline_supplier','=',True),('dmc','=',True)]" required="1" options="{'no_open':True,'no_create': True}" />
                                                 <field name="customer_m2m" required='0' domain="[('id','=',parent.partner_id_mtom)]" options="{'no_create': True}" widget="many2many_tags" />

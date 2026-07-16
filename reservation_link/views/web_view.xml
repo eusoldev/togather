@@ -903,49 +903,17 @@
                                 <span>Contact Us:</span>
                             </p>
                             <p style="margin:0px;color:#7F51A8;">
+                                <span class="liquid" t-esc="o.company_id.name"/>
+                            </p>
+                            <p style="margin:0px;color:#7F51A8;">
                                 <span class="liquid" t-esc="o.company_id.phone"/>
                             </p>
                             <p style="margin:0px;color:#7F51A8;">
                                 <span class="solid">Email:</span>
                                 <span class="liquid" t-esc="o.company_id.email"/>
                             </p>
-                            <p style="margin:0px;color:#7F51A8;">
-                                <span class="solid" style="font-weight:bold;">Offices Address:</span>
-                                <span class="liquid">Riyadh | Jeddah | Dubai</span>
-                            </p>
-                            <p style="margin:0px;">
-                                <span class="solid">
-                                <!-- <a href="https://www.instagram.com/rawnaq_tourism?igshid=OGQ5ZDc2ODk2ZA==" style="color:white">
-                                    <i class="fab fa-instagram" style="color:#7F51A8; font-size:20px; margin-right:12px;"></i>
-                                </a> -->
-                            </span>
-                                <span class="solid">
-                                    <a t-att-href="o.company_id.social_instagram" style="color:white">
-                                        <i class="fab fa-instagram" style="color:#7F51A8; font-size:20px; margin-right:12px;"/>
-                                    </a>
-                                </span>
-                                <span class="solid">
-                                    <a t-att-href="o.company_id.social_facebook" style="color:white">
-                                        <i class="fab fa-facebook" style="color:#7F51A8; font-size:20px;margin-right:12px;"/>
-                                    </a>
-                                </span>
-                                <span class="solid">
-                                    <a t-att-href="o.company_id.social_youtube" style="color:white">
-                                        <i class="fab fa-snapchat-square" style="color:#7F51A8; font-size:20px; margin-right:12px;"/>
-                                    </a>
-                                </span>
-                                <span class="solid">
-                                    <a t-att-href="o.company_id.social_linkedin" style="color:white">
-                                        <i class="fab fa-linkedin" style="color:#7F51A8; font-size:20px; margin-right:12px;"/>
-                                    </a>
-                                </span>
-                                <span class="solid">
-                                <a t-att-href="o.company_id.social_twitter" t-if="o.company_id.social_twitter" style="color:white">
-                                    <!-- <i class="fab fa-twitter-square" style="color:#7F51A8; font-size:30px;"></i> -->
-                                    <img src="/voucher_report/static/src/img/twitter.png" style="width:3.5%;color: #7F51A8;margin-top: -9px;" />
-                                </a>
-                            </span>
-                            </p>
+                            
+                           
                         </div>
                     </div>
                     <br/>

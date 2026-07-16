@@ -106,12 +106,16 @@
                                                                     </tr>
                                                                     <tr>
                                                                         <td style="text-align:left; padding:15px 20px 10px 20px;">
-                                                                            <a style="color:black;" t-att-href="row_h.resort_map or ''">
-                                                                                <img t-att-src="row_h.image_url or ''" style="width:60%;" />
-                                                                                <t t-if="row_h.image_url">
-                                                                                    <t t-out="row_h.image_url"/>
+                                                                            <t t-if="row_h.image_url">
+                                                                                <a style="color:black;" t-att-href="row_h.resort_map or ''">
+                                                                                    <img t-att-src="row_h.image_url" style="width:60%;" />
+                                                                                </a>
+                                                                            </t>
+                                                                            <t t-if="not row_h.image_url and row_h.pictures">
+                                                                                <t t-foreach="row_h.pictures[:1]" t-as="image">
+                                                                                    <img t-att-src="image_data_uri(image.datas)" style="width:60%;" />
                                                                                 </t>
-                                                                            </a>
+                                                                            </t>
                                                                         </td>
                                                                     </tr>
                                                                     <tr>

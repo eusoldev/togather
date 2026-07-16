@@ -104,7 +104,6 @@ class crm_inherit(models.Model):
 			'no_of_particpents': int(self.total_guest),
 			'lead_id': self.id,
 			'package': True,
-			'opportunity_id': self.id,
 			'arrival_date': self.trip_date_from,
 			'departure_date': self.trip_date_to,
 		}

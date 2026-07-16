@@ -209,9 +209,11 @@ class account_move_extend(models.Model):
             partner = self.env['res.partner'].browse(vals.get('partner_id'))
             vals['financial_term'] = partner.financial_term if partner else False
 
+        # if vals.get('payment_date_custom') and not vals.get('invoice_date_due'):
+        #     vals['invoice_date_due'] = vals['payment_date_custom']
+
         new_rec = super(account_move_extend, self).create(vals)
         new_rec.get_bank_list()
-        new_rec.invoice_date_due= new_rec.payment_date_custom 
         return new_rec
 
     def get_bank_list(self):

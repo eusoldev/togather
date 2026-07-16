@@ -39,12 +39,11 @@
                         float: left;
                         width: 28%;
                         text-align: center;
-                        padding-top: 45px;
+                        margin-top:-60px;
                     }
 
                     .voucher-logo-wrap img {
-                        max-width: 145px;
-                        max-height: 65px;
+                        height:245px
                     }
 
                     .voucher-company-info-ar {
@@ -130,11 +129,11 @@
                                 <p t-if="report_company.arabic_vat">
                                     <span t-esc="report_company.arabic_vat" />
                                 </p>
-                                <p t-if="report_company.arabic_cr_number">
+                                <p t-if="report_company.custom_cr_number">
                                     <span t-esc="report_company.arabic_cr_number"/>
+                                    <span t-esc="report_company.custom_cr_number"/>
                                 </p>
                             </div>
-                            <br class="clear_float" />
                         </div>
                     </t>
                 </div>

@@ -13,7 +13,6 @@
 	'mass_mailing',
 	# 'add_voucher_report',
 	'crm',
-	'hr_payroll'
 	
 	], 
 	'data': [

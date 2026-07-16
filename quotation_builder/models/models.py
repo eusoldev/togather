@@ -29,12 +29,31 @@ from lxml import etree
 import uuid
 
 
+def _html_to_plain_text(value):
+	if not value or not isinstance(value, str):
+		return value
+	return BeautifulSoup(value, features='html.parser').get_text(separator='\n', strip=True)
+
+
+def _strip_html_fields(vals, field_names):
+	for field_name in field_names:
+		if field_name in vals:
+			vals[field_name] = _html_to_plain_text(vals[field_name])
+	return vals
+
+
 class quotation_builder(models.Model):
 	_name = 'quotation.builder'
 	_inherit = ['mail.thread', 'mail.activity.mixin']
 	_description = 'Quotation Builder'
 	_rec_name ='sr_no'
 	_order = "id desc"
+	_html_plain_text_fields = (
+		'cancel_new_eng',
+		'cancel_new_ar',
+		'terms_conditions_eng',
+		'terms_conditions_ar',
+	)
 
 
 	subject = fields.Char(string="Subject" , tracking=True)
@@ -94,7 +113,15 @@ class quotation_builder(models.Model):
 		if self.creation_date and self.date_to and self.creation_date > self.date_to:
 			raise ValidationError('Date From is greater than Date To')
 
+	@api.model_create_multi
+	def create(self, vals_list):
+		for vals in vals_list:
+			_strip_html_fields(vals, self._html_plain_text_fields)
+		return super(quotation_builder, self).create(vals_list)
+
 	def write(self, vals):
+		vals = dict(vals)
+		_strip_html_fields(vals, self._html_plain_text_fields)
 		for x in self:
 			if 'date_to' in vals:
 				date_to = vals.get('date_to')
@@ -127,30 +154,16 @@ class quotation_builder(models.Model):
 			}
 
 	def _get_default_note_eng(self):
-		result = """
-		<p>days before arrival,after that you could amend your booking dates depending on availabilty and price subject to change.</p>
-										<p>- All the above rates and availabilty are price subject to Change.</p>
-										"""
-
-
-		return result
+		return """days before arrival,after that you could amend your booking dates depending on availabilty and price subject to change.
+- All the above rates and availabilty are price subject to Change."""
 
 
 
 
 
 	def _get_default_note_ar(self):
-		result = """
-			<p>
-			‫یوم‬ ‫فقط‬, ‫بعد‬ ‫ذلك‬ ‫یمكن‬ ‫تعدیل‬ ‫التاریخ‬ ‫فقط‬ ‫وفقا‬ ‫لأمكانیة‬ ‫الحجز‬ ‫والسعر‬ ‫المتاح‬ ‬
-		</p>
-		<p>
-			‫- ‫جمیع‬ ‫الامكانیات‬ ‫والاسعار‬ ‫قابلة‬ ‫للتغییر
-		</p>
-		 """
-
-
-		return result
+		return """‫یوم‬ ‫فقط‬, ‫بعد‬ ‫ذلك‬ ‫یمكن‬ ‫تعدیل‬ ‫التاریخ‬ ‫فقط‬ ‫وفقا‬ ‫لأمكانیة‬ ‫الحجز‬ ‫والسعر‬ ‫المتاح‬ ‬
+‫- ‫جمیع‬ ‫الامكانیات‬ ‫والاسعار‬ ‫قابلة‬ ‫للتغییر"""
 
 
 	cancel_new_eng = fields.Text('General Cancellation Policy (English)' , default=_get_default_note_eng)
@@ -369,6 +382,10 @@ class quotation_builder_tree(models.Model):
 	_name = 'quotation.builder.tree'
 	_rec_name = 'resort_name'
 	_description = 'Quotation Builder Tree'
+	_html_plain_text_fields = (
+		'offers_appiled',
+		'tree_canelattions',
+	)
 
 
 
@@ -378,6 +395,18 @@ class quotation_builder_tree(models.Model):
 			return search.id
 		else:
 			return 0
+
+	@api.model_create_multi
+	def create(self, vals_list):
+		for vals in vals_list:
+			_strip_html_fields(vals, self._html_plain_text_fields)
+		return super(quotation_builder_tree, self).create(vals_list)
+
+	def write(self, vals):
+		vals = dict(vals)
+		_strip_html_fields(vals, self._html_plain_text_fields)
+		return super(quotation_builder_tree, self).write(vals)
+
 	resort_name = fields.Many2one('res.partner',string="Hotel Name")
 	resort_map = fields.Char(string="Hotel Map")
 	# , compute="_get_resort_map"
@@ -700,7 +729,6 @@ class quotation_builder_inclusion(models.Model):
 	_name = 'quotation.builder.inclusion'
 	_rec_name = 'name'
 	_description = 'Quotation Builder Inclusions'
-
 	name = fields.Char(string="Name")
 	inclusion = fields.Html(string="Inclusions")
 
