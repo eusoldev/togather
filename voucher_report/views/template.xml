@@ -14,19 +14,19 @@
             <field name="header_spacing">10</field>
             <field name="dpi">90</field>
         </record>
-        <record id="voucher_report_id" model="ir.actions.report">
+       <!--  <record id="voucher_report_id" model="ir.actions.report">
             <field name="name">Confirmation Report (View)</field>
             <field name="model">reservation.order</field>
-            <field name="report_type">qweb-pdf</field>
+            <field name="report_type">qweb-html</field>
             <field name="report_name">voucher_report.voucher_report_report</field>
             <field name="report_file">voucher_report.voucher_report_report</field>
             <field name="print_report_name">'Confirmation - %s' % (object.name)</field>
             <field name="binding_model_id" ref="travel_package.model_reservation_order" />
             <field name="binding_type">report</field>
             <field name="paperformat_id" ref="voucher_report_template" />
-        </record>
+        </record> -->
         <record id="voucher_report_pdf_id" model="ir.actions.report">
-            <field name="name">Confirmation Report(Download)</field>
+            <field name="name">Confirmation Repor</field>
             <field name="model">reservation.order</field>
             <field name="report_type">qweb-pdf</field>
             <field name="report_name">voucher_report.voucher_report_report</field>

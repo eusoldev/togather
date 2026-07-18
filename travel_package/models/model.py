@@ -1490,13 +1490,13 @@ class all_services(models.Model):
                 self.date_from = self.departures
             if self.arrival:
                 self.date_to = self.arrival
+    
+    def unlink(self):
+        for record in self:
+            if record.all_old_hotel_record:
+                record.all_old_hotel_record.unlink()
 
-    # def unlink(self):
-    #     for record in self:
-    #         if record.all_old_hotel_record:
-    #             record.all_old_hotel_record.unlink()
-
-    #     return super(all_services, self).unlink()
+        return super(all_services, self).unlink()
 
 
     def get_guests(self):
