@@ -56,7 +56,7 @@
                                                             Dear <t t-out="object.client_name.name or ''"></t> ,
                                                             <br />
                                                             <br />
-                                                            Greetings from <t t-out="row_h.resort_name.name or ''"></t>!
+                                                            Greetings from <t t-out="object.company_id.name or ''"></t>!
                                                             <br />
                                                             <br />
                                                             We are pleased to offer below.

@@ -45,13 +45,13 @@ class ResPartnerSequence(models.Model):
 		return True
 
 
-	sale_order_count = fields.Integer(
-		compute="_compute_sale_order_count"
+	reservation_count = fields.Integer(
+		compute="_compute_reservation_count"
 	)
 
-	def _compute_sale_order_count(self):
+	def _compute_reservation_count(self):
 		for partner in self:
-			partner.sale_order_count = self.env['reservation.order'].search_count([('partner_id', '=', partner.id)])
+			partner.reservation_count = self.env['reservation.order'].search_count([('partner_id', '=', partner.id)])
 
 	def action_open_partner_orders(self):
 		return {

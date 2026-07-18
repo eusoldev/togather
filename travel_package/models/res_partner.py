@@ -112,7 +112,7 @@ class res_partner_customized(models.Model):
         'res_model': 'reservation.order',
         'view_mode': 'form',
         # 'view_id': self.env.ref('view_order_form_ext').id,
-        "views": [(self.env.ref('travel_package.view_order_form_ext').id, "form")],
+        "views": [(self.env.ref('travel_package.view_reservation_order_form').id, "form")],
         'target': 'new',
         'context': {
             'payment_ids': self.ids,

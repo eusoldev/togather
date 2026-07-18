@@ -68,7 +68,7 @@ class account_move_extend(models.Model):
 
     def action_open_reservation(self):
         reservation_order = self.env['reservation.order'].search([('name', '=', self.package_no)], limit=1)
-        view = self.env.ref("travel_package.view_order_form_ext")
+        view = self.env.ref("travel_package.view_reservation_order_form")
         if reservation_order:
             return {
                 'type': 'ir.actions.act_window',

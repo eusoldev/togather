@@ -108,6 +108,9 @@
                             <group>
                                 <field name='name' />
                             </group>
+                            <group>
+                                <field name='country_id' />
+                            </group>
                         </group>
                     </sheet>
                 </form>
@@ -119,6 +122,7 @@
             <field name="arch" type="xml">
                 <list string="Destination">
                     <field name="name" />
+                    <field name="country_id" />
                 </list>
             </field>
         </record>
@@ -307,7 +311,7 @@
                                         <field name="no_of_person" sum="Total" />
                                         <field name="amnt_fc" />
                                         <field name="currency_name" />
-                                        <field name="exchange_rate" />
+                                        <field name="exchange_rate" readonly="1" force_save="1"/>
                                         <field name="price" sum='Total' />
                                         <field name="commission" sum='Total' />
                                         <field name="total" sum='Total' />
@@ -334,7 +338,7 @@
                                                 <field name="amnt_fc" />
                                                 <field name="service_tax_type" required="1" />
                                                 <field name="currency_name" />
-                                                <field name="exchange_rate" />
+                                                <field name="exchange_rate" readonly="1" force_save="1"/>
                                                 <field name="price" sum='Total' />
                                                 <field name="commission" sum='Total' />
                                                 <field name="total" sum='Total' />
@@ -370,7 +374,7 @@
                                         <field name="occasion" />
                                         <field name="special_remarks" />
                                         <field name="offered_applied" />
-                                        <field name="exchange_rate" />
+                                        <field name="exchange_rate" readonly="1" force_save="1"/>
                                         <field name="price" />
                                         <field name="commission" />
                                         <field name="total" sum='Total' />
@@ -409,7 +413,7 @@
                                                 <field name="special_remarks" />
                                                 <field name="offered_applied" />
                                                 <!-- <field name="rate"/> -->
-                                                <field name="exchange_rate" />
+                                                <field name="exchange_rate" readonly="1" force_save="1"/>
                                                 <field name="price" />
                                                 <field name="commission" />
                                                 <field name="total" sum='Total' />
@@ -449,7 +453,7 @@
                                         <field name="no_of_person" string="Hours" column_invisible="1" />
                                         <field name="amnt_fc" />
                                         <field name="currency_name" />
-                                        <field name="exchange_rate" />
+                                        <field name="exchange_rate" readonly="1" force_save="1"/>
                                         <field name="price" />
                                         <field name="commission" />
                                         <field name="total" />
@@ -480,7 +484,7 @@
                                                 <field name="amnt_fc" />
                                                 <field name="service_tax_type" required="1" />
                                                 <field name="currency_name" />
-                                                <field name="exchange_rate" />
+                                                <field name="exchange_rate" readonly="1" force_save="1"/>
                                                 <field name="price" />
                                                 <field name="commission" />
                                                 <field name="total" />
@@ -511,7 +515,7 @@
                                         <field name="no_of_person" string="Qty" column_invisible="1" />
                                         <field name="amnt_fc" />
                                         <field name="currency_name" />
-                                        <field name="exchange_rate" />
+                                        <field name="exchange_rate" readonly="1" force_save="1"/>
                                         <field name="price" />
                                         <field name="commission" />
                                         <field name="total" sum='Total' />
@@ -542,7 +546,7 @@
                                                 <field name="amnt_fc" />
                                                 <field name="service_tax_type" required="1" />
                                                 <field name="currency_name" />
-                                                <field name="exchange_rate" />
+                                                <field name="exchange_rate" readonly="1" force_save="1"/>
                                                 <field name="price" />
                                                 <field name="commission" />
                                                 <field name="total" sum='Total' />
@@ -572,7 +576,7 @@
                                         <field name="no_of_person" string="Ordered Qty" column_invisible="1" />
                                         <field name="currency_name" />
                                         <field name="amnt_fc" />
-                                        <field name="exchange_rate" />
+                                        <field name="exchange_rate" readonly="1" force_save="1"/>
                                         <field name="price" />
                                         <field name="commission" />
                                         <field name="total" sum='Total' />
@@ -599,7 +603,7 @@
                                                 <field name="amnt_fc" />
                                                 <field name="service_tax_type" required="1" />
                                                 <field name="currency_name" />
-                                                <field name="exchange_rate" />
+                                                <field name="exchange_rate" readonly="1" force_save="1"/>
                                                 <field name="price" />
                                                 <field name="commission" />
                                                 <field name="total" sum='Total' />
@@ -611,7 +615,7 @@
                                     <field name='visa_cancel_policy' widget='html' placeholder="Tours Cancelation Policy" readonly="stages in ('validate','cancel')" />
                                 </group>
                             </page>
-                            <page string="Ready Packages">
+                            <page string="Ready Packages" invisible="1">
                                 <field name="packages_pkg" context="{'default_customer':partner_id, 'default_no_of_person':no_of_particpents,'default_service_type':'ready_package'}" readonly="stages in ('validate','cancel')">
                                     <list >
                                         <field name="sequence" widget="handle" readonly="0" />
@@ -632,7 +636,7 @@
                                         <field name="added_values" />
                                         <field name="amnt_fc" />
                                         <field name="currency_name" />
-                                        <field name="exchange_rate" />
+                                        <field name="exchange_rate" readonly="1" force_save="1"/>
                                         <field name="price" />
                                         <field name="product_type" />
                                         <field name="commission" />
@@ -665,7 +669,7 @@
                                                 <field name="amnt_fc" />
                                                 <field name="service_tax_type" required="1" />
                                                 <field name="currency_name" />
-                                                <field name="exchange_rate" />
+                                                <field name="exchange_rate" readonly="1" force_save="1"/>
                                                 <field name="price" />
                                                 <field name="product_type" />
                                                 <field name="commission" />
@@ -699,7 +703,7 @@
                                         <field name="no_of_person" sum='Total' column_invisiblel="1" />
                                         <field name="amnt_fc" />
                                         <field name="currency_name" />
-                                        <field name="exchange_rate" />
+                                        <field name="exchange_rate" readonly="1" force_save="1"/>
                                         <field name="price" sum='Total' />
                                         <field name="commission" sum='Total' />
                                         <field name="total" sum='Total' />
@@ -733,7 +737,7 @@
                                                 <field name="amnt_fc" />
                                                 <field name="service_tax_type" required="1" />
                                                 <field name="currency_name" />
-                                                <field name="exchange_rate" />
+                                                <field name="exchange_rate" readonly="1" force_save="1"/>
                                                 <field name="price" sum='Total' />
                                                 <field name="commission" sum='Total' />
                                                 <field name="total" sum='Total' />
@@ -765,7 +769,7 @@
                                         <field name="no_of_person" column_invisible="1" />
                                         <field name="amnt_fc" />
                                         <field name="currency_name" />
-                                        <field name="exchange_rate" />
+                                        <field name="exchange_rate" readonly="1" force_save="1"/>
                                         <field name="price" />
                                         <field name="commission" />
                                         <field name="total" sum='Total' />
@@ -798,7 +802,7 @@
                                                 <field name="amnt_fc" />
                                                 <field name="service_tax_type" required="1" />
                                                 <field name="currency_name" />
-                                                <field name="exchange_rate" />
+                                                <field name="exchange_rate" readonly="1" force_save="1"/>
                                                 <field name="price" />
                                                 <field name="commission" />
                                                 <field name="total" sum='Total' />
@@ -830,7 +834,7 @@
                                         <field name="no_of_person" invisible="1" />
                                         <field name="amnt_fc" />
                                         <field name="currency_name" />
-                                        <field name="exchange_rate" />
+                                        <field name="exchange_rate" readonly="1" force_save="1"/>
                                         <field name="price" />
                                         <field name="commission" />
                                         <field name="total" sum='Total' />
@@ -862,7 +866,7 @@
                                                 <field name="amnt_fc" />
                                                 <field name="service_tax_type" required="1" />
                                                 <field name="currency_name" />
-                                                <field name="exchange_rate" />
+                                                <field name="exchange_rate" readonly="1" force_save="1"/>
                                                 <field name="price" />
                                                 <field name="commission" />
                                                 <field name="total" sum='Total' />
@@ -889,7 +893,7 @@
                                         <field name="no_of_person" column_invisible="1" />
                                         <field name="amnt_fc" />
                                         <field name="currency_name" />
-                                        <field name="exchange_rate" />
+                                        <field name="exchange_rate" readonly="1" force_save="1"/>
                                         <field name="price" />
                                         <field name="commission" />
                                         <field name="total" sum='Total' />
@@ -914,7 +918,7 @@
                                                 <field name="amnt_fc" />
                                                 <field name="service_tax_type" required="1" />
                                                 <field name="currency_name" />
-                                                <field name="exchange_rate" />
+                                                <field name="exchange_rate" readonly="1" force_save="1"/>
                                                 <field name="price" />
                                                 <field name="commission" />
                                                 <field name="total" sum='Total' />
@@ -1145,15 +1149,6 @@
             <field name="state">code</field>
             <field name="code">model.send_thankyou_sms()</field>
         </record> -->
-        <record id="travel_package_auto_sequence" model="ir.sequence">
-            <field name="name">travel_package_auto_sequence</field>
-            <field name="code">tp.auto.sequence</field>
-            <field name="prefix">RQ-</field>
-            <field name="padding">4</field>
-            <field eval="1" name="number_next" />
-            <field eval="1" name="number_increment" />
-            <field eval="False" name="company_id" />
-        </record>
         <!-- owerriding odoo's contacts action to set default company type -->
         <record id="travel_package_search_view" model="ir.ui.view">
             <field name="name">travel.package.search.view</field>

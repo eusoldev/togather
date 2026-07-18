@@ -1303,7 +1303,6 @@ class sale_order_customized(models.Model):
 
     @api.onchange('departure_date', 'arrival_date')
     def check_date_validation(self):
-
         if self.departure_date and self.arrival_date:
             if self.arrival_date > self.departure_date:
                 # self.arrival_date = None
@@ -1492,12 +1491,12 @@ class all_services(models.Model):
             if self.arrival:
                 self.date_to = self.arrival
 
-    def unlink(self):
-        for record in self:
-            if record.all_old_hotel_record:
-                record.all_old_hotel_record.unlink()
+    # def unlink(self):
+    #     for record in self:
+    #         if record.all_old_hotel_record:
+    #             record.all_old_hotel_record.unlink()
 
-        return super(all_services, self).unlink()
+    #     return super(all_services, self).unlink()
 
 
     def get_guests(self):
@@ -1660,17 +1659,17 @@ class all_services(models.Model):
            'target': 'new',
            'context': ctx,
         }
-
-    @api.model
-    def create(self,vals):
-
-        new_rec = super(all_services, self).create(vals)
-        new_rec.check_date_validation()
-        # new_rec.check_date_fromto_validation()
-        new_rec.age_categ_change_validation()
-        new_rec.get_the_date_from_and_to()
-        new_rec.get_summery()
-        return new_rec
+    
+    @api.model_create_multi
+    def create(self, vals_list):
+        new_recs = super(all_services, self).create(vals_list)
+        for new_rec in new_recs:
+            new_rec.check_date_validation()
+            # new_rec.check_date_fromto_validation()
+            new_rec.age_categ_change_validation()
+            new_rec.get_the_date_from_and_to()
+            new_rec.get_summery()
+        return new_recs
 
     def write(self,vals):
         new_rec =super(all_services, self).write(vals)
@@ -1784,7 +1783,6 @@ class all_services(models.Model):
     
     @api.onchange('departures', 'arrival')
     def check_date_validation(self):
-
         if self.departures and self.arrival:
             if self.departures > self.arrival:
                 raise  ValidationError('Departure date is great than return date.')
@@ -1996,6 +1994,37 @@ class all_services(models.Model):
             self.service_type='ready_package'
             self.description='Ready Package'
                 
+
+    @api.onchange('currency_name')
+    def get_currency_rate(self):
+        if self.currency_name:
+            self.exchange_rate = self._get_currency_exchange_rate()
+        if not self.currency_name:
+            self.exchange_rate = 0
+
+    def _get_exchange_rate_date(self):
+        self.ensure_one()
+        order = (
+            self.flights_return or
+            self.hotel_return or
+            self.transportation_return or
+            self.tours_return or
+            self.visa_return or
+            self.package_return or
+            self.privatejet_return or
+            self.yacht_return or
+            self.cruises_return or
+            self.otherservices_return or
+            self.itinarnay_return or
+            self.services_return
+        )
+        return fields.Date.to_date(order.date_order) if order and order.date_order else fields.Date.context_today(self)
+
+    def _get_currency_exchange_rate(self):
+        self.ensure_one()
+        if not self.currency_name:
+            return 0.0
+        return self.currency_name.with_context(date=self._get_exchange_rate_date()).rate
 
     @api.onchange('product_id')
     def get_detail(self):
@@ -2859,7 +2888,14 @@ class destination(models.Model):
     _name= 'destination.name'
     _description = "Destination Name"
     _rec_name ='name'
-    name = fields.Char(string="Destination name")
+
+    display_name = fields.Char(string="Display Name",compute="get_display_name")
+    name = fields.Char(string="Destination Name",copy=False)
+    country_id = fields.Many2one('res.country', string='Country',copy=False,required=True)
+
+    def get_display_name(self):
+        for dest in self:
+            dest.display_name = str(dest.name) + ' (' + str(dest.country_id.name) + ')'
 
 class tickettype(models.Model):
     _name= 'ticket.type'

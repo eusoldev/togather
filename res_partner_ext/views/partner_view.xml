@@ -11,7 +11,7 @@
                 </xpath>
             </field>
         </record> -->
-        <record id="view_partner>_form_sequence_ext" model="ir.ui.view">
+        <record id="view_partner_form_sequence_ext" model="ir.ui.view">
             <field name="name">view_partner>_form_sequence_ext</field>
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_form" />
@@ -24,8 +24,8 @@
                     <field name="company_registration" />
                 </xpath>
                 <xpath expr="//div[@class ='oe_button_box']" position="inside">
-                    <button name="action_open_partner_orders" type="object" icon="fa-shopping-cart" string="Reservations" invisible="sale_order_count ==0">
-                        <field name="sale_order_count" nolabel="1" widget="statinfo" invisible="sale_order_count ==0" />
+                    <button name="action_open_partner_orders" type="object" icon="fa-calendar-check-o" string="Reservations" invisible="reservation_count ==0">
+                        <field name="reservation_count" widget="statinfo" invisible="reservation_count ==0" string="Reservation"/>
                     </button>
                 </xpath>
                 <xpath expr="//field[@name='phone']" position="attributes">

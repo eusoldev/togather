@@ -1738,10 +1738,10 @@
                                                                                             <td id="logoo_img" align="center" style="font-size: 20px; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 300;" class="pad-header-copy;">
 
                                                                                                  <img style="height:85px;float: left;padding-left:23px;" t-if="i.company_id.logo" t-att-src="image_data_uri(i.company_id.logo)"/>
-                                                                                                <div style="color:#dee3e9;font-size:23px;float:right;margin-right:43px;margin-top:20px;color:black">
+                                                                                                <div style="color:#7F51A8;font-size:23px;float:right;margin-right:43px;margin-top:20px;">
                                                                                                     <h1 style="font-size:larger;margin-bottom:0;" t-esc="i.company_id.name"></h1>
-                                                                                                    <span style="font-weight:bold;color:black"><span>Email:</span>
-                                                                                                        <span t-esc="i.company_id.email" style="color:black;"></span></span>
+                                                                                                    <span style="font-weight:bold;"><span>Email:</span>
+                                                                                                        <span t-esc="i.company_id.email"></span></span>
                                                                                                 </div>
                                                                                             </td>
                                                                                         </tr>

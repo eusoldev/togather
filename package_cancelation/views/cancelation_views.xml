@@ -9,7 +9,8 @@
                     <button name="action_cancel" type="object" string="Cancel" invisible="stages !='validate'" />
                 </xpath>
                 <xpath expr="//page[@name='term_conditions']" position='after'>
-                    <page name='cancelation' string='Cancelation' invisible="quote_builder ==True">
+                    <page name='cancelation' string='Cancelation' invisible="1">
+                         <!-- invisible="quote_builder ==True" -->
                         <field name="cancel_tree">
                             <list>
                                 <field name="partner_id" required="1" />

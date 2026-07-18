@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="travel_package_auto_sequence" model="ir.sequence">
+            <field name="name">travel_package_auto_sequence</field>
+            <field name="code">tp.auto.sequence</field>
+            <field name="prefix">TG-</field>
+            <field name="padding">4</field>
+            <field eval="1" name="number_next" />
+            <field eval="1" name="number_increment" />
+            <field eval="False" name="company_id" />
+        </record>
+    </data>
+</odoo>

@@ -11,6 +11,7 @@
 	'mail',
 	'account',
 	'mass_mailing',
+	'res_partner_ext',
 	# 'add_voucher_report',
 	'crm',
 	
@@ -25,6 +26,7 @@
 		'views/res_partner.xml',
 		'views/menu_items.xml',
 		'views/mailing_template.xml',
+		'data/data.xml',
 	],
 	'assets': {
 		'web.assets_backend': [

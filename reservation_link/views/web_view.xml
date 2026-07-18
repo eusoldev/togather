@@ -389,11 +389,14 @@
             justify-content: center;
             align-items: flex-end;
             flex-direction: column;
+            padding:25px;
         }
         .table {
-   
-    margin-bottom: 20px !important;
-}
+            margin-bottom: 20px !important;
+        }
+        h2 {
+            color: #7F51A8;
+        }
 
         @media only screen and (max-width:800px) {
             .container {
@@ -505,7 +508,7 @@
 
         .h1_class {
             font-size:28px;
-            color:#7F51A8
+            color:#DAD7DD !important;
         }
 
         @media only screen and (max-width:600px) {
@@ -513,7 +516,7 @@
 
             .h1_class,h1 {
                 font-size: 22px;
-                color:#7F51A8;
+                color:#DAD7DD !important;
             }
 
             
@@ -527,8 +530,8 @@
         }
 
         .custom_class {
-            background-color: #fefeff;
-            background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2#DAD7DD' fill-opacity='0.08' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+            background-color: fefeff;
+            <!-- background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2#DAD7DD' fill-opacity='0.08' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E"); -->
         }
 
         .custom_div_ttle {
@@ -561,6 +564,7 @@
         .table td,
         .table th {
             font-size: 14px;
+            color: #7F51A8;
         }
 
         .custom_div_h2 h2 {
@@ -568,8 +572,9 @@
         }
         
         .bokking {
-         background-color: #DAD7DD;
-         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='church-on-sunday' fill='%237B1FA2' fill-opacity='0.36'%3E%3Cpath d='M77.17 0H80v2.83l-.1.1A39.9 39.9 0 0 1 74.64 20a39.9 39.9 0 0 1 5.24 17.06l.11.11v2.89c-.01 6.9-1.8 13.79-5.35 19.94A39.96 39.96 0 0 1 80 79.94V80h-2.83L66.84 69.66a39.83 39.83 0 0 1-24.1 10.25l.09.09h-5.66l.1-.1c-8.7-.58-17.22-4-24.1-10.23L2.82 80H0V79.94c.01-6.9 1.8-13.8 5.35-19.94A39.96 39.96 0 0 1 0 40.06V37.17l.1-.1A39.9 39.9 0 0 1 5.36 20 39.9 39.9 0 0 1 .1 2.94L0 2.83V0h2.83l-.1.1a39.83 39.83 0 0 1 24.1 10.24L37.18 0H40c0 6.92-1.78 13.83-5.35 20A39.96 39.96 0 0 1 40 40c0-6.92 1.78-13.83 5.35-20A39.96 39.96 0 0 1 40 0h2.83l10.33 10.34A39.83 39.83 0 0 1 77.26.09L77.17 0zm.77 77.94c-.3-5.52-1.8-11-4.49-16a40.18 40.18 0 0 1-5.17 6.34l9.66 9.66zm-12.52-9.7l-6.83-6.83-5.46 5.46-1.41 1.41-9.66 9.66c8.4-.45 16.69-3.68 23.36-9.7zm-23.07 6.58l7.99-7.98a40.05 40.05 0 0 1-3.79-4.9 37.88 37.88 0 0 0-4.2 12.88zM47.68 60a37.98 37.98 0 0 0 4.07 5.42L57.17 60l-5.42-5.42A38 38 0 0 0 47.68 60zm2.66-6.84a40.06 40.06 0 0 0-3.79 4.9 37.88 37.88 0 0 1-4.2-12.88l7.99 7.98zm1.38-1.44l1.41 1.41 5.46 5.46 6.83-6.84a37.85 37.85 0 0 0-23.36-9.7l9.66 9.67zM60 60l6.87 6.87A38.1 38.1 0 0 0 72.32 60a38.11 38.11 0 0 0-5.45-6.87L60 60zm-14.65 0a39.9 39.9 0 0 0-5.24 17.06l-.11.11-.1-.1A39.9 39.9 0 0 0 34.64 60a39.9 39.9 0 0 0 5.24-17.06l.11-.11.1.1A39.9 39.9 0 0 0 45.36 60zm9.23-48.25a37.85 37.85 0 0 1 23.36-9.7l-9.66 9.67-1.41 1.41-5.46 5.46-6.83-6.84zm13.67 13.67L62.83 20l5.42-5.42A38 38 0 0 1 72.32 20a37.98 37.98 0 0 1-4.07 5.42zm5.2-3.47a40.05 40.05 0 0 1-3.79 4.89l7.99 7.98c-.61-4.45-2.01-8.82-4.2-12.87zm-6.58 4.92l1.41 1.41 9.66 9.66a37.85 37.85 0 0 1-23.36-9.7l6.83-6.83 5.46 5.46zM53.13 13.13L60 20l-6.87 6.87A38.11 38.11 0 0 1 47.68 20a38.1 38.1 0 0 1 5.45-6.87zm-1.41-1.41l-9.66-9.66c.3 5.52 1.8 11 4.49 16a40.18 40.18 0 0 1 5.17-6.34zm-9.66 26.22c.3-5.52 1.8-11 4.49-16a40.18 40.18 0 0 0 5.17 6.34l-9.66 9.66zm26.22 13.78l9.66-9.66c-.3 5.52-1.8 11-4.49 16a40.18 40.18 0 0 0-5.17-6.34zm8.98-11.81L66.84 50.34a39.83 39.83 0 0 0-24.1-10.25l10.42-10.43a39.83 39.83 0 0 0 24.1 10.25zm-7.6-26.75a40.06 40.06 0 0 1 3.79 4.9 37.88 37.88 0 0 0 4.2-12.88l-7.99 7.98zm-31.72 28.9c-8.4.45-16.69 3.68-23.36 9.7l6.83 6.83 5.46-5.46 1.41-1.41 9.66-9.66zM22.83 60l5.42 5.42c1.54-1.7 2.9-3.52 4.07-5.42a38 38 0 0 0-4.07-5.42L22.83 60zm5.45 8.28l-1.41-1.41-5.46-5.46-6.83 6.84a37.85 37.85 0 0 0 23.36 9.7l-9.66-9.67zm9.37 6.54l-7.99-7.98a40.05 40.05 0 0 0 3.79-4.9 37.88 37.88 0 0 1 4.2 12.88zM20 60l-6.87-6.87A38.11 38.11 0 0 0 7.68 60a38.11 38.11 0 0 0 5.45 6.87L20 60zm17.26-19.9L26.84 29.65a39.83 39.83 0 0 1-24.1 10.25l10.42 10.43a39.83 39.83 0 0 1 24.1-10.25zm-35.2 1.96l9.66 9.66a40.18 40.18 0 0 0-5.17 6.33c-2.7-5-4.2-10.47-4.5-16zm4.49 19.89c-2.7 5-4.2 10.47-4.5 16l9.67-9.67a40.18 40.18 0 0 1-5.17-6.33zm31.1-16.77c-.61 4.45-2.01 8.82-4.2 12.87a40.06 40.06 0 0 0-3.79-4.89l7.99-7.98zm-4.2-23.23c2.7 5 4.2 10.47 4.5 16l-9.67-9.67c1.97-1.97 3.7-4.1 5.17-6.33zm-14.86-.54l6.83 6.84a37.85 37.85 0 0 1-23.36 9.7l9.66-9.67 1.41-1.41 5.46-5.46zm-8.25 5.43l-7.99 7.98c.61-4.45 2.01-8.82 4.2-12.87a40.04 40.04 0 0 0 3.79 4.89zm1.41-1.42A37.99 37.99 0 0 1 7.68 20a38 38 0 0 1 4.07-5.42L17.17 20l-5.42 5.42zm-5.2-7.37a40.04 40.04 0 0 1 3.79-4.89L2.35 5.18c.61 4.45 2.01 8.82 4.2 12.87zm6.58-4.92l-1.41-1.41-9.66-9.66a37.85 37.85 0 0 1 23.36 9.7l-6.83 6.83-5.46-5.46zm13.74 13.74L20 20l6.87-6.87A38.1 38.1 0 0 1 32.32 20a38.1 38.1 0 0 1-5.45 6.87zm6.58-8.82a40.18 40.18 0 0 0-5.17-6.33l9.66-9.66c-.3 5.52-1.8 11-4.49 16z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-color: #7F51A8;
+            color:#DAD7DD;
+         <!-- background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='church-on-sunday' fill='%237B1FA2' fill-opacity='0.36'%3E%3Cpath d='M77.17 0H80v2.83l-.1.1A39.9 39.9 0 0 1 74.64 20a39.9 39.9 0 0 1 5.24 17.06l.11.11v2.89c-.01 6.9-1.8 13.79-5.35 19.94A39.96 39.96 0 0 1 80 79.94V80h-2.83L66.84 69.66a39.83 39.83 0 0 1-24.1 10.25l.09.09h-5.66l.1-.1c-8.7-.58-17.22-4-24.1-10.23L2.82 80H0V79.94c.01-6.9 1.8-13.8 5.35-19.94A39.96 39.96 0 0 1 0 40.06V37.17l.1-.1A39.9 39.9 0 0 1 5.36 20 39.9 39.9 0 0 1 .1 2.94L0 2.83V0h2.83l-.1.1a39.83 39.83 0 0 1 24.1 10.24L37.18 0H40c0 6.92-1.78 13.83-5.35 20A39.96 39.96 0 0 1 40 40c0-6.92 1.78-13.83 5.35-20A39.96 39.96 0 0 1 40 0h2.83l10.33 10.34A39.83 39.83 0 0 1 77.26.09L77.17 0zm.77 77.94c-.3-5.52-1.8-11-4.49-16a40.18 40.18 0 0 1-5.17 6.34l9.66 9.66zm-12.52-9.7l-6.83-6.83-5.46 5.46-1.41 1.41-9.66 9.66c8.4-.45 16.69-3.68 23.36-9.7zm-23.07 6.58l7.99-7.98a40.05 40.05 0 0 1-3.79-4.9 37.88 37.88 0 0 0-4.2 12.88zM47.68 60a37.98 37.98 0 0 0 4.07 5.42L57.17 60l-5.42-5.42A38 38 0 0 0 47.68 60zm2.66-6.84a40.06 40.06 0 0 0-3.79 4.9 37.88 37.88 0 0 1-4.2-12.88l7.99 7.98zm1.38-1.44l1.41 1.41 5.46 5.46 6.83-6.84a37.85 37.85 0 0 0-23.36-9.7l9.66 9.67zM60 60l6.87 6.87A38.1 38.1 0 0 0 72.32 60a38.11 38.11 0 0 0-5.45-6.87L60 60zm-14.65 0a39.9 39.9 0 0 0-5.24 17.06l-.11.11-.1-.1A39.9 39.9 0 0 0 34.64 60a39.9 39.9 0 0 0 5.24-17.06l.11-.11.1.1A39.9 39.9 0 0 0 45.36 60zm9.23-48.25a37.85 37.85 0 0 1 23.36-9.7l-9.66 9.67-1.41 1.41-5.46 5.46-6.83-6.84zm13.67 13.67L62.83 20l5.42-5.42A38 38 0 0 1 72.32 20a37.98 37.98 0 0 1-4.07 5.42zm5.2-3.47a40.05 40.05 0 0 1-3.79 4.89l7.99 7.98c-.61-4.45-2.01-8.82-4.2-12.87zm-6.58 4.92l1.41 1.41 9.66 9.66a37.85 37.85 0 0 1-23.36-9.7l6.83-6.83 5.46 5.46zM53.13 13.13L60 20l-6.87 6.87A38.11 38.11 0 0 1 47.68 20a38.1 38.1 0 0 1 5.45-6.87zm-1.41-1.41l-9.66-9.66c.3 5.52 1.8 11 4.49 16a40.18 40.18 0 0 1 5.17-6.34zm-9.66 26.22c.3-5.52 1.8-11 4.49-16a40.18 40.18 0 0 0 5.17 6.34l-9.66 9.66zm26.22 13.78l9.66-9.66c-.3 5.52-1.8 11-4.49 16a40.18 40.18 0 0 0-5.17-6.34zm8.98-11.81L66.84 50.34a39.83 39.83 0 0 0-24.1-10.25l10.42-10.43a39.83 39.83 0 0 0 24.1 10.25zm-7.6-26.75a40.06 40.06 0 0 1 3.79 4.9 37.88 37.88 0 0 0 4.2-12.88l-7.99 7.98zm-31.72 28.9c-8.4.45-16.69 3.68-23.36 9.7l6.83 6.83 5.46-5.46 1.41-1.41 9.66-9.66zM22.83 60l5.42 5.42c1.54-1.7 2.9-3.52 4.07-5.42a38 38 0 0 0-4.07-5.42L22.83 60zm5.45 8.28l-1.41-1.41-5.46-5.46-6.83 6.84a37.85 37.85 0 0 0 23.36 9.7l-9.66-9.67zm9.37 6.54l-7.99-7.98a40.05 40.05 0 0 0 3.79-4.9 37.88 37.88 0 0 1 4.2 12.88zM20 60l-6.87-6.87A38.11 38.11 0 0 0 7.68 60a38.11 38.11 0 0 0 5.45 6.87L20 60zm17.26-19.9L26.84 29.65a39.83 39.83 0 0 1-24.1 10.25l10.42 10.43a39.83 39.83 0 0 1 24.1-10.25zm-35.2 1.96l9.66 9.66a40.18 40.18 0 0 0-5.17 6.33c-2.7-5-4.2-10.47-4.5-16zm4.49 19.89c-2.7 5-4.2 10.47-4.5 16l9.67-9.67a40.18 40.18 0 0 1-5.17-6.33zm31.1-16.77c-.61 4.45-2.01 8.82-4.2 12.87a40.06 40.06 0 0 0-3.79-4.89l7.99-7.98zm-4.2-23.23c2.7 5 4.2 10.47 4.5 16l-9.67-9.67c1.97-1.97 3.7-4.1 5.17-6.33zm-14.86-.54l6.83 6.84a37.85 37.85 0 0 1-23.36 9.7l9.66-9.67 1.41-1.41 5.46-5.46zm-8.25 5.43l-7.99 7.98c.61-4.45 2.01-8.82 4.2-12.87a40.04 40.04 0 0 0 3.79 4.89zm1.41-1.42A37.99 37.99 0 0 1 7.68 20a38 38 0 0 1 4.07-5.42L17.17 20l-5.42 5.42zm-5.2-7.37a40.04 40.04 0 0 1 3.79-4.89L2.35 5.18c.61 4.45 2.01 8.82 4.2 12.87zm6.58-4.92l-1.41-1.41-9.66-9.66a37.85 37.85 0 0 1 23.36 9.7l-6.83 6.83-5.46-5.46zm13.74 13.74L20 20l6.87-6.87A38.1 38.1 0 0 1 32.32 20a38.1 38.1 0 0 1-5.45 6.87zm6.58-8.82a40.18 40.18 0 0 0-5.17-6.33l9.66-9.66c-.3 5.52-1.8 11-4.49 16z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); -->
         }
 
          body {
@@ -756,7 +761,7 @@
                 width: 100%;
                 background-color: #ecb21f;
                 border-color: #a88734 #9c7e31 #846a29;
-                color: black;
+                color: #7F51A8;
                 border-width: 1px;
                 border-style: solid;
                 border-radius: 13px; 
@@ -775,7 +780,7 @@
                 text-align: center;
                 
                 border-color: #a88734 #9c7e31 #846a29;
-                color: black;
+                color: #7F51A8;
                 border-width: 1px;
                 border-style: solid;
                 border-radius: 13px;
@@ -827,7 +832,7 @@
             }
 
             h1,h4{
-                color: #7F51A8;
+                color: #DAD7DD;
                 font-weight: bold;
             }
             label{
@@ -861,10 +866,65 @@
                 background-color: #DAD7DD;
                 border-radius: 5px;
                 padding: 20px;
-             }
+            }
+            p {
+                color:#7F51A8;
+                margin: 0px;
+            }
+
+            .voucher-company-header {
+                width: 100%;
+                min-height: 260px;
+                padding: 28px 18px 75px 18px;
+                border-bottom: 3px solid #7F51A8;
+                box-sizing: border-box;
+                background: #DAD7DD;
+            }
+            .voucher-company-info {
+                float: left;
+                width: 36%;
+                font-size: 15px;
+                line-height: 1.35;
+            }
+            .voucher-company-info p,
+            .voucher-company-info-ar p {
+                margin: 0 !important;
+                padding: 0 !important;
+                color: #7F51A8;
+            }
+            .voucher-company-name {
+                font-size: 24px;
+                font-weight: 700;
+                line-height: 1.2;
+            }
+            .voucher-logo-wrap {
+                float: left;
+                width: 28%;
+                text-align: center;
+                 margin-top:-60px;
+            }
+            .voucher-logo-wrap img {
+                height:245px
+            }
+            .voucher-company-info-ar {
+                float: right;
+                width: 36%;
+                color: #000;
+                direction: rtl;
+                text-align: right;
+                font-size: 15px;
+                line-height: 1.35;
+            }
+            .voucher-company-name-ar {
+                font-size: 24px;
+                font-weight: 700;
+                line-height: 1.2;
+            }
            
         </style>
         <div class="loader">
+
+            <t t-set="record" t-value="sale_rec"/>
             <div class="loader_container">
                 <div class="petal"/>
                 <div class="petal"/>
@@ -887,12 +947,157 @@
                 <div class="petal"/>
                 <div class="petal"/>
                 <!-- <div class="logoo"><img src="/Hyperpay_integration/static/description/Icon_6_@2x.png" alt="RAWNAQ Tourism"/></div> -->
+                <div class="logoo">
+                    <!-- <img t-if="o.company_id.logo" t-att-src="image_data_uri(record.company_id.logo)"/> -->
+                </div>
             </div>
         </div>
         <div class="custom_class">
             <div class="container">
                 <t t-foreach="sale_rec" t-as="o">
-                     <div class="header_custom mb-4 mt-4">
+                    <div class="voucher-company-header">
+                        <div class="voucher-company-info">
+                            <p class="voucher-company-name">
+                                <span t-esc="o.company_id.name"/>
+                            </p>
+                            <p>
+                                <span t-if="o.company_id.street" t-esc="o.company_id.street"/>
+                                <t t-if="o.company_id.street2">
+                                    <t t-if="o.company_id.street">, </t>
+                                    <span t-esc="o.company_id.street2"/>
+                                </t>
+                                <span t-if="o.company_id.street and (o.company_id.city or o.company_id.country_id)">, </span>
+                                <span t-if="o.company_id.city" t-esc="o.company_id.city"/>
+                                <span t-if="o.company_id.city and o.company_id.country_id">, </span>
+                                <span t-if="o.company_id.country_id" t-esc="o.company_id.country_id.name"/>
+                            </p>
+                            <p t-if="o.company_id.email">
+                                <span>Email:  </span>
+                                <span t-esc="o.company_id.email"/>
+                            </p>
+                            <p t-if="o.company_id.phone">
+                                <span>Phone:  </span>
+                                <span t-esc="o.company_id.phone"/>
+                            </p>
+                            <p t-if="o.company_id.vat">
+                                <span>VAT </span>
+                                <span t-esc="o.company_id.vat"/>
+                            </p>
+                            <p t-if="o.company_id.custom_cr_number">
+                                <span>CR Number </span>
+                                <span t-esc="o.company_id.custom_cr_number"/>
+                            </p>
+                            <br />
+                            <p style="margin:0px;">
+                                <span class="solid">
+                                    <a t-att-href="o.company_id.social_instagram" style="color:#DAD7DD">
+                                        <i class="fab fa-instagram" style="color:#7F51A8; font-size:30px; margin-right:12px;"></i>
+                                    </a>
+                                </span>
+                                <span class="solid">
+                                    <a t-att-href="o.company_id.social_facebook" style="color:#DAD7DD">
+                                        <i class="fab fa-facebook" style="color:#7F51A8; font-size:30px;margin-right:12px;"></i>
+                                    </a>
+                                </span>
+                                <span class="solid">
+                                    <a t-att-href="o.company_id.social_youtube" style="color:#DAD7DD">
+                                        <i class="fab fa-snapchat-square" style="color:#7F51A8; font-size:30px; margin-right:12px;"></i>
+                                    </a>
+                                </span>
+                                <span class="solid">
+                                    <a t-att-href="o.company_id.social_linkedin" style="color:#DAD7DD">
+                                        <i class="fab fa-linkedin" style="color:#7F51A8; font-size:30px; margin-right:12px;"></i>
+                                    </a>
+                                </span>
+                                <span class="solid">
+                                    <a t-att-href="o.company_id.social_twitter" style="color:#DAD7DD">
+                                        <!-- <i class="fab fa-twitter-square" style="color:#7F51A8; font-size:30px;"></i> -->
+                                        <img src="/voucher_report/static/src/img/twitter.png" style="width: 5.5%;color: #7F51A8;margin-top: -15px;margin-right:12px" />
+                                    </a>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="voucher-logo-wrap">
+                            <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)"/>
+                        </div>
+                        <div class="voucher-company-info-ar">
+                            <p class="voucher-company-name-ar">
+                                <span t-esc="o.company_id.arabic_contact"/>
+                            </p>
+                            <p>
+                                <t t-if="o.company_id.arabic_street">
+                                    <span t-esc="o.company_id.arabic_street"/>
+                                </t>
+
+                                <t t-if="o.company_id.arabic_street2">
+                                    <t t-if="o.company_id.arabic_street">, </t>
+                                    <span t-esc="o.company_id.arabic_street2"/>
+                                </t>
+
+                                <t t-if="o.company_id.arabic_city">
+                                    <t t-if="o.company_id.arabic_street or o.company_id.arabic_street2">, </t>
+                                    <span t-esc="o.company_id.arabic_city"/>
+                                </t>
+
+                                <t t-if="o.company_id.arabic_country">
+                                    <t t-if="o.company_id.arabic_street or o.company_id.arabic_street2 or o.company_id.arabic_city">, </t>
+                                    <span t-esc="o.company_id.arabic_country"/>
+                                </t>
+                                <!-- <t t-if="o.company_id.arabic_state">
+                                    <t t-if="o.company_id.arabic_street or o.company_id.arabic_street2 or o.company_id.arabic_city">, </t>
+                                    <span t-esc="o.company_id.arabic_state"/>
+                                </t> -->
+                            </p>
+                            <p t-if="o.company_id.email">
+                                <span>Email: </span>
+                                <span t-esc="o.company_id.email"/>
+                            </p>
+                            <p t-if="o.company_id.phone">
+                                <span>Phone: </span>
+                                <span t-esc="o.company_id.phone"/>
+                            </p>
+                            <p t-if="o.company_id.vat">
+                                <span>VAT: </span>
+                                <span t-esc="o.company_id.vat"/>
+                            </p>
+                            <p t-if="o.company_id.arabic_cr_number">
+                                <span>CR: </span>
+                                <span t-esc="o.company_id.arabic_cr_number"></span>
+                                <!-- <span t-esc="o.company_id.custom_cr_number"/> -->
+                            </p>
+
+                            <br />
+                            <p style="margin:0px;">
+                                <span class="solid">
+                                    <a t-att-href="o.company_id.social_instagram" style="color:#DAD7DD">
+                                        <i class="fab fa-instagram" style="color:#7F51A8; font-size:30px; margin-right:12px;"></i>
+                                    </a>
+                                </span>
+                                <span class="solid">
+                                    <a t-att-href="o.company_id.social_facebook" style="color:#DAD7DD">
+                                        <i class="fab fa-facebook" style="color:#7F51A8; font-size:30px;margin-right:12px;"></i>
+                                    </a>
+                                </span>
+                                <span class="solid">
+                                    <a t-att-href="o.company_id.social_youtube" style="color:#DAD7DD">
+                                        <i class="fab fa-snapchat-square" style="color:#7F51A8; font-size:30px; margin-right:12px;"></i>
+                                    </a>
+                                </span>
+                                <span class="solid">
+                                    <a t-att-href="o.company_id.social_linkedin" style="color:#DAD7DD">
+                                        <i class="fab fa-linkedin" style="color:#7F51A8; font-size:30px; margin-right:12px;"></i>
+                                    </a>
+                                </span>
+                                <span class="solid">
+                                    <a t-att-href="o.company_id.social_twitter" style="color:#DAD7DD">
+                                        <!-- <i class="fab fa-twitter-square" style="color:#7F51A8; font-size:30px;"></i> -->
+                                        <img src="/voucher_report/static/src/img/twitter.png" style="width: 5.5%;color: #7F51A8;margin-top: -15px;margin-right:12px" />
+                                    </a>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                     <!-- <div class="header_custom mb-4 mt-4">
                         <div class="left_portion">
                             <div class="img_c">
                                 <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)"/>
@@ -902,20 +1107,33 @@
                             <p style="font-weight: bold;font-size: 18px;color:#7F51A8;">
                                 <span>Contact Us:</span>
                             </p>
-                            <p style="margin:0px;color:#7F51A8;">
+                            <h3 style="margin:0px;color:#7F51A8;">
                                 <span class="liquid" t-esc="o.company_id.name"/>
+                            </h3>
+                            <p>
+                                <span t-if="o.company_id.street" t-esc="o.company_id.street"/>
+                                <span t-if="o.company_id.street and (o.company_id.city or o.company_id.country_id)">, </span>
+                                <span t-if="o.company_id.city" t-esc="o.company_id.city"/>
+                                <span t-if="o.company_id.city and o.company_id.country_id">, </span>
+                                <span t-if="o.company_id.country_id" t-esc="o.company_id.country_id.name"/>
                             </p>
-                            <p style="margin:0px;color:#7F51A8;">
-                                <span class="liquid" t-esc="o.company_id.phone"/>
+                            <p t-if="o.company_id.email">
+                                <span t-esc="o.company_id.email"/>
                             </p>
-                            <p style="margin:0px;color:#7F51A8;">
-                                <span class="solid">Email:</span>
-                                <span class="liquid" t-esc="o.company_id.email"/>
+                            <p t-if="o.company_id.phone">
+                                <span t-esc="o.company_id.phone"/>
+                            </p>
+                            <p t-if="o.company_id.vat">
+                                <span t-esc="o.company_id.vat"/>
+                            </p>
+                            <p t-if="o.company_id.custom_cr_number">
+                                <span>CR Number </span>
+                                <span t-esc="o.company_id.custom_cr_number"/>
                             </p>
                             
                            
                         </div>
-                    </div>
+                    </div> -->
                     <br/>
                     <br/>
                     <div class="row">
@@ -930,12 +1148,13 @@
                                                     <td>
                                                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                             <tr>
-                                                                <td style="padding: 50px 0 50px 0;" class="pad-header bokking">
+                                                                <!-- <td style="padding: 50px 0 50px 0;" class="pad-header bokking"> -->
+                                                                <td class="pad-header bokking">
                                                                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                                         <tr>
                                                                             <td align="center" style="font-size: 20px; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 300;" class="pad-header-copy;">
                                                                                 <div class="h1_class">
-                                                                                    <h1>Booking Information </h1>
+                                                                                    <h3>Booking Information </h3>
                                                                                 </div>
                                                                             </td>
                                                                         </tr>
@@ -959,13 +1178,13 @@
                                                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                         <!-- RESERVATION DEETS -->
                                                         <tr>
-                                                            <td style="padding: 30px 30px 0 30px;">
+                                                            <td style="padding: 30px">
                                                                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                                                    <tr>
+                                                                    <!-- <tr>
                                                                         <td align="left" style="padding: 0 0 15px 0; font-size: 20px; font-family: 'Open Sans', Helvetica, Arial, sans-serif; color:black; font-weight: 300;">
                                                                             <h2 style="font-size:20px"> Reservation Details</h2>
                                                                         </td>
-                                                                    </tr>
+                                                                    </tr> -->
                                                                     <!-- CHECK-IN -->
                                                                     <tr>
                                                                         <td>
@@ -975,7 +1194,7 @@
                                                                                         <!-- LEFT COLUMN -->
                                                                                         <table cellpadding="0" cellspacing="0" border="0" width="26%" align="left" class="responsive-table">
                                                                                             <tr>
-                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p-bold">
+                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 15px; line-height: 22px; text-align: left;color: #7F51A8" bgcolor="#ffffff" class="flex-p-bold">
                                                                                                     Confirmation No.:
                                                                                                 </td>
                                                                                             </tr>
@@ -983,7 +1202,7 @@
                                                                                         <!-- RIGHT COLUMN -->
                                                                                         <table cellpadding="0" cellspacing="0" border="0" width="70%" align="right" class="responsive-table">
                                                                                             <tr>
-                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: Arial, sans-serif; color: #333333; font-family: 'Open Sans', Helvetica, Arial, sans-serif;  font-weight: 400; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p">
+                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: Arial, sans-serif; color: #333333; font-family: 'Open Sans', Helvetica, Arial, sans-serif;  font-weight: 400; font-size: 15px; line-height: 22px; text-align: left;color: #7F51A8" bgcolor="#ffffff" class="flex-p">
                                                                                                     <span t-esc="o.name"/>
                                                                                                 </td>
                                                                                             </tr>
@@ -1002,7 +1221,7 @@
                                                                                         <!-- LEFT COLUMN -->
                                                                                         <table cellpadding="0" cellspacing="0" border="0" width="26%" align="left" class="responsive-table">
                                                                                             <tr>
-                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p-bold">
+                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 15px; line-height: 22px; text-align: left;color: #7F51A8" bgcolor="#ffffff" class="flex-p-bold">
                                                                                                     Customer Name:
                                                                                                 </td>
                                                                                             </tr>
@@ -1010,7 +1229,7 @@
                                                                                         <!-- RIGHT COLUMN -->
                                                                                         <table cellpadding="0" cellspacing="0" border="0" width="70%" align="right" class="responsive-table">
                                                                                             <tr>
-                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: Arial, sans-serif; color: #333333; font-family: 'Open Sans', Helvetica, Arial, sans-serif;  font-weight: 400; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p">
+                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: Arial, sans-serif; color: #333333; font-family: 'Open Sans', Helvetica, Arial, sans-serif;  font-weight: 400; font-size: 15px; line-height: 22px; text-align: left;color: #7F51A8" bgcolor="#ffffff" class="flex-p">
                                                                                                     <span t-esc="o.partner_id.name"/>
                                                                                                 </td>
                                                                                             </tr>
@@ -1028,7 +1247,7 @@
                                                                                         <!-- LEFT COLUMN -->
                                                                                         <table cellpadding="0" cellspacing="0" border="0" width="26%" align="left" class="responsive-table">
                                                                                             <tr>
-                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p-bold">
+                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 15px; line-height: 22px; text-align: left;color: #7F51A8" bgcolor="#ffffff" class="flex-p-bold">
                                                                                                     Guests Name:
                                                                                                 </td>
                                                                                             </tr>
@@ -1036,7 +1255,7 @@
                                                                                         <!-- RIGHT COLUMN -->
                                                                                         <table cellpadding="0" cellspacing="0" border="0" width="70%" align="right" class="responsive-table">
                                                                                             <tr>
-                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: Arial, sans-serif; color: #333333; font-family: 'Open Sans', Helvetica, Arial, sans-serif;  font-weight: 400; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p">
+                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: Arial, sans-serif; color: #333333; font-family: 'Open Sans', Helvetica, Arial, sans-serif;  font-weight: 400; font-size: 15px; line-height: 22px; text-align: left;color: #7F51A8" bgcolor="#ffffff" class="flex-p">
                                                                                                     <t t-set="com" t-value="0"/>
                                                                                                     <t t-foreach="customer_m2m" t-as="g">
                                                                                                         <t t-set="com" t-value="com+1"/>
@@ -1068,7 +1287,7 @@
                                                                                         <!-- LEFT COLUMN -->
                                                                                         <table cellpadding="0" cellspacing="0" border="0" width="26%" align="left" class="responsive-table">
                                                                                             <tr>
-                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p-bold">
+                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 15px; line-height: 22px; text-align: left;color: #7F51A8" bgcolor="#ffffff" class="flex-p-bold">
                                                                                                     Guests:
                                                                                                 </td>
                                                                                             </tr>
@@ -1076,7 +1295,7 @@
                                                                                         <!-- RIGHT COLUMN -->
                                                                                         <table cellpadding="0" cellspacing="0" border="0" width="70%" align="right" class="responsive-table">
                                                                                             <tr>
-                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: Arial, sans-serif; color: #333333; font-family: 'Open Sans', Helvetica, Arial, sans-serif;  font-weight: 400; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p">
+                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: Arial, sans-serif; color: #333333; font-family: 'Open Sans', Helvetica, Arial, sans-serif;  font-weight: 400; font-size: 15px; line-height: 22px; text-align: left;color: #7F51A8" bgcolor="#ffffff" class="flex-p">
                                                                                                     <span t-esc="o.no_of_particpents"/>
                                                                                                 </td>
                                                                                             </tr>
@@ -1095,7 +1314,7 @@
                                                                                         <!-- LEFT COLUMN -->
                                                                                         <table cellpadding="0" cellspacing="0" border="0" width="26%" align="left" class="responsive-table">
                                                                                             <tr>
-                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p-bold">
+                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 15px; line-height: 22px; text-align: left;color: #7F51A8" bgcolor="#ffffff" class="flex-p-bold">
                                                                                                     Destination:
                                                                                                 </td>
                                                                                             </tr>
@@ -1103,7 +1322,7 @@
                                                                                         <!-- RIGHT COLUMN -->
                                                                                         <table cellpadding="0" cellspacing="0" border="0" width="70%" align="right" class="responsive-table">
                                                                                             <tr>
-                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: Arial, sans-serif; color: #333333; font-family: 'Open Sans', Helvetica, Arial, sans-serif;  font-weight: 400; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p">
+                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: Arial, sans-serif; color: #333333; font-family: 'Open Sans', Helvetica, Arial, sans-serif;  font-weight: 400; font-size: 15px; line-height: 22px; text-align: left;color: #7F51A8" bgcolor="#ffffff" class="flex-p">
                                                                                                     <t t-set="com" t-value="0"/>
                                                                                                     <t t-foreach="o.destination" t-as="d">
                                                                                                         <t t-set="com" t-value="com+1"/>
@@ -1130,14 +1349,14 @@
                                                                                 <td valign="top" style="padding: 0 0 0 0;">
                                                                                     <table cellpadding="0" cellspacing="0" border="0" width="26%" align="left" class="responsive-table">
                                                                                         <tr>
-                                                                                            <td align="center" style="padding: 0 0 0 0; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p-bold">
+                                                                                            <td align="center" style="padding: 0 0 0 0; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 15px; line-height: 22px; text-align: left;color: #7F51A8" bgcolor="#ffffff" class="flex-p-bold">
                                                                                                 Sub-Agent :
                                                                                             </td>
                                                                                         </tr>
                                                                                     </table>
                                                                                     <table cellpadding="0" cellspacing="0" border="0" width="70%" align="right" class="responsive-table">
                                                                                         <tr>
-                                                                                            <td align="center" style="padding: 0 0 0 0; font-family: Arial, sans-serif; color: #333333; font-family: 'Open Sans', Helvetica, Arial, sans-serif;  font-weight: 400; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p">
+                                                                                            <td align="center" style="padding: 0 0 0 0; font-family: Arial, sans-serif; color: #333333; font-family: 'Open Sans', Helvetica, Arial, sans-serif;  font-weight: 400; font-size: 15px; line-height: 22px; text-align: left;color: #7F51A8" bgcolor="#ffffff" class="flex-p">
                                                                                                 <span t-esc="o.agent.name"></span>
                                                                                             </td>
                                                                                         </tr>
@@ -1155,7 +1374,7 @@
                                                                                         <!-- LEFT COLUMN -->
                                                                                         <table cellpadding="0" cellspacing="0" border="0" width="26%" align="left" class="responsive-table">
                                                                                             <tr>
-                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p-bold">
+                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 15px; line-height: 22px; text-align: left;color: #7F51A8" bgcolor="#ffffff" class="flex-p-bold">
                                                                                                     Arrival Date:
                                                                                                 </td>
                                                                                             </tr>
@@ -1163,7 +1382,7 @@
                                                                                         <!-- RIGHT COLUMN -->
                                                                                         <table cellpadding="0" cellspacing="0" border="0" width="70%" align="right" class="responsive-table">
                                                                                             <tr>
-                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: Arial, sans-serif; color: #333333; font-family: 'Open Sans', Helvetica, Arial, sans-serif;  font-weight: 400; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p">
+                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: Arial, sans-serif; color: #333333; font-family: 'Open Sans', Helvetica, Arial, sans-serif;  font-weight: 400; font-size: 15px; line-height: 22px; text-align: left;color: #7F51A8" bgcolor="#ffffff" class="flex-p">
                                                                                                     <span t-esc="o.arrival_date"/>
                                                                                                 </td>
                                                                                             </tr>
@@ -1181,7 +1400,7 @@
                                                                                         <!-- LEFT COLUMN -->
                                                                                         <table cellpadding="0" cellspacing="0" border="0" width="26%" align="left" class="responsive-table">
                                                                                             <tr>
-                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p-bold">
+                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 15px; line-height: 22px; text-align: left;color: #7F51A8" bgcolor="#ffffff" class="flex-p-bold">
                                                                                                     Departure Date:
                                                                                                 </td>
                                                                                             </tr>
@@ -1189,7 +1408,7 @@
                                                                                         <!-- RIGHT COLUMN -->
                                                                                         <table cellpadding="0" cellspacing="0" border="0" width="70%" align="right" class="responsive-table">
                                                                                             <tr>
-                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: Arial, sans-serif; color: #333333; font-family: 'Open Sans', Helvetica, Arial, sans-serif;  font-weight: 400; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p">
+                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: Arial, sans-serif; color: #333333; font-family: 'Open Sans', Helvetica, Arial, sans-serif;  font-weight: 400; font-size: 15px; line-height: 22px; text-align: left;color: #7F51A8" bgcolor="#ffffff" class="flex-p">
                                                                                                     <span t-esc="o.departure_date"/>
                                                                                                 </td>
                                                                                             </tr>
@@ -1207,7 +1426,7 @@
                                                                                         <!-- LEFT COLUMN -->
                                                                                         <table cellpadding="0" cellspacing="0" border="0" width="26%" align="left" class="responsive-table">
                                                                                             <tr>
-                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p-bold">
+                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 15px; line-height: 22px; text-align: left;color: #7F51A8" bgcolor="#ffffff" class="flex-p-bold">
                                                                                                     Arrival Flight:
                                                                                                 </td>
                                                                                             </tr>
@@ -1215,7 +1434,7 @@
                                                                                         <!-- RIGHT COLUMN -->
                                                                                         <table cellpadding="0" cellspacing="0" border="0" width="70%" align="right" class="responsive-table">
                                                                                             <tr>
-                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: Arial, sans-serif; color: #333333; font-family: 'Open Sans', Helvetica, Arial, sans-serif;  font-weight: 400; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p">
+                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: Arial, sans-serif; color: #333333; font-family: 'Open Sans', Helvetica, Arial, sans-serif;  font-weight: 400; font-size: 15px; line-height: 22px; text-align: left;color: #7F51A8" bgcolor="#ffffff" class="flex-p">
                                                                                                     <span t-esc="o.hotel_arrival.name"/>
                                                                                                 </td>
                                                                                             </tr>
@@ -1233,7 +1452,7 @@
                                                                                         <!-- LEFT COLUMN -->
                                                                                         <table cellpadding="0" cellspacing="0" border="0" width="26%" align="left" class="responsive-table">
                                                                                             <tr>
-                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p-bold">
+                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 15px; line-height: 22px; text-align: left;color: #7F51A8" bgcolor="#ffffff" class="flex-p-bold">
                                                                                                     Departure Flight:
                                                                                                 </td>
                                                                                             </tr>
@@ -1251,20 +1470,18 @@
                                                                             </table>
                                                                         </td>
                                                                     </tr>
-                                                                    <tr>
+                                                                    <!-- <tr>
                                                                         <td style="padding-bottom: 40px;">
                                                                             <table cellspacing="0" cellpadding="0" border="0" width="100%">
                                                                                 <tr>
                                                                                     <td valign="top" style="padding: 0 0 0 0;">
-                                                                                        <!-- LEFT COLUMN -->
                                                                                         <table cellpadding="0" cellspacing="0" border="0" width="26%" align="left" class="responsive-table">
                                                                                             <tr>
-                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p-bold">
+                                                                                                <td align="center" style="padding: 0 0 0 0; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 15px; line-height: 22px; text-align: left;color: #7F51A8" bgcolor="#ffffff" class="flex-p-bold">
                                                                                                     Branch:
                                                                                                 </td>
                                                                                             </tr>
                                                                                         </table>
-                                                                                        <!-- RIGHT COLUMN -->
                                                                                         <table cellpadding="0" cellspacing="0" border="0" width="70%" align="right" class="responsive-table">
                                                                                             <tr>
                                                                                                 <td align="center" style="padding: 0 0 0 0; font-family: Arial, sans-serif; color: #333333; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 400; font-size: 15px; line-height: 22px; text-align: left;" bgcolor="#ffffff" class="flex-p">
@@ -1275,7 +1492,7 @@
                                                                                 </tr>
                                                                             </table>
                                                                         </td>
-                                                                    </tr>
+                                                                    </tr> -->
                                                                 </table>
                                                             </td>
                                                         </tr>
@@ -1384,7 +1601,7 @@
                                                             <tr>
                                                                 <th scope="col">Airline</th>
                                                                 <!-- <th scope="col">Supplier</th> -->
-                                                                <th scope="col">Names</th>
+                                                                <th scope="col">Name</th>
                                                                 <!-- <th scope="col">From/To</th> -->
                                                                 <th scope="col">Flight</th>
                                                                 <th scope="col">Class</th>
@@ -1465,7 +1682,7 @@
                                                         <thead style="background: lightgray;">
                                                             <tr>
                                                                 <th scope="col">Hotel</th>
-                                                                <th scope="col">Names</th>
+                                                                <th scope="col">Name</th>
                                                                 <th scope="col">Check In</th>
                                                                 <th scope="col">Check Out</th>
                                                                 <th scope="col">Nights</th>
@@ -1585,7 +1802,7 @@
                                                             <tr>
                                                                 <th scope="col">Product</th>
                                                                 <!-- <th>Supplier</th> -->
-                                                                <th scope="col">Names</th>
+                                                                <th scope="col">Name</th>
                                                                 <th scope="col">Confirmation Number</th>
                                                                 <th scope="col">Pick Up</th>
                                                                 <th scope="col">Drop-off</th>
@@ -1677,7 +1894,7 @@
                                                         <thead style="background: lightgray;">
                                                             <tr>
                                                                 <th scope="col">Product</th>
-                                                                <th scope="col">Names</th>
+                                                                <th scope="col">Name</th>
                                                                 <th scope="col">Confirmation Number</th>
                                                                 <th scope="col">Description</th>
                                                                 <th scope="col">Guided/Not Guided</th>
@@ -1752,7 +1969,7 @@
                                                             <tr>
                                                                 <th scope="col">Product</th>
                                                                 <!-- <th>Supplier</th> -->
-                                                                <th scope="col">Names</th>
+                                                                <th scope="col">Name</th>
                                                                 <th scope="col">Confirmation Number</th>
                                                                 <th scope="col">Description</th>
                                                                 <th scope="col">Visa Status</th>
@@ -1810,7 +2027,7 @@
                                                         <thead style="background: lightgray;">
                                                             <tr>
                                                                 <th>Product</th>
-                                                                <th scope="col">Names</th>
+                                                                <th scope="col">Name</th>
                                                                 <th scope="col">Guest Category</th>
                                                                 <th scope="col">Confirmation Number</th>
                                                                 <th scope="col">Validity (Start/Expire)</th>
@@ -1893,7 +2110,7 @@
                                                             <tr>
                                                                 <th>Airline</th>
                                                                 <!-- <th>Supplier</th> -->
-                                                                <th scope="col">Names</th>
+                                                                <th scope="col">Name</th>
                                                                 <th scope="col">From/To</th>
                                                                 <th scope="col">Flight</th>
                                                                 <th scope="col">Class</th>
@@ -1970,7 +2187,7 @@
                                                     <table class="table table-hover">
                                                         <thead style="background: lightgray;">
                                                             <tr>
-                                                                <th scope="col">Names</th>
+                                                                <th scope="col">Name</th>
                                                                 <th scope="col">Confirmation Number</th>
                                                                 <th scope="col">Description</th>
                                                                 <th scope="col">Duration</th>
@@ -2056,7 +2273,7 @@
                                                     <table class="table table-hover">
                                                         <thead style="background: lightgray;">
                                                             <tr>
-                                                                <th scope="col">Names</th>
+                                                                <th scope="col">Name</th>
                                                                 <th scope="col">Confirmation Number</th>
                                                                 <th scope="col">Description</th>
                                                                 <th scope="col">Duration</th>
@@ -2142,7 +2359,7 @@
                                                     <table class="table table-hover">
                                                         <thead style="background: lightgray;">
                                                             <tr>
-                                                                <th scope="col">Names</th>
+                                                                <th scope="col">Name</th>
                                                                 <th scope="col">Confirmation Number</th>
                                                                 <th scope="col">Description</th>
                                                                 <th scope="col">Date From</th>
@@ -2238,7 +2455,7 @@
                 <br/>
                 <div style="text-align:center">
                     <div>
-                        <a target="_blank" class="watermark text-center font-weight-bold" href="https://eusol.net">Powered By Eusol.net</a>
+                        <a target="_blank" class="watermark text-center font-weight-bold:color: #7F51A8" href="https://eusol.net">Powered By Eusol.net</a>
                     </div>
                     <br/>
                     <br/>

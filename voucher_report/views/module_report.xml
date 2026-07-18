@@ -68,6 +68,7 @@
                             p {
                                 margin: 0px !important;
                                 margin-bottom: 10px !important;
+                                color:#7F51A8;
                             }
 
                             
@@ -76,6 +77,7 @@
                                 text-align: center;
                                 font-weight: bold;
                                 font-size: 35px;
+                                color: #7F51A8;
                             }
 
                             .left_div img {
@@ -122,7 +124,7 @@
 
                             table {
                                 border-collapse: collapse;
-                                border: 1px solid black;
+                                border: 1px solid #7F51A8;
                                 margin-top: 5px;
                             }
 
@@ -132,8 +134,9 @@
                                 padding: 8px;
                                 text-align: left;
                                 font-weight: bold;
-                                border: 1px solid black;
+                                border: 1px solid #7F51A8;
                                 background: #DAD7DD;
+                                color:#7F51A8;
                             }
 
                             td {
@@ -141,7 +144,8 @@
                                 font-size: 13px;
                                 padding: 5px;
                                 text-align: left;
-                                border: 1px solid black;
+                                border: 1px solid #7F51A8;
+                                color:#7F51A8;
                             }
 
                             .clear_float {
@@ -157,7 +161,7 @@
                                 margin: 4px;
                                 font-size: 18px;
                                 padding: 10px;
-                                color: white;
+                                color: #DAD7DD;
                                 font-weight: bold;
                                 margin-top: 10px;
                             }
@@ -184,15 +188,15 @@
                             }
                             .voucher-company-header {
                                 width: 100%;
-                                 min-height: 170px;
+                                min-height: 250px;
                                 padding: 28px 18px 75px 18px;
-                                border-bottom: 3px solid #d5dde7;
+                                border-bottom: 3px solid #7F51A8;
                                 box-sizing: border-box;
+                                background: #DAD7DD;
                             }
                             .voucher-company-info {
                                 float: left;
                                 width: 36%;
-                                color: #000;
                                 font-size: 15px;
                                 line-height: 1.35;
                             }
@@ -200,6 +204,7 @@
                             .voucher-company-info-ar p {
                                 margin: 0 !important;
                                 padding: 0 !important;
+                                color: #7F51A8;
                             }
                             .voucher-company-name {
                                 font-size: 24px;
@@ -235,6 +240,11 @@
                                 background-color: transparent !important;
                                 font-weight: bold !important;
                             }
+                            .th_width {
+                                min-width: 250px !important;
+                                width: 250px !important;
+                                max-width: 250px !important;
+                            }
                             </style>
                             <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
                             <div class="main_wraper">
@@ -249,23 +259,61 @@
                                                     </p>
                                                     <p>
                                                         <span t-if="report_company.street" t-esc="report_company.street"/>
+
+                                                        <t t-if="report_company.street2">
+                                                            <t t-if="report_company.street">, </t>
+                                                            <span t-esc="report_company.street2"/>
+                                                        </t>
                                                         <span t-if="report_company.street and (report_company.city or report_company.country_id)">, </span>
                                                         <span t-if="report_company.city" t-esc="report_company.city"/>
                                                         <span t-if="report_company.city and report_company.country_id">, </span>
                                                         <span t-if="report_company.country_id" t-esc="report_company.country_id.name"/>
                                                     </p>
                                                     <p t-if="report_company.email">
+                                                        <span>Email: </span>
                                                         <span t-esc="report_company.email"/>
                                                     </p>
                                                     <p t-if="report_company.phone">
+                                                        <span>Phone: </span>
                                                         <span t-esc="report_company.phone"/>
                                                     </p>
                                                     <p t-if="report_company.vat">
+                                                        <span>VAT: </span>
                                                         <span t-esc="report_company.vat"/>
                                                     </p>
                                                     <p t-if="report_company.custom_cr_number">
-                                                        <span>CR Number </span>
+                                                        <span>CR Number: </span>
                                                         <span t-esc="report_company.custom_cr_number"/>
+                                                    </p>
+
+                                                    <br />
+                                                    <p style="margin:0px;">
+                                                        <span class="solid">
+                                                            <a t-att-href="c.social_instagram" style="color:#DAD7DD">
+                                                                <i class="fab fa-instagram" style="color:#7F51A8; font-size:30px; margin-right:12px;"></i>
+                                                            </a>
+                                                        </span>
+                                                        <span class="solid">
+                                                            <a t-att-href="c.social_facebook" style="color:#DAD7DD">
+                                                                <i class="fab fa-facebook" style="color:#7F51A8; font-size:30px;margin-right:12px;"></i>
+                                                            </a>
+                                                        </span>
+                                                        <span class="solid">
+                                                            <a t-att-href="c.social_youtube" style="color:#DAD7DD">
+                                                                <i class="fab fa-snapchat-square" style="color:#7F51A8; font-size:30px; margin-right:12px;"></i>
+                                                            </a>
+                                                        </span>
+                                                        <span class="solid">
+                                                            <a t-att-href="c.social_linkedin" style="color:#DAD7DD">
+                                                                <i class="fab fa-linkedin" style="color:#7F51A8; font-size:30px; margin-right:12px;"></i>
+                                                            </a>
+                                                        </span>
+                                                        <span class="solid">
+                                                            <a t-att-href="c.social_twitter" style="color:#DAD7DD">
+                                                                <!-- <i class="fab fa-twitter-square" style="color:#7F51A8; font-size:30px;"></i> -->
+                                                                <img src="/voucher_report/static/src/img/twitter.png" style="width: 5.5%;color: #7F51A8;margin-top: -15px;margin-right:12px" />
+                                                            </a>
+                                                        </span>
                                                     </p>
                                                 </div>
                                                 <div class="voucher-logo-wrap">
@@ -296,21 +344,54 @@
                                                         </t>
                                                         <t t-if="report_company.arabic_state">
                                                             <t t-if="report_company.arabic_street or report_company.arabic_street2 or report_company.arabic_city">, </t>
-                                                            <span t-esc="report_company.arabic_state"/>
+                                                            <!-- <span t-esc="report_company.arabic_state"/> -->
                                                         </t>
                                                     </p>
                                                     <p t-if="report_company.email">
+                                                        <span>Email: </span>
                                                         <span t-esc="report_company.email"/>
                                                     </p>
                                                     <p t-if="report_company.phone">
+                                                        <span>Phone: </span>
                                                         <span t-esc="report_company.phone"/>
                                                     </p>
                                                     <p t-if="report_company.vat">
+                                                        <span>VAT: </span>
                                                         <span t-esc="report_company.vat"/>
                                                     </p>
                                                     <p t-if="report_company.arabic_cr_number">
+                                                        <span>CR Number: </span>
                                                         <span t-esc="report_company.arabic_cr_number"></span>
-                                                        <span t-esc="report_company.custom_cr_number"/>
+                                                    </p>
+
+                                                    <br />
+                                                    <p style="margin:0px;">
+                                                        <span class="solid">
+                                                            <a t-att-href="c.social_instagram" style="color:#DAD7DD">
+                                                                <i class="fab fa-instagram" style="color:#7F51A8; font-size:30px; margin-right:12px;"></i>
+                                                            </a>
+                                                        </span>
+                                                        <span class="solid">
+                                                            <a t-att-href="c.social_facebook" style="color:#DAD7DD">
+                                                                <i class="fab fa-facebook" style="color:#7F51A8; font-size:30px;margin-right:12px;"></i>
+                                                            </a>
+                                                        </span>
+                                                        <span class="solid">
+                                                            <a t-att-href="c.social_youtube" style="color:#DAD7DD">
+                                                                <i class="fab fa-snapchat-square" style="color:#7F51A8; font-size:30px; margin-right:12px;"></i>
+                                                            </a>
+                                                        </span>
+                                                        <span class="solid">
+                                                            <a t-att-href="c.social_linkedin" style="color:#DAD7DD">
+                                                                <i class="fab fa-linkedin" style="color:#7F51A8; font-size:30px; margin-right:12px;"></i>
+                                                            </a>
+                                                        </span>
+                                                        <span class="solid">
+                                                            <a t-att-href="c.social_twitter" style="color:#DAD7DD">
+                                                                <!-- <i class="fab fa-twitter-square" style="color:#7F51A8; font-size:30px;"></i> -->
+                                                                <img src="/voucher_report/static/src/img/twitter.png" style="width: 5.5%;color: #7F51A8;margin-top: -15px;margin-right:12px" />
+                                                            </a>
+                                                        </span>
                                                     </p>
                                                 </div>
                                             </div>
@@ -329,12 +410,12 @@
                                
                                 <table width="100%">
                                     <tr>
-                                        <th colspan="50" class="th_head" style="background-color: #7F51A8;text-align: center;font-size: 20px;color:white">
+                                        <th colspan="50" class="th_head" style="background-color: #7F51A8;text-align: center;font-size: 20px;color:#DAD7DD">
                                             <span t-if="o.quote_builder == False">Booking Information</span>
                                             <span t-if="o.quote_builder == True">Quotation Information</span>
                                         </th>
                                     </tr>
-                                    <t t-if="o.quote_builder == False">
+                                    <t t-if="o.quote_builder == False or o.name">
                                         <tr>
                                             <th class="th_width">Confirmation No.</th>
                                             <td>
@@ -342,42 +423,42 @@
                                             </td>
                                         </tr>
                                     </t>
-                                    <tr>
+                                    <tr t-if="customer_m2m">
                                         <th class="th_width">Guests Name</th>
                                         <td>
                                             <t t-set="com" t-value="0" />
                                             <t t-foreach="customer_m2m" t-as="g">
-                                                <!-- <t t-set="com" t-value="com+1" />
-                                                <t t-if="com > 1">
+                                                <t t-set="com" t-value="com+1" />
+                                                <!-- <t t-if="com > 1">
                                                     , <span t-esc="g.title.name"></span>
                                                 </t>
                                                 <t t-else="">
                                                     <span t-esc="g.title.name"></span>
-                                                </t>
-                                                <span t-esc="g.name"></span> -->
+                                                </t> -->
+                                                <span t-esc="g.name"></span>
                                                 <t t-if="g.category">
                                                     (<span style="text-transform: capitalize;" t-esc="g.category"></span>)
                                                 </t>
                                             </t>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr t-if="o.no_of_particpents">
                                         <th class="th_width">Guests</th>
                                         <td>
                                             <span t-esc="o.no_of_particpents"></span>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr t-if="o.destination">
                                         <th class="th_width">Destination</th>
                                         <td>
                                             <t t-set="com" t-value="0" />
                                             <t t-foreach="o.destination" t-as="d">
                                                 <t t-set="com" t-value="com+1" />
                                                 <t t-if="com > 1">
-                                                    , <span t-esc="d.name"></span>
+                                                    , <span t-esc="d.display_name"></span>
                                                 </t>
                                                 <t t-else="">
-                                                    <span t-esc="d.name"></span>
+                                                    <span t-esc="d.display_name"></span>
                                                 </t>
                                             </t>
                                         </td>
@@ -396,7 +477,7 @@
                                             <span t-esc="o.delivery_add"></span>
                                         </td>
                                     </tr> -->
-                                     <tr>
+                                    <tr t-if="o.arrival_date">
                                         <th class="th_width">Arrival Date</th>
                                         <t t-if="o.arrival_date">
                                             <td>
@@ -404,7 +485,7 @@
                                             </td>
                                         </t>
                                     </tr>
-                                    <tr>
+                                    <tr t-if="o.departure_date">
                                         <th class="th_width">Departure Date</th>
                                         <t t-if="o.departure_date">
                                             <td>
@@ -412,14 +493,14 @@
                                             </td>
                                         </t>
                                     </tr>
-                                    <tr>
+                                    <tr t-if="o.hotel_arrival">
                                         <th class="th_width">Arrival Flight</th>
                                         <!-- – Flight No -->
                                         <td>
                                             <span t-esc="o.hotel_arrival.name"></span>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr t-if="o.hotel_return">
                                         <th class="th_width">Departure Flight</th>
                                         <!-- – Flight No -->
                                         <td>
@@ -614,6 +695,8 @@
                                                     <td>
                                                         <a t-att-href="get_url(h.hotel_id)">
                                                             <span t-esc="h.hotel_id.name" title="Map"></span>
+                                                            <br/>
+                                                            <span style="color:#DAD7DD">(Map)</span>
                                                         </a>
                                                     </td>
                                                     <!-- <td>
@@ -1579,7 +1662,7 @@
                                                 <img t-att-src="'data:image/png;base64,%s' %to_text(c.logo)" />
                                                 <p>
                                                     <a t-att-href="c.website">
-                                                        <span>www.rawnaqtourism.com</span>
+                                                        <span>www.eusol.net</span>
                                                     </a>
                                                 </p>
                                             </t> -->

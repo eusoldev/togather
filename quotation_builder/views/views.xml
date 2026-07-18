@@ -7,13 +7,19 @@
                 <form>
                     <header>
                         <button name="button_draft" string=" Draft" type="object" class="btn-primary" invisible="state =='draft'"  />
-                        <button name="button_validate" string="Validate" type="object" class="btn-primary"  invisible="state =='validate'" />
+                        <button name="button_validate" string="Validate" type="object" class="btn-primary" invisible="state =='validate'" />
                         <button name="button_send_email_now" string="Send E-mail" type="object" class="btn-secondary" invisible="state =='draft'"  />
                         <button name="reservation_button_link" string="Generate Quotation Builder Link" type="object" class="oe_highlight"  />
+                        <button name="action_create_reservation" string="Create Reservation" type="object" class="oe_highlight" invisible="state =='draft' or reservation_count != 0"/>
                         
                         <field name="state" widget="statusbar" statusbar_visible="draft,validate" />
                     </header>
                     <sheet>
+                        <div class="oe_button_box" name="button_box" invisible="reservation_count == 0">
+                            <button name="action_view_related_reservations" type="object" class="oe_stat_button" icon="fa-calendar-check-o">
+                                <field name="reservation_count" widget="statinfo" string="Reservations" />
+                            </button>
+                        </div>
                         <div class="oe_title">
                             <h1>
                                 <field name="sr_no" readonly="0" />
@@ -23,17 +29,17 @@
                             <group>
                                 <field name="client_name"  readonly="state =='validate'" domain="[('b2c_customer', '=', 'true')]" required="1" />
                                 <field name="subject" readonly="state =='validate'" required="1" />
-                                <field name="date_to" readonly="state =='validate'" />
                                 <field name="create_uid" readonly="state =='validate'" invisible="1" />
+                                <field name="date_from" readonly="state =='validate'" required="1" />
                                 <field name='creation_date'  required="1" readonly="1" />
                                 <field name='cancellation_days' readonly="state =='validate'" required="1" />
                                 <field name='offers_validity_date' readonly="state =='validate'" required="0" />
                                 <field name="partner_id_mtom" widget='many2many_tags' invisible="1" />
                             </group>
                             <group>
-                                <field name="reference" readonly="state =='validate'" required="1" />
+                                <field name="reference" readonly="1" force_save="1"/>
                                 <field name="destination" widget='many2many_tags' readonly="state =='validate'" options="{'no_open':True,'no_create': True}" required="1" />
-                                <field name="date_from" readonly="state =='validate'" required="1" />
+                                <field name="date_to" readonly="state =='validate'" />
                                 <field name="maldives_website_link" />
                                 <field name="number_of_guests" readonly="state =='validate'" />
                                 <field name="total_in_report" />
@@ -419,7 +425,7 @@
         </record>
         <record model="ir.sequence" id="quotation_builder_sequence">
             <field name="name">quotation_builder_sequence</field>
-            <field name="code">quotation.seq</field>
+            <field name="code">quotation.builder.seq</field>
             <field name="prefix">QB-</field>
             <field name="company_id" eval="False" />
             <field name="padding">4</field>

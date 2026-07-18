@@ -25,12 +25,13 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='social_github']" position="attributes">
                     <attribute name="string">Instagram Account 1</attribute>
+                    <attribute name="invisible">1</attribute>
                 </xpath>
                 <xpath expr="//field[@name='social_youtube']" position="attributes">
                     <attribute name="string">Snapchat Account</attribute>
                 </xpath>
                 <xpath expr="//field[@name='social_instagram']" position="attributes">
-                    <attribute name="string">Instagram Account 2</attribute>
+                    <attribute name="string">Instagram Account</attribute>
                 </xpath>
             </field>
         </record>
@@ -50,6 +51,33 @@
                 </xpath>
             </field>
         </record>
+        <record id="custom_view_partner_form_sequence_ext" model="ir.ui.view">
+            <field name="name">vendor_form_ext</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="res_partner_ext.view_partner_form_sequence_ext" />
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='company_registration']" position="after">
+                    <field name="transfer_supplier" />
+                    <field name="airline_supplier" />
+                    <field name="cruise_supplier" />
+                    <field name="bed_bank" />
+                    <field name="tours_supplier" />
+                    <field name="private_jet" />
+                    <!-- <field name="tours_supplier" /> -->
+                    <field name="yacht_supplier" />
+                    <field name="service_supplier" />
+                    <field name="is_contract" readonly="0" force_save="1" />
+
+                    <field name="blacklist" />
+                    <field name="blacklist_reason" invisible="blacklist ==False" />
+                    <field name="visa_supplier" string="Visa Supplier" />
+                    <field name="hotel_supplier" />
+                    <field name="rawnaq_team" />
+                </xpath>
+            </field>
+        </record>
+
         <record id="vendor_form_ext" model="ir.ui.view">
             <field name="name">vendor_form_ext</field>
             <field name="model">res.partner</field>
@@ -82,7 +110,7 @@
                     <field name="phone" required="1" />
                 </xpath>
                 <xpath expr="(//field[@name='phone'])[1]" position="after">
-                    <field name="mobile" />
+                    <field name="mobile" invisible="1"/>
                 </xpath>
                 <xpath expr="//field[@name='email']" position="replace">
                     <field name="email" />
@@ -125,35 +153,14 @@
                 </xpath>
                
                 <xpath expr="//field[@name='category_id']" position="after">
-                   
-                    <field name="transfer_supplier" />
-                    <field name="airline_supplier" />
-                    <field name="cruise_supplier" />
-                    <field name="bed_bank" />
-                    <field name="tours_supplier" />
-                    <field name="private_jet" />
-                    <!-- <field name="tours_supplier" /> -->
-                    <field name="yacht_supplier" />
-                    <field name="service_supplier" />
-                    <field name="is_contract" readonly="0" force_save="1" />
+                    <!-- <field name="title" /> -->
+
                     <field name="passport_no" placeholder="Enter Passport Number" invisible="is_company == True" />
                     <field name="job_of_company" placeholder="Enter Company name" />
                     <field name="national_id" placeholder="Enter National Id Number" invisible="is_company == True" />
                     <field name="dob" placeholder="Enter Date of Birth" invisible="is_company == True" />
                     <field name="age" invisible="is_company == True" readonly="1" force_save="1" />
-                    <field name="nationality_of_client" />
-                    <field name="frequent_flier" widget="many2many_tags" />
-                    <field name="agent" invisible='1' />
-                    <field name="resturant" invisible='1' />
-                    <field name="supplier_meal" invisible='1' />
-                    <field name="guide_supplier" invisible='1' />
-                    <field name="vip" />
-                    <!-- <field name="title" /> -->
-                    <field name="blacklist" />
-                    <field name="blacklist_reason" invisible="blacklist ==False" />
-                    <field name="visa_supplier" string="Visa Supplier" />
-                    <field name="hotel_supplier" />
-                    <field name="rawnaq_team" />
+
                     <field name="ticketing_supplier" invisible='1' />
                     <field name="dmc" />
                     <field name="travel_agency" />
@@ -162,6 +169,15 @@
                     <field name="hotel_link" widget='url' invisible="hotel_supplier == False" />
                     <field name='end_consumer_type' invisible="b2c_customer == False " />
                     <field name='other_user_detaile' invisible="b2c_customer == False or end_consumer_type !='others'" />
+
+                    <field name="nationality_of_client" />
+                    <field name="frequent_flier" widget="many2many_tags" />
+                    <field name="agent" invisible='1' />
+                    <field name="resturant" invisible='1' />
+                    <field name="supplier_meal" invisible='1' />
+                    <field name="guide_supplier" invisible='1' />
+                    <field name="vip" />
+                    
                     <button name='notify_dues' string="Notify Dues" type='object' class='oe_highlight' />
                 </xpath>
                 <xpath expr="//field[@name='function']" position="before">
