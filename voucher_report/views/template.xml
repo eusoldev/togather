@@ -26,7 +26,7 @@
             <field name="paperformat_id" ref="voucher_report_template" />
         </record> -->
         <record id="voucher_report_pdf_id" model="ir.actions.report">
-            <field name="name">Confirmation Repor</field>
+            <field name="name">Confirmation Report</field>
             <field name="model">reservation.order</field>
             <field name="report_type">qweb-pdf</field>
             <field name="report_name">voucher_report.voucher_report_report</field>
