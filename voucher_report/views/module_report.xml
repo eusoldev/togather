@@ -348,19 +348,19 @@
                                                         </t>
                                                     </p>
                                                     <p t-if="report_company.email">
-                                                        <span>Email: </span>
+                                                        <!-- <span>Email: </span> -->
                                                         <span t-esc="report_company.email"/>
                                                     </p>
                                                     <p t-if="report_company.phone">
-                                                        <span>Phone: </span>
+                                                        <!-- <span>Phone: </span> -->
                                                         <span t-esc="report_company.phone"/>
                                                     </p>
                                                     <p t-if="report_company.vat">
-                                                        <span>VAT: </span>
+                                                        <!-- <span>VAT: </span> -->
                                                         <span t-esc="report_company.vat"/>
                                                     </p>
                                                     <p t-if="report_company.arabic_cr_number">
-                                                        <span>CR Number: </span>
+                                                        <!-- <span>CR Number: </span> -->
                                                         <span t-esc="report_company.arabic_cr_number"></span>
                                                     </p>
 

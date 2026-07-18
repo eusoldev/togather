@@ -984,7 +984,7 @@
                                 <span t-esc="o.company_id.vat"/>
                             </p>
                             <p t-if="o.company_id.custom_cr_number">
-                                <span>CR Number </span>
+                                <span>CR No. </span>
                                 <span t-esc="o.company_id.custom_cr_number"/>
                             </p>
                             <br />
@@ -1049,20 +1049,20 @@
                                 </t> -->
                             </p>
                             <p t-if="o.company_id.email">
-                                <span>Email: </span>
+                                <!-- <span>Email: </span> -->
                                 <span t-esc="o.company_id.email"/>
                             </p>
                             <p t-if="o.company_id.phone">
-                                <span>Phone: </span>
+                                <!-- <span>Phone: </span> -->
                                 <span t-esc="o.company_id.phone"/>
                             </p>
                             <p t-if="o.company_id.vat">
-                                <span>VAT: </span>
+                                <!-- <span>VAT: </span> -->
                                 <span t-esc="o.company_id.vat"/>
                             </p>
                             <p t-if="o.company_id.arabic_cr_number">
-                                <span>CR: </span>
                                 <span t-esc="o.company_id.arabic_cr_number"></span>
+                                <!-- <span>CR No: </span> -->
                                 <!-- <span t-esc="o.company_id.custom_cr_number"/> -->
                             </p>
 
