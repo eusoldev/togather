@@ -46,7 +46,7 @@ class quotation_builder(models.Model):
     _name = 'quotation.builder'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Quotation Builder'
-    _rec_name ='sr_no'
+    _rec_name ='client_name'
     _order = "id desc"
     _html_plain_text_fields = (
         'cancel_new_eng',
@@ -82,6 +82,10 @@ class quotation_builder(models.Model):
     cruises_pkg = fields.One2many('quotation.builder.tree','cruises_return', tracking=True)
     otherservices_pkg = fields.One2many('quotation.builder.tree','otherservices_return', tracking=True)
     date_to = fields.Datetime(string="Date To")
+    company_id = fields.Many2one(
+        comodel_name='res.company',
+        required=True, index=True,
+        default=lambda self: self.env.company)
     date_from = fields.Datetime(string="Date From",required=True)
     company_id = fields.Many2one('res.company', string='Company', default= lambda self: self.env.company)
     destination_pictures = fields.Many2many(
@@ -491,6 +495,7 @@ class quotation_builder(models.Model):
 
         reservation = self.env['reservation.order'].create(reservation_vals)
 
+        reservation.invalidate_recordset()
         service_lines = (
             reservation.hotel_pkg |
             reservation.flights_pkg |
@@ -501,12 +506,13 @@ class quotation_builder(models.Model):
             reservation.privatejet_pkg |
             reservation.yacht_pkg |
             reservation.cruises_pkg |
-            reservation.otherservices_pkg
+            reservation.otherservices_pkg |
+            reservation.itinarnay_package
         )
 
         for line in service_lines:
             line.get_currency_rate()
-            line.cal_subtotal()
+        service_lines.recompute_subtotal_amounts()
         return {
             'type': 'ir.actions.act_window',
             'name': _('Reservation'),

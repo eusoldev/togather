@@ -1801,21 +1801,28 @@ class all_services(models.Model):
                 # for rec in self:
                 self.nights = day
 
+    def _get_subtotal_values(self):
+        self.ensure_one()
+        price = self.price
+        if self.amnt_fc and self.exchange_rate:
+            price = self.amnt_fc * self.exchange_rate
+        if self.service_type == 'flight':
+            total = (price * self.no_of_person) + self.commission
+        else:
+            total = price + self.commission
+        return {
+            'price': price,
+            'total': total,
+        }
+
+    def recompute_subtotal_amounts(self):
+        for line in self:
+            line.write(line._get_subtotal_values())
+
     @api.onchange('no_of_person','price','commission','exchange_rate','amnt_fc')
     def cal_subtotal(self):
-        count = 0
-        for x in self.customer_m2m:
-            count += 1
-        vals={}
-        qty = self.no_of_person * count
-        if self.amnt_fc and self.exchange_rate:
-            vals['price'] = self.amnt_fc*self.exchange_rate
-        print ("check 4")
-        if self.service_type == 'flight':
-            vals['total'] = (self.price * self.no_of_person) + self.commission
-        else:
-            vals['total'] = (self.price) + self.commission
-        self.update(vals)
+        for line in self:
+            line.update(line._get_subtotal_values())
 
 
     @api.onchange('total','price','no_of_person')

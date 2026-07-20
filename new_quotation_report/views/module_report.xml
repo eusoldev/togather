@@ -1,0 +1,1579 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="new_quotation_report">
+             <t t-call="web.html_container">
+                <t t-call="new_quotation_report.own_basic_layout">
+                    <t t-foreach="docs" t-as="o">
+                        <div class="page" style="background-color:#DAD7DD;         background-image: url('https://www.transparenttextures.com/patterns/redox-02.png');">
+                            <style type="text/css">
+                            @media (min-width: 1200px) {
+                                .container {
+                                    width: 100%;
+                                }
+                            }
+
+                            @media (min-width: 992px) {
+                                .container {
+                                    width: 100%;
+                                }
+                            }
+
+                            @media (min-width: 768px) {
+                                .container {
+                                    width: 100%;
+                                }
+                            }
+
+                            .container {
+                                width: 100%;
+                            }
+
+                            body.o_in_iframe {
+                                margin: 0px !important;
+                                padding: 0px !important;
+                            }
+
+
+                            .main_wraper {
+                                width: 900px;
+                                margin: 0px auto;
+                            }
+
+                            .main_div {
+                                width: 900px;
+                                margin: 0px auto;
+                            }
+
+                            .left_div {
+                                width: 40%;
+                                float: left;
+                                margin-top: 60px;
+                                margin-left: 20px;
+                            }
+
+                            .right_div {
+                                width: 25%;
+                                float: right;
+                                text-align: end;
+                            }
+
+                            .left_div_2 {
+                                width: 40%;
+                                float: left;
+                                margin-left: 30px;
+                            }
+
+                            .right_div_2 {
+                                float: right;
+                                text-align: end;
+                            }
+
+
+                            .clear_float {
+                                clear: both;
+                                float: none;
+                                height: 0px;
+                                width: 0px;
+                                display: block;
+                            }
+
+                            .solid_div {
+                                font-weight: bold;
+                                font-size: 19px;
+                            }
+
+                            .liquid_div {
+                                font-size: 22px;
+                                line-height: 2;
+                                text-align: justify;
+                            }
+
+
+
+                            .margin-top {
+                                margin-top: 130px;
+                            }
+
+                            .left_div_2 p {
+                                margin: 0px;
+                            }
+
+                            .solid {
+                                font-weight: bold;
+                                font-size: 17px;
+                            }
+
+                            .agent_div {
+                                float: right;
+                                width: 66%;
+                                border-bottom: 1px solid #DAD7DD;
+                            }
+
+                            .arabic {
+                                margin-right: 90px;
+                            }
+
+                            .MsoNormal {
+                                margin-right: 50px !important;
+                            }
+
+
+
+                            @media print {
+                                thead {
+                                    display: table-header-group;
+                                }
+
+                                tfoot {
+                                    display: table-footer-group;
+                                }
+                            }
+
+                            thead {
+                                display: table-header-group;
+                            }
+
+                            tfoot {
+                                display: table-footer-group;
+                            }
+
+                            .dot {
+                                height: 18px;
+                                width: 18px;
+                                background-color: #DAD7DD;
+                                border-radius: 50%;
+                                display: inline-block;
+                            }
+
+                            .dot_2 {
+                                height: 32px;
+                                width: 42px;
+                                display: inline-block;
+                                float: left;
+                            }
+
+                            th {
+                                border-bottom: 1px solid black;
+                                padding: 8px;
+                            }
+
+                            td {
+                                padding: 4px;
+                                border-bottom: 1px solid;
+                            }
+
+                            .image-container {
+                                position: relative;
+                                width: 100%;
+
+                            }
+
+
+                            .table-overlay {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                margin-left: 15px;
+                                margin-right: 15px;
+                                z-index: 1;
+
+                            }
+
+                            table {
+                                border-collapse: collapse;
+                            }
+
+                            .table_class {
+                                background-color: #DAD7DD;
+                                background-image: url("https://www.transparenttextures.com/patterns/redox-02.png");
+                                height: 1265px;
+                            }
+
+                            th {
+                                border: 1px solid #7F51A8;
+                                padding: 8px;
+                                background-color: #DAD7DD;
+                                background-color: #7F51A8;
+                            }
+
+                            td {
+                                border: 1px solid #7F51A8;
+                                padding: 8px;
+                            }
+
+                            .left_div_3_des {
+                                width: 16%;
+                                float: left;
+                                margin-left: 50px;
+                                font-size: 20px;
+                                text-transform: uppercase;
+                            }
+
+                            .right_div_3_acc {
+                                width: 27%;
+                                float: left;
+                                font-size: 20px;
+                                text-transform: uppercase;
+                            }
+
+                            .right_div_4_night {
+                                width: 25%;
+                                float: left;
+                                font-size: 20px;
+                                text-transform: uppercase;
+                            }
+
+                            .right_div_4_guest {
+                                width: 25%;
+                                float: left;
+                                font-size: 20px;
+                                text-transform: uppercase;
+                            }
+
+                            .right_div_4_meal {
+                                width: 17%;
+                                float: left;
+                                font-size: 20px;
+                                text-transform: uppercase;
+                                margin-left: 50px;
+                            }
+
+                            .right_div_4_rate {
+                                width: 26%;
+                                float: left;
+                                font-size: 20px;
+                                text-transform: uppercase;
+                                margin-right: -5px;
+                            }
+
+                            .first_div {
+                                float: left;
+                                width: 6.5%;
+                            }
+
+                            .second_div {
+                                float: left;
+                                margin-top: 0px;
+                                margin-left: 8px;
+                            }
+
+                            .second_div {
+                                float: left;
+                                margin-top: 0px;
+                                margin-left: 8px;
+                            }
+
+                            .second_div_9 {
+                                float: left;
+                                margin-top: 0px;
+                                margin-left: 12px;
+                            }
+
+                            .second_div_10 {
+                                float: left;
+                                margin-top: 0px;
+                                margin-left: 5px;
+                            }
+
+                            h3,
+                            h4 {
+                                text-align: center;
+                                font-family: Arial, sans-serif;
+                                margin: 0;
+                            }
+
+
+                            .second_div_3 {
+                                float: left;
+                                margin-top: 4px;
+                                margin-left: 8px;
+
+                            }
+
+                            .second_div_4 {
+                                float: left;
+                                margin-top: -2px;
+                                margin-left: 8px;
+                                color: #DAD7DD;
+                                font-size: 28px;
+                                margin-left: 5px
+                            }
+
+                            .set_p {
+                                margin-left: 28px;
+                                margin-top: 10px;
+                                text-transform: none;
+                                font-style: italic;
+                            }
+
+                            .page-break {
+                                page-break-inside: avoid !important;
+                                page-break-after: always !important;
+                            }
+
+                            .clearfloat {
+                                clear: both;
+                                float: none;
+                                width: 100%;
+                                height: 1px;
+                                display: block;
+                            }
+
+                            .border_left {
+                                border-left: 8px solid #DAD7DD;
+                                margin-left: 13px
+                            }
+
+                            .custom_all_eng,
+                            .custom_all_eng p {
+                                text-align: left;
+                                
+                                line-height: 1.5rem !important;
+                                margin-left: 20px;
+                            }
+
+                            .custom_all_eng p:first-child {
+                                text-align: right;
+                                display: inline !important;
+                            }
+
+                            .custom_all_eng_can,
+                            .custom_all_eng_can p {
+                                text-align: left;
+                                
+                                line-height: 2rem !important;
+                                margin-left: 24px;
+                            }
+
+                            .custom_all_eng_can p:first-child {
+                                text-align: right;
+                                display: inline !important;
+                            }
+
+                            .custom_all_arabic,
+                            .custom_all_arabic span p,
+                            .custom_all_arabic p {
+                                text-align: right;
+                                
+                                line-height: 1rem !important;
+                                margin-right: 30px;
+                            }
+
+                            .custom_all_arabic p,
+                            .custom_all_eng_can p,
+                            .custom_all_eng_can span p,
+                            .custom_all_arabic span p {
+                                margin: 0 10px;
+                            }
+
+                            .custom_all_arabic p:first-child {
+                                text-align: right;
+                                display: inline !important;
+                            }
+
+                            .date_class {
+                                margin-left: 8px;
+                                color: #DAD7DD;
+                                font-weight: bold;
+                                font-size: 39px;
+                            }
+
+                            .foot_fix {
+                                width: 100%;
+
+                            }
+
+                            .rawnaq_insta {
+                                width: 25%;
+                                float: left;
+                                font-size: 13px;
+
+                            }
+
+                            .rawnaq_insta_2 {
+                                width: 25%;
+                                float: left;
+                                font-size: 13px;
+
+                            }
+
+                            .rawnaq_mal {
+                                width: 25%;
+                                float: left;
+                                font-size: 13px;
+
+                            }
+
+                            .rawnaq_maldives {
+                                width: 25%;
+                                float: left;
+                                font-size: 13px;
+
+                            }
+
+                            .dot_calen {
+                                height: 64px;
+                                width: 66px;
+                                display: inline-block;
+                                float: left;
+                            }
+
+                            .dot_3 {
+                                height: 47px;
+                                width: 55px;
+                                display: inline-block;
+                                float: left;
+                            }
+
+                            .page {
+                                min-height: 100vh;
+                                /* Height of the footer to prevent overlap */
+                                box-sizing: border-box;
+
+                            }
+
+
+                            .content {
+                                height: 1800px;
+                                /* Height corresponding to 100 lines */
+                                overflow: auto;
+                                box-sizing: border-box;
+                            }
+
+                            .footer {
+                                position: fixed;
+                                bottom: 0;
+                                left: 0;
+                                width: 100%;
+                                background-color: #DAD7DD;
+                                text-align: center;
+                                padding: 20px;
+                                color: white;
+                                font-size: 20px;
+                                box-sizing: border-box;
+                            }
+                            .hotel-picture-grid {
+                                margin-top: 12px;
+                                font-size: 0;
+                            }
+
+                            .hotel-picture-grid img {
+                                width: 32%;
+                                height: 120px;
+                                object-fit: fill;
+                                display: inline-block;
+                                vertical-align: top;
+                                margin: 0 1% 8px 0;
+                            }
+                            </style>
+                            <div class="main_wraper">
+                                <div class="main_div">
+                                    <div>
+                                        <img src="/new_quotation_report/static/src/img/quotation_togather.png" style=" height:1270px; width:100%;"/>
+                                        <!-- <img src="/new_quotation_report/static/src/img/second_img2.jpg" style=" height:1270px; width:100%;"/> -->
+                                        <!-- <img src="/new_quotation_report/static/src/img/third_image1.jpg" style="height:1270px; width:100%;"/> -->
+                                    </div>
+                                </div>
+                               <!-- <div class="page-break"/> -->
+                                <div>
+                                    <table width="100%" class="table_class">
+                                        <thead>
+                                            <tr>
+                                                <th style="text-align: left; margin-left: 80px; color: white;">DESCRIPTION</th>
+                                                <th style="margin-right: 10px; text-align: right; padding-right: 5%; color: white;">AMOUNT</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <t t-set="total_amount" t-value="0"/>
+                                            <t t-foreach="diffrent_records" t-as="dif">
+                                                <t t-foreach="dif['grouped_records']" t-as="d">
+                                                    <t t-if="d.service_type=='flight'">
+                                                        <tr>
+                                                            <td style="text-align: left;bor ">
+                                                                <p style="font-weight: bold;color:#7F51A8">Flight:</p>
+                                                                <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                    <span style="font-weight: bold;">Flight Name:</span>
+                                                                    <span t-esc="d.airline.name"/>
+                                                                </p>
+                                                               <!--  <p style="margin-bottom:0.5rem">
+                                                                    <span style="font-weight: bold;">Supplier:</span>
+                                                                    <t t-set="rt" t-value="0"/>
+                                                                    <t t-foreach="d.supplier" t-as="su">
+                                                                        <t t-set="rt" t-value="rt+1"/>
+                                                                        <span t-esc="su.name"/>
+                                                                        <t t-if="rt &gt; 1">
+                                                                            <span>,</span>
+                                                                        </t>
+                                                                    </t>
+                                                                </p> -->
+                                                                <t t-if="d.from_loc">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">From:</span>
+                                                                        <span t-esc="d.from_loc.city"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.to_loc">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">To:</span>
+                                                                        <span t-esc="d.to_loc.city"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.departures">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Departure Date:</span>
+                                                                        <t t-if="d.departures">
+                                                                            <span t-esc="(datetime.datetime.strptime(str(d.departures), '%Y-%m-%d %H:%M:%S') + datetime.timedelta(hours=5)).strftime('%d %B %Y, %I:%M %p')"/>
+                                                                        </t>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.arrival">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Arrival Date:</span>
+                                                                        <t t-if="d.arrival">
+                                                                            <span t-esc="(datetime.datetime.strptime(str(d.arrival), '%Y-%m-%d %H:%M:%S') + datetime.timedelta(hours=5)).strftime('%d %B %Y, %I:%M %p')"/>
+                                                                        </t>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.no_of_guest">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Number of Guests:</span>
+                                                                        <span t-esc="d.no_of_guest"/>
+                                                                    </p>
+                                                                </t>
+                                                                <p style="margin-bottom:0.5rem">
+                                                                    <span style="font-weight: bold;color:#7F51A8">Inclusions:</span>
+                                                                    <span t-raw="d.offers_appiled"/>
+                                                                </p>
+                                                                <t t-if="d.pictures">
+                                                                    <div class="hotel-picture-grid">
+                                                                        <t t-foreach="d.pictures" t-as="picture">
+                                                                            <t t-if="picture.mimetype and picture.mimetype.startswith('image/')">
+                                                                                <img t-att-src="'/web/image/ir.attachment/%s/datas' % picture.id"/>
+                                                                            </t>
+                                                                        </t>
+                                                                    </div>
+                                                                </t>
+                                                                <br/>
+                                                                <br/>
+                                                                <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                    <span style="font-weight: bold;">Cancellation Policy:</span>
+                                                                    <span t-raw="d.tree_canelattions"/>
+                                                                </p>
+                                                            </td>
+                                                            <td style="text-align: right;color:#7F51A8">
+                                                                <t t-if="d.rate_hotel">
+                                                                    <t t-if="d.rate_hotel.position == 'before'">
+                                                                        <span t-esc="d.rate_hotel.symbol" style="font-family: 'sar-symbol', sans-serif !important;"/>
+                                                                        <span t-esc="'{0:,.2f}'.format(float(d['total']))"/>
+                                                                        <t t-set="total_amount" t-value="total_amount + d['total']"/>
+                                                                    </t>
+                                                                    <t t-if="d.rate_hotel.position == 'after'">
+                                                                        <span t-esc="'{0:,.2f}'.format(float(d['total']))"/>
+                                                                        <span t-esc="d.rate_hotel.symbol" style="font-family: 'sar-symbol', sans-serif !important;"/>
+                                                                        <t t-set="total_amount" t-value="total_amount + d['total']"/>
+                                                                    </t>
+                                                                </t>
+                                                                <t t-else="">
+                                                                    <span t-esc="'{0:,.2f}'.format(float(d['total']))"/>
+                                                                    <t t-set="total_amount" t-value="total_amount + d['total']"/>
+                                                                </t>
+                                                            </td>
+                                                        </tr>
+                                                    </t>
+                                                    <t t-if="d.service_type=='hotel'">
+                                                        <tr>
+                                                            <td style="text-align: left;bor ">
+                                                                <p style="font-weight: bold;color:#7F51A8">Hotel:</p>
+                                                                <p style="margin-bottom:0.5rem">
+                                                                    <span style="font-weight: bold;color:#7F51A8">Hotel Name:</span>
+                                                                    <a style="color:black; text-decoration:underline !important;color:#7F51A8 " t-att-href="d.resort_map">
+                                                                        <span t-esc="d.resort_name.name"/>
+                                                                    </a>
+                                                                </p>
+                                                                <t t-if="d.city_id">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">City:</span>
+                                                                        <span t-esc="d.city_id.city"/>
+                                                                       
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.room_type">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Room Category:</span>
+                                                                        <t t-set="rt" t-value="0"/>
+                                                                        <t t-foreach="d.room_type" t-as="rts">
+                                                                            <t t-set="rt" t-value="rt+1"/>
+                                                                            <t t-if="rt &gt; 1">
+                                                                                <span>,</span>
+                                                                            </t>
+                                                                            <span t-esc="rts.name"/>
+                                                                        </t>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.number_of_rooms">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Number of Rooms:</span>
+                                                                        <span t-esc="d.number_of_rooms"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.check_in">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Check In :</span>
+                                                                        <span t-esc="d.check_in"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.check_out">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Check Out:</span> <span t-esc="d.check_out"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.no_of_nights">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Number of Nights:</span>
+                                                                        <span t-esc="d.no_of_nights"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.no_of_guest">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Number of Guests:</span>
+                                                                        <span t-esc="d.no_of_guest"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.meal_plane">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Meal Plan:</span>
+                                                                        <t t-set="ml" t-value="0"/>
+                                                                        <t t-foreach="d.meal_plane" t-as="mal">
+                                                                            <t t-set="ml" t-value="ml+1"/>
+                                                                            <t t-if="ml &gt; 1">
+                                                                                <span>,</span>
+                                                                            </t>
+                                                                            <span t-esc="mal.name"/>
+                                                                        </t>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.transfer">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Transfer:</span>
+                                                                        <t t-set="rt" t-value="0"/>
+                                                                        <t t-foreach="d.transfer" t-as="rts">
+                                                                            <t t-set="rt" t-value="rt+1"/>
+                                                                            <t t-if="rt &gt; 1">
+                                                                                <span>,</span>
+                                                                            </t>
+                                                                            <span t-esc="rts.name"/>
+                                                                        </t>
+                                                                    </p>
+                                                                </t>
+                                                                <br class="clearfloat"/>
+                                                                <t t-if="o.cancel_new_eng">
+                                                                    <span style="font-weight:bold;color:#7F51A8"> Cancellation Policy:
+                                                                    </span>
+                                                                    <span t-raw="d.tree_canelattions" style="color:#7F51A8"/>
+                                                                </t>
+                                                                <br class="clearfloat"/>
+                                                                <br class="clearfloat"/>
+                                                                <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                    <span style="font-weight: bold;">Inclusions:</span>
+                                                                    <span t-raw="d.offers_appiled"/>
+                                                                </p>
+                                                                <t t-if="d.pictures">
+                                                                    <div class="hotel-picture-grid">
+                                                                        <t t-foreach="d.pictures" t-as="picture">
+                                                                            <t t-if="picture.mimetype and picture.mimetype.startswith('image/')">
+                                                                                <img t-att-src="'/web/image/ir.attachment/%s/datas' % picture.id"/>
+                                                                            </t>
+                                                                        </t>
+                                                                    </div>
+                                                                </t>
+                                                            </td>
+                                                            <td style="text-align: right;color:#7F51A8">
+                                                                <t t-if="d.rate_hotel">
+                                                                    <t t-if="d.rate_hotel.position == 'before'">
+                                                                        <span t-esc="d.rate_hotel.symbol" style="font-family: 'sar-symbol', sans-serif !important;"/>
+                                                                        <span t-esc="'{0:,.2f}'.format(float(d['total']))"/>
+                                                                        <t t-set="total_amount" t-value="total_amount + d['total']"/>
+                                                                    </t>
+                                                                    <t t-if="d.rate_hotel.position == 'after'">
+                                                                        <span t-esc="'{0:,.2f}'.format(float(d['total']))"/>
+                                                                        <span t-esc="d.rate_hotel.symbol" style="font-family: 'sar-symbol', sans-serif !important;"/>
+                                                                        <t t-set="total_amount" t-value="total_amount + d['total']"/>
+                                                                    </t>
+                                                                </t>
+                                                                <t t-else="">
+                                                                    <span t-esc="'{0:,.2f}'.format(float(d['total']))"/>
+                                                                    <t t-set="total_amount" t-value="total_amount + d['total']"/>
+                                                                </t>
+                                                            </td>
+                                                        </tr>
+                                                    </t>
+                                                    <t t-if="d.service_type=='transfer'">
+                                                        <tr>
+                                                            <td style="text-align: left;bor ;color:#7F51A8">
+                                                                <p style="font-weight: bold;">Transfer:</p>
+                                                                <!-- <p style="margin-bottom:0.5rem">
+                                                                    <span style="font-weight: bold;">Supplier:</span>
+                                                                    <span t-esc="d.supplier.name"/>
+                                                                  
+                                                                </p> -->
+                                                                <!-- <p style="margin-bottom:0.5rem">
+                                                                    <span style="font-weight: bold;">City:</span>
+                                                                    <t t-set="rt" t-value="0" />
+                                                                    <t t-foreach="o.destination" t-as="rts">
+                                                                        <t t-set="rt" t-value="rt+1" />
+                                                                        <span t-esc="rts.name" />
+                                                                        <t t-if="rt &gt; 1">
+                                                                            <span>,</span>
+                                                                        </t>
+                                                                    </t>
+                                                                </p> -->
+                                                                <!-- <p style="margin-bottom:0.5rem">
+                                                                    <span style="font-weight: bold;">Room Category:</span>
+                                                                    <t t-set="rt" t-value="0" />
+                                                                    <t t-foreach="d.room_type" t-as="rts">
+                                                                        <t t-set="rt" t-value="rt+1" />
+                                                                        <t t-if="rt &gt; 1">
+                                                                            <span>,</span>
+                                                                        </t>
+                                                                        <span t-esc="rts.name" />
+                                                                    </t>
+                                                                </p> -->
+                                                                <t t-if="d.booking_date">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Booking Date:</span>
+                                                                        <span t-esc="d.booking_date"/>
+                                                                    </p>
+                                                                </t>
+                                                                <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                    <span style="font-weight: bold;">Confirmation Number:</span>
+                                                                    <span t-esc="d.confirmation_no"/>
+                                                                </p>
+                                                                <t t-if="d.pick_up_place">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Pick Up:</span>
+                                                                        <span t-esc="d.pick_up_place"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.drop_of_place">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Drop-off:</span>
+                                                                        <span t-esc="d.drop_of_place"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.transfer_type">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Transfer Type:</span>
+                                                                        <span t-esc="d.transfer_type.name"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.vehicle_type">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Vehicle Type:</span>
+                                                                        <span t-esc="d.vehicle_type.name"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.rent_car">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Rent Car:</span>
+                                                                        <span t-esc="d.rent_car"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.meal_plane">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Meal Plan:</span>
+                                                                        <t t-set="ml" t-value="0"/>
+                                                                        <t t-foreach="d.meal_plane" t-as="mal">
+                                                                            <t t-set="ml" t-value="ml+1"/>
+                                                                            <t t-if="ml &gt; 1">
+                                                                                <span>,</span>
+                                                                            </t>
+                                                                            <span t-esc="mal.name"/>
+                                                                        </t>
+                                                                    </p>
+                                                                </t>
+                                                                <br class="clearfloat"/>
+                                                                <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                    <span style="font-weight: bold;">Inclusions:</span>
+                                                                    <t>
+                                                                        <span t-raw="d.offers_appiled"/>
+                                                                    </t>
+                                                                </p>
+                                                                <t t-if="d.pictures">
+                                                                    <div class="hotel-picture-grid">
+                                                                        <t t-foreach="d.pictures" t-as="picture">
+                                                                            <t t-if="picture.mimetype and picture.mimetype.startswith('image/')">
+                                                                                <img t-att-src="'/web/image/ir.attachment/%s/datas' % picture.id"/>
+                                                                            </t>
+                                                                        </t>
+                                                                    </div>
+                                                                </t>
+                                                                <br/>
+                                                                <br/>
+                                                                <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                    <span style="font-weight: bold;">Cancellation Policy:</span>
+                                                                    <span t-raw="d.tree_canelattions"/>
+                                                                </p>
+                                                                <!-- <t t-if="o.terms_conditions_eng"> -->
+                                                                <!-- </t> -->
+                                                            </td>
+                                                            <td style="text-align: right;color:#7F51A8">
+                                                                <t t-if="d.rate_hotel">
+                                                                    <t t-if="d.rate_hotel.position == 'before'">
+                                                                        <span t-esc="d.rate_hotel.symbol" style="font-family: 'sar-symbol', sans-serif !important;"/>
+                                                                        <span t-esc="'{0:,.2f}'.format(float(d['total']))"/>
+                                                                        <t t-set="total_amount" t-value="total_amount + d['total']"/>
+                                                                    </t>
+                                                                    <t t-if="d.rate_hotel.position == 'after'">
+                                                                        <span t-esc="'{0:,.2f}'.format(float(d['total']))"/>
+                                                                        <span t-esc="d.rate_hotel.symbol" style="font-family: 'sar-symbol', sans-serif !important;"/>
+                                                                        <t t-set="total_amount" t-value="total_amount + d['total']"/>
+                                                                    </t>
+                                                                </t>
+                                                                <t t-else="">
+                                                                    <span t-esc="'{0:,.2f}'.format(float(d['total']))"/>
+                                                                    <t t-set="total_amount" t-value="total_amount + d['total']"/>
+                                                                </t>
+                                                            </td>
+                                                        </tr>
+                                                    </t>
+                                                    <t t-if="d.service_type=='tour'">
+                                                        <tr>
+                                                            <td style="text-align: left;bor;color:#7F51A8">
+                                                                <p style="font-weight: bold;">Tour:</p>
+                                                                <!-- <p style="margin-bottom:0.5rem">
+                                                                    <span style="font-weight: bold;">Supplier:</span>
+                                                                    <span t-esc="d.supplier.name"/>
+                                                                   
+                                                                </p> -->
+                                                                <t t-if="d.booking_date">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Booking Date:</span>
+                                                                        <span t-esc="d.booking_date"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.confirmation_no">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Confirmation Number:</span>
+                                                                        <span t-esc="d.confirmation_no"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.ticket_day">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Ticket Day:</span>
+                                                                        <span t-esc="d.ticket_day"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.vehicle_type">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Vehicle Type:</span>
+                                                                        <span t-esc="d.vehicle_type.name"/>
+                                                                    </p>
+                                                                </t>
+                                                                <br class="clearfloat"/>
+                                                                <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                    <span style="font-weight: bold;">Inclusions:</span>
+                                                                    <span t-raw="d.offers_appiled"/>
+                                                                </p>
+                                                                <t t-if="d.pictures">
+                                                                    <div class="hotel-picture-grid">
+                                                                        <t t-foreach="d.pictures" t-as="picture">
+                                                                            <t t-if="picture.mimetype and picture.mimetype.startswith('image/')">
+                                                                                <img t-att-src="'/web/image/ir.attachment/%s/datas' % picture.id"/>
+                                                                            </t>
+                                                                        </t>
+                                                                    </div>
+                                                                </t>
+                                                                <br/>
+                                                                <br/>
+                                                                <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                    <span style="font-weight: bold;">Cancellation Policy:</span>
+                                                                    <span t-raw="d.tree_canelattions"/>
+                                                                </p>
+                                                                <!-- <t t-if="o.terms_conditions_eng"> -->
+                                                                <!-- </t> -->
+                                                            </td>
+                                                            <td style="text-align: right;color:#7F51A8">
+                                                                <t t-if="d.rate_hotel">
+                                                                    <t t-if="d.rate_hotel.position == 'before'">
+                                                                        <span t-esc="d.rate_hotel.symbol" style="font-family: 'sar-symbol', sans-serif !important;"/>
+                                                                        <span t-esc="'{0:,.2f}'.format(float(d['total']))"/>
+                                                                        <t t-set="total_amount" t-value="total_amount + d['total']"/>
+                                                                    </t>
+                                                                    <t t-if="d.rate_hotel.position == 'after'">
+                                                                        <span t-esc="'{0:,.2f}'.format(float(d['total']))"/>
+                                                                        <span t-esc="d.rate_hotel.symbol" style="font-family: 'sar-symbol', sans-serif !important;"/>
+                                                                        <t t-set="total_amount" t-value="total_amount + d['total']"/>
+                                                                    </t>
+                                                                </t>
+                                                                <t t-else="">
+                                                                    <span t-esc="'{0:,.2f}'.format(float(d['total']))"/>
+                                                                    <t t-set="total_amount" t-value="total_amount + d['total']"/>
+                                                                </t>
+                                                            </td>
+                                                        </tr>
+                                                    </t>
+                                                    <t t-if="d.service_type=='visa'">
+                                                        <tr>
+                                                            <td style="text-align: left;bor;color:#7F51A8">
+                                                                <p style="font-weight: bold;">Visa:</p>
+                                                                <!-- <p style="margin-bottom:0.5rem">
+                                                                    <span style="font-weight: bold;">Supplier:</span>
+                                                                    <span t-esc="d.supplier.name"/>
+                                                                   
+                                                                </p> -->
+                                                                <t t-if="d.booking_date">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Booking Date:</span>
+                                                                        <span t-esc="d.booking_date"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.check_in">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Check Date:</span>
+                                                                        <span t-esc="d.check_in"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.check_out">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Checkout Date:</span>
+                                                                        <span t-esc="d.check_out"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.confirmation_no">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Confirmation Number:</span>
+                                                                        <span t-esc="d.confirmation_no"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.visa_status">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;text-transform:uppercase">Visa Status:</span>
+                                                                        <span t-esc="d.visa_status"/>
+                                                                    </p>
+                                                                </t>
+                                                                <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                    <span style="font-weight: bold;">Inclusions:</span>
+                                                                    <span t-raw="d.offers_appiled"/>
+                                                                </p>
+                                                                <t t-if="d.pictures">
+                                                                    <t t-if="d.pictures">
+                                                                    <div class="hotel-picture-grid">
+                                                                        <t t-foreach="d.pictures" t-as="picture">
+                                                                            <t t-if="picture.mimetype and picture.mimetype.startswith('image/')">
+                                                                                <img t-att-src="'/web/image/ir.attachment/%s/datas' % picture.id"/>
+                                                                            </t>
+                                                                        </t>
+                                                                    </div>
+                                                                </t>
+                                                                    <div class="hotel-picture-grid">
+                                                                        <t t-foreach="d.pictures" t-as="picture">
+                                                                            <t t-if="picture.mimetype and picture.mimetype.startswith('image/')">
+                                                                                <img t-att-src="'/web/image/ir.attachment/%s/datas' % picture.id"/>
+                                                                            </t>
+                                                                        </t>
+                                                                    </div>
+                                                                </t>
+                                                                <br/>
+                                                                <br/>
+                                                                <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                    <span style="font-weight: bold;">Cancellation Policy:</span>
+                                                                    <span t-raw="d.tree_canelattions"/>
+                                                                </p>
+                                                                <!-- <t t-if="o.terms_conditions_eng"> -->
+                                                                <!-- </t> -->
+                                                            </td>
+                                                            <td style="text-align: right;color:#7F51A8">
+                                                                <t t-if="d.rate_hotel">
+                                                                    <t t-if="d.rate_hotel.position == 'before'">
+                                                                        <span t-esc="d.rate_hotel.symbol" style="font-family: 'sar-symbol', sans-serif !important;"/>
+                                                                        <span t-esc="'{0:,.2f}'.format(float(d['total']))"/>
+                                                                        <t t-set="total_amount" t-value="total_amount + d['total']"/>
+                                                                    </t>
+                                                                    <t t-if="d.rate_hotel.position == 'after'">
+                                                                        <span t-esc="'{0:,.2f}'.format(float(d['total']))"/>
+                                                                        <span t-esc="d.rate_hotel.symbol" style="font-family: 'sar-symbol', sans-serif !important;"/>
+                                                                        <t t-set="total_amount" t-value="total_amount + d['total']"/>
+                                                                    </t>
+                                                                </t>
+                                                                <t t-else="">
+                                                                    <span t-esc="'{0:,.2f}'.format(float(d['total']))"/>
+                                                                    <t t-set="total_amount" t-value="total_amount + d['total']"/>
+                                                                </t>
+                                                            </td>
+                                                        </tr>
+                                                    </t>
+                                                    <t t-if="d.service_type=='package'">
+                                                        <tr>
+                                                            <td style="text-align: left;bor;color:#7F51A8">
+                                                                <p style="font-weight: bold;">Ready Package:</p>
+                                                                <!-- <p style="margin-bottom:0.5rem">
+                                                                    <span style="font-weight: bold;">Supplier:</span>
+                                                                    <span t-esc="d.supplier.name"/>
+                                                                   
+                                                                </p> -->
+                                                                <t t-if="d.booking_date">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Booking Date:</span>
+                                                                        <span t-esc="d.booking_date"/>
+                                                                    </p>
+                                                                </t>
+                                                                <!--  <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                    <span style="font-weight: bold;">Date:</span>
+                                                                    <span t-esc="d.check_in" /> / <span t-esc="d.check_out" />
+                                                                </p> -->
+                                                                <t t-if="d.category">
+                                                                    <p style="margin-bottom:0.5rem;">
+                                                                        <span style="font-weight: bold;">Category:</span>
+                                                                        <span t-esc="d.category" style="text-transform:uppercase"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.confirmation_no">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Confirmation Number:</span>
+                                                                        <span t-esc="d.confirmation_no"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.no_of_nights">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Number of Nights:</span>
+                                                                        <span t-esc="d.no_of_nights"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.meal_plane">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Meal Plan:</span>
+                                                                        <span t-esc="d.meal_plane.name"/>
+                                                                    </p>
+                                                                </t>
+                                                                <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                    <span style="font-weight: bold;">Transfer Mode:</span>
+                                                                    <span t-esc="d.transfer_mode"/>
+                                                                </p>
+                                                                <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                    <span style="font-weight: bold;">Inclusions:</span>
+                                                                    <t>
+                                                                        <span t-raw="d.offers_appiled"/>
+                                                                    </t>
+                                                                </p>
+                                                                <t t-if="d.pictures">
+                                                                    <div class="hotel-picture-grid">
+                                                                        <t t-foreach="d.pictures" t-as="picture">
+                                                                            <t t-if="picture.mimetype and picture.mimetype.startswith('image/')">
+                                                                                <img t-att-src="'/web/image/ir.attachment/%s/datas' % picture.id"/>
+                                                                            </t>
+                                                                        </t>
+                                                                    </div>
+                                                                </t>
+                                                                <br/>
+                                                                <br/>
+                                                                <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                    <span style="font-weight: bold;">Cancellation Policy:</span>
+                                                                    <t>
+                                                                        <span t-raw="d.tree_canelattions"/>
+                                                                    </t>
+                                                                </p>
+                                                                <!-- <t t-if="o.terms_conditions_eng"> -->
+                                                                <!-- </t> -->
+                                                            </td>
+                                                            <td style="text-align: right;color:#7F51A8">
+                                                                <t t-if="d.rate_hotel">
+                                                                    <t t-if="d.rate_hotel.position == 'before'">
+                                                                        <span t-esc="d.rate_hotel.symbol" style="font-family: 'sar-symbol', sans-serif !important;"/>
+                                                                        <span t-esc="'{0:,.2f}'.format(float(d['total']))"/>
+                                                                        <t t-set="total_amount" t-value="total_amount + d['total']"/>
+                                                                    </t>
+                                                                    <t t-if="d.rate_hotel.position == 'after'">
+                                                                        <span t-esc="'{0:,.2f}'.format(float(d['total']))"/>
+                                                                        <span t-esc="d.rate_hotel.symbol" style="font-family: 'sar-symbol', sans-serif !important;"/>
+                                                                        <t t-set="total_amount" t-value="total_amount + d['total']"/>
+                                                                    </t>
+                                                                </t>
+                                                                <t t-else="">
+                                                                    <span t-esc="'{0:,.2f}'.format(float(d['total']))"/>
+                                                                    <t t-set="total_amount" t-value="total_amount + d['total']"/>
+                                                                </t>
+                                                            </td>
+                                                        </tr>
+                                                    </t>
+                                                    <t t-if="d.service_type=='private'">
+                                                        <tr>
+                                                            <td style="text-align: left;bor;color:#7F51A8">
+                                                                <p style="font-weight: bold;">Private Jet:</p>
+                                                                <!-- <p style="margin-bottom:0.5rem">
+                                                                    <span style="font-weight: bold;">Supplier:</span>
+                                                                    <span t-esc="d.supplier.name"/>
+                                                                   
+                                                                </p> -->
+                                                                <t t-if="d.booking_date">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Booking Date:</span>
+                                                                        <span t-esc="d.booking_date"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.departures">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;"> Departure Date:</span>
+                                                                        <t t-if="d.departures">
+                                                                        </t>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.arrival">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Arrival Date:</span>
+                                                                        <t t-if="d.arrival">
+                                                                            <span t-esc="(datetime.datetime.strptime(str(d.arrival), '%Y-%m-%d %H:%M:%S') + datetime.timedelta(hours=5)).strftime('%d %B %Y, %I:%M %p')"/>
+                                                                        </t>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.fight_class">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Class:</span>
+                                                                        <span t-esc="d.fight_class.name" style="text-transform:uppercase"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.bag">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Bag:</span>
+                                                                        <span t-esc="d.bag"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.terminal">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Terminal:</span>
+                                                                        <span t-esc="d.terminal"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.airline_pnr">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Airline PNR:</span>
+                                                                        <span t-esc="d.airline_pnr"/>
+                                                                    </p>
+                                                                </t>
+                                                                <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                    <span style="font-weight: bold;">Inclusions:</span>
+                                                                    <t>
+                                                                        <span t-raw="d.offers_appiled"/>
+                                                                    </t>
+                                                                </p>
+                                                                <t t-if="d.pictures">
+                                                                    <div class="hotel-picture-grid">
+                                                                        <t t-foreach="d.pictures" t-as="picture">
+                                                                            <t t-if="picture.mimetype and picture.mimetype.startswith('image/')">
+                                                                                <img t-att-src="'/web/image/ir.attachment/%s/datas' % picture.id"/>
+                                                                            </t>
+                                                                        </t>
+                                                                    </div>
+                                                                </t>
+                                                                <br/>
+                                                                <br/>
+                                                                <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                    <span style="font-weight: bold;">Cancellation Policy:</span>
+                                                                    <span t-raw="d.tree_canelattions"/>
+                                                                </p>
+                                                            </td>
+                                                            <td style="text-align: right;color:#7F51A8">
+                                                                <t t-if="d.rate_hotel">
+                                                                    <t t-if="d.rate_hotel.position == 'before'">
+                                                                        <span t-esc="d.rate_hotel.symbol" style="font-family: 'sar-symbol', sans-serif !important;"/>
+                                                                        <span t-esc="'{0:,.2f}'.format(float(d['total']))"/>
+                                                                        <t t-set="total_amount" t-value="total_amount + d['total']"/>
+                                                                    </t>
+                                                                    <t t-if="d.rate_hotel.position == 'after'">
+                                                                        <span t-esc="'{0:,.2f}'.format(float(d['total']))"/>
+                                                                        <span t-esc="d.rate_hotel.symbol" style="font-family: 'sar-symbol', sans-serif !important;"/>
+                                                                        <t t-set="total_amount" t-value="total_amount + d['total']"/>
+                                                                    </t>
+                                                                </t>
+                                                                <t t-else="">
+                                                                    <span t-esc="'{0:,.2f}'.format(float(d['total']))"/>
+                                                                    <t t-set="total_amount" t-value="total_amount + d['total']"/>
+                                                                </t>
+                                                            </td>
+                                                        </tr>
+                                                    </t>
+                                                    <t t-if="d.service_type=='yacht'">
+                                                        <tr>
+                                                            <td style="text-align: left;bor;color:#7F51A8 ">
+                                                                <p style="font-weight: bold;">Yacht:</p>
+                                                                <!-- <p style="margin-bottom:0.5rem">
+                                                                    <span style="font-weight: bold;">Supplier:</span>
+                                                                    <span t-esc="d.supplier.name"/>
+                                                                  
+                                                                </p> -->
+                                                                <t t-if="d.booking_date">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Booking Date:</span>
+                                                                        <span t-esc="d.booking_date"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.confirmation_no">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Confirmation Number:</span>
+                                                                        <span t-esc="d.confirmation_no"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.date_from">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Date From:</span>
+                                                                        <span t-esc="d.date_from"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.date_to">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Date To:</span>
+                                                                        <span t-esc="d.date_to"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.duration">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8;">
+                                                                        <span style="font-weight: bold;">Duration:</span>
+                                                                        <span t-esc="d.duration"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.yacht_type">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Yacht Type:</span>
+                                                                        <span t-esc="d.yacht_type.name"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.meal_plane">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Meal Plan:</span>
+                                                                        <span t-esc="d.meal_plane.name"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.departure_place">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Departure Place:</span>
+                                                                        <span t-esc="d.departure_place"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.arrival_place">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Arrival Place:</span>
+                                                                        <span t-esc="d.arrival_place"/>
+                                                                    </p>
+                                                                </t>
+                                                                <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                    <span style="font-weight: bold;">Inclusions:</span>
+                                                                    <span t-raw="d.offers_appiled"/>
+                                                                </p>
+                                                                <t t-if="d.pictures">
+                                                                    <t t-if="d.pictures">
+                                                                    <div class="hotel-picture-grid">
+                                                                        <t t-foreach="d.pictures" t-as="picture">
+                                                                            <t t-if="picture.mimetype and picture.mimetype.startswith('image/')">
+                                                                                <img t-att-src="'/web/image/ir.attachment/%s/datas' % picture.id"/>
+                                                                            </t>
+                                                                        </t>
+                                                                    </div>
+                                                                </t>
+                                                                    <div class="hotel-picture-grid">
+                                                                        <t t-foreach="d.pictures" t-as="picture">
+                                                                            <t t-if="picture.mimetype and picture.mimetype.startswith('image/')">
+                                                                                <img t-att-src="'/web/image/ir.attachment/%s/datas' % picture.id"/>
+                                                                            </t>
+                                                                        </t>
+                                                                    </div>
+                                                                </t>
+                                                                <br/>
+                                                                <br/>
+                                                                <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                    <span style="font-weight: bold;">Cancellation Policy:</span>
+                                                                    <t>
+                                                                        <span t-raw="d.tree_canelattions"/>
+                                                                    </t>
+                                                                </p>
+                                                                <!-- <t t-if="o.terms_conditions_eng"> -->
+                                                                <!-- </t> -->
+                                                            </td>
+                                                            <td style="text-align: right;color:#7F51A8">
+                                                                <t t-if="d.rate_hotel">
+                                                                    <t t-if="d.rate_hotel.position == 'before'">
+                                                                        <span t-esc="d.rate_hotel.symbol" style="font-family: 'sar-symbol', sans-serif !important;"/>
+                                                                        <span t-esc="'{0:,.2f}'.format(float(d['total']))"/>
+                                                                        <t t-set="total_amount" t-value="total_amount + d['total']"/>
+                                                                    </t>
+                                                                    <t t-if="d.rate_hotel.position == 'after'">
+                                                                        <span t-esc="'{0:,.2f}'.format(float(d['total']))"/>
+                                                                        <span t-esc="d.rate_hotel.symbol" style="font-family: 'sar-symbol', sans-serif !important;"/>
+                                                                        <t t-set="total_amount" t-value="total_amount + d['total']"/>
+                                                                    </t>
+                                                                </t>
+                                                                <t t-else="">
+                                                                    <span t-esc="'{0:,.2f}'.format(float(d['total']))"/>
+                                                                    <t t-set="total_amount" t-value="total_amount + d['total']"/>
+                                                                </t>
+                                                            </td>
+                                                        </tr>
+                                                    </t>
+                                                    <t t-if="d.service_type=='cruise'">
+                                                        <tr>
+                                                            <td style="text-align: left;bor;color:#7F51A8 ">
+                                                                <p style="font-weight: bold;">Cruise:</p>
+                                                                <!-- <p style="margin-bottom:0.5rem">
+                                                                    <span style="font-weight: bold;">Supplier:</span>
+                                                                    <span t-esc="d.supplier.name"/>
+                                                                   
+                                                                </p> -->
+                                                                <t t-if="d.booking_date">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Booking Date:</span>
+                                                                        <span t-esc="d.booking_date"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.confirmation_no">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Confirmation Number:</span>
+                                                                        <span t-esc="d.confirmation_no"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.date_from">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Date From:</span>
+                                                                        <span t-esc="d.date_from"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.date_to">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Date To:</span>
+                                                                        <span t-esc="d.date_to"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.duration">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Duration:</span>
+                                                                        <span t-esc="d.duration"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.cabin_type">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">cabin Type:</span>
+                                                                        <span t-esc="d.cabin_type.name"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.meal_plane">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Meal Plan:</span>
+                                                                        <span t-esc="d.meal_plane.name"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.departure_place">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Departure Place:</span>
+                                                                        <span t-esc="d.departure_place"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.arrival_place">
+                                                                    <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                        <span style="font-weight: bold;">Arrival Place:</span>
+                                                                        <span t-esc="d.arrival_place"/>
+                                                                    </p>
+                                                                </t>
+                                                                <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                    <span style="font-weight: bold;">Inclusions:</span>
+                                                                    <t>
+                                                                        <span t-raw="d.offers_appiled"/>
+                                                                    </t>
+                                                                </p>
+                                                                <t t-if="d.pictures">
+                                                                    <div class="hotel-picture-grid">
+                                                                        <t t-foreach="d.pictures" t-as="picture">
+                                                                            <t t-if="picture.mimetype and picture.mimetype.startswith('image/')">
+                                                                                <img t-att-src="'/web/image/ir.attachment/%s/datas' % picture.id"/>
+                                                                            </t>
+                                                                        </t>
+                                                                    </div>
+                                                                </t>
+                                                                <br/>
+                                                                <br/>
+                                                                <p style="margin-bottom:0.5rem;color:#7F51A8">
+                                                                    <span style="font-weight: bold;">Cancellation Policy:</span>
+                                                                    <span t-raw="d.tree_canelattions"/>
+                                                                </p>
+                                                                <!-- <t t-if="o.terms_conditions_eng"> -->
+                                                                <!-- </t> -->
+                                                            </td>
+                                                            <td style="text-align: right;color:#7F51A8">
+                                                                <t t-if="d.rate_hotel">
+                                                                    <t t-if="d.rate_hotel.position == 'before'">
+                                                                        <span t-esc="d.rate_hotel.symbol" style="font-family: 'sar-symbol', sans-serif !important;"/>
+                                                                        <span t-esc="'{0:,.2f}'.format(float(d['total']))"/>
+                                                                        <t t-set="total_amount" t-value="total_amount + d['total']"/>
+                                                                    </t>
+                                                                    <t t-if="d.rate_hotel.position == 'after'">
+                                                                        <span t-esc="'{0:,.2f}'.format(float(d['total']))"/>
+                                                                        <span t-esc="d.rate_hotel.symbol" style="font-family: 'sar-symbol', sans-serif !important;"/>
+                                                                        <t t-set="total_amount" t-value="total_amount + d['total']"/>
+                                                                    </t>
+                                                                </t>
+                                                                <t t-else="">
+                                                                    <span t-esc="'{0:,.2f}'.format(float(d['total']))"/>
+                                                                    <t t-set="total_amount" t-value="total_amount + d['total']"/>
+                                                                </t>
+                                                            </td>
+                                                        </tr>
+                                                    </t>
+                                                    <t t-if="d.service_type=='other'">
+                                                        <tr>
+                                                            <td style="text-align: left;bor;color:#7F51A8">
+                                                                <p style="font-weight: bold;">Other Service:</p>
+                                                               <!--  <p style="margin-bottom:0.5rem">
+                                                                    <span style="font-weight: bold;">Supplier:</span>
+                                                                    <span t-esc="d.supplier.name"/>
+                                                                   
+                                                                </p> -->
+                                                                <t t-if="d.booking_date">
+                                                                    <p style="margin-bottom:0.5rem">
+                                                                        <span style="font-weight: bold;">Booking Date:</span>
+                                                                        <span t-esc="d.booking_date"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.confirmation_no">
+                                                                    <p style="margin-bottom:0.5rem">
+                                                                        <span style="font-weight: bold;">Confirmation Number:</span>
+                                                                        <span t-esc="d.confirmation_no"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.date_from">
+                                                                    <p style="margin-bottom:0.5rem">
+                                                                        <span style="font-weight: bold;">Date From:</span>
+                                                                        <span t-esc="d.date_from"/>
+                                                                    </p>
+                                                                </t>
+                                                                <t t-if="d.date_to">
+                                                                    <p style="margin-bottom:0.5rem">
+                                                                        <span style="font-weight: bold;">Date To:</span>
+                                                                        <span t-esc="d.date_to"/>
+                                                                    </p>
+                                                                </t>
+                                                                <p style="margin-bottom:0.5rem">
+                                                                    <span style="font-weight: bold;">Inclusions:</span>
+                                                                    <span t-raw="d.offers_appiled"/>
+                                                                </p>
+                                                                <t t-if="d.pictures">
+                                                                    <div class="hotel-picture-grid">
+                                                                        <t t-foreach="d.pictures" t-as="picture">
+                                                                            <t t-if="picture.mimetype and picture.mimetype.startswith('image/')">
+                                                                                <img t-att-src="'/web/image/ir.attachment/%s/datas' % picture.id"/>
+                                                                            </t>
+                                                                        </t>
+                                                                    </div>
+                                                                </t>
+                                                                <br/>
+                                                                <br/>
+                                                                <p style="margin-bottom:0.5rem">
+                                                                    <span style="font-weight: bold;">Cancellation Policy:</span>
+                                                                    <span t-raw="d.tree_canelattions"/>
+                                                                </p>
+                                                                <!-- <t t-if="o.terms_conditions_eng"> -->
+                                                                <!-- </t> -->
+                                                            </td>
+                                                            <td style="text-align: right;">
+                                                                <t t-if="d.rate_hotel">
+                                                                    <t t-if="d.rate_hotel.position == 'before'">
+                                                                        <span t-esc="d.rate_hotel.symbol" style="font-family: 'sar-symbol', sans-serif !important;"/>
+                                                                        <span t-esc="'{0:,.2f}'.format(float(d['total']))"/>
+                                                                        <t t-set="total_amount" t-value="total_amount + d['total']"/>
+                                                                    </t>
+                                                                    <t t-if="d.rate_hotel.position == 'after'">
+                                                                        <span t-esc="'{0:,.2f}'.format(float(d['total']))"/>
+                                                                        <span t-esc="d.rate_hotel.symbol" style="font-family: 'sar-symbol', sans-serif !important;"/>
+                                                                        <t t-set="total_amount" t-value="total_amount + d['total']"/>
+                                                                    </t>
+                                                                </t>
+                                                                <t t-else="">
+                                                                    <span t-esc="'{0:,.2f}'.format(float(d['total']))"/>
+                                                                    <t t-set="total_amount" t-value="total_amount + d['total']"/>
+                                                                </t>
+                                                            </td>
+                                                        </tr>
+                                                    </t>
+                                                </t>
+                                            </t>
+                                        </tbody>
+                                        <tr style="color:#7F51A8">
+                                            <td>Total:</td>
+                                            <td>
+                                                <!-- <t t-if="d and d.get('rate_hotel')"> -->
+                                                    <t t-if="d.rate_hotel.position == 'before'">
+                                                        <span t-esc="d.rate_hotel.symbol" />
+                                                        <span t-esc="'{0:,.2f}'.format(float(total_amount))"/>
+                                                    </t>
+                                                    <t t-if="d.rate_hotel.position == 'after'">
+                                                        <span t-esc="'{0:,.2f}'.format(float(total_amount))"/>
+                                                        <span t-esc="d.rate_hotel.symbol" />
+                                                    </t>
+                                                <!-- </t> -->
+                                               <!--  <t t-else="">
+                                                    <span t-esc="'{0:,.2f}'.format(float(total_amount))"/>
+                                                </t> -->
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <!-- <div>
+                                    <table width="100%" t-if="o.total_in_report">
+                                        <tbody>
+                                            <td style="text-align: left; font-weight: bold;width: 70.6%;border-top:none;">Total:</td>
+                                            <td style="text-align: right; font-weight: bold;border-top:none;">
+                                                <t t-if="d and d.get('rate_hotel')">
+                                                    <t t-if="d.rate_hotel.position == 'before'">
+                                                        <span t-esc="d.rate_hotel.symbol" style="font-family: 'sar-symbol', sans-serif !important;"/>
+                                                        <span t-esc="'{0:,.2f}'.format(float(total_amount))"/>
+                                                    </t>
+                                                    <t t-if="d.rate_hotel.position == 'after'">
+                                                        <span t-esc="'{0:,.2f}'.format(float(total_amount))"/>
+                                                        <span t-esc="d.rate_hotel.symbol" style="font-family: 'sar-symbol', sans-serif !important;"/>
+                                                    </t>
+                                                </t>
+                                                <t t-else="">
+                                                    <span t-esc="'{0:,.2f}'.format(float(total_amount))"/>
+                                                </t>
+                                            </td>
+                                        </tbody>
+                                    </table>
+                                </div> -->
+                                <!-- </div> -->
+                                <br class="clearfloat"/>
+                                <div class="page-break"/>
+                            </div>
+                            <div class="page">
+                                <!-- <div class="content" style="margin-left:20px; margin-right:20px;"> -->
+                                <div style="color:#7F51A8">
+                                    <p style="color: #000; margin-top:40px;color:#7F51A8">
+                                        <span style="color: #000; margin-top:500px;text-align:right; font-size:25px; margin-left: 15px; margin-top:200px;text-decoration:underline;color:#7F51A8">Cancellation Policy</span>
+                                    </p>
+                                    <br class="clearfloat"/>
+                                    <span style="margin-left:20px; color:#7F51A8" class="custom_all_eng">
+                                        <t t-raw="o.cancel_new_eng"/>
+                                    </span>
+                                    <div class="page-break"/>
+                                </div>
+                                <div >
+                                    <p style="color: #000; margin-top:40px">
+                                        <span style="color: #000; margin-top:500px;text-align:right; font-size:25px; margin-left: 15px; margin-top:200px;text-decoration:underline;color:#7F51A8">Terms Conditions &amp; Inclusions:</span>
+                                    </p>
+                                    <br class="clearfloat"/>
+                                    <!-- <t t-if="o.terms_conditions_eng"> -->
+                                    <span style="color: #000;margin-left:20px; color:#000;color:#7F51A8" class="custom_all_eng">
+                                        <t t-raw="o.terms_conditions_eng"/>
+                                    </span>
+                                    <div class="page-break"/>
+                                    <!-- </t> -->
+                                </div>
+                            </div>
+                           <!--  <div class="page">
+                                <div class="image-container">
+                                    <img src="/new_quotation_report/static/src/img/last_image.jpg" alt="Image" style="height:1270px; width:100%;"/>
+                                </div>
+                            </div> -->
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

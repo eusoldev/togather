@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="google_marker_icon_picker.MarkerColorPicker">
+        <div class="o_field_char_marker_color dropdown">
+            <a role="button" href="#" class="dropdown-toggle o-no-caret" data-bs-toggle="dropdown" aria-expanded="false" t-att-title="props.record.data[props.name]">
+                <img t-att-src="'/web_google_maps/static/src/img/markers/' + (props.record.data[props.name] || 'red') + '.png'" t-att-alt="props.record.data[props.name]"/>
+            </a>
+            <div class="dropdown-menu p-2" role="menu" style="min-width: 200px;">
+                <div class="row g-1">
+                    <t t-foreach="colors" t-as="color" t-key="color[0]">
+                        <div class="col-2 text-center">
+                            <a class="d-block p-1" role="menuitem" href="#" t-on-click.prevent="() => this.onSelectColor(color[0])" t-att-title="color[2]">
+                                <img t-att-src="'/web_google_maps/static/src/img/markers/' + color[0] + '.png'" t-att-alt="color[2]" style="width: 20px;"/>
+                            </a>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

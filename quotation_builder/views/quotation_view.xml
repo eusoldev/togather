@@ -1700,6 +1700,62 @@
                 background-color: white !important;
                 color: black !important;
             }
+
+            .voucher-company-header {
+                width: 100%;
+                min-height: 260px;
+                padding: 28px 18px 75px 18px;
+                border-bottom: 3px solid #7F51A8;
+                box-sizing: border-box;
+                background: #DAD7DD;
+            }
+
+            .voucher-company-info {
+                float: left;
+                width: 36%;
+                font-size: 15px;
+                line-height: 1.35;
+            }
+
+            .voucher-company-info p,
+            .voucher-company-info-ar p {
+                margin: 0 !important;
+                padding: 0 !important;
+                color: #7F51A8;
+            }
+
+            .voucher-company-name {
+                font-size: 24px;
+                font-weight: 700;
+                line-height: 1.2;
+            }
+
+            .voucher-logo-wrap {
+                float: left;
+                width: 28%;
+                text-align: center;
+                margin-top: -60px;
+            }
+
+            .voucher-logo-wrap img {
+                height: 245px
+            }
+
+            .voucher-company-info-ar {
+                float: right;
+                width: 36%;
+                color: #000;
+                direction: rtl;
+                text-align: right;
+                font-size: 15px;
+                line-height: 1.35;
+            }
+
+            .voucher-company-name-ar {
+                font-size: 24px;
+                font-weight: 700;
+                line-height: 1.2;
+            }
             </style>
         </head>
 
@@ -1708,54 +1764,148 @@
                 <div class="main_wraper" id="non-application-root">
                     <t t-foreach="sale_rec" t-as="i">
                         <div class="row_row row w-100">
-                            <div class="col-2-sidebar col-2 z-3 position-fixed mt-3" style="overflow-y:auto;max-height: 90vh; min-height: 92vh;position:fixed;overflow-x:hidden;">
-                                <div class="list-group" id="list-tab" role="tablist" style="position:absolute;width:96%;display:flex;max-height:90vh;min-height:60vh;">
-                                    <t t-foreach="grouped_records" t-as="date_key">
-                                        <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" t-attf-href="##{date_key}" role="tab" aria-controls="home" style="background-color: #7F51A8;    text-shadow: 0px 0px 1px white; min-height:60px;display:flex;text-align:centre;color:white;">
-                                            <span style="font-size:large;margin-left: 20px;margin-top:13px;" class="date_key">
-                                                <t t-esc="date_key.strftime('%A, %b %d')" />
-                                            </span>
-                                        </a>
-                                    </t>
-                                </div>
-                            </div>
                             <div id="non-application-page">
                                 <div id="ember6" class="ember-view si-super-wrap">
                                     <div class="si-wrap _include-comments">
                                         <div class="si-main-wrap" style="box-shadow: 1px 1px 20px 0px black;margin-left:24rem;">
-                                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                                <tr>
-                                                    <td>
-                                                        <div align="center" style="padding: 0px 0px 0px 0px;">
-                                                            <table border="0" cellpadding="0" cellspacing="0" width="100%" class=" box-shadow">
-                                                                <tr>
-                                                                    <td>
-                                                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                                                            <tr>
-                                                                                <td style="padding: 32px 0 32px 0;" class="bokking">
-                                                                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                                                                        <tr>
-                                                                                            <td id="logoo_img" align="center" style="font-size: 20px; font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 300;" class="pad-header-copy;">
-
-                                                                                                 <img style="height:85px;float: left;padding-left:23px;" t-if="i.company_id.logo" t-att-src="image_data_uri(i.company_id.logo)"/>
-                                                                                                <div style="color:#7F51A8;font-size:23px;float:right;margin-right:43px;margin-top:20px;">
-                                                                                                    <h1 style="font-size:larger;margin-bottom:0;" t-esc="i.company_id.name"></h1>
-                                                                                                    <span style="font-weight:bold;"><span>Email:</span>
-                                                                                                        <span t-esc="i.company_id.email"></span></span>
-                                                                                                </div>
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                    </table>
-                                                                                </td>
-                                                                            </tr>
-                                                                        </table>
-                                                                    </td>
-                                                                </tr>
-                                                            </table>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </table>
+                                            <div class="voucher-company-header">
+                                                <div class="voucher-company-info">
+                                                    <p class="voucher-company-name">
+                                                        <span t-esc="i.company_id.name" />
+                                                    </p>
+                                                    <p>
+                                                        <span t-if="i.company_id.street" t-esc="i.company_id.street" />
+                                                        <t t-if="i.company_id.street2">
+                                                            <t t-if="i.company_id.street">, </t>
+                                                            <span t-esc="i.company_id.street2" />
+                                                        </t>
+                                                        <span t-if="i.company_id.street and (i.company_id.city or i.company_id.country_id)">, </span>
+                                                        <span t-if="i.company_id.city" t-esc="i.company_id.city" />
+                                                        <span t-if="i.company_id.city and i.company_id.country_id">, </span>
+                                                        <span t-if="i.company_id.country_id" t-esc="i.company_id.country_id.name" />
+                                                    </p>
+                                                    <p t-if="i.company_id.email">
+                                                        <span>Email: </span>
+                                                        <span t-esc="i.company_id.email" />
+                                                    </p>
+                                                    <p t-if="i.company_id.phone">
+                                                        <span>Phone: </span>
+                                                        <span t-esc="i.company_id.phone" />
+                                                    </p>
+                                                    <p t-if="i.company_id.vat">
+                                                        <span>VAT </span>
+                                                        <span t-esc="i.company_id.vat" />
+                                                    </p>
+                                                    <p t-if="i.company_id.custom_cr_number">
+                                                        <span>CR No. </span>
+                                                        <span t-esc="i.company_id.custom_cr_number" />
+                                                    </p>
+                                                    <br />
+                                                    <p style="margin:0px;">
+                                                        <span class="solid">
+                                                            <a t-att-href="i.company_id.social_instagram" style="color:#DAD7DD">
+                                                                <i class="fab fa-instagram" style="color:#7F51A8; font-size:24px; margin-right:12px;"></i>
+                                                            </a>
+                                                        </span>
+                                                        <span class="solid">
+                                                            <a t-att-href="i.company_id.social_facebook" style="color:#DAD7DD">
+                                                                <i class="fab fa-facebook" style="color:#7F51A8; font-size:24px;margin-right:12px;"></i>
+                                                            </a>
+                                                        </span>
+                                                        <span class="solid">
+                                                            <a t-att-href="i.company_id.social_youtube" style="color:#DAD7DD">
+                                                                <i class="fab fa-snapchat-square" style="color:#7F51A8; font-size:24px; margin-right:12px;"></i>
+                                                            </a>
+                                                        </span>
+                                                        <span class="solid">
+                                                            <a t-att-href="i.company_id.social_linkedin" style="color:#DAD7DD">
+                                                                <i class="fab fa-linkedin" style="color:#7F51A8; font-size:24px; margin-right:12px;"></i>
+                                                            </a>
+                                                        </span>
+                                                        <span class="solid">
+                                                            <a t-att-href="i.company_id.social_twitter" style="color:#DAD7DD">
+                                                                <!-- <i class="fab fa-twitter-square" style="color:#7F51A8; font-size:24px;"></i> -->
+                                                                <img src="/voucher_report/static/src/img/twitter.png" style="width: 9.5%;color: #7F51A8;margin-top: -11px;margin-right:12px" />
+                                                            </a>
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                                <div class="voucher-logo-wrap">
+                                                    <img t-if="i.company_id.logo" t-att-src="image_data_uri(i.company_id.logo)" />
+                                                </div>
+                                                <div class="voucher-company-info-ar">
+                                                    <p class="voucher-company-name-ar">
+                                                        <span t-esc="i.company_id.arabic_contact" />
+                                                    </p>
+                                                    <p>
+                                                        <t t-if="i.company_id.arabic_street">
+                                                            <span t-esc="i.company_id.arabic_street" />
+                                                        </t>
+                                                        <t t-if="i.company_id.arabic_street2">
+                                                            <t t-if="i.company_id.arabic_street">, </t>
+                                                            <span t-esc="i.company_id.arabic_street2" />
+                                                        </t>
+                                                        <t t-if="i.company_id.arabic_city">
+                                                            <t t-if="i.company_id.arabic_street or i.company_id.arabic_street2">, </t>
+                                                            <span t-esc="i.company_id.arabic_city" />
+                                                        </t>
+                                                        <t t-if="i.company_id.arabic_country">
+                                                            <t t-if="i.company_id.arabic_street or i.company_id.arabic_street2 or i.company_id.arabic_city">, </t>
+                                                            <span t-esc="i.company_id.arabic_country" />
+                                                        </t>
+                                                        <!-- <t t-if="i.company_id.arabic_state">
+                                    <t t-if="i.company_id.arabic_street or i.company_id.arabic_street2 or i.company_id.arabic_city">, </t>
+                                    <span t-esc="i.company_id.arabic_state"/>
+                                </t> -->
+                                                    </p>
+                                                    <p t-if="i.company_id.email">
+                                                        <!-- <span>Email: </span> -->
+                                                        <span t-esc="i.company_id.email" />
+                                                    </p>
+                                                    <p t-if="i.company_id.phone">
+                                                        <!-- <span>Phone: </span> -->
+                                                        <span t-esc="i.company_id.phone" />
+                                                    </p>
+                                                    <p t-if="i.company_id.vat">
+                                                        <!-- <span>VAT: </span> -->
+                                                        <span t-esc="i.company_id.vat" />
+                                                    </p>
+                                                    <p t-if="i.company_id.arabic_cr_number">
+                                                        <span t-esc="i.company_id.arabic_cr_number"></span>
+                                                        <!-- <span>CR No: </span> -->
+                                                        <!-- <span t-esc="i.company_id.custom_cr_number"/> -->
+                                                    </p>
+                                                    <br />
+                                                    <p style="margin:0px;">
+                                                        <span class="solid">
+                                                            <a t-att-href="i.company_id.social_instagram" style="color:#DAD7DD">
+                                                                <i class="fab fa-instagram" style="color:#7F51A8; font-size:24px; margin-right:12px;"></i>
+                                                            </a>
+                                                        </span>
+                                                        <span class="solid">
+                                                            <a t-att-href="i.company_id.social_facebook" style="color:#DAD7DD">
+                                                                <i class="fab fa-facebook" style="color:#7F51A8; font-size:24px;margin-right:12px;"></i>
+                                                            </a>
+                                                        </span>
+                                                        <span class="solid">
+                                                            <a t-att-href="i.company_id.social_youtube" style="color:#DAD7DD">
+                                                                <i class="fab fa-snapchat-square" style="color:#7F51A8; font-size:24px; margin-right:12px;"></i>
+                                                            </a>
+                                                        </span>
+                                                        <span class="solid">
+                                                            <a t-att-href="i.company_id.social_linkedin" style="color:#DAD7DD">
+                                                                <i class="fab fa-linkedin" style="color:#7F51A8; font-size:24px; margin-right:12px;"></i>
+                                                            </a>
+                                                        </span>
+                                                        <span class="solid">
+                                                            <a t-att-href="i.company_id.social_twitter" style="color:#DAD7DD">
+                                                                <!-- <i class="fab fa-twitter-square" style="color:#7F51A8; font-size:24px;"></i> -->
+                                                                <img src="/voucher_report/static/src/img/twitter.png" style="width: 9.5%;color: #7F51A8;margin-top: -11px;margin-right:12px" />
+                                                            </a>
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                            </div>
                                             <div class="si-main">
                                                 <div class="my-slider">
                                                     <t t-foreach="i.destination_pictures" t-as="images">
@@ -1797,12 +1947,12 @@
                                                                 <strong>Total number of guests: </strong><span t-esc="i.number_of_guests"></span>
                                                             </p>
                                                         </t>
-                                                        <t>
+                                                        <t t-if="i.client_name">
                                                             <p>
                                                                 <strong>Client Name: </strong><span t-esc="i.client_name.name"></span>
                                                             </p>
                                                         </t>
-                                                        <t>
+                                                        <t t-if="i.destination">
                                                             <p>
                                                                 <strong>Destinations: </strong>
                                                                 <t t-set="com" t-value="0" />
@@ -1817,26 +1967,19 @@
                                                                 </t>
                                                             </p>
                                                         </t>
+                                                        <t t-if="i.total_in_report and i.tree_link_id">
+                                                            <t t-set="total_amount" t-value="0.0" />
+                                                            <t t-foreach="i.tree_link_id" t-as="line">
+                                                                <t t-set="total_amount" t-value="total_amount + (line.total or 0.0)" />
+                                                            </t>
+                                                            <p>
+                                                                <strong>Total: </strong><span t-esc="'{:,.2f}'.format(total_amount)"></span>
+                                                            </p>
+                                                        </t>
                                                     </div>
                                                 </section>
                                                 <t t-foreach="grouped_records" t-as="date_key">
-                                                    <p style="visibility:hidden; font-size:large;margin-left: 20px;" t-att-id="date_key">
-                                                        <t t-esc="date_key.strftime('%A, %b %d')" />
-                                                    </p>
-                                                    <span class="component-trip-day-overview _current-day-in-view">
-                                                        <h2 class="si-day-title" style='background-color:transparent;border-bottom:0px;'>
-                                                            <span style="font-weight: bold; font-size: 15; margin-left:10px;color:black; position:relative;z-index:1;background-color:white;" t-esc="date_key.strftime('%A, %b %d')" />
-                                                            <span style="position: relative; display: block; top: 50%; left: 0; width: 100%; border-top: 1px solid #d7dfe3; content: ''; transition-property: opacity; transition-duration: .25s; z-index: -1; position: absolute;opacity:1;"></span>
-                                                        </h2>
-                                                        <t t-if="not grouped_records[date_key]">
-                                                            <div style="margin-top:10px;margin-bottom:10px;margin-left:33px;">
-                                                                <!-- Display message when there is no plan for today -->
-                                                                <h2 style="font-size: 16px;font-weight: 500;color: gray;font-style: italic;">No Plan for this day</h2>
-                                                            </div>
-                                                        </t>
-                                                        <!-- <p> No Plan for today </p> -->
-                                                        <!-- <t t-if="grouped_records[date_key] == {}" -->
-                                                    </span>
+                                                   
                                                     <t t-foreach="grouped_records[date_key]" t-as="service_type">
                                                         <t t-if="service_type =='hotel'">
                                                             <section class="component-trip-day-overview _current-day-in-view" data-trip-day-id="34814293">
@@ -1874,15 +2017,6 @@
                                                                                 <strong>To: </strong><span t-esc="h.check_out.strftime('%d %B %Y')"></span>
                                                                             </p>
                                                                         </t>
-                                                                        <!-- <p>
-                                                                            <strong>Guests: </strong><span t-esc="h.no_of_guest"></span>
-                                                                        </p> -->
-                                                                        <!-- <p>
-                                                                            <strong>Gender: </strong><span style="text-transform: capitalize;" t-esc="h.gender"></span>
-                                                                        </p> -->
-                                                                        <!-- <p>
-                                                                            <strong>Category: </strong><span style="text-transform: capitalize;" t-esc="h.category"></span>
-                                                                        </p> -->
                                                                         <t t-if='h.room_type'>
                                                                             <p>
                                                                                 <strong>Room Type: </strong>
@@ -1923,6 +2057,11 @@
                                                                                 </t>
                                                                             </p>
                                                                         </t>
+                                                                        <t t-if="h.total">
+                                                                            <p>
+                                                                                <strong>Total: </strong><span t-esc="h.total"></span>
+                                                                            </p>
+                                                                        </t>
                                                                     </div>
                                                                 </t>
                                                             </section>
@@ -1955,19 +2094,6 @@
                                                                                 <strong>Class: </strong><span t-esc="f.fight_class.name"></span>
                                                                             </p>
                                                                         </t>
-                                                                        <!-- <p>
-                                                                            <strong>Category: </strong>
-                                                                            <t t-set="com" t-value="0" />
-                                                                            <t t-foreach="f.category_guest" t-as="cm">
-                                                                                <t t-set="com" t-value="com+1" />
-                                                                                <t t-if="com > 1">
-                                                                                    , <span t-esc="cm.name"></span>
-                                                                                </t>
-                                                                                <t t-else="">
-                                                                                    <span t-esc="cm.name"></span>
-                                                                                </t>
-                                                                            </t>
-                                                                        </p> -->
                                                                         <t t-if="f.from_loc.city">
                                                                             <p>
                                                                                 <strong>From: </strong><span t-esc="f.from_loc.city"></span>
@@ -1988,9 +2114,11 @@
                                                                                 <strong>Arrival: </strong><span t-esc="f.arrival.strftime('%d %B %Y')"></span>
                                                                             </p>
                                                                         </t>
-                                                                        <!-- <p>
-                                                                            <strong>Total Amount: </strong><span t-esc="'{0:,.2f}'.format(float(f['total']))"></span>
-                                                                        </p> -->
+                                                                        <t t-if="f.total">
+                                                                            <p>
+                                                                                <strong>Total: </strong><span t-esc="f.total"></span>
+                                                                            </p>
+                                                                        </t>
                                                                     </div>
                                                                 </t>
                                                             </section>
@@ -2048,14 +2176,11 @@
                                                                                 <strong>Vehicle: </strong><span t-esc="tr.vehicle_type.name"></span>
                                                                             </p>
                                                                         </t>
-                                                                        <!--   <t t-if="tr.cancellation_days">
+                                                                        <t t-if="tr.total">
                                                                             <p>
-                                                                                <strong>Cancellation Day: </strong><span t-esc="tr.cancellation_days.strftime('%d %B %Y')"></span>
+                                                                                <strong>Total: </strong><span t-esc="tr.total"></span>
                                                                             </p>
-                                                                        </t> -->
-                                                                        <!--  <p>
-                                                                            <strong>Total Amount: </strong><span t-esc="'{0:,.2f}'.format(float(tr['total']))"></span>
-                                                                        </p> -->
+                                                                        </t>
                                                                     </div>
                                                                 </t>
                                                             </section>
@@ -2092,43 +2217,21 @@
                                                                                 <strong>Confirmation Number: </strong><span t-esc="to.confirmation_no"></span>
                                                                             </p>
                                                                         </t>
-                                                                        <!-- <t t-if="to.date_from">
-                                                                            <p>
-                                                                                <strong>Date From: </strong><span t-esc="to.date_from.strftime('%d %B %Y')"></span>
-                                                                            </p>
-                                                                        </t> -->
-                                                                        <!-- <t t-if="to.date_to">
-                                                                            <p>
-                                                                                <strong>Date To: </strong><span t-esc="to.date_to.strftime('%d %B %Y')"></span>
-                                                                            </p>
-                                                                        </t> -->
                                                                         <t t-if='to.guided_or_not'>
                                                                             <p>
                                                                                 <strong>Guided/Not-Guided: </strong><span style="text-transform: capitalize;" t-esc="to.guided_or_not"></span>
                                                                             </p>
                                                                         </t>
-                                                                        <!-- <p>
-                                                                            <strong>Validity: </strong><span t-esc="to.days_valid.days"> days</span>
-                                                                        </p> -->
-                                                                        <!--  <t t-if="to.issue_date">
-                                                                            <p>
-                                                                                <strong>Issue Date: </strong><span t-esc="to.issue_date.strftime('%d %B %Y')"></span>
-                                                                            </p>
-                                                                        </t>
- -->
                                                                         <t t-if='to.ticket_day'>
                                                                             <p>
                                                                                 <strong>Ticket Day: </strong><span t-esc="to.ticket_day"></span>
                                                                             </p>
                                                                         </t>
-                                                                        <!-- <t t-if="to.cancellation_days">
+                                                                        <t t-if="to.total">
                                                                             <p>
-                                                                                <strong>Cancellation Day: </strong><span t-esc="to.cancellation_days.strftime('%d %B %Y')"></span>
+                                                                                <strong>Total: </strong><span t-esc="to.total"></span>
                                                                             </p>
-                                                                        </t> -->
-                                                                        <!-- <p>
-                                                                            <strong>Total Amount: </strong><span t-esc="'{0:,.2f}'.format(float(to['total']))"></span>
-                                                                        </p> -->
+                                                                        </t>
                                                                     </div>
                                                                 </t>
                                                             </section>
@@ -2176,14 +2279,11 @@
                                                                                 <strong>Confirmation Number: </strong><span t-esc="v.confirmation_no"></span>
                                                                             </p>
                                                                         </t>
-                                                                        <!--  <t t-if="v.cancellation_days">
+                                                                        <t t-if="v.total">
                                                                             <p>
-                                                                                <strong>Cancellation Day: </strong><span t-esc="v.cancellation_days.strftime('%d %B %Y')"></span>
+                                                                                <strong>Total: </strong><span t-esc="v.total"></span>
                                                                             </p>
-                                                                        </t> -->
-                                                                        <!--  <p>
-                                                                            <strong>Total Amount: </strong><span t-esc="'{0:,.2f}'.format(float(v['total']))"></span>
-                                                                        </p> -->
+                                                                        </t>
                                                                     </div>
                                                                 </t>
                                                             </section>
@@ -2211,9 +2311,6 @@
                                                                                 <strong>Package: </strong><span t-esc="p.product_id.name"></span>
                                                                             </p>
                                                                         </t>
-                                                                        <!--   <p>
-                                                                            <strong>Guest Category: </strong><span style="text-transform: capitalize;" t-esc="p.category"></span>
-                                                                        </p> -->
                                                                         <t t-if='p.confirmation_no'>
                                                                             <p>
                                                                                 <strong>Confirmation Number: </strong><span t-esc="p.confirmation_no"></span>
@@ -2244,14 +2341,11 @@
                                                                                 <strong>Number of Person: </strong><span t-esc="p.no_of_person"></span>
                                                                             </p>
                                                                         </t>
-                                                                        <!--     <t t-if="p.cancellation_days">
+                                                                        <t t-if="p.total">
                                                                             <p>
-                                                                                <strong>Cancellation Day: </strong><span t-esc="p.cancellation_days.strftime('%d %B %Y')"></span>
+                                                                                <strong>Total: </strong><span t-esc="p.total"></span>
                                                                             </p>
-                                                                        </t> -->
-                                                                        <!--  <p>
-                                                                            <strong>Total Amount: </strong><span t-esc="'{0:,.2f}'.format(float(p['total']))"></span>
-                                                                        </p> -->
+                                                                        </t>
                                                                     </div>
                                                                 </t>
                                                             </section>
@@ -2319,14 +2413,11 @@
                                                                                 <strong>Number of Person: </strong><span t-esc="pj.no_of_person"></span>
                                                                             </p>
                                                                         </t>
-                                                                        <!--   <t t-if="pj.cancellation_days">
+                                                                        <t t-if="pj.total">
                                                                             <p>
-                                                                                <strong>Cancellation Day: </strong><span t-esc="pj.cancellation_days.strftime('%d %B %Y')"></span>
+                                                                                <strong>Total: </strong><span t-esc="pj.total"></span>
                                                                             </p>
-                                                                        </t> -->
-                                                                        <!--   <p>
-                                                                            <strong>Total Amount: </strong><span t-esc="'{0:,.2f}'.format(float(pj['total']))"></span>
-                                                                        </p -->>
+                                                                        </t>
                                                                     </div>
                                                                 </t>
                                                             </section>
@@ -2389,14 +2480,11 @@
                                                                                 <strong>Date To: </strong><span t-esc="y.date_to.strftime('%d %B %Y')"></span>
                                                                             </p>
                                                                         </t>
-                                                                        <!--   <t t-if="y.cancellation_days">
+                                                                        <t t-if="y.total">
                                                                             <p>
-                                                                                <strong>Cancellation Day: </strong><span t-esc="y.cancellation_days.strftime('%d %B %Y')"></span>
+                                                                                <strong>Total: </strong><span t-esc="y.total"></span>
                                                                             </p>
-                                                                        </t> -->
-                                                                        <!--  <p>
-                                                                            <strong>Total Amount: </strong><span t-esc="'{0:,.2f}'.format(float(y['total']))"></span>
-                                                                        </p> -->
+                                                                        </t>
                                                                     </div>
                                                                 </t>
                                                             </section>
@@ -2459,14 +2547,11 @@
                                                                                 <strong>Date To: </strong><span t-esc="c.date_to.strftime('%d %B %Y')"></span>
                                                                             </p>
                                                                         </t>
-                                                                        <!--  <t t-if="c.cancellation_days">
+                                                                        <t t-if="c.total">
                                                                             <p>
-                                                                                <strong>Cancellation Day: </strong><span t-esc="c.cancellation_days.strftime('%d %B %Y')"></span>
+                                                                                <strong>Total: </strong><span t-esc="c.total"></span>
                                                                             </p>
-                                                                        </t> -->
-                                                                        <!--    <p>
-                                                                            <strong>Total Amount: </strong><span t-esc="'{0:,.2f}'.format(float(c['total']))"></span>
-                                                                        </p> -->
+                                                                        </t>
                                                                     </div>
                                                                 </t>
                                                             </section>
@@ -2491,30 +2576,12 @@
                                                                                 </t>
                                                                             </t>
                                                                         </div>
-                                                                        <!-- <p style="margin-top:10px;">
-                                                                            <strong>Other Service: </strong><span t-esc="os.product_id.name"></span>
-                                                                        </p> -->
                                                                         <t t-if="os.confirmation_no and not confirmation_no_called">
                                                                             <t t-set="confirmation_no_called" t-value="True" />
                                                                             <p>
                                                                                 <strong>Confirmation Number: </strong><span t-esc="os.confirmation_no"></span>
                                                                             </p>
                                                                         </t>
-                                                                        <!-- <t t-if="os.confirmation_no">
-                                                                            <p>
-                                                                                <strong>Confirmation Number: </strong><span t-esc="os.confirmation_no"></span>
-                                                                            </p>
-                                                                        </t> -->
-                                                                        <!-- <t t-if="os.date_from">
-                                                                            <p>
-                                                                                <strong>Date From: </strong><span t-esc="os.date_from.strftime('%d %B %Y')"></span>
-                                                                            </p>
-                                                                        </t>
-                                                                        <t t-if="os.date_to">
-                                                                            <p>
-                                                                                <strong>Date To: </strong><span t-esc="os.date_to.strftime('%d %B %Y')"></span>
-                                                                            </p>
-                                                                        </t> -->
                                                                         <t t-if="os.date_from and os.date_to and not service_dates_called">
                                                                             <t t-set="service_dates_called" t-value="True" />
                                                                             <p>
@@ -2523,21 +2590,11 @@
                                                                                 <span t-esc="os.date_to.strftime('%d %B %Y')"></span>
                                                                             </p>
                                                                         </t>
-                                                                        <!--                                                                         <t t-if="os.date_from and os.date_to">
+                                                                        <t t-if="os.total">
                                                                             <p>
-                                                                                <strong>Service Dates : </strong><span t-esc="os.date_from.strftime('%d %B %Y')"></span>
-                                                                                <span>-</span>
-                                                                                <span t-esc="os.date_to.strftime('%d %B %Y')"></span>
+                                                                                <strong>Total: </strong><span t-esc="os.total"></span>
                                                                             </p>
-                                                                        </t> -->
-                                                                        <!--    <t t-if="os.cancellation_days">
-                                                                            <p>
-                                                                                <strong>Cancellation Day: </strong><span t-esc="os.cancellation_days.strftime('%d %B %Y')"></span>
-                                                                            </p>
-                                                                        </t> -->
-                                                                        <!-- <p>
-                                                                            <strong>Total Amount: </strong><span t-esc="'{0:,.2f}'.format(float(os['total']))"></span>
-                                                                        </p> -->
+                                                                        </t>
                                                                     </div>
                                                                 </t>
                                                             </section>

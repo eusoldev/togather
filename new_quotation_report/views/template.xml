@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        
+        <record id="new_quotation_report_format2" model="report.paperformat">
+            <field name="name">New Quotation Report</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">5</field>
+            <field name="margin_bottom">5</field>
+            <field name="page_width">0</field> <!-- A4 width in mm -->
+            <field name="page_height">0</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">10</field>
+            <field name="dpi">90</field>
+        </record>
+       <!--  <report
+            id="new_quotation_report_id" 
+            model="quotation.builder"
+            name="new_quotation_report.new_quotation_report" 
+            file="new_quotation_report.new_quotation_report" 
+            report_type="qweb-pdf" 
+            paperformat="new_quotation_report_format2" 
+            string="New Quotation PDF" 
+            print_report_name="'New Quotation PDF - %s' %(object.client_name.name)" /> -->
+
+
+        <record id="new_quotation_report_id" model="ir.actions.report">
+            <field name="name">New Quotation PDF</field>
+            <field name="model">quotation.builder</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">new_quotation_report.new_quotation_report</field>
+            <field name="report_file">new_quotation_report.new_quotation_report</field>
+            <field name="print_report_name">'Quotation PDF - %s' % (object.client_name.name)</field>
+            <field name="binding_model_id" ref="quotation_builder.model_quotation_builder" />
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="new_quotation_report_format2" />
+        </record>
+
+        <template id="own_basic_layout">
+            <t t-call="web.html_container">
+                <t t-if="not o" t-set="o" t-value="doc" />
+                <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id">
+                    <t t-raw="0" />
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

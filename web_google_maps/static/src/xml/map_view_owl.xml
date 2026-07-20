@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="web_google_maps.MapRenderer">
+        <div class="o_map_container">
+            <div class="o_map_view" t-ref="map"></div>
+        </div>
+    </t>
+
+    <t t-name="web_google_maps.MapInfoWindow">
+        <div class="o_kanban_view">
+            <div class="o_kanban_group">
+                <div class="oe_kanban_global_click o_res_partner_kanban">
+                    <div class="oe_kanban_details">
+                        <strong class="o_kanban_record_title oe_partner_heading">
+                            <span t-esc="record.display_name"/>
+                        </strong>
+                        <ul>
+                            <li t-if="record.email"><span t-esc="record.email"/></li>
+                            <li t-if="record.phone"><span t-esc="record.phone"/></li>
+                            <li t-if="record.city"><span t-esc="record.city"/></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+    <t t-name="web_google_maps.MapController">
+        <div class="o_map_view">
+            <Layout display="props.display">
+                <t t-set-slot="control-panel-top-right">
+                    <SearchBar t-if="props.searchMenuTypes.includes('filter')" />
+                </t>
+                <t t-set-slot="control-panel-bottom-left">
+                    <div class="o_map_buttons d-flex align-items-center">
+                        <button class="btn btn-primary" t-on-click="() => model.load()">Reload</button>
+                    </div>
+                </t>
+                <t t-set-slot="control-panel-bottom-right">
+                    <CogMenu t-if="props.searchMenuTypes.length" />
+                </t>
+                <div class="o_content">
+                    <t t-component="props.Renderer" model="model" archInfo="props.archInfo"/>
+                </div>
+            </Layout>
+        </div>
+    </t>
+</templates>

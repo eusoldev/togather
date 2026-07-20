@@ -117,7 +117,7 @@
             text-align: left;
             font-weight: bold;
             border-bottom: 1px solid black;
-            background: lightgray;
+            background: #DAD7DD;
         }
 
         .font_2 {
@@ -780,7 +780,7 @@
                 text-align: center;
                 
                 border-color: #a88734 #9c7e31 #846a29;
-                color: #7F51A8;
+                color: #DAD7DD;
                 border-width: 1px;
                 border-style: solid;
                 border-radius: 13px;
@@ -920,7 +920,28 @@
                 font-weight: 700;
                 line-height: 1.2;
             }
-           
+           .btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: #7F51A8;
+}
         </style>
         <div class="loader">
 
@@ -1012,7 +1033,7 @@
                                 <span class="solid">
                                     <a t-att-href="o.company_id.social_twitter" style="color:#DAD7DD">
                                         <!-- <i class="fab fa-twitter-square" style="color:#7F51A8; font-size:30px;"></i> -->
-                                        <img src="/voucher_report/static/src/img/twitter.png" style="width: 5.5%;color: #7F51A8;margin-top: -15px;margin-right:12px" />
+                                        <img src="/voucher_report/static/src/img/twitter.png" style="width: 7.5%;color: #7F51A8;margin-top: -15px;margin-right:12px" />
                                     </a>
                                 </span>
                             </p>
@@ -1060,10 +1081,10 @@
                                 <!-- <span>VAT: </span> -->
                                 <span t-esc="o.company_id.vat"/>
                             </p>
-                            <p t-if="o.company_id.arabic_cr_number">
+                            <p t-if="o.company_id.custom_cr_number">
                                 <span t-esc="o.company_id.arabic_cr_number"></span>
+                                <span t-esc="o.company_id.custom_cr_number"/>
                                 <!-- <span>CR No: </span> -->
-                                <!-- <span t-esc="o.company_id.custom_cr_number"/> -->
                             </p>
 
                             <br />
@@ -1091,7 +1112,7 @@
                                 <span class="solid">
                                     <a t-att-href="o.company_id.social_twitter" style="color:#DAD7DD">
                                         <!-- <i class="fab fa-twitter-square" style="color:#7F51A8; font-size:30px;"></i> -->
-                                        <img src="/voucher_report/static/src/img/twitter.png" style="width: 5.5%;color: #7F51A8;margin-top: -15px;margin-right:12px" />
+                                        <img src="/voucher_report/static/src/img/twitter.png" style="width: 7.5%;color: #7F51A8;margin-top: -15px;margin-right:12px" />
                                     </a>
                                 </span>
                             </p>
@@ -1556,7 +1577,7 @@
                                                 <div role="tabpanel" class="tab-pane" id="summary">
                                                     <div class="table-responsive">
                                                         <table class="table table-hover">
-                                                            <thead style="background: lightgray;">
+                                                            <thead style="background: #DAD7DD;">
                                                                 <tr>
                                                                     <th scope="col">Product</th>
                                                                     <th scope="col">Description</th>
@@ -1597,7 +1618,7 @@
                                             <div role="tabpanel" class="tab-pane" id="flight">
                                                 <div class="table-responsive">
                                                     <table class="table table-hover">
-                                                        <thead style="background: lightgray;">
+                                                        <thead style="background: #DAD7DD;">
                                                             <tr>
                                                                 <th scope="col">Airline</th>
                                                                 <!-- <th scope="col">Supplier</th> -->
@@ -1679,7 +1700,7 @@
                                             <div role="tabpanel" class="tab-pane" id="hotel">
                                                 <div class="table-responsive">
                                                     <table class="table table-hover">
-                                                        <thead style="background: lightgray;">
+                                                        <thead style="background: #DAD7DD;">
                                                             <tr>
                                                                 <th scope="col">Hotel</th>
                                                                 <th scope="col">Name</th>
@@ -1798,7 +1819,7 @@
                                             <div role="tabpanel" class="tab-pane" id="transfer">
                                                 <div class="table-responsive">
                                                     <table class="table table-hover">
-                                                        <thead style="background: lightgray;">
+                                                        <thead style="background: #DAD7DD;">
                                                             <tr>
                                                                 <th scope="col">Product</th>
                                                                 <!-- <th>Supplier</th> -->
@@ -1891,7 +1912,7 @@
                                             <div role="tabpanel" class="tab-pane" id="tour">
                                                 <div class="table-responsive">
                                                     <table class="table table-hover">
-                                                        <thead style="background: lightgray;">
+                                                        <thead style="background: #DAD7DD;">
                                                             <tr>
                                                                 <th scope="col">Product</th>
                                                                 <th scope="col">Name</th>
@@ -1965,7 +1986,7 @@
                                             <div role="tabpanel" class="tab-pane" id="visa">
                                                 <div class="table-responsive">
                                                     <table class="table table-hover">
-                                                        <thead style="background: lightgray;">
+                                                        <thead style="background: #DAD7DD;">
                                                             <tr>
                                                                 <th scope="col">Product</th>
                                                                 <!-- <th>Supplier</th> -->
@@ -2024,7 +2045,7 @@
                                             <div role="tabpanel" class="tab-pane" id="ready_package">
                                                 <div class="table-responsive">
                                                     <table class="table table-hover">
-                                                        <thead style="background: lightgray;">
+                                                        <thead style="background: #DAD7DD;">
                                                             <tr>
                                                                 <th>Product</th>
                                                                 <th scope="col">Name</th>
@@ -2106,7 +2127,7 @@
                                             <div role="tabpanel" class="tab-pane" id="private_jet">
                                                 <div class="table-responsive">
                                                     <table class="table table-hover">
-                                                        <thead style="background: lightgray;">
+                                                        <thead style="background: #DAD7DD;">
                                                             <tr>
                                                                 <th>Airline</th>
                                                                 <!-- <th>Supplier</th> -->
@@ -2185,7 +2206,7 @@
                                             <div role="tabpanel" class="tab-pane" id="yacht">
                                                 <div class="table-responsive">
                                                     <table class="table table-hover">
-                                                        <thead style="background: lightgray;">
+                                                        <thead style="background: #DAD7DD;">
                                                             <tr>
                                                                 <th scope="col">Name</th>
                                                                 <th scope="col">Confirmation Number</th>
@@ -2271,7 +2292,7 @@
                                             <div role="tabpanel" class="tab-pane" id="cruises">
                                                 <div class="table-responsive">
                                                     <table class="table table-hover">
-                                                        <thead style="background: lightgray;">
+                                                        <thead style="background: #DAD7DD;">
                                                             <tr>
                                                                 <th scope="col">Name</th>
                                                                 <th scope="col">Confirmation Number</th>
@@ -2357,7 +2378,7 @@
                                             <div role="tabpanel" class="tab-pane" id="other_services">
                                                 <div class="table-responsive">
                                                     <table class="table table-hover">
-                                                        <thead style="background: lightgray;">
+                                                        <thead style="background: #DAD7DD;">
                                                             <tr>
                                                                 <th scope="col">Name</th>
                                                                 <th scope="col">Confirmation Number</th>

@@ -62,6 +62,29 @@
 
 							    .main_wraper {
 							        width: 100%;
+							        position: relative;
+							        min-height: 1050px;
+							    }
+
+							    .welcome-header {
+							        position: absolute;
+							        z-index: 1;
+							        left: 0;
+							        width: 100%;
+							        text-align: center;
+							    }
+							    .welcome-header img {
+							        display: block;
+							        height: 300px;
+							        margin: 0 auto 10px auto;
+							    }
+							    .welcome-header h3 {
+							        color: #7F51A8;
+							        text-align: center;
+							        font-size: 28px;
+							        font-weight: 400;
+							        letter-spacing: 2px;
+							        margin: 0;
 							    }
 
 							    .report_data {
@@ -70,7 +93,6 @@
 								    left: 10%;
 								    top: 40%;
 								    line-height: 3;
-								    margin-top: 110px;
 								    width: 100%;
 								    font-size: 18px;
 							    }
@@ -86,12 +108,11 @@
 							    }
 						    </style>
 						    <div class="main_wraper" >
-						        <img src="/welcome_letter_report/static/src/img/Welcome_Letter.png" height="1445" width="100%"/>
-						        <div class="report_data">
-						        	<br/>
-						        	<br/>
-						        	<br/>
-						        	<br/>						        	
+							        <div class="welcome-header">
+							        	<img t-if="company.logo" t-att-src="image_data_uri(company.logo)"/>
+							        	<h3>WELCOME LETTER</h3>
+							        </div>
+							        <div class="report_data">
 							        <div class="english">
 										<div>Dear
 											<t t-if="o.hotel_return.partner_id.name">

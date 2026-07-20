@@ -42,10 +42,27 @@ class welcome_letter_report(models.AbstractModel):
     @api.model
     def _get_report_values(self, docids, data=None):
         record = self.env['all.services'].browse(docids)
+        service = record[:1]
+        reservation = (
+            service.itinarnay_return
+            or service.hotel_return
+            or service.transportation_return
+            or service.tours_return
+            or service.visa_return
+            or service.package_return
+            or service.privatejet_return
+            or service.yacht_return
+            or service.cruises_return
+            or service.otherservices_return
+            or service.flights_return
+            or service.services_return
+        )
+        company = reservation.company_id or self.env.company
 
         return {
             'doc_ids': docids,
             'doc_model':'all.services',
             'data': data,
+            'company': company,
             'docs': record,
         }
