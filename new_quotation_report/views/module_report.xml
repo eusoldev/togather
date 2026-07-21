@@ -471,7 +471,19 @@
                             <div class="main_wraper">
                                 <div class="main_div">
                                     <div>
-                                        <img src="/new_quotation_report/static/src/img/quotation_new.png" style=" height:1270px; width:100%;"/>
+                                        <t t-set="report_company" t-value="o.company_id or company"/>
+                                        <div style="position: relative; height:1270px; width:100%;">
+                                            <img src="/new_quotation_report/static/src/img/image.png" style="height:1270px; width:100%; display:block;"/>
+                                            <div style="position:absolute; top:40px; left:36px; width:33%; text-align:left; color:white; font-size:18px; text-transform:uppercase;">
+                                                <span t-esc="report_company.phone or report_company.mobile or &apos;&apos;"/>
+                                            </div>
+                                            <div style="position:absolute; top:40px; left:34%; width:33%; text-align:center; color:white; font-size:18px; text-transform:uppercase;">
+                                                <span t-esc="(report_company.website or &apos;&apos;).replace(&apos;https://&apos;, &apos;&apos;).replace(&apos;http://&apos;, &apos;&apos;).replace(&apos;www.&apos;, &apos;&apos;)"/>
+                                            </div>
+                                            <div style="position:absolute; top:40px; right:36px; width:33%; text-align:right; color:white; font-size:18px; text-transform:uppercase;">
+                                                <span t-esc="((report_company.country_id.code == &apos;SA&apos; and &apos;KSA&apos;) or report_company.country_id.code or report_company.country_id.name or &apos;&apos;) + ((report_company.state_id and &apos; - &apos; + report_company.state_id.name.upper()) or (report_company.city and &apos; - &apos; + report_company.city.upper()) or &apos;&apos;)"/>
+                                            </div>
+                                        </div>
                                         <!-- <img src="/new_quotation_report/static/src/img/second_img2.jpg" style=" height:1270px; width:100%;"/> -->
                                         <!-- <img src="/new_quotation_report/static/src/img/third_image1.jpg" style="height:1270px; width:100%;"/> -->
                                     </div>
@@ -492,7 +504,7 @@
                                                     <t t-if="d.service_type=='flight'">
                                                         <tr>
                                                             <td style="text-align: left;bor ">
-                                                                <p style="font-weight: bold;color:#7F51A8">Flight:</p>
+                                                                <p style="font-weight: bold;color:#7F51A8">Flight</p>
                                                                 <p style="margin-bottom:0.5rem;color:#7F51A8">
                                                                     <span style="font-weight: bold;">Flight Name:</span>
                                                                     <span t-esc="d.airline.name"/>
@@ -585,7 +597,7 @@
                                                     <t t-if="d.service_type=='hotel'">
                                                         <tr>
                                                             <td style="text-align: left;bor ">
-                                                                <p style="font-weight: bold;color:#7F51A8">Hotel:</p>
+                                                                <p style="font-weight: bold;color:#7F51A8">Hotel</p>
                                                                 <p style="margin-bottom:0.5rem">
                                                                     <span style="font-weight: bold;color:#7F51A8">Hotel Name:</span>
                                                                     <a style="color:black; text-decoration:underline !important;color:#7F51A8 " t-att-href="d.resort_map">
@@ -712,7 +724,7 @@
                                                     <t t-if="d.service_type=='transfer'">
                                                         <tr>
                                                             <td style="text-align: left;bor ;color:#7F51A8">
-                                                                <p style="font-weight: bold;">Transfer:</p>
+                                                                <p style="font-weight: bold;">Transfer</p>
                                                                 <!-- <p style="margin-bottom:0.5rem">
                                                                     <span style="font-weight: bold;">Supplier:</span>
                                                                     <span t-esc="d.supplier.name"/>
@@ -841,7 +853,7 @@
                                                     <t t-if="d.service_type=='tour'">
                                                         <tr>
                                                             <td style="text-align: left;bor;color:#7F51A8">
-                                                                <p style="font-weight: bold;">Tour:</p>
+                                                                <p style="font-weight: bold;">Tour</p>
                                                                 <!-- <p style="margin-bottom:0.5rem">
                                                                     <span style="font-weight: bold;">Supplier:</span>
                                                                     <span t-esc="d.supplier.name"/>
@@ -917,7 +929,7 @@
                                                     <t t-if="d.service_type=='visa'">
                                                         <tr>
                                                             <td style="text-align: left;bor;color:#7F51A8">
-                                                                <p style="font-weight: bold;">Visa:</p>
+                                                                <p style="font-weight: bold;">Visa</p>
                                                                 <!-- <p style="margin-bottom:0.5rem">
                                                                     <span style="font-weight: bold;">Supplier:</span>
                                                                     <span t-esc="d.supplier.name"/>
@@ -1007,7 +1019,7 @@
                                                     <t t-if="d.service_type=='package'">
                                                         <tr>
                                                             <td style="text-align: left;bor;color:#7F51A8">
-                                                                <p style="font-weight: bold;">Ready Package:</p>
+                                                                <p style="font-weight: bold;">Ready Package</p>
                                                                 <!-- <p style="margin-bottom:0.5rem">
                                                                     <span style="font-weight: bold;">Supplier:</span>
                                                                     <span t-esc="d.supplier.name"/>
@@ -1100,7 +1112,7 @@
                                                     <t t-if="d.service_type=='private'">
                                                         <tr>
                                                             <td style="text-align: left;bor;color:#7F51A8">
-                                                                <p style="font-weight: bold;">Private Jet:</p>
+                                                                <p style="font-weight: bold;">Private Jet</p>
                                                                 <!-- <p style="margin-bottom:0.5rem">
                                                                     <span style="font-weight: bold;">Supplier:</span>
                                                                     <span t-esc="d.supplier.name"/>
@@ -1196,7 +1208,7 @@
                                                     <t t-if="d.service_type=='yacht'">
                                                         <tr>
                                                             <td style="text-align: left;bor;color:#7F51A8 ">
-                                                                <p style="font-weight: bold;">Yacht:</p>
+                                                                <p style="font-weight: bold;">Yacht</p>
                                                                 <!-- <p style="margin-bottom:0.5rem">
                                                                     <span style="font-weight: bold;">Supplier:</span>
                                                                     <span t-esc="d.supplier.name"/>
@@ -1312,7 +1324,7 @@
                                                     <t t-if="d.service_type=='cruise'">
                                                         <tr>
                                                             <td style="text-align: left;bor;color:#7F51A8 ">
-                                                                <p style="font-weight: bold;">Cruise:</p>
+                                                                <p style="font-weight: bold;">Cruise</p>
                                                                 <!-- <p style="margin-bottom:0.5rem">
                                                                     <span style="font-weight: bold;">Supplier:</span>
                                                                     <span t-esc="d.supplier.name"/>
@@ -1419,7 +1431,7 @@
                                                     <t t-if="d.service_type=='other'">
                                                         <tr>
                                                             <td style="text-align: left;bor;color:#7F51A8">
-                                                                <p style="font-weight: bold;">Other Service:</p>
+                                                                <p style="font-weight: bold;">Other Service</p>
                                                                <!--  <p style="margin-bottom:0.5rem">
                                                                     <span style="font-weight: bold;">Supplier:</span>
                                                                     <span t-esc="d.supplier.name"/>
@@ -1494,9 +1506,9 @@
                                                 </t>
                                             </t>
                                         </tbody>
-                                        <tr style="color:#7F51A8">
-                                            <td>Total:</td>
-                                            <td>
+                                        <tr style="color:#7F51A8;font-weight:bold">
+                                            <td>Total</td>
+                                            <td style="text-align:right">
                                                 <!-- <t t-if="d and d.get('rate_hotel')"> -->
                                                     <t t-if="d.rate_hotel.position == 'before'">
                                                         <span t-esc="d.rate_hotel.symbol" />
@@ -1517,7 +1529,7 @@
                                 <!-- <div>
                                     <table width="100%" t-if="o.total_in_report">
                                         <tbody>
-                                            <td style="text-align: left; font-weight: bold;width: 70.6%;border-top:none;">Total:</td>
+                                            <td style="text-align: left; font-weight: bold;width: 70.6%;border-top:none;">Total</td>
                                             <td style="text-align: right; font-weight: bold;border-top:none;">
                                                 <t t-if="d and d.get('rate_hotel')">
                                                     <t t-if="d.rate_hotel.position == 'before'">
@@ -1543,8 +1555,8 @@
                             <div class="page">
                                 <!-- <div class="content" style="margin-left:20px; margin-right:20px;"> -->
                                 <div style="color:#7F51A8">
-                                    <p style="color: #000; margin-top:40px;color:#7F51A8">
-                                        <span style="color: #000; margin-top:500px;text-align:right; font-size:25px; margin-left:20px; margin-top:200px;text-decoration:underline;color:#7F51A8">Cancellation Policy</span>
+                                    <p style="color: #000; margin-top:50px;color:#7F51A8">
+                                        <span style="color: #000; margin-top:500px;text-align:right; font-size:25px; margin-left:40px; margin-top:200px;text-decoration:underline;color:#7F51A8">Cancellation Policy</span>
                                     </p>
                                     <br class="clearfloat"/>
                                     <span style="margin-left:20px; color:#7F51A8" class="custom_all_eng">
@@ -1553,8 +1565,8 @@
                                     <div class="page-break"/>
                                 </div>
                                 <div >
-                                    <p style="color: #000; margin-top:50px">
-                                        <span style="color: #000; margin-top:500px;text-align:right; font-size:25px; margin-left:20px; margin-top:200px;text-decoration:underline;color:#7F51A8">Terms Conditions &amp; Inclusions:</span>
+                                    <p style="color: #000; padding-top:60px">
+                                        <span style="color: #000;text-align:right; font-size:25px; margin-left:60px;text-decoration:underline;color:#7F51A8">Terms Conditions &amp; Inclusions:</span>
                                     </p>
                                     <br class="clearfloat"/>
                                     <!-- <t t-if="o.terms_conditions_eng"> -->
