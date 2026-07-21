@@ -471,7 +471,7 @@
                             <div class="main_wraper">
                                 <div class="main_div">
                                     <div>
-                                        <img src="/new_quotation_report/static/src/img/quotation_togather.png" style=" height:1270px; width:100%;"/>
+                                        <img src="/new_quotation_report/static/src/img/quotation_new.png" style=" height:1270px; width:100%;"/>
                                         <!-- <img src="/new_quotation_report/static/src/img/second_img2.jpg" style=" height:1270px; width:100%;"/> -->
                                         <!-- <img src="/new_quotation_report/static/src/img/third_image1.jpg" style="height:1270px; width:100%;"/> -->
                                     </div>
@@ -1471,7 +1471,7 @@
                                                                 <!-- <t t-if="o.terms_conditions_eng"> -->
                                                                 <!-- </t> -->
                                                             </td>
-                                                            <td style="text-align: right;">
+                                                            <td style="text-align: right;color:#7F51A8">
                                                                 <t t-if="d.rate_hotel">
                                                                     <t t-if="d.rate_hotel.position == 'before'">
                                                                         <span t-esc="d.rate_hotel.symbol" style="font-family: 'sar-symbol', sans-serif !important;"/>
@@ -1537,14 +1537,14 @@
                                     </table>
                                 </div> -->
                                 <!-- </div> -->
-                                <br class="clearfloat"/>
-                                <div class="page-break"/>
+                                <!-- <br class="clearfloat"/> -->
+                                <!-- <div class="page-break"/> -->
                             </div>
                             <div class="page">
                                 <!-- <div class="content" style="margin-left:20px; margin-right:20px;"> -->
                                 <div style="color:#7F51A8">
                                     <p style="color: #000; margin-top:40px;color:#7F51A8">
-                                        <span style="color: #000; margin-top:500px;text-align:right; font-size:25px; margin-left: 15px; margin-top:200px;text-decoration:underline;color:#7F51A8">Cancellation Policy</span>
+                                        <span style="color: #000; margin-top:500px;text-align:right; font-size:25px; margin-left:20px; margin-top:200px;text-decoration:underline;color:#7F51A8">Cancellation Policy</span>
                                     </p>
                                     <br class="clearfloat"/>
                                     <span style="margin-left:20px; color:#7F51A8" class="custom_all_eng">
@@ -1553,12 +1553,12 @@
                                     <div class="page-break"/>
                                 </div>
                                 <div >
-                                    <p style="color: #000; margin-top:40px">
-                                        <span style="color: #000; margin-top:500px;text-align:right; font-size:25px; margin-left: 15px; margin-top:200px;text-decoration:underline;color:#7F51A8">Terms Conditions &amp; Inclusions:</span>
+                                    <p style="color: #000; margin-top:50px">
+                                        <span style="color: #000; margin-top:500px;text-align:right; font-size:25px; margin-left:20px; margin-top:200px;text-decoration:underline;color:#7F51A8">Terms Conditions &amp; Inclusions:</span>
                                     </p>
                                     <br class="clearfloat"/>
                                     <!-- <t t-if="o.terms_conditions_eng"> -->
-                                    <span style="color: #000;margin-left:20px; color:#000;color:#7F51A8" class="custom_all_eng">
+                                    <span style="color: #000;margin-left:25px; color:#000;color:#7F51A8" class="custom_all_eng">
                                         <t t-raw="o.terms_conditions_eng"/>
                                     </span>
                                     <div class="page-break"/>
