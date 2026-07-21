@@ -60,7 +60,7 @@
                                 padding:7px;
                                 font-size:10px;
                                 background: #DAD7DD !important;
-                                color: #3d3838;
+                                color:#7F51A8;
                             }
 
                             .bg_col {
@@ -284,7 +284,7 @@
                                             </tbody>
                                         </t>
                                         <tr style="background-color:#DAD7DD !important;">
-                                            <td style="font-weight:bold; border-left:none;" colspan="11"> Total</td>
+                                            <td style="font-weight:bold; border-left:none;" colspan="10"> Total</td>
                                             <td style="font-weight:bold">
                                                 <span t-esc="'{0:,}'.format(int(totalguest))"></span>
                                             </td>
