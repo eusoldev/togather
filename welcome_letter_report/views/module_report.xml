@@ -115,10 +115,10 @@
 							        <div class="report_data">
 							        <div class="english">
 										<div>Dear
-											<t t-if="o.hotel_return.partner_id.name">
+											<!-- <t t-if="o.hotel_return.partner_id.name">
 
 												<b><span style="font-weight: bold;" t-esc="o.hotel_return.partner_id.name"/></b>.
-											</t> 
+											</t>  -->
 											<b><span style="font-weight: bold;" t-esc="o.hotel_return.partner_id.name"/>,</b></div>
 
 										<div>Warm welcome to <b><span style="font-weight: bold;" t-esc="o.hotel_id.name"/></b></div>
@@ -149,7 +149,7 @@
 
 										<div>,بإخلاص و إتقان</div>
 
-										<div>فريق رونق للسياحة</div>
+										<div>مؤسسة معا للسفر والسياحة</div>
 									</div>
 
 
