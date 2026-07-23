@@ -1969,11 +1969,14 @@
                                                         </t>
                                                         <t t-if="i.total_in_report and i.tree_link_id">
                                                             <t t-set="total_amount" t-value="0.0" />
+                                                            <t t-set="total_currency" t-value="False" />
                                                             <t t-foreach="i.tree_link_id" t-as="line">
                                                                 <t t-set="total_amount" t-value="total_amount + (line.total or 0.0)" />
+                                                                <t t-if="not total_currency and line.rate_hotel" t-set="total_currency" t-value="line.rate_hotel" />
                                                             </t>
                                                             <p>
                                                                 <strong>Total: </strong><span t-esc="'{:,.2f}'.format(total_amount)"></span>
+                                                                <span t-if="total_currency" t-esc="' %s' % (total_currency.symbol or total_currency.name)" />
                                                             </p>
                                                         </t>
                                                     </div>
@@ -2059,7 +2062,8 @@
                                                                         </t>
                                                                         <t t-if="h.total">
                                                                             <p>
-                                                                                <strong>Total: </strong><span t-esc="h.total"></span>
+                                                                                <strong>Total: </strong><span t-esc="'{:,.2f}'.format(h.total)"></span>
+                                                                                <span t-if="h.rate_hotel" t-esc="' %s' % (h.rate_hotel.symbol or h.rate_hotel.name)" />
                                                                             </p>
                                                                         </t>
                                                                     </div>
@@ -2116,7 +2120,8 @@
                                                                         </t>
                                                                         <t t-if="f.total">
                                                                             <p>
-                                                                                <strong>Total: </strong><span t-esc="f.total"></span>
+                                                                                <strong>Total: </strong><span t-esc="'{:,.2f}'.format(f.total)"></span>
+                                                                                <span t-if="f.rate_hotel" t-esc="' %s' % (f.rate_hotel.symbol or f.rate_hotel.name)" />
                                                                             </p>
                                                                         </t>
                                                                     </div>
@@ -2178,7 +2183,8 @@
                                                                         </t>
                                                                         <t t-if="tr.total">
                                                                             <p>
-                                                                                <strong>Total: </strong><span t-esc="tr.total"></span>
+                                                                                <strong>Total: </strong><span t-esc="'{:,.2f}'.format(tr.total)"></span>
+                                                                                <span t-if="tr.rate_hotel" t-esc="' %s' % (tr.rate_hotel.symbol or tr.rate_hotel.name)" />
                                                                             </p>
                                                                         </t>
                                                                     </div>
@@ -2229,7 +2235,8 @@
                                                                         </t>
                                                                         <t t-if="to.total">
                                                                             <p>
-                                                                                <strong>Total: </strong><span t-esc="to.total"></span>
+                                                                                <strong>Total: </strong><span t-esc="'{:,.2f}'.format(to.total)"></span>
+                                                                                <span t-if="to.rate_hotel" t-esc="' %s' % (to.rate_hotel.symbol or to.rate_hotel.name)" />
                                                                             </p>
                                                                         </t>
                                                                     </div>
@@ -2281,7 +2288,8 @@
                                                                         </t>
                                                                         <t t-if="v.total">
                                                                             <p>
-                                                                                <strong>Total: </strong><span t-esc="v.total"></span>
+                                                                                <strong>Total: </strong><span t-esc="'{:,.2f}'.format(v.total)"></span>
+                                                                                <span t-if="v.rate_hotel" t-esc="' %s' % (v.rate_hotel.symbol or v.rate_hotel.name)" />
                                                                             </p>
                                                                         </t>
                                                                     </div>
@@ -2343,7 +2351,8 @@
                                                                         </t>
                                                                         <t t-if="p.total">
                                                                             <p>
-                                                                                <strong>Total: </strong><span t-esc="p.total"></span>
+                                                                                <strong>Total: </strong><span t-esc="'{:,.2f}'.format(p.total)"></span>
+                                                                                <span t-if="p.rate_hotel" t-esc="' %s' % (p.rate_hotel.symbol or p.rate_hotel.name)" />
                                                                             </p>
                                                                         </t>
                                                                     </div>
@@ -2415,7 +2424,8 @@
                                                                         </t>
                                                                         <t t-if="pj.total">
                                                                             <p>
-                                                                                <strong>Total: </strong><span t-esc="pj.total"></span>
+                                                                                <strong>Total: </strong><span t-esc="'{:,.2f}'.format(pj.total)"></span>
+                                                                                <span t-if="pj.rate_hotel" t-esc="' %s' % (pj.rate_hotel.symbol or pj.rate_hotel.name)" />
                                                                             </p>
                                                                         </t>
                                                                     </div>
@@ -2482,7 +2492,8 @@
                                                                         </t>
                                                                         <t t-if="y.total">
                                                                             <p>
-                                                                                <strong>Total: </strong><span t-esc="y.total"></span>
+                                                                                <strong>Total: </strong><span t-esc="'{:,.2f}'.format(y.total)"></span>
+                                                                                <span t-if="y.rate_hotel" t-esc="' %s' % (y.rate_hotel.symbol or y.rate_hotel.name)" />
                                                                             </p>
                                                                         </t>
                                                                     </div>
@@ -2549,7 +2560,8 @@
                                                                         </t>
                                                                         <t t-if="c.total">
                                                                             <p>
-                                                                                <strong>Total: </strong><span t-esc="c.total"></span>
+                                                                                <strong>Total: </strong><span t-esc="'{:,.2f}'.format(c.total)"></span>
+                                                                                <span t-if="c.rate_hotel" t-esc="' %s' % (c.rate_hotel.symbol or c.rate_hotel.name)" />
                                                                             </p>
                                                                         </t>
                                                                     </div>
@@ -2592,7 +2604,8 @@
                                                                         </t>
                                                                         <t t-if="os.total">
                                                                             <p>
-                                                                                <strong>Total: </strong><span t-esc="os.total"></span>
+                                                                                <strong>Total: </strong><span t-esc="'{:,.2f}'.format(os.total)"></span>
+                                                                                <span t-if="os.rate_hotel" t-esc="' %s' % (os.rate_hotel.symbol or os.rate_hotel.name)" />
                                                                             </p>
                                                                         </t>
                                                                     </div>
