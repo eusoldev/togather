@@ -107,27 +107,27 @@
                                 <br />
                                 <p style="margin:0px;">
                                     <span class="solid">
-                                        <a t-att-href="c.social_instagram" style="color:#DAD7DD">
+                                        <a t-att-href="report_companysocial_instagram" style="color:#DAD7DD">
                                             <i class="fab fa-instagram" style="color:#7F51A8; font-size:30px; margin-right:12px;"></i>
                                         </a>
                                     </span>
                                     <span class="solid">
-                                        <a t-att-href="c.social_facebook" style="color:#DAD7DD">
+                                        <a t-att-href="report_companysocial_facebook" style="color:#DAD7DD">
                                             <i class="fab fa-facebook" style="color:#7F51A8; font-size:30px;margin-right:12px;"></i>
                                         </a>
                                     </span>
                                     <span class="solid">
-                                        <a t-att-href="c.social_youtube" style="color:#DAD7DD">
+                                        <a t-att-href="report_companysocial_youtube" style="color:#DAD7DD">
                                             <i class="fab fa-snapchat-square" style="color:#7F51A8; font-size:30px; margin-right:12px;"></i>
                                         </a>
                                     </span>
                                     <span class="solid">
-                                        <a t-att-href="c.social_linkedin" style="color:#DAD7DD">
+                                        <a t-att-href="report_companysocial_linkedin" style="color:#DAD7DD">
                                             <i class="fab fa-linkedin" style="color:#7F51A8; font-size:30px; margin-right:12px;"></i>
                                         </a>
                                     </span>
                                     <span class="solid">
-                                        <a t-att-href="c.social_twitter" style="color:#DAD7DD">
+                                        <a t-att-href="report_companysocial_twitter" style="color:#DAD7DD">
                                             <!-- <i class="fab fa-twitter-square" style="color:#7F51A8; font-size:30px;"></i> -->
                                             <img src="/voucher_report/static/src/img/twitter.png" style="width: 9.5%;color: #7F51A8;margin-top: -20px;margin-right:12px" />
                                         </a>
@@ -182,27 +182,27 @@
                                 <br />
                                 <p style="margin:0px;">
                                     <span class="solid">
-                                        <a t-att-href="c.social_instagram" style="color:#DAD7DD">
+                                        <a t-att-href="report_companysocial_instagram" style="color:#DAD7DD">
                                             <i class="fab fa-instagram" style="color:#7F51A8; font-size:30px; margin-right:12px;"></i>
                                         </a>
                                     </span>
                                     <span class="solid">
-                                        <a t-att-href="c.social_facebook" style="color:#DAD7DD">
+                                        <a t-att-href="report_companysocial_facebook" style="color:#DAD7DD">
                                             <i class="fab fa-facebook" style="color:#7F51A8; font-size:30px;margin-right:12px;"></i>
                                         </a>
                                     </span>
                                     <span class="solid">
-                                        <a t-att-href="c.social_youtube" style="color:#DAD7DD">
+                                        <a t-att-href="report_companysocial_youtube" style="color:#DAD7DD">
                                             <i class="fab fa-snapchat-square" style="color:#7F51A8; font-size:30px; margin-right:12px;"></i>
                                         </a>
                                     </span>
                                     <span class="solid">
-                                        <a t-att-href="c.social_linkedin" style="color:#DAD7DD">
+                                        <a t-att-href="report_companysocial_linkedin" style="color:#DAD7DD">
                                             <i class="fab fa-linkedin" style="color:#7F51A8; font-size:30px; margin-right:12px;"></i>
                                         </a>
                                     </span>
                                     <span class="solid">
-                                        <a t-att-href="c.social_twitter" style="color:#DAD7DD">
+                                        <a t-att-href="report_companysocial_twitter" style="color:#DAD7DD">
                                             <!-- <i class="fab fa-twitter-square" style="color:#7F51A8; font-size:30px;"></i> -->
                                             <img src="/voucher_report/static/src/img/twitter.png" style="width: 9.5%;color: #7F51A8;margin-top: -20px;margin-right:12px" />
                                         </a>
