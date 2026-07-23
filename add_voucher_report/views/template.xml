@@ -10,10 +10,43 @@
             <field name="partner_to">{{ object.partner_id.id }}</field>
             <field name="body_html" type="html">
                 <div style="margin: 0px; padding: 0px;">
-                     <p>Hi</p>
+                    <br/>
+                    <br/>
+                    <p>Dear Partner/Client,</p>
+                    <br/>
+                    <br/>
+                    <p>Greetings from <strong>TOGATHER!</strong></p>
                     <br />
-                    <p>Here is the details of open invoices</p>
                     <br />
+                    <p>
+                         We are pleased to confirm your booking as requested,
+                         kindly find attached the confirmation along with the due invoice.
+
+                    </p>
+                    <br/>
+                    <br/>
+                    <p>
+                        Please report any discrepancies within 24 hours of receipt of the above confirmation.HCN# will be shared soon.
+
+                    </p>
+                    <br/>
+                    <br/>
+                    <p>
+                        Should you need any further assistance, please don’t hesitate to contact us.
+
+                    </p>
+                    <br/>
+                    <br/>
+                    <p>
+                        Regards,
+
+                    </p>
+                    <br/>
+                    <br/>
+                    <p>
+                       TOGATHER Team
+
+                    </p>
                 </div>
             </field>
             <!-- <field name="lang">{{ object.partner_id.lang }}</field> -->
